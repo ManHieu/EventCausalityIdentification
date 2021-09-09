@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='us-ascii'?>
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+<DOCID>ea980120.1830.0456</DOCID>
+<DCT><TIMEX3 functionInDocument="CREATION_TIME" temporalFunction="false" tid="t0" type="DATE" value="1998-01-20">980120</TIMEX3></DCT>
+<TEXT>
+The Pentagon <EVENT class="REPORTING" eid="e1">said</EVENT> <TIMEX3 tid="t14" type="DATE" value="1998-01-20">today</TIMEX3> it will <EVENT class="I_ACTION" eid="e2">re-examine</EVENT> the question are the remains inside the Tomb of the Unknown from the Vietnam War, in fact, <EVENT class="OCCURRENCE" eid="e5">known</EVENT>?
+
+CBS News first <EVENT class="REPORTING" eid="e6">reported</EVENT> <TIMEX3 tid="t15" type="TIME" value="1998-01-19TNI">last night</TIMEX3> that the tomb may <EVENT class="OCCURRENCE" eid="e7">contain</EVENT> the remains of Air Force pilot Michael Blassie.
+
+There was a suspicion the body <EVENT class="STATE" eid="e20">was</EVENT> Blassie because his uniform and ID card were <EVENT class="OCCURRENCE" eid="e9">found</EVENT> near the body in Vietnam. But subsequently, they were <EVENT class="OCCURRENCE" eid="e10">lost</EVENT>. Blassie's mother <TIMEX3 tid="t16" type="DATE" value="PRESENT_REF">now</TIMEX3> <EVENT class="I_STATE" eid="e11">wants</EVENT> the remains in the tomb <EVENT class="OCCURRENCE" eid="e12">tested</EVENT> for DNA.
+</TEXT>
+<MAKEINSTANCE aspect="NONE" eiid="ei99" eventID="e1" polarity="POS" pos="VERB" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei100" eventID="e2" polarity="POS" pos="VERB" tense="FUTURE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei102" eventID="e5" polarity="POS" pos="ADJECTIVE" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei103" eventID="e6" polarity="POS" pos="VERB" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei104" eventID="e7" polarity="POS" pos="VERB" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei111" eventID="e20" polarity="POS" pos="OTHER" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei107" eventID="e9" polarity="POS" pos="VERB" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei108" eventID="e10" polarity="POS" pos="VERB" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei109" eventID="e11" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei110" eventID="e12" polarity="POS" pos="VERB" tense="PASTPART" />
+<TLINK eventInstanceID="ei102" lid="l0" relType="IS_INCLUDED" relatedToTime="t0" />
+<TLINK eventInstanceID="ei99" lid="l1" relType="IS_INCLUDED" relatedToTime="t14" />
+<TLINK eventInstanceID="ei99" lid="l2" relType="IS_INCLUDED" relatedToTime="t0" />
+<TLINK eventInstanceID="ei103" lid="l3" relType="IS_INCLUDED" relatedToTime="t15" />
+<TLINK eventInstanceID="ei103" lid="l4" relType="BEFORE" relatedToEventInstance="ei99" />
+<TLINK eventInstanceID="ei107" lid="l5" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei108" lid="l6" relType="AFTER" relatedToEventInstance="ei107" />
+<TLINK lid="l7" relType="INCLUDES" relatedToEventInstance="ei109" timeID="t16" />
+<TLINK eventInstanceID="ei109" lid="l8" relType="IS_INCLUDED" relatedToTime="t0" />
+<TLINK eventInstanceID="ei109" lid="l9" relType="AFTER" relatedToTime="t15" />
+<TLINK eventInstanceID="ei99" lid="l10" relType="BEFORE" relatedToEventInstance="ei100" />
+<TLINK eventInstanceID="ei99" lid="l11" relType="IS_INCLUDED" relatedToEventInstance="ei102" />
+<TLINK eventInstanceID="ei99" lid="l12" relType="AFTER" relatedToEventInstance="ei103" />
+<TLINK eventInstanceID="ei99" lid="l13" relType="AFTER" relatedToTime="t15" />
+<TLINK eventInstanceID="ei99" lid="l14" relType="IS_INCLUDED" relatedToEventInstance="ei104" />
+<TLINK lid="l15" relType="SIMULTANEOUS" relatedToTime="t0" timeID="t14" />
+<TLINK lid="l16" relType="IS_INCLUDED" relatedToEventInstance="ei102" timeID="t14" />
+<TLINK lid="l17" relType="AFTER" relatedToEventInstance="ei103" timeID="t14" />
+<TLINK lid="l18" relType="AFTER" relatedToTime="t15" timeID="t14" />
+<TLINK lid="l19" relType="IS_INCLUDED" relatedToEventInstance="ei104" timeID="t14" />
+<TLINK eventInstanceID="ei100" lid="l20" relType="IS_INCLUDED" relatedToEventInstance="ei102" />
+<TLINK eventInstanceID="ei100" lid="l21" relType="AFTER" relatedToEventInstance="ei103" />
+<TLINK eventInstanceID="ei100" lid="l22" relType="AFTER" relatedToTime="t15" />
+<TLINK eventInstanceID="ei100" lid="l23" relType="IS_INCLUDED" relatedToEventInstance="ei104" />
+<TLINK eventInstanceID="ei102" lid="l24" relType="INCLUDES" relatedToEventInstance="ei103" />
+<TLINK eventInstanceID="ei102" lid="l25" relType="INCLUDES" relatedToTime="t15" />
+<TLINK eventInstanceID="ei103" lid="l26" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei103" lid="l27" relType="IS_INCLUDED" relatedToEventInstance="ei104" />
+<TLINK eventInstanceID="ei103" lid="l28" relType="AFTER" relatedToEventInstance="ei107" />
+<TLINK lid="l29" relType="BEFORE" relatedToTime="t0" timeID="t15" />
+<TLINK lid="l30" relType="IS_INCLUDED" relatedToEventInstance="ei104" timeID="t15" />
+<TLINK lid="l31" relType="AFTER" relatedToEventInstance="ei107" timeID="t15" />
+<TLINK eventInstanceID="ei104" lid="l32" relType="INCLUDES" relatedToTime="t0" />
+<TLINK eventInstanceID="ei104" lid="l33" relType="AFTER" relatedToEventInstance="ei107" />
+<TLINK eventInstanceID="ei111" lid="l34" relType="INCLUDES" relatedToEventInstance="ei107" />
+<TLINK eventInstanceID="ei111" lid="l35" relType="INCLUDES" relatedToEventInstance="ei108" />
+<TLINK eventInstanceID="ei107" lid="l36" relType="BEFORE" relatedToEventInstance="ei108" />
+<TLINK eventInstanceID="ei108" lid="l37" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei108" lid="l38" relType="BEFORE" relatedToTime="t16" />
+<TLINK eventInstanceID="ei108" lid="l39" relType="BEFORE" relatedToEventInstance="ei109" />
+<TLINK eventInstanceID="ei108" lid="l40" relType="BEFORE" relatedToEventInstance="ei110" />
+<TLINK lid="l41" relType="INCLUDES" relatedToTime="t0" timeID="t16" />
+<TLINK lid="l42" relType="BEFORE" relatedToEventInstance="ei110" timeID="t16" />
+<TLINK eventInstanceID="ei110" lid="l43" relType="AFTER" relatedToTime="t0" />
+
+<TLINK lid="l44" relType="NONE" relatedToEventInstance="ei100" timeID="t14" />
+<TLINK eventInstanceID="ei100" lid="l45" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei102" lid="l46" relType="NONE" relatedToEventInstance="ei104" />
+<TLINK eventInstanceID="ei103" lid="l47" relType="NONE" relatedToEventInstance="ei111" />
+<TLINK lid="l48" relType="NONE" relatedToEventInstance="ei111" timeID="t15" />
+<TLINK eventInstanceID="ei104" lid="l49" relType="NONE" relatedToEventInstance="ei111" />
+<TLINK eventInstanceID="ei111" lid="l50" relType="NONE" relatedToTime="t0" />
+<TLINK lid="l51" relType="NONE" relatedToEventInstance="ei109" timeID="t16" />
+<TLINK eventInstanceID="ei109" lid="l52" relType="NONE" relatedToEventInstance="ei110" />
+</TimeML>
