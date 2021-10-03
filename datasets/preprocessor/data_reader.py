@@ -1,5 +1,4 @@
 import torch
-from transformers.utils.dummy_pt_objects import M2M100ForConditionalGeneration
 torch.manual_seed(1741)
 import random
 random.seed(1741)
@@ -8,9 +7,8 @@ np.random.seed(1741)
 import bs4
 import xml.etree.ElementTree as ET
 from collections import defaultdict
-from spacy.util import raise_error
-from utils.constant import *
-from utils.tools import *
+from .constants import *
+from .utils import *
 # from nltk import sent_tokenize
 from bs4 import BeautifulSoup as Soup
 import csv
@@ -520,17 +518,17 @@ def doc_mapping(corpus):
         mapping[rel[0]].append(_rel)
     return dict(mapping)
 
-# TDD_man_train = tdd_reader(TDD_man_train)
-# TDD_man_test = tdd_reader(TDD_man_test)
-# TDD_man_val = tdd_reader(TDD_man_val)
-# TDD_man = TDD_man_train + TDD_man_val + TDD_man_test
-# TDD_man = doc_mapping(TDD_man)
+TDD_man_train = tdd_reader(TDD_man_train)
+TDD_man_test = tdd_reader(TDD_man_test)
+TDD_man_val = tdd_reader(TDD_man_val)
+TDD_man = TDD_man_train + TDD_man_val + TDD_man_test
+TDD_man = doc_mapping(TDD_man)
 
-# TDD_auto_train = tdd_reader(TDD_auto_train)
-# TDD_auto_test = tdd_reader(TDD_auto_test)
-# TDD_auto_val = tdd_reader(TDD_auto_val)
-# TDD_auto = TDD_auto_train + TDD_auto_val + TDD_auto_test
-# TDD_auto = doc_mapping(TDD_auto)
+TDD_auto_train = tdd_reader(TDD_auto_train)
+TDD_auto_test = tdd_reader(TDD_auto_test)
+TDD_auto_val = tdd_reader(TDD_auto_val)
+TDD_auto = TDD_auto_train + TDD_auto_val + TDD_auto_test
+TDD_auto = doc_mapping(TDD_auto)
 
 
 def tdd_tml_reader(dir_name, file_name, type_doc):
@@ -635,7 +633,7 @@ def tdd_tml_reader(dir_name, file_name, type_doc):
         if rel_list == None:
             return None
     else:
-        raise_error("Don't have this corpus!")
+        raise ValueError("Don't have this corpus!")
     eids = my_dict['event_dict'].keys()
 
     # print(rel_list)

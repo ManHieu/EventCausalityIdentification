@@ -1,19 +1,10 @@
-import datetime
 from typing import List, Set
-import numpy as np
-np.random.seed(1741)
-import torch
-torch.manual_seed(1741)
-import random
-random.seed(1741)
-import spacy
 from transformers import RobertaTokenizer
-from utils.constant import *
-
+from .constants import *
+import spacy
 
 tokenizer = RobertaTokenizer.from_pretrained('roberta-base', unk_token='<unk>')
 nlp = spacy.load("en_core_web_sm")
-
 
 
 def RoBERTa_list(content, token_list = None, token_span_SENT = None):
@@ -109,7 +100,3 @@ def list_id_lookup(span_SENT: List[Set[int]], start_char: int, end_char: int):
     return list_id
 
 
-def pos_to_id(sent_pos):
-    id_pos_sent =  [pos_dict.get(pos) if pos_dict.get(pos) != None else 0 
-                    for pos in sent_pos]
-    return id_pos_sent

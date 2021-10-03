@@ -79,5 +79,6 @@ class InputFeatures:
     Property names are the same names as the corresponding inputs to model.
     """
     input_ids: List[int]
-    attention_mask: List[int]
-    label_id: Optional[List[int]] = None
+    input_attention_mask: List[int]
+    label_ids: Optional[List[int]] = None
+    tgt_attention_mask: Optional[List[int]] = None

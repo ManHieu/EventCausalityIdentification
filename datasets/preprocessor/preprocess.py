@@ -2,7 +2,7 @@ import json
 import tqdm
 import os
 from itertools import combinations
-from datasets.data_reader import i2b2_xml_reader, tbd_tml_reader, tdd_tml_reader, tml_reader, tsvx_reader
+from .data_reader import i2b2_xml_reader, tbd_tml_reader, tdd_tml_reader, tml_reader, tsvx_reader
 
 
 class Reader(object):

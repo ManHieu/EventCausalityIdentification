@@ -1,23 +1,11 @@
 from abc import ABC, abstractmethod
-import copy
-
-from datasets.input_example import InputExample
-
-INPUT_FORMATS = {}
-
-
-def register_input_format(format_class):
-    INPUT_FORMATS[format_class.name] = format_class
-    return format_class
+from .input_example import InputExample
+from typing import Dict
 
 
 class BaseInputFormat(ABC):
     name = None
 
-    BEGIN_ENTITY_TOKEN = '['
-    END_ENTITY_TOKEN = ']'
-    SEPARATOR_TOKEN = '|'
-    RELATION_SEPARATOR_TOKEN = '='
     QUERY_SEPARATOR_TOKEN = ':'
 
     def format_input(self, example: InputExample, multitask=False, task_descriptor=None):
@@ -30,6 +18,15 @@ class BaseInputFormat(ABC):
     @abstractmethod
     def _format_input(self, example: InputExample) -> str:
         raise NotImplementedError
+
+
+INPUT_FORMATS : Dict[str, BaseInputFormat] = {}
+
+
+def register_input_format(format_class: BaseInputFormat):
+    INPUT_FORMATS[format_class.name] = format_class
+    return format_class
+
 
 @register_input_format
 class PlainInputFormat(BaseInputFormat):

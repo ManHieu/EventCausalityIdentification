@@ -18,18 +18,13 @@ class DataTrainingArguments:
         metadata={"help": "Path to data directory"}
     )
 
-    eval_datasets: Optional[str] = field(
-        default=None,
-        metadata={"help": "Comma separated list of dataset names. Defaults to the train datasets."}
-    )
-
-    train_split: str = field(
-        default='train',
-        metadata={"help": "The datasplit for training. Can be 'train', 'dev', 'test', etc."}
+    tokenizer: str = field(
+        default = None,
+        metadata= {"help": "The tokenizer used to prepare data"}
     )
 
     max_seq_length: int = field(
-        default=128,
+        default=512,
         metadata={
             "help": "The maximum total input sequence length after tokenization. Sequences longer "
                     "than this will be truncated, shorter sequences will be padded."
@@ -37,42 +32,9 @@ class DataTrainingArguments:
     )
 
     max_output_seq_length: Optional[int] = field(
-        default=None,
+        default=512,
         metadata={
             "help": "The maximum output sequence length (default is the same as input)"
-        },
-    )
-
-    overwrite_cache: bool = field(
-        default=True, metadata={"help": "Overwrite the cached training and evaluation sets"}
-    )
-
-    train_subset: float = field(
-        default=1, metadata={"help": "The portion of training data to use"}
-    )
-
-    episodes: str = field(
-        default='0', metadata={"help": "Episode indices -- a single number such as 3 or an interval such as 1-4\n"
-                                       "The index is also used as random seeds and this setting is therefore used to "
-                                       "repeat multiple experiments."}
-    )
-
-    num_beams: int = field(
-        default=None,
-        metadata={"help": "Number of beams for beam search during generation (only affects evaluation)"}
-    )
-
-    max_seq_length_eval: int = field(
-        default=None,
-        metadata={
-            "help": "Maximum input sequence length at evaluation time (default is equal to max_seq_length)"
-        },
-    )
-
-    max_output_seq_length_eval: int = field(
-        default=None,
-        metadata={
-            "help": "The maximum output sequence length at evaluation time (default is the same as input)"
         },
     )
 
@@ -86,28 +48,6 @@ class DataTrainingArguments:
 
     multitask: bool = field(
         default=False, metadata={"help": "If true, each input sentence is prepended with the dataset name"}
-    )
-
-    # chunk arguments
-    chunk_size: int = field(
-        default=128, metadata={"help": "Size of document chunks"}
-    )
-
-    chunk_overlap: int = field(
-        default=64, metadata={"help": "Size of overlap between consecutive chunks"}
-    )
-
-    chunk_size_eval: int = field(
-        default=None, metadata={"help": "Size of document chunks during evaluation (default is equal to chunk_size)"}
-    )
-
-    chunk_overlap_eval: int = field(
-        default=None, metadata={"help": "Size of overlap between consecutive chunks during evaluation "
-                                        "(default is equal to chunk_overlap)"}
-    )
-
-    eval_nll: bool = field(
-        default=False, metadata={"help": "Evaluate using NLL (only applicable to certain datasets)"}
     )
 
 
@@ -124,6 +64,19 @@ class TrainingArguments(transformers.TrainingArguments):
     zero_shot: bool = field(
         default=False,
         metadata={"help": "Zero-shot setting"}
+    )
+
+    batch_size: int = field(
+        default=8,
+        metadata={"help": "Batch_size for training and evaluating"}
+    )
+    gradient_clip_val: float = field(
+        default=0.0,
+        metadata={"help":"Gradient clipping value"}
+    )
+    seed: int = field(
+        default=1741,
+        metadata={"help": "seeding for reproductivity"}
     )
 
 
@@ -145,6 +98,3 @@ class ModelArguments:
         default=None, metadata={"help": "Pretrained tokenizer name or path if not the same as model_name"}
     )
 
-    cache_dir: Optional[str] = field(
-        default=None, metadata={"help": "Where do you want to store the pretrained models"}
-    )
