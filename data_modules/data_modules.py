@@ -35,7 +35,7 @@ class MatresDataModule(pl.LightningDataModule):
 
     def __init__(self, data_args: DataTrainingArguments, batch_size: int=8):
         super().__init__()
-        self.save_hyperparameters(data_args, batch_size)
+        self.save_hyperparameters()
         self.tokenizer = T5Tokenizer.from_pretrained(data_args.tokenizer)
         self.tokenizer.add_tokens(self.SPECIAL_TOKENS)
         self.max_input_len = data_args.max_seq_length
@@ -75,7 +75,7 @@ class MatresDataModule(pl.LightningDataModule):
         )
         return dataloader
     
-    def train_dataloader(self):
+    def test_dataloader(self):
         dataset = load_dataset(
             dataset_name=self.name,
             data_args=self.hparams.data_args,
@@ -87,7 +87,7 @@ class MatresDataModule(pl.LightningDataModule):
         dataloader = DataLoader(
             dataset= dataset,
             batch_size= self.hparams.batch_size,
-            shuffle=True,
+            shuffle=False,
             collate_fn=my_collate,
         )
         return dataloader

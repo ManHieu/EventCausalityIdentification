@@ -72,10 +72,10 @@ def objective(trial: optuna.trial):
     except FileExistsError:
         pass
     
-    seed_everything(args.seed)
+    seed_everything(training_args.seed)
     checkpoint_callback = ModelCheckpoint(
         dirpath=output_dir,
-        save_top_k=2,
+        save_top_k=1,
         monitor='avg_val_loss',
         mode='min',
         save_weights_only=True,
@@ -85,7 +85,7 @@ def objective(trial: optuna.trial):
     lr_logger = LearningRateMonitor() 
     tb_logger = TensorBoardLogger('logs/')
 
-    model = GenEERModel(model_args=model_args,
+    model = GenEERModel(model_args=model_args, training_args=training_args,
                         learning_rate=training_args.learning_rate,
                         adam_epsilon=training_args.adam_epsilon,
                         warmup=training_args.warmup_ratio)
@@ -95,7 +95,7 @@ def objective(trial: optuna.trial):
                         batch_size=training_args.batch_size)
 
     trainer = Trainer(
-        logger=tb_logger,
+        # logger=tb_logger,
         min_epochs=training_args.num_train_epochs,
         max_epochs=training_args.num_train_epochs, 
         gpus=[args.gpu], 
@@ -103,7 +103,6 @@ def objective(trial: optuna.trial):
         gradient_clip_val=training_args.gradient_clip_val, 
         num_sanity_val_steps=1, 
         val_check_interval=0.5, # use float to check every n epochs 
-        precision=16 if args.fp16 else 32,
         callbacks = [lr_logger, checkpoint_callback],
     )
 
@@ -111,15 +110,16 @@ def objective(trial: optuna.trial):
         model.load_state_dict(torch.load(args.trained_model, map_location=model.device)['state_dict'])
     
     if args.eval: 
+        print("Testing.....")
         dm.setup('test')
         trainer.test(model, datamodule=dm) #also loads training dataloader 
     else:
+        print("Training....")
         dm.setup('fit')
         trainer.fit(model, dm) 
     
     return 0
-
-if __name__ == '_main__':
+if __name__ == '__main__':
     # parse arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('job')

@@ -76,6 +76,8 @@ class BaseDataset(Dataset, ABC):
 
         self.data_path = data_args.data_dir if data_args.data_dir is not None else self.default_data_dir
 
+        self.load_schema()
+
         self.examples: List[InputExample] = self.load_data(split=split)
         for example in self.examples:
             example.dataset = self
@@ -132,13 +134,11 @@ class BaseDataset(Dataset, ABC):
 
             input_tokens = self.tokenizer.encode_plus(input_sentence, 
                                 add_special_tokens=True,
-                                add_prefix_space=True,
                                 max_length=self.max_input_length,
                                 truncation=True,
                                 padding='max_length')
             output_tokens = self.tokenizer.encode_plus(output_sentence, 
                                 add_special_tokens=True,
-                                add_prefix_space=True, 
                                 max_length=self.max_output_length,
                                 truncation=True,
                                 padding='max_length')

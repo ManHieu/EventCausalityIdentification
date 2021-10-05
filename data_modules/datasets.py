@@ -48,7 +48,7 @@ class JointERDataset(BaseDataset):
     natural_event_types = None     # dictionary from entity types given in the dataset to the natural strings to use
     natural_relation_types = None   # dictionary from relation types given in the dataset to the natural strings to use
 
-    default_output_format = 'joint_er'
+    default_output_format = None
 
     def load_schema(self):
         """
@@ -71,7 +71,7 @@ class JointERDataset(BaseDataset):
     def load_data(self, split:str, seed: int = None) -> List[InputExample]:
         examples = []
         name = self.name if self.data_name is None else self.data_name
-        file_path = os.path.join(self.data_dir(), f'{name}_{split}.json')
+        file_path = os.path.join(self.data_dir(), f'{name}_easy_{split}.json')
 
         with open(file_path, 'r') as f:
             data = json.load(f)
@@ -109,6 +109,10 @@ class MatresDataset(JointERDataset):
     MATRES dataset (event detection and temporal event extraction)
     """
     name = "MATRES"
+
+    default_input_format = 'plain'
+    default_output_format = 'eere_output'
+
     natural_event_types = {
         'OCCURRENCE': 'occurrence', 
         'REPORTING': 'reporting', 
