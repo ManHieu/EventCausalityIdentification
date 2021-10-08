@@ -90,9 +90,10 @@ def objective(trial: optuna.trial):
                         adam_epsilon=training_args.adam_epsilon,
                         warmup=training_args.warmup_ratio)
 
-    dm = load_data_module(module_name = args.job,
+    dm = load_data_module(module_name = 'EERE',
                         data_args=data_args,
-                        batch_size=training_args.batch_size)
+                        batch_size=training_args.batch_size,
+                        data_name=args.job)
 
     trainer = Trainer(
         # logger=tb_logger,

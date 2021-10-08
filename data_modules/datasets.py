@@ -71,7 +71,7 @@ class JointERDataset(BaseDataset):
     def load_data(self, split:str, seed: int = None) -> List[InputExample]:
         examples = []
         name = self.name if self.data_name is None else self.data_name
-        file_path = os.path.join(self.data_dir(), f'{name}_easy_{split}.json')
+        file_path = os.path.join(self.data_dir(), f'{name}_{split}.json')
 
         with open(file_path, 'r') as f:
             data = json.load(f)
@@ -129,3 +129,18 @@ class MatresDataset(JointERDataset):
         3: 'vague'
         }
 
+
+@register_dataset
+class ESLDataset(JointERDataset):
+
+    name = "ESL"
+
+    default_input_format = 'plain'
+    default_output_format = 'eere_output'
+
+    natural_event_types = {
+        }
+    natural_relation_types = {
+        'FALLING_ACTION': 'falling action', 
+        'PRECONDITION': 'precondition', 
+        }

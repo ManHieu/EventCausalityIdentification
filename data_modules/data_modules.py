@@ -1,3 +1,4 @@
+from os import name
 from typing import Dict
 from transformers import T5Tokenizer
 from torch.utils.data import DataLoader 
@@ -15,27 +16,29 @@ def register_data_module(data_module_class: pl.LightningDataModule):
     return data_module_class
 
 
-def load_data_module(module_name, data_args: DataTrainingArguments, batch_size: int = 8) -> pl.LightningDataModule:
+def load_data_module(module_name, data_name, data_args: DataTrainingArguments, batch_size: int = 8) -> pl.LightningDataModule:
     """
     Load a registered data module.
     """
     return DATA_MODULES[module_name](
         data_args=data_args,
-        batch_size=batch_size
+        batch_size=batch_size,
+        data_name=data_name
     )
 
 
 @register_data_module
-class MatresDataModule(pl.LightningDataModule):
+class EEREDataModule(pl.LightningDataModule):
     """
-    Dataset processing for MATRES.
+    Dataset processing for Event Event Relation Extraction.
     """
     SPECIAL_TOKENS = []
-    name = 'MATRES'
+    name = 'EERE'
 
-    def __init__(self, data_args: DataTrainingArguments, batch_size: int=8):
+    def __init__(self, data_args: DataTrainingArguments, data_name, batch_size: int=8):
         super().__init__()
         self.save_hyperparameters()
+        self.data_name = name
         self.tokenizer = T5Tokenizer.from_pretrained(data_args.tokenizer)
         self.tokenizer.add_tokens(self.SPECIAL_TOKENS)
         self.max_input_len = data_args.max_seq_length

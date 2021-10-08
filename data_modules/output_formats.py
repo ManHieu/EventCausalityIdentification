@@ -42,3 +42,14 @@ class EEREOutputFormat(BaseOutputFormat):
         rel = example.relations[0].type.natural
 
         return f"{get_span(words, ev1_span)} {rel} {get_span(words, ev2_span)}"
+
+
+@register_output_format
+class ClassOnlyOutputFormat(BaseOutputFormat):
+    """
+    Only class in output format.
+    """
+    name = 'class_only_output'
+    
+    def format_output(self, example: InputExample) -> str:
+        return example.relations[0].type.natural
