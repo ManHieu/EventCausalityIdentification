@@ -94,7 +94,7 @@ class GenEERModel(pl.LightningModule):
 
     def configure_optimizers(self):
         "Prepare optimizer and schedule (linear warmup and decay)"
-        t_total = len(self.train_dataloader())
+        t_total = len(self.train_dataloader()) * self.hparams.training_args.num_train_epochs
         no_decay = ["bias", "LayerNorm.weight"]
         optimizer_grouped_parameters = [
             {

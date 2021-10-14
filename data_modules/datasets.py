@@ -139,6 +139,20 @@ class ESLDataset(JointERDataset):
     default_output_format = 'eere_output'
 
     natural_event_types = {
+        'action_occurrence': 'action occurrence',
+        'action_state': 'action state',
+        'action_aspectual': 'action aspectual',
+        'action_reporting': 'action reporting',
+        'action_perception': 'action perception',
+        'action_causative': 'action causative',
+        'action_generic': 'action generic',
+        'neg_action_state': 'action state',
+        'neg_action_occurrence': 'action occurrence',
+        'neg_action_aspectual': 'action aspectual',
+        'neg_action_reporting': 'action reporting',
+        'neg_action_perception': 'action perception',
+        'neg_action_causative': 'action causative',
+        'neg_action_generic': 'action generic',
         }
     natural_relation_types = {
         'FALLING_ACTION': 'falling action', 

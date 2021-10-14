@@ -1,0 +1,392 @@
+{"predicted": "bombs precondition condemnation", "gold": "'bombs precondition condemned"}
+{"predicted": "condemned falling action bombardment", "gold": "condemned falling action bombardment"}
+{"predicted": "circled precondition raids", "gold": "circled precondition launching"}
+{"predicted": "circled precondition raids", "gold": "circled precondition two bombing raids"}
+{"predicted": "raids precondition dropped", "gold": "circled precondition dropped"}
+{"predicted": "dropped precondition exploded", "gold": "dropped precondition exploded"}
+{"predicted": "dropped precondition death", "gold": "dropped precondition casualties"}
+{"predicted": "dropped precondition death", "gold": "dropped precondition killed"}
+{"predicted": "raids precondition kill", "gold": "two bombing raids precondition casualties"}
+{"predicted": "circled precondition casualties", "gold": "two bombing raids precondition killed"}
+{"predicted": "rounding precondition casualties", "gold": "two bombing raids precondition death toll"}
+{"predicted": "raids precondition casualties", "gold": "two bombing raids precondition rise"}
+{"predicted": "dropped precondition killed", "gold": "exploded precondition casualties"}
+{"predicted": "dropped precondition deaths", "gold": "exploded precondition killed"}
+{"predicted": "shot precondition killed", "gold": "shot precondition killed"}
+{"predicted": "Shoots falling action shot", "gold": "Shoots precondition killed"}
+{"predicted": "crash precondition grabbing", "gold": "crash precondition grabbing"}
+{"predicted": "crash precondition grabbing", "gold": "nab falling action crash"}
+{"predicted": "smashing precondition making off", "gold": "rammed precondition smashing"}
+{"predicted": "smashing precondition smashing", "gold": "smashing precondition making off"}
+{"predicted": "drove precondition grabbed", "gold": "drove precondition grabbed"}
+{"predicted": "problem precondition downtime", "gold": "downtime falling action problem"}
+{"predicted": "undersea cable precondition downtime", "gold": "data link precondition downtime"}
+{"predicted": "Outage precondition downtime", "gold": "Outage precondition problem"}
+{"predicted": "scrambling precondition keep their customers connected", "gold": "contingency plans precondition connected\""}
+{"predicted": "caching precondition serve", "gold": "caching solution precondition serve"}
+{"predicted": "caching precondition help", "gold": "caching solution precondition accessing"}
+{"predicted": "Overcome falling action Outage", "gold": "P2P Control precondition Outage"}
+{"predicted": "undersea cable precondition downtime", "gold": "downtime precondition scrambling"}
+{"predicted": "Shooting precondition Islam", "gold": "Accused falling action Shooting"}
+{"predicted": "charged falling action shooting", "gold": "charged falling action shooting"}
+{"predicted": "charged falling action shooting", "gold": "arrested falling action charged"}
+{"predicted": "killed precondition shot", "gold": "kills falling action shot"}
+{"predicted": "shot precondition killed", "gold": "wounds falling action shot"}
+{"predicted": "fired precondition chase", "gold": "shot precondition killed"}
+{"predicted": "fired precondition killed", "gold": "shot precondition wounded"}
+{"predicted": "fired precondition died", "gold": "shot precondition chase"}
+{"predicted": "fired precondition killed", "gold": "shot precondition killed"}
+{"predicted": "terminated falling action loaned", "gold": "terminated falling action loaned"}
+{"predicted": "terminated falling action loaned", "gold": "terminated falling action disclosure"}
+{"predicted": "sued falling action motions", "gold": "sued falling action terminated"}
+{"predicted": "sued falling action terminated", "gold": "terminated precondition filed"}
+{"predicted": "sued precondition motions", "gold": "filed precondition judgment"}
+{"predicted": "motions falling action dispute", "gold": "denied falling action dispute"}
+{"predicted": "motions falling action dispute", "gold": "dispute falling action breach"}
+{"predicted": "checked in precondition arrest", "gold": "order precondition enter"}
+{"predicted": "Checks Into falling action enter", "gold": "Checks Into falling action order"}
+{"predicted": "checked into precondition stay", "gold": "checked into falling action order"}
+{"predicted": "checked into precondition stay", "gold": "checked into precondition stay"}
+{"predicted": "Checks Into falling action stay", "gold": "Checks Into precondition stay"}
+{"predicted": "interested falling action going back", "gold": "going back falling action knows"}
+{"predicted": "checked - in precondition arrested", "gold": "check - in falling action order"}
+{"predicted": "check - in falling action enter", "gold": "arrested falling action flout"}
+{"predicted": "killed precondition killed", "gold": "shooting precondition killed"}
+{"predicted": "protest falling action hit", "gold": "killed precondition anger"}
+{"predicted": "shooting falling action thrashing", "gold": "shooting precondition anger"}
+{"predicted": "thrashing precondition protest", "gold": "marred falling action thrashing"}
+{"predicted": "thrashing precondition thrown", "gold": "arrests falling action conduct"}
+{"predicted": "protest falling action hit", "gold": "anger precondition protest"}
+{"predicted": "protest falling action thrashing", "gold": "anger precondition marred"}
+{"predicted": "anger falling action protest", "gold": "anger precondition thrashing"}
+{"predicted": "thrashing precondition protests", "gold": "anger precondition another"}
+{"predicted": "shot precondition pointed", "gold": "shot falling action brandished"}
+{"predicted": "shot falling action pointed", "gold": "shot falling action pointed"}
+{"predicted": "Anger falling action Killing", "gold": "Anger falling action Killing"}
+{"predicted": "thrashing precondition protest", "gold": "anger precondition hit"}
+{"predicted": "protest falling action thrown", "gold": "anger precondition thrown"}
+{"predicted": "thrashing precondition thrown", "gold": "anger precondition conduct"}
+{"predicted": "thrashing precondition thrown", "gold": "shooting precondition vigil"}
+{"predicted": "protest falling action arrested", "gold": "killed precondition vigil"}
+{"predicted": "thrashing precondition arrested", "gold": "another precondition hit"}
+{"predicted": "protest falling action thrashing", "gold": "another precondition conduct"}
+{"predicted": "thrashing precondition arrested", "gold": "another precondition thrown"}
+{"predicted": "earthquake precondition missing", "gold": "earthquake precondition killing"}
+{"predicted": "tsunami precondition killed", "gold": "tsunami precondition killed"}
+{"predicted": "earthquake precondition killing", "gold": "earthquake precondition missing"}
+{"predicted": "earthquake precondition damaged", "gold": "earthquake precondition damaged"}
+{"predicted": "earthquake precondition injured", "gold": "earthquake precondition injured"}
+{"predicted": "difficult falling action traffic jams", "gold": "difficult falling action traffic jams"}
+{"predicted": "tsunami precondition killed", "gold": "earthquake precondition tsunami"}
+{"predicted": "dies falling action fallen", "gold": "dies falling action fallen"}
+{"predicted": "fallen precondition death", "gold": "fallen precondition death"}
+{"predicted": "fell falling action climbing", "gold": "fell falling action climbing"}
+{"predicted": "died falling action slipped", "gold": "died falling action fell"}
+{"predicted": "died falling action fell", "gold": "slipped precondition fell"}
+{"predicted": "hopped on precondition headed", "gold": "hopped precondition headed"}
+{"predicted": "arrangements falling action check into", "gold": "arrangements precondition check into"}
+{"predicted": "checks into precondition signed off", "gold": "unapproved falling action signed off"}
+{"predicted": "checked into precondition approved", "gold": "signed off precondition approved"}
+{"predicted": "turned precondition starred", "gold": "turned falling action starred"}
+{"predicted": "became precondition popularity", "gold": "became precondition popularity"}
+{"predicted": "Shooting precondition Hurt", "gold": "Shooting precondition Dead"}
+{"predicted": "Shooting precondition Hurt", "gold": "Shooting precondition Hurt"}
+{"predicted": "walked falling action shot", "gold": "shot precondition killing"}
+{"predicted": "walked precondition killed", "gold": "fleeing precondition chase"}
+{"predicted": "Shooting precondition opened fire", "gold": "Dead falling action opened fire"}
+{"predicted": "Dead falling action shot", "gold": "Dead falling action shot"}
+{"predicted": "Shooting precondition died", "gold": "Hurt falling action opened fire"}
+{"predicted": "Dead falling action shot", "gold": "Hurt falling action shot"}
+{"predicted": "accuses falling action air strike", "gold": "accuses falling action air strike"}
+{"predicted": "bombed precondition tensions", "gold": "bombed precondition tensions"}
+{"predicted": "air strike precondition tensions", "gold": "air strike precondition tensions"}
+{"predicted": "bombed precondition tensions", "gold": "bombed precondition threatening"}
+{"predicted": "air strike precondition tensions", "gold": "air strike precondition threatening"}
+{"predicted": "strike precondition explosion", "gold": "strike precondition explosion"}
+{"predicted": "strike precondition three further explosions", "gold": "strike precondition three further explosions"}
+{"predicted": "bombed precondition explosion", "gold": "bombed precondition wedged"}
+{"predicted": "bombed precondition explosion", "gold": "bombed precondition explosion"}
+{"predicted": "bombed precondition three further explosions", "gold": "bombed precondition three further explosions"}
+{"predicted": "bombed precondition casualties", "gold": "bombed precondition casualties"}
+{"predicted": "EARTHQUAKE precondition killed", "gold": "EARTHQUAKE precondition killed"}
+{"predicted": "EARTHQUAKE precondition collapsed", "gold": "trapped falling action collapsed"}
+{"predicted": "collapsed precondition death", "gold": "death toll falling action disaster"}
+{"predicted": "quake precondition devastated", "gold": "6. 1 - magnitude quake precondition injured"}
+{"predicted": "quake precondition tsunami", "gold": "devastated falling action tsunami"}
+{"predicted": "6. 1 - magnitude tsunami precondition devastated", "gold": "quake precondition tsunami"}
+{"predicted": "earthquake precondition damaged", "gold": "earthquake precondition landslides"}
+{"predicted": "earthquake precondition damaged", "gold": "earthquake precondition damaged"}
+{"predicted": "earthquake precondition damaged", "gold": "earthquake precondition reduced"}
+{"predicted": "rescuers falling action collapse", "gold": "trapped falling action collapse"}
+{"predicted": "tsunami precondition killed", "gold": "tremor precondition tsunami"}
+{"predicted": "tsunami precondition killed", "gold": "tsunami precondition killed"}
+{"predicted": "8. 6 - magnitude quake precondition tsunami alert", "gold": "8. 6 - magnitude quake precondition tsunami alert"}
+{"predicted": "tsunami precondition killed", "gold": "tremor precondition killed"}
+{"predicted": "rescue operation falling action earthquake", "gold": "rescue operation falling action earthquake"}
+{"predicted": "6. 1 magnitude earthquake precondition flattening", "gold": "Rescue operations falling action 6. 1 magnitude earthquake"}
+{"predicted": "6. 1 magnitude earthquake precondition flattening", "gold": "6. 1 magnitude earthquake precondition flattening"}
+{"predicted": "6. 1 magnitude earthquake precondition flattening", "gold": "6. 1 magnitude earthquake precondition landslides"}
+{"predicted": "injured falling action quake", "gold": "killed falling action quake"}
+{"predicted": "injured falling action quake", "gold": "injured falling action quake"}
+{"predicted": "dead falling action collapsed", "gold": "killed falling action collapsed"}
+{"predicted": "killed falling action collapsed", "gold": "trapped falling action collapsed"}
+{"predicted": "quake precondition tsunami", "gold": "magnitude 9. 1 quake precondition tsunami"}
+{"predicted": "quake precondition tsunami", "gold": "tsunami precondition killed"}
+{"predicted": "Bombs falling action crossed", "gold": "Bombs falling action crossed"}
+{"predicted": "Bombs precondition crossed", "gold": "Bombs falling action dropped"}
+{"predicted": "Bombs precondition casualties", "gold": "Bombs precondition deaths"}
+{"predicted": "dropped precondition casualties", "gold": "dropped precondition deaths"}
+{"predicted": "dropped precondition casualties", "gold": "dropped precondition casualties"}
+{"predicted": "Bombs falling action casualties", "gold": "Bombs precondition casualties"}
+{"predicted": "crossed precondition dropped", "gold": "crossed precondition dropped"}
+{"predicted": "dropped precondition casualties", "gold": "dropped precondition casualties"}
+{"predicted": "dropped precondition casualties", "gold": "dropped precondition landed"}
+{"predicted": "dropped precondition casualties", "gold": "dropped precondition hit"}
+{"predicted": "dropped precondition explode", "gold": "dropped precondition landed"}
+{"predicted": "dropped precondition landed", "gold": "dropped precondition explode"}
+{"predicted": "fled precondition living", "gold": "fled falling action violence"}
+{"predicted": "fled precondition living", "gold": "fled precondition living"}
+{"predicted": "TRIAL falling action DOUBLE MURDER", "gold": "TRIAL falling action ACCUSED"}
+{"predicted": "TRIAL falling action DOUBLE MURDER", "gold": "ACCUSED falling action DOUBLE MURDER"}
+{"predicted": "accused falling action murdering", "gold": "trial falling action accused"}
+{"predicted": "accused falling action murdering", "gold": "accused falling action murdering"}
+{"predicted": "appear falling action danger", "gold": "appear falling action danger"}
+{"predicted": "danger precondition trial", "gold": "danger precondition absence"}
+{"predicted": "accused precondition appear", "gold": "accused precondition appear"}
+{"predicted": "trial falling action accused", "gold": "accused precondition hearing"}
+{"predicted": "accused falling action murdering", "gold": "accused precondition plea"}
+{"predicted": "charge falling action death", "gold": "animal cruelty falling action death"}
+{"predicted": "arson falling action fire", "gold": "arson falling action fire"}
+{"predicted": "arson falling action fire", "gold": "arson falling action fire"}
+{"predicted": "shoots precondition arrested", "gold": "shoots precondition killing"}
+{"predicted": "shooting precondition shot", "gold": "shooting precondition killing"}
+{"predicted": "shot precondition chase", "gold": "killing precondition arrested"}
+{"predicted": "shooting precondition killing", "gold": "suspected precondition arrested"}
+{"predicted": "shooting falling action chase", "gold": "arrested falling action chase"}
+{"predicted": "killed falling action falls", "gold": "killed falling action falls"}
+{"predicted": "recovered falling action fall", "gold": "recovered falling action death"}
+{"predicted": "recovered falling action fall", "gold": "fall precondition death"}
+{"predicted": "fall precondition fell", "gold": "death falling action fell"}
+{"predicted": "died falling action falling", "gold": "died falling action falling"}
+{"predicted": "fell precondition falling", "gold": "died falling action fell"}
+{"predicted": "fallen precondition falling", "gold": "died falling action fallen"}
+{"predicted": "burned precondition arson", "gold": "chance precondition burned"}
+{"predicted": "burned precondition arson", "gold": "burned falling action arson"}
+{"predicted": "arrests falling action fire", "gold": "arrests falling action fire"}
+{"predicted": "dissolution precondition fire", "gold": "fire precondition burned"}
+{"predicted": "dissolution falling action burned", "gold": "fire falling action dissolution"}
+{"predicted": "dissolution precondition burned", "gold": "dissolution precondition burned"}
+{"predicted": "fire precondition fire", "gold": "Arson precondition fire"}
+{"predicted": "fire precondition foul play", "gold": "fire falling action destroyed"}
+{"predicted": "fire precondition burned", "gold": "fire precondition burned"}
+{"predicted": "fire precondition burning", "gold": "fire falling action foul play"}
+{"predicted": "fire precondition burn", "gold": "foul play precondition pattern"}
+{"predicted": "burned precondition pattern", "gold": "foul play precondition pattern"}
+{"predicted": "heist falling action make off", "gold": "heist falling action smash"}
+{"predicted": "heist falling action smash", "gold": "heist falling action grab"}
+{"predicted": "heist falling action make off", "gold": "heist falling action make off"}
+{"predicted": "smash precondition make off", "gold": "smash precondition grab"}
+{"predicted": "smash precondition grab", "gold": "grab precondition make off"}
+{"predicted": "rammed precondition rammed", "gold": "rammed precondition scooping up"}
+{"predicted": "reversed precondition making off", "gold": "set fire precondition making off"}
+{"predicted": "Fire precondition destroys", "gold": "Fire precondition destroys"}
+{"predicted": "fire precondition burn", "gold": "burned falling action fire"}
+{"predicted": "caller falling action fire", "gold": "reported falling action fire"}
+{"predicted": "fire precondition spreading", "gold": "concern falling action spreading"}
+{"predicted": "fire precondition protecting", "gold": "concern falling action fire"}
+{"predicted": "dead falling action fall", "gold": "dead falling action fall"}
+{"predicted": "dead falling action falling", "gold": "dead falling action falling"}
+{"predicted": "dead falling action fell", "gold": "dead falling action fell"}
+{"predicted": "dead falling action fallen", "gold": "dead falling action fallen"}
+{"predicted": "severed precondition blocking", "gold": "severed precondition blocking"}
+{"predicted": "cut falling action service", "gold": "cut precondition affecting"}
+{"predicted": "cut falling action service", "gold": "cut precondition affecting"}
+{"predicted": "Shot precondition Killed", "gold": "Shot precondition Killed"}
+{"predicted": "killed falling action shot", "gold": "working precondition killed"}
+{"predicted": "killed falling action knocked", "gold": "killed falling action knocked"}
+{"predicted": "knocked precondition shot", "gold": "killed falling action shot"}
+{"predicted": "knocked precondition died", "gold": "shot precondition died"}
+{"predicted": "killed falling action shot", "gold": "shot falling action came out"}
+{"predicted": "trial falling action accused", "gold": "trial falling action accused"}
+{"predicted": "accused falling action killing", "gold": "accused falling action killing"}
+{"predicted": "falling action gunfire", "gold": "falling falling action gunfire"}
+{"predicted": "died falling action shield", "gold": "died falling action shield"}
+{"predicted": "shield falling action shield", "gold": "gunfire precondition shield"}
+{"predicted": "charged falling action murder", "gold": "charged falling action murder"}
+{"predicted": "jolt precondition death", "gold": "Aftershocks precondition death"}
+{"predicted": "jolt precondition death", "gold": "Aftershocks precondition rises"}
+{"predicted": "earthquake precondition rose", "gold": "aftershock precondition death"}
+{"predicted": "aftershock precondition death", "gold": "death falling action earthquake"}
+{"predicted": "aftershock precondition death", "gold": "aftershock precondition rose"}
+{"predicted": "dead falling action found", "gold": "death falling action quake"}
+{"predicted": "death falling action dead", "gold": "quake precondition wounded"}
+{"predicted": "aftershocks falling action rocked", "gold": "rocked falling action earthquake"}
+{"predicted": "quake precondition quake", "gold": "registered falling action quake"}
+{"predicted": "earthquake precondition knocked", "gold": "earthquake precondition knocked down"}
+{"predicted": "earthquake precondition sinking", "gold": "earthquake precondition sinking"}
+{"predicted": "tremor precondition damaged", "gold": "tremor precondition damaged"}
+{"predicted": "tremor precondition damaged", "gold": "tremor precondition providing"}
+{"predicted": "tremor precondition damaged", "gold": "tremor precondition service"}
+{"predicted": "strike precondition battle", "gold": "dead falling action burning"}
+{"predicted": "war precondition burning", "gold": "burning falling action battle"}
+{"predicted": "fire precondition suffocated", "gold": "battles falling action march"}
+{"predicted": "strike precondition attended", "gold": "march falling action strike"}
+{"predicted": "march precondition attended", "gold": "march falling action strike"}
+{"predicted": "fire precondition death", "gold": "under pressure precondition break"}
+{"predicted": "fire precondition death", "gold": "under pressure falling action events"}
+{"predicted": "fire precondition killing", "gold": "fire precondition death"}
+{"predicted": "fire precondition death", "gold": "fire precondition death"}
+{"predicted": "gathered precondition visit", "gold": "death precondition clashes"}
+{"predicted": "gathered precondition visit", "gold": "clashes falling action gathered"}
+{"predicted": "strike precondition rage", "gold": "march precondition battles"}
+{"predicted": "checked into falling action rehab", "gold": "hiring precondition help"}
+{"predicted": "rehab precondition arrest", "gold": "rehab precondition arrest"}
+{"predicted": "checks into precondition arrest", "gold": "rehab precondition arrest"}
+{"predicted": "arrested falling action confusion", "gold": "arrest falling action confusion"}
+{"predicted": "checked into precondition arrest", "gold": "confusion falling action whereabouts"}
+{"predicted": "troubled precondition sought help", "gold": "help falling action altercation"}
+{"predicted": "5. 9 magnitude earthquake precondition killing", "gold": "earthquake precondition leveled"}
+{"predicted": "5. 9 magnitude earthquake precondition wounding", "gold": "earthquake precondition killing"}
+{"predicted": "earthquake precondition wounding", "gold": "earthquake precondition wounding"}
+{"predicted": "temblor precondition destroyed", "gold": "destruction falling action temblor"}
+{"predicted": "temblor precondition destruction", "gold": "destroyed falling action temblor"}
+{"predicted": "temblor precondition aftershocks", "gold": "temblor precondition aftershocks"}
+{"predicted": "temblor precondition aftershocks", "gold": "destruction falling action aftershocks"}
+{"predicted": "panic falling action aftershocks", "gold": "destroyed falling action aftershocks"}
+{"predicted": "temblor precondition aftershocks", "gold": "aftershocks precondition panic"}
+{"predicted": "Shooting precondition Dead", "gold": "Shooting precondition Dead"}
+{"predicted": "Shooting precondition Dead", "gold": "Shooting precondition Injured"}
+{"predicted": "shooting precondition killed", "gold": "suspected precondition arrested"}
+{"predicted": "shooting precondition dead", "gold": "killing precondition arrested"}
+{"predicted": "shooting precondition killing", "gold": "arrested falling action chase"}
+{"predicted": "Shooting precondition arrested", "gold": "Shooting precondition killing"}
+{"predicted": "shooting precondition caught", "gold": "Shooting precondition arrested"}
+{"predicted": "captures falling action foiled", "gold": "captures falling action foiled"}
+{"predicted": "foiled precondition capturing", "gold": "foiled precondition capturing"}
+{"predicted": "foiled falling action attack", "gold": "foiled precondition confiscating"}
+{"predicted": "action falling action operation", "gold": "action falling action mission"}
+{"predicted": "operation falling action mission", "gold": "operation falling action mission"}
+{"predicted": "problems precondition repair", "gold": "problems precondition repair time"}
+{"predicted": "problems precondition repair", "gold": "problems precondition repair"}
+{"predicted": "repair time falling action problems", "gold": "repair falling action problems"}
+{"predicted": "problems falling action problem", "gold": "problems precondition problem"}
+{"predicted": "call - out precondition mobilization", "gold": "call - out falling action permits"}
+{"predicted": "call - out precondition mobilization", "gold": "mobilization falling action permits"}
+{"predicted": "outage falling action restore", "gold": "outage precondition restore"}
+{"predicted": "outage precondition affected", "gold": "problem precondition outage"}
+{"predicted": "outage precondition affected", "gold": "outage precondition restoration"}
+{"predicted": "restoration falling action securing", "gold": "capacity precondition services"}
+{"predicted": "killed falling action snowballs", "gold": "vigil falling action slain"}
+{"predicted": "killed falling action snowballs", "gold": "vigil falling action killed"}
+{"predicted": "killed falling action snowballs", "gold": "killed falling action riot"}
+{"predicted": "gathered falling action remember", "gold": "gathered falling action remember"}
+{"predicted": "shot precondition killed", "gold": "shot precondition killed"}
+{"predicted": "killed precondition riot", "gold": "killed precondition march"}
+{"predicted": "shot precondition riot", "gold": "shot precondition march"}
+{"predicted": "shot precondition riot", "gold": "shot precondition riot"}
+{"predicted": "shot precondition turned", "gold": "killed precondition riot"}
+{"predicted": "killed falling action snowballs", "gold": "slain precondition vigil"}
+{"predicted": "killed precondition violent", "gold": "killed precondition vigil"}
+{"predicted": "killed falling action snowballs", "gold": "slain precondition gathered"}
+{"predicted": "vigil falling action killed", "gold": "killed precondition gathered"}
+{"predicted": "vigil falling action snowballs", "gold": "slain precondition remember"}
+{"predicted": "killed falling action snowballs", "gold": "killed precondition remember"}
+{"predicted": "killed falling action snowballs", "gold": "slain precondition violent"}
+{"predicted": "killed falling action snowballs", "gold": "killed precondition violent"}
+{"predicted": "killed falling action crossfire", "gold": "killed falling action crossfire"}
+{"predicted": "killed falling action walking", "gold": "killed falling action walking"}
+{"predicted": "accused falling action gunfire", "gold": "accused falling action sprayed"}
+{"predicted": "killed falling action sprayed", "gold": "killed falling action sprayed"}
+{"predicted": "killed falling action shootout", "gold": "killed falling action shootout"}
+{"predicted": "killed falling action shootout", "gold": "killed falling action picked her daughter up"}
+{"predicted": "charged precondition trial", "gold": "charged falling action killing"}
+{"predicted": "trial falling action charged", "gold": "trial falling action charged"}
+{"predicted": "pushing precondition collapses", "gold": "grips falling action firing"}
+{"predicted": "pushes precondition collapses", "gold": "out of the way falling action firing"}
+{"predicted": "pushes precondition collapses", "gold": "collapses falling action firing"}
+{"predicted": "taken care falling action murder", "gold": "on trial falling action murder"}
+{"predicted": "trial falling action threatened", "gold": "testimony precondition death"}
+{"predicted": "trial falling action threatened", "gold": "death precondition petrified"}
+{"predicted": "test falling action threatened", "gold": "death precondition emotional"}
+{"predicted": "murder falling action threatened", "gold": "death precondition reluctant"}
+{"predicted": "fire precondition tackled", "gold": "fire precondition tackled"}
+{"predicted": "tackled precondition blaze", "gold": "tackled falling action blaze"}
+{"predicted": "blaze precondition called", "gold": "blaze falling action called"}
+{"predicted": "Shot falling action Shooting", "gold": "Shot falling action Shooting"}
+{"predicted": "restored falling action outage", "gold": "restored falling action outage"}
+{"predicted": "restored falling action outage", "gold": "restored falling action outage"}
+{"predicted": "restored falling action outage", "gold": "restored falling action outage"}
+{"predicted": "outage precondition affected", "gold": "affected falling action outage"}
+{"predicted": "problems falling action problem", "gold": "problems precondition problem"}
+{"predicted": "outage precondition problems", "gold": "outage falling action problem"}
+{"predicted": "outage precondition repair", "gold": "outage precondition repair"}
+{"predicted": "running at full capacity precondition repair", "gold": "repair precondition running"}
+{"predicted": "restored falling action repairs", "gold": "repair precondition restored"}
+{"predicted": "Checks Out falling action Checks Out", "gold": "Checks Into precondition Checks Out"}
+{"predicted": "trust falling action lie", "gold": "trust falling action shifty"}
+{"predicted": "trust falling action lie", "gold": "trust falling action lie"}
+{"predicted": "spent precondition jumped", "gold": "spooked precondition jumped"}
+{"predicted": "walked precondition left", "gold": "walked falling action spooked"}
+{"predicted": "walked precondition left", "gold": "left falling action spooked"}
+{"predicted": "6. 1 - magnitude earthquake precondition running", "gold": "6. 1 - magnitude earthquake precondition running"}
+{"predicted": "ran falling action quake", "gold": "ran falling action quake"}
+{"predicted": "panic falling action quake", "gold": "in panic falling action quake"}
+{"predicted": "tsunami precondition killed", "gold": "quake precondition tsunami"}
+{"predicted": "tsunami precondition killed", "gold": "tsunami precondition killed"}
+{"predicted": "Checks Out falling action treatment", "gold": "Checks Out precondition Into"}
+{"predicted": "checked - in precondition treatment", "gold": "checked - in precondition treatment"}
+{"predicted": "checked out precondition in the clear", "gold": "checked out falling action program"}
+{"predicted": "injured falling action 6. 1 - magnitude quake", "gold": "injured falling action 6. 1 - magnitude quake"}
+{"predicted": "6. 1 - magnitude earthquake precondition injured", "gold": "6. 1 - magnitude earthquake precondition killed"}
+{"predicted": "6. 1 - magnitude earthquake precondition destroyed", "gold": "6. 1 - magnitude earthquake precondition injured"}
+{"predicted": "6. 1 - magnitude earthquake precondition injured", "gold": "6. 1 - magnitude earthquake precondition destroyed"}
+{"predicted": "6. 1 - magnitude earthquake precondition injured", "gold": "6. 1 - magnitude earthquake precondition panic"}
+{"predicted": "6. 1 - magnitude earthquake precondition injured", "gold": "devastated falling action tsunami"}
+{"predicted": "6. 1 - magnitude earthquake precondition killed", "gold": "quake precondition tsunami"}
+{"predicted": "quake precondition collapsed", "gold": "quake precondition collapsed"}
+{"predicted": "arrested falling action DUI", "gold": "arrested falling action DUI"}
+{"predicted": "arrested falling action drunken driving", "gold": "arrested falling action drunken driving"}
+{"predicted": "speeding precondition pulled over", "gold": "pulled over falling action speeding"}
+{"predicted": "booked into precondition released", "gold": "booked into precondition released"}
+{"predicted": "arrested precondition booked into", "gold": "arrested precondition booked into"}
+{"predicted": "released falling action on bail", "gold": "released falling action bail"}
+{"predicted": "arrested falling action DUI", "gold": "arrested falling action DUI"}
+{"predicted": "on probation falling action previous DUI arrest", "gold": "on probation falling action DUI arrest"}
+{"predicted": "foils falling action attempt", "gold": "foils falling action bid"}
+{"predicted": "foiled falling action bid", "gold": "foiled falling action bid"}
+{"predicted": "foiled falling action attempt", "gold": "foiled falling action attempt"}
+{"predicted": "foils falling action attempt", "gold": "foils falling action attempt"}
+{"predicted": "foiled precondition bid", "gold": "foiled falling action escorting"}
+{"predicted": "foils falling action escorting", "gold": "foils falling action escorting"}
+{"predicted": "foiled falling action intercepted", "gold": "foiled falling action intercepted"}
+{"predicted": "intercepted precondition foiled", "gold": "intercepted falling action foiled"}
+{"predicted": "intercepted precondition escorting", "gold": "foiled falling action detected"}
+{"predicted": "intercepted precondition escorting", "gold": "foiled falling action approaching"}
+{"predicted": "intercepted precondition foiled", "gold": "foiled falling action escorting"}
+{"predicted": "escorting precondition transit", "gold": "detected falling action escorting"}
+{"predicted": "foiled precondition escorting", "gold": "attack falling action approaching"}
+{"predicted": "murder falling action accused", "gold": "murder precondition filed"}
+{"predicted": "Murdering falling action gunning down", "gold": "Murdering falling action gunning down"}
+{"predicted": "charged falling action gunning down", "gold": "accused falling action gunning down"}
+{"predicted": "charged falling action murdering", "gold": "gunning down precondition murdering"}
+{"predicted": "investigating falling action shooting", "gold": "killed falling action investigating"}
+{"predicted": "investigated falling action shooting", "gold": "investigating falling action shooting"}
+{"predicted": "shot falling action hide", "gold": "shot precondition dying"}
+{"predicted": "shot precondition running", "gold": "shot precondition ran"}
+{"predicted": "shot precondition dying", "gold": "shot precondition hide"}
+{"predicted": "investigation falling action murder", "gold": "investigate falling action murder"}
+{"predicted": "crime falling action working", "gold": "case precondition working"}
+{"predicted": "investigation falling action murder", "gold": "working precondition killed"}
+{"predicted": "shot precondition death", "gold": "shot precondition death"}
+{"predicted": "problem precondition disrupts", "gold": "problem precondition disrupts"}
+{"predicted": "problem precondition disrupted", "gold": "problem precondition disrupted"}
+{"predicted": "disruptioned precondition \"downtime\"", "gold": "disrupted precondition connections"}
+{"predicted": "disrupted precondition slower internet connections", "gold": "connections falling action \"downtime\""}
+{"predicted": "problem precondition disrupted", "gold": "problem precondition \"downtime\""}
+{"predicted": "problems falling action damage", "gold": "problems falling action damage"}
+{"predicted": "damaged falling action damage", "gold": "affected falling action damage"}
+{"predicted": "damage falling action wire going", "gold": "damage precondition affected"}
+{"predicted": "affected falling action damage", "gold": "damage precondition affect"}
+{"predicted": "damaged falling action damage", "gold": "damage precondition fixed"}
+{"predicted": "problem falling action downtime", "gold": "problem falling action downtime"}
+{"predicted": "problem precondition downtime", "gold": "problem precondition affected"}

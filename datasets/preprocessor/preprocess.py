@@ -219,8 +219,14 @@ def loader(dataset):
         dir_name = './datasets/ESL/annotated_data/v0.9/'
         corpus = load_dataset(dir_name, 'cat_xml')
 
-        train, test = train_test_split(corpus, train_size=0.8, test_size=0.2)
-        train, validate = train_test_split(train, train_size=0.9, test_size=0.1)
+        train, test, validate = [], [], []
+        for my_dict in corpus:
+            if '37/' in my_dict['doc_id'] or '41/' in my_dict['doc_id']:
+                print(my_dict['doc_id'])
+                test.append(my_dict)
+            else:
+                train.append(my_dict)
+        train, validate = train_test_split(train, test_size=0.1, train_size=0.9)
 
         processed_train = []
         for my_dict in train:

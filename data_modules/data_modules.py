@@ -38,7 +38,7 @@ class EEREDataModule(pl.LightningDataModule):
     def __init__(self, data_args: DataTrainingArguments, data_name, batch_size: int=8):
         super().__init__()
         self.save_hyperparameters()
-        self.data_name = name
+        self.data_name = data_name
         self.tokenizer = T5Tokenizer.from_pretrained(data_args.tokenizer)
         self.tokenizer.add_tokens(self.SPECIAL_TOKENS)
         self.max_input_len = data_args.max_seq_length
@@ -46,7 +46,7 @@ class EEREDataModule(pl.LightningDataModule):
     
     def train_dataloader(self):
         dataset = load_dataset(
-            dataset_name=self.name,
+            dataset_name=self.data_name,
             data_args=self.hparams.data_args,
             tokenizer=self.tokenizer,
             max_input_length=self.max_input_len,
@@ -63,7 +63,7 @@ class EEREDataModule(pl.LightningDataModule):
     
     def val_dataloader(self):
         dataset = load_dataset(
-            dataset_name=self.name,
+            dataset_name=self.data_name,
             data_args=self.hparams.data_args,
             tokenizer=self.tokenizer,
             max_input_length=self.max_input_len,
@@ -80,7 +80,7 @@ class EEREDataModule(pl.LightningDataModule):
     
     def test_dataloader(self):
         dataset = load_dataset(
-            dataset_name=self.name,
+            dataset_name=self.data_name,
             data_args=self.hparams.data_args,
             tokenizer=self.tokenizer,
             max_input_length=self.max_input_len,
