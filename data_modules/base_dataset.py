@@ -130,7 +130,9 @@ class BaseDataset(Dataset, ABC):
 
         for example in self.examples:
             input_sentence  = self.input_format.format_input(example, multitask=multitask)
+            # print(input_sentence)
             output_sentence = self.output_format.format_output(example)
+            # print(output_sentence)
 
             input_tokens = self.tokenizer.encode_plus(input_sentence, 
                                 add_special_tokens=True,

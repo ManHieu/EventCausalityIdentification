@@ -53,3 +53,38 @@ class ClassOnlyOutputFormat(BaseOutputFormat):
     
     def format_output(self, example: InputExample) -> str:
         return example.relations[0].type.natural
+
+
+@register_output_format
+class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
+    """
+    Output format uses in ECI task
+    """
+    name = 'ECI_ouput'
+
+    def format_output(self, example: InputExample) -> str:
+        rels = defaultdict(list)
+        for relation in example.relations:
+            if relation.type.natural == 'falling action':
+                # ev A falling action ev B = ev B causes ev A
+                rels[relation.tail].append(relation.head)
+            else:
+                rels[relation.head].append(relation.tail)
+
+        words = example.tokens
+
+        sents = []
+        for head, tails in rels.items():
+            head_mention = f"'{get_span(words, [head.start, head.end])}'"
+            tail_mentions = [f"'{get_span(words, (tail.start, tail.end))}'" for tail in tails]
+
+            sent = f"{head_mention} causes {' and '.join(tail_mentions)}"
+            sents.append(sent)
+        
+        if len(sents) == 0:
+            sent_out = "none relation"
+        else:
+            sent_out = ' '.join(sents)
+        
+        # print("Output: {}".format(sent_out))
+        return sent_out

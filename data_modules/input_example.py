@@ -62,8 +62,8 @@ class InputExample:
     """
     A single training/ testing example
     """
-    id: str                     # unique id in the dataset
-    tokens: List[str]           # list of tokens (words)
+    id: Optional[str] = None                  # unique id in the dataset
+    tokens: Optional[Union[List[str],str]] = None   # list of tokens (words)
     dataset: Optional[Dataset] = None   # dataset this example belongs to
 
     # Event extraction (Event detection, Event-Event relation, Event arguments extraction)
@@ -82,3 +82,4 @@ class InputFeatures:
     input_attention_mask: List[int]
     label_ids: Optional[List[int]] = None
     tgt_attention_mask: Optional[List[int]] = None
+

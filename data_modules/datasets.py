@@ -135,8 +135,8 @@ class ESLDataset(JointERDataset):
 
     name = "ESL"
 
-    default_input_format = 'plain'
-    default_output_format = 'eere_output'
+    default_input_format = 'ECI_input'
+    default_output_format = 'ECI_ouput'
 
     natural_event_types = {
         'action_occurrence': 'action occurrence',

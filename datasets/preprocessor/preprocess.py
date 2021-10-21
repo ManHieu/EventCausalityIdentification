@@ -1,4 +1,7 @@
 import json
+from scipy.sparse import data
+import random
+random.seed(1741)
 import tqdm
 import os
 from itertools import combinations
@@ -63,7 +66,7 @@ def load_dataset(dir_name, type):
                 
     return corpus
 
-def get_joint_data_point(my_dict):
+def get_joint_datapoint(my_dict):
     pair_sents = set(combinations(range(len(my_dict['sentences'])), 2))
     data_points = []
     for pair in pair_sents:
@@ -127,7 +130,7 @@ def get_joint_data_point(my_dict):
     return data_points
 
 
-def get_data_point(my_dict):
+def get_cr_datapoint(my_dict):
     data_points = []
     for pair, r_type in my_dict['relation_dict'].items():
         eid1, eid2 = pair
@@ -184,6 +187,66 @@ def get_data_point(my_dict):
     return data_points
 
 
+def get_ir_datapoint(my_dict):
+    data_points = []
+    for sid, sentence in enumerate(my_dict['sentences']):
+        _data_points = []
+
+        triggers = []
+        for eid, event in my_dict['event_dict'].items():
+            if event['sent_id'] == sid:
+                trigger = {
+                        'eid': eid,
+                        'type': event['class'],
+                        'start': event['token_id_list'][0],
+                        'end': event['token_id_list'][-1] + 1,
+                        'mention': " ".join(sentence['tokens'][event['token_id_list'][0]: event['token_id_list'][-1] + 1]),
+                    }
+                try:
+                    assert event['mention'] in trigger['mention'], "{} - {}".format(event['mention'], sentence['tokens'])
+                except:
+                    print("{} - {}".format(event['mention'], sentence['tokens']))
+                triggers.append(trigger)
+        
+        event_pairs = combinations(triggers, 2)
+        for ev1, ev2 in event_pairs:
+            eid1, eid2 = ev1['eid'], ev2['eid']
+            rel = my_dict['relation_dict'].get((eid1, eid2))
+            _rel = my_dict['relation_dict'].get((eid2, eid1))
+            if (eid1, eid2) in my_dict['relation_dict'].keys() or (eid2, eid1) in my_dict['relation_dict'].keys():
+                relation = {'type': rel, 'head': 0, 'tail': 1} if rel != None else {'type': _rel, 'head': 1, 'tail': 0}
+            else:
+                relation = None
+            
+            if (relation == None and random.uniform(0, 1) < 0.8) or relation != None:
+                _data_points.append({
+                    'tokens': sentence['tokens'],
+                    'triggers': [ev1, ev2],
+                    'relations': [relation] if relation != None else []
+                })
+
+        # relations = []
+        # for pair, r_type in my_dict['relation_dict'].items():
+        #     eid1, eid2 = pair
+        #     id = [None, None]
+        #     for i, trigger in enumerate(triggers):
+        #         if trigger['eid'] == eid1:
+        #             id[0] = i
+        #         if trigger['eid'] == eid2:
+        #             id[1] = i
+        #     if None not in id:
+        #         relation = {
+        #             'type': r_type,
+        #             'head': id[0],
+        #             'tail': id[1]
+        #         }
+        #         relations.append(relation)
+        # data_point['relations'] = relations
+        data_points.extend(_data_points)
+    
+    return data_points
+
+
 def loader(dataset):
     if dataset == "MATRES":
         print("MATRES Loading .......")
@@ -196,21 +259,21 @@ def loader(dataset):
 
         processed_validate = []
         for my_dict in validate:
-            processed_validate.extend(get_data_point(my_dict))
+            processed_validate.extend(get_joint_datapoint(my_dict))
         validate_processed_path = "./datasets/MATRES/MATRES_dev.json"
         with open(validate_processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_validate, f, indent=6)
         
         processed_train = []
         for my_dict in train:
-            processed_train.extend(get_data_point(my_dict))
+            processed_train.extend(get_joint_datapoint(my_dict))
         train_processed_path = "./datasets/MATRES/MATRES_train.json"
         with open(train_processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_train, f, indent=6)
         
         processed_test = []
         for my_dict in test:
-            processed_test.extend(get_data_point(my_dict))
+            processed_test.extend(get_joint_datapoint(my_dict))
         test_processed_path = "./datasets/MATRES/MATRES_test.json"
         with open(test_processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_test, f, indent=6)
@@ -222,7 +285,6 @@ def loader(dataset):
         train, test, validate = [], [], []
         for my_dict in corpus:
             if '37/' in my_dict['doc_id'] or '41/' in my_dict['doc_id']:
-                print(my_dict['doc_id'])
                 test.append(my_dict)
             else:
                 train.append(my_dict)
@@ -230,21 +292,21 @@ def loader(dataset):
 
         processed_train = []
         for my_dict in train:
-            processed_train.extend(get_data_point(my_dict))
+            processed_train.extend(get_ir_datapoint(my_dict))
         processed_path = "./datasets/ESL/ESL_train.json"
         with open(processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_train, f, indent=6)
         
         processed_validate = []
         for my_dict in validate:
-            processed_validate.extend(get_data_point(my_dict))
+            processed_validate.extend(get_ir_datapoint(my_dict))
         processed_path = "./datasets/ESL/ESL_dev.json"
         with open(processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_validate, f, indent=6)
         
         processed_test = []
         for my_dict in test:
-            processed_test.extend(get_data_point(my_dict))
+            processed_test.extend(get_ir_datapoint(my_dict))
         processed_path = "./datasets/ESL/ESL_test.json"
         with open(processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_test, f, indent=6)

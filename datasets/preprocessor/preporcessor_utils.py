@@ -5,7 +5,7 @@ import spacy
 import re
 
 
-tokenizer = RobertaTokenizer.from_pretrained('roberta-base', unk_token='<unk>')
+tokenizer = RobertaTokenizer.from_pretrained('/vinai/hieumdt/pretrained_models/tokenizers/roberta-base', unk_token='<unk>')
 nlp = spacy.load("en_core_web_sm")
 
 

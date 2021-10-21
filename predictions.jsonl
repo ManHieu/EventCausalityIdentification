@@ -1,392 +1,246 @@
-{"predicted": "bombs precondition condemnation", "gold": "'bombs precondition condemned"}
-{"predicted": "condemned falling action bombardment", "gold": "condemned falling action bombardment"}
-{"predicted": "circled precondition raids", "gold": "circled precondition launching"}
-{"predicted": "circled precondition raids", "gold": "circled precondition two bombing raids"}
-{"predicted": "raids precondition dropped", "gold": "circled precondition dropped"}
-{"predicted": "dropped precondition exploded", "gold": "dropped precondition exploded"}
-{"predicted": "dropped precondition death", "gold": "dropped precondition casualties"}
-{"predicted": "dropped precondition death", "gold": "dropped precondition killed"}
-{"predicted": "raids precondition kill", "gold": "two bombing raids precondition casualties"}
-{"predicted": "circled precondition casualties", "gold": "two bombing raids precondition killed"}
-{"predicted": "rounding precondition casualties", "gold": "two bombing raids precondition death toll"}
-{"predicted": "raids precondition casualties", "gold": "two bombing raids precondition rise"}
-{"predicted": "dropped precondition killed", "gold": "exploded precondition casualties"}
-{"predicted": "dropped precondition deaths", "gold": "exploded precondition killed"}
-{"predicted": "shot precondition killed", "gold": "shot precondition killed"}
-{"predicted": "Shoots falling action shot", "gold": "Shoots precondition killed"}
-{"predicted": "crash precondition grabbing", "gold": "crash precondition grabbing"}
-{"predicted": "crash precondition grabbing", "gold": "nab falling action crash"}
-{"predicted": "smashing precondition making off", "gold": "rammed precondition smashing"}
-{"predicted": "smashing precondition smashing", "gold": "smashing precondition making off"}
-{"predicted": "drove precondition grabbed", "gold": "drove precondition grabbed"}
-{"predicted": "problem precondition downtime", "gold": "downtime falling action problem"}
-{"predicted": "undersea cable precondition downtime", "gold": "data link precondition downtime"}
-{"predicted": "Outage precondition downtime", "gold": "Outage precondition problem"}
-{"predicted": "scrambling precondition keep their customers connected", "gold": "contingency plans precondition connected\""}
-{"predicted": "caching precondition serve", "gold": "caching solution precondition serve"}
-{"predicted": "caching precondition help", "gold": "caching solution precondition accessing"}
-{"predicted": "Overcome falling action Outage", "gold": "P2P Control precondition Outage"}
-{"predicted": "undersea cable precondition downtime", "gold": "downtime precondition scrambling"}
-{"predicted": "Shooting precondition Islam", "gold": "Accused falling action Shooting"}
-{"predicted": "charged falling action shooting", "gold": "charged falling action shooting"}
-{"predicted": "charged falling action shooting", "gold": "arrested falling action charged"}
-{"predicted": "killed precondition shot", "gold": "kills falling action shot"}
-{"predicted": "shot precondition killed", "gold": "wounds falling action shot"}
-{"predicted": "fired precondition chase", "gold": "shot precondition killed"}
-{"predicted": "fired precondition killed", "gold": "shot precondition wounded"}
-{"predicted": "fired precondition died", "gold": "shot precondition chase"}
-{"predicted": "fired precondition killed", "gold": "shot precondition killed"}
-{"predicted": "terminated falling action loaned", "gold": "terminated falling action loaned"}
-{"predicted": "terminated falling action loaned", "gold": "terminated falling action disclosure"}
-{"predicted": "sued falling action motions", "gold": "sued falling action terminated"}
-{"predicted": "sued falling action terminated", "gold": "terminated precondition filed"}
-{"predicted": "sued precondition motions", "gold": "filed precondition judgment"}
-{"predicted": "motions falling action dispute", "gold": "denied falling action dispute"}
-{"predicted": "motions falling action dispute", "gold": "dispute falling action breach"}
-{"predicted": "checked in precondition arrest", "gold": "order precondition enter"}
-{"predicted": "Checks Into falling action enter", "gold": "Checks Into falling action order"}
-{"predicted": "checked into precondition stay", "gold": "checked into falling action order"}
-{"predicted": "checked into precondition stay", "gold": "checked into precondition stay"}
-{"predicted": "Checks Into falling action stay", "gold": "Checks Into precondition stay"}
-{"predicted": "interested falling action going back", "gold": "going back falling action knows"}
-{"predicted": "checked - in precondition arrested", "gold": "check - in falling action order"}
-{"predicted": "check - in falling action enter", "gold": "arrested falling action flout"}
-{"predicted": "killed precondition killed", "gold": "shooting precondition killed"}
-{"predicted": "protest falling action hit", "gold": "killed precondition anger"}
-{"predicted": "shooting falling action thrashing", "gold": "shooting precondition anger"}
-{"predicted": "thrashing precondition protest", "gold": "marred falling action thrashing"}
-{"predicted": "thrashing precondition thrown", "gold": "arrests falling action conduct"}
-{"predicted": "protest falling action hit", "gold": "anger precondition protest"}
-{"predicted": "protest falling action thrashing", "gold": "anger precondition marred"}
-{"predicted": "anger falling action protest", "gold": "anger precondition thrashing"}
-{"predicted": "thrashing precondition protests", "gold": "anger precondition another"}
-{"predicted": "shot precondition pointed", "gold": "shot falling action brandished"}
-{"predicted": "shot falling action pointed", "gold": "shot falling action pointed"}
-{"predicted": "Anger falling action Killing", "gold": "Anger falling action Killing"}
-{"predicted": "thrashing precondition protest", "gold": "anger precondition hit"}
-{"predicted": "protest falling action thrown", "gold": "anger precondition thrown"}
-{"predicted": "thrashing precondition thrown", "gold": "anger precondition conduct"}
-{"predicted": "thrashing precondition thrown", "gold": "shooting precondition vigil"}
-{"predicted": "protest falling action arrested", "gold": "killed precondition vigil"}
-{"predicted": "thrashing precondition arrested", "gold": "another precondition hit"}
-{"predicted": "protest falling action thrashing", "gold": "another precondition conduct"}
-{"predicted": "thrashing precondition arrested", "gold": "another precondition thrown"}
-{"predicted": "earthquake precondition missing", "gold": "earthquake precondition killing"}
-{"predicted": "tsunami precondition killed", "gold": "tsunami precondition killed"}
-{"predicted": "earthquake precondition killing", "gold": "earthquake precondition missing"}
-{"predicted": "earthquake precondition damaged", "gold": "earthquake precondition damaged"}
-{"predicted": "earthquake precondition injured", "gold": "earthquake precondition injured"}
-{"predicted": "difficult falling action traffic jams", "gold": "difficult falling action traffic jams"}
-{"predicted": "tsunami precondition killed", "gold": "earthquake precondition tsunami"}
-{"predicted": "dies falling action fallen", "gold": "dies falling action fallen"}
-{"predicted": "fallen precondition death", "gold": "fallen precondition death"}
-{"predicted": "fell falling action climbing", "gold": "fell falling action climbing"}
-{"predicted": "died falling action slipped", "gold": "died falling action fell"}
-{"predicted": "died falling action fell", "gold": "slipped precondition fell"}
-{"predicted": "hopped on precondition headed", "gold": "hopped precondition headed"}
-{"predicted": "arrangements falling action check into", "gold": "arrangements precondition check into"}
-{"predicted": "checks into precondition signed off", "gold": "unapproved falling action signed off"}
-{"predicted": "checked into precondition approved", "gold": "signed off precondition approved"}
-{"predicted": "turned precondition starred", "gold": "turned falling action starred"}
-{"predicted": "became precondition popularity", "gold": "became precondition popularity"}
-{"predicted": "Shooting precondition Hurt", "gold": "Shooting precondition Dead"}
-{"predicted": "Shooting precondition Hurt", "gold": "Shooting precondition Hurt"}
-{"predicted": "walked falling action shot", "gold": "shot precondition killing"}
-{"predicted": "walked precondition killed", "gold": "fleeing precondition chase"}
-{"predicted": "Shooting precondition opened fire", "gold": "Dead falling action opened fire"}
-{"predicted": "Dead falling action shot", "gold": "Dead falling action shot"}
-{"predicted": "Shooting precondition died", "gold": "Hurt falling action opened fire"}
-{"predicted": "Dead falling action shot", "gold": "Hurt falling action shot"}
-{"predicted": "accuses falling action air strike", "gold": "accuses falling action air strike"}
-{"predicted": "bombed precondition tensions", "gold": "bombed precondition tensions"}
-{"predicted": "air strike precondition tensions", "gold": "air strike precondition tensions"}
-{"predicted": "bombed precondition tensions", "gold": "bombed precondition threatening"}
-{"predicted": "air strike precondition tensions", "gold": "air strike precondition threatening"}
-{"predicted": "strike precondition explosion", "gold": "strike precondition explosion"}
-{"predicted": "strike precondition three further explosions", "gold": "strike precondition three further explosions"}
-{"predicted": "bombed precondition explosion", "gold": "bombed precondition wedged"}
-{"predicted": "bombed precondition explosion", "gold": "bombed precondition explosion"}
-{"predicted": "bombed precondition three further explosions", "gold": "bombed precondition three further explosions"}
-{"predicted": "bombed precondition casualties", "gold": "bombed precondition casualties"}
-{"predicted": "EARTHQUAKE precondition killed", "gold": "EARTHQUAKE precondition killed"}
-{"predicted": "EARTHQUAKE precondition collapsed", "gold": "trapped falling action collapsed"}
-{"predicted": "collapsed precondition death", "gold": "death toll falling action disaster"}
-{"predicted": "quake precondition devastated", "gold": "6. 1 - magnitude quake precondition injured"}
-{"predicted": "quake precondition tsunami", "gold": "devastated falling action tsunami"}
-{"predicted": "6. 1 - magnitude tsunami precondition devastated", "gold": "quake precondition tsunami"}
-{"predicted": "earthquake precondition damaged", "gold": "earthquake precondition landslides"}
-{"predicted": "earthquake precondition damaged", "gold": "earthquake precondition damaged"}
-{"predicted": "earthquake precondition damaged", "gold": "earthquake precondition reduced"}
-{"predicted": "rescuers falling action collapse", "gold": "trapped falling action collapse"}
-{"predicted": "tsunami precondition killed", "gold": "tremor precondition tsunami"}
-{"predicted": "tsunami precondition killed", "gold": "tsunami precondition killed"}
-{"predicted": "8. 6 - magnitude quake precondition tsunami alert", "gold": "8. 6 - magnitude quake precondition tsunami alert"}
-{"predicted": "tsunami precondition killed", "gold": "tremor precondition killed"}
-{"predicted": "rescue operation falling action earthquake", "gold": "rescue operation falling action earthquake"}
-{"predicted": "6. 1 magnitude earthquake precondition flattening", "gold": "Rescue operations falling action 6. 1 magnitude earthquake"}
-{"predicted": "6. 1 magnitude earthquake precondition flattening", "gold": "6. 1 magnitude earthquake precondition flattening"}
-{"predicted": "6. 1 magnitude earthquake precondition flattening", "gold": "6. 1 magnitude earthquake precondition landslides"}
-{"predicted": "injured falling action quake", "gold": "killed falling action quake"}
-{"predicted": "injured falling action quake", "gold": "injured falling action quake"}
-{"predicted": "dead falling action collapsed", "gold": "killed falling action collapsed"}
-{"predicted": "killed falling action collapsed", "gold": "trapped falling action collapsed"}
-{"predicted": "quake precondition tsunami", "gold": "magnitude 9. 1 quake precondition tsunami"}
-{"predicted": "quake precondition tsunami", "gold": "tsunami precondition killed"}
-{"predicted": "Bombs falling action crossed", "gold": "Bombs falling action crossed"}
-{"predicted": "Bombs precondition crossed", "gold": "Bombs falling action dropped"}
-{"predicted": "Bombs precondition casualties", "gold": "Bombs precondition deaths"}
-{"predicted": "dropped precondition casualties", "gold": "dropped precondition deaths"}
-{"predicted": "dropped precondition casualties", "gold": "dropped precondition casualties"}
-{"predicted": "Bombs falling action casualties", "gold": "Bombs precondition casualties"}
-{"predicted": "crossed precondition dropped", "gold": "crossed precondition dropped"}
-{"predicted": "dropped precondition casualties", "gold": "dropped precondition casualties"}
-{"predicted": "dropped precondition casualties", "gold": "dropped precondition landed"}
-{"predicted": "dropped precondition casualties", "gold": "dropped precondition hit"}
-{"predicted": "dropped precondition explode", "gold": "dropped precondition landed"}
-{"predicted": "dropped precondition landed", "gold": "dropped precondition explode"}
-{"predicted": "fled precondition living", "gold": "fled falling action violence"}
-{"predicted": "fled precondition living", "gold": "fled precondition living"}
-{"predicted": "TRIAL falling action DOUBLE MURDER", "gold": "TRIAL falling action ACCUSED"}
-{"predicted": "TRIAL falling action DOUBLE MURDER", "gold": "ACCUSED falling action DOUBLE MURDER"}
-{"predicted": "accused falling action murdering", "gold": "trial falling action accused"}
-{"predicted": "accused falling action murdering", "gold": "accused falling action murdering"}
-{"predicted": "appear falling action danger", "gold": "appear falling action danger"}
-{"predicted": "danger precondition trial", "gold": "danger precondition absence"}
-{"predicted": "accused precondition appear", "gold": "accused precondition appear"}
-{"predicted": "trial falling action accused", "gold": "accused precondition hearing"}
-{"predicted": "accused falling action murdering", "gold": "accused precondition plea"}
-{"predicted": "charge falling action death", "gold": "animal cruelty falling action death"}
-{"predicted": "arson falling action fire", "gold": "arson falling action fire"}
-{"predicted": "arson falling action fire", "gold": "arson falling action fire"}
-{"predicted": "shoots precondition arrested", "gold": "shoots precondition killing"}
-{"predicted": "shooting precondition shot", "gold": "shooting precondition killing"}
-{"predicted": "shot precondition chase", "gold": "killing precondition arrested"}
-{"predicted": "shooting precondition killing", "gold": "suspected precondition arrested"}
-{"predicted": "shooting falling action chase", "gold": "arrested falling action chase"}
-{"predicted": "killed falling action falls", "gold": "killed falling action falls"}
-{"predicted": "recovered falling action fall", "gold": "recovered falling action death"}
-{"predicted": "recovered falling action fall", "gold": "fall precondition death"}
-{"predicted": "fall precondition fell", "gold": "death falling action fell"}
-{"predicted": "died falling action falling", "gold": "died falling action falling"}
-{"predicted": "fell precondition falling", "gold": "died falling action fell"}
-{"predicted": "fallen precondition falling", "gold": "died falling action fallen"}
-{"predicted": "burned precondition arson", "gold": "chance precondition burned"}
-{"predicted": "burned precondition arson", "gold": "burned falling action arson"}
-{"predicted": "arrests falling action fire", "gold": "arrests falling action fire"}
-{"predicted": "dissolution precondition fire", "gold": "fire precondition burned"}
-{"predicted": "dissolution falling action burned", "gold": "fire falling action dissolution"}
-{"predicted": "dissolution precondition burned", "gold": "dissolution precondition burned"}
-{"predicted": "fire precondition fire", "gold": "Arson precondition fire"}
-{"predicted": "fire precondition foul play", "gold": "fire falling action destroyed"}
-{"predicted": "fire precondition burned", "gold": "fire precondition burned"}
-{"predicted": "fire precondition burning", "gold": "fire falling action foul play"}
-{"predicted": "fire precondition burn", "gold": "foul play precondition pattern"}
-{"predicted": "burned precondition pattern", "gold": "foul play precondition pattern"}
-{"predicted": "heist falling action make off", "gold": "heist falling action smash"}
-{"predicted": "heist falling action smash", "gold": "heist falling action grab"}
-{"predicted": "heist falling action make off", "gold": "heist falling action make off"}
-{"predicted": "smash precondition make off", "gold": "smash precondition grab"}
-{"predicted": "smash precondition grab", "gold": "grab precondition make off"}
-{"predicted": "rammed precondition rammed", "gold": "rammed precondition scooping up"}
-{"predicted": "reversed precondition making off", "gold": "set fire precondition making off"}
-{"predicted": "Fire precondition destroys", "gold": "Fire precondition destroys"}
-{"predicted": "fire precondition burn", "gold": "burned falling action fire"}
-{"predicted": "caller falling action fire", "gold": "reported falling action fire"}
-{"predicted": "fire precondition spreading", "gold": "concern falling action spreading"}
-{"predicted": "fire precondition protecting", "gold": "concern falling action fire"}
-{"predicted": "dead falling action fall", "gold": "dead falling action fall"}
-{"predicted": "dead falling action falling", "gold": "dead falling action falling"}
-{"predicted": "dead falling action fell", "gold": "dead falling action fell"}
-{"predicted": "dead falling action fallen", "gold": "dead falling action fallen"}
-{"predicted": "severed precondition blocking", "gold": "severed precondition blocking"}
-{"predicted": "cut falling action service", "gold": "cut precondition affecting"}
-{"predicted": "cut falling action service", "gold": "cut precondition affecting"}
-{"predicted": "Shot precondition Killed", "gold": "Shot precondition Killed"}
-{"predicted": "killed falling action shot", "gold": "working precondition killed"}
-{"predicted": "killed falling action knocked", "gold": "killed falling action knocked"}
-{"predicted": "knocked precondition shot", "gold": "killed falling action shot"}
-{"predicted": "knocked precondition died", "gold": "shot precondition died"}
-{"predicted": "killed falling action shot", "gold": "shot falling action came out"}
-{"predicted": "trial falling action accused", "gold": "trial falling action accused"}
-{"predicted": "accused falling action killing", "gold": "accused falling action killing"}
-{"predicted": "falling action gunfire", "gold": "falling falling action gunfire"}
-{"predicted": "died falling action shield", "gold": "died falling action shield"}
-{"predicted": "shield falling action shield", "gold": "gunfire precondition shield"}
-{"predicted": "charged falling action murder", "gold": "charged falling action murder"}
-{"predicted": "jolt precondition death", "gold": "Aftershocks precondition death"}
-{"predicted": "jolt precondition death", "gold": "Aftershocks precondition rises"}
-{"predicted": "earthquake precondition rose", "gold": "aftershock precondition death"}
-{"predicted": "aftershock precondition death", "gold": "death falling action earthquake"}
-{"predicted": "aftershock precondition death", "gold": "aftershock precondition rose"}
-{"predicted": "dead falling action found", "gold": "death falling action quake"}
-{"predicted": "death falling action dead", "gold": "quake precondition wounded"}
-{"predicted": "aftershocks falling action rocked", "gold": "rocked falling action earthquake"}
-{"predicted": "quake precondition quake", "gold": "registered falling action quake"}
-{"predicted": "earthquake precondition knocked", "gold": "earthquake precondition knocked down"}
-{"predicted": "earthquake precondition sinking", "gold": "earthquake precondition sinking"}
-{"predicted": "tremor precondition damaged", "gold": "tremor precondition damaged"}
-{"predicted": "tremor precondition damaged", "gold": "tremor precondition providing"}
-{"predicted": "tremor precondition damaged", "gold": "tremor precondition service"}
-{"predicted": "strike precondition battle", "gold": "dead falling action burning"}
-{"predicted": "war precondition burning", "gold": "burning falling action battle"}
-{"predicted": "fire precondition suffocated", "gold": "battles falling action march"}
-{"predicted": "strike precondition attended", "gold": "march falling action strike"}
-{"predicted": "march precondition attended", "gold": "march falling action strike"}
-{"predicted": "fire precondition death", "gold": "under pressure precondition break"}
-{"predicted": "fire precondition death", "gold": "under pressure falling action events"}
-{"predicted": "fire precondition killing", "gold": "fire precondition death"}
-{"predicted": "fire precondition death", "gold": "fire precondition death"}
-{"predicted": "gathered precondition visit", "gold": "death precondition clashes"}
-{"predicted": "gathered precondition visit", "gold": "clashes falling action gathered"}
-{"predicted": "strike precondition rage", "gold": "march precondition battles"}
-{"predicted": "checked into falling action rehab", "gold": "hiring precondition help"}
-{"predicted": "rehab precondition arrest", "gold": "rehab precondition arrest"}
-{"predicted": "checks into precondition arrest", "gold": "rehab precondition arrest"}
-{"predicted": "arrested falling action confusion", "gold": "arrest falling action confusion"}
-{"predicted": "checked into precondition arrest", "gold": "confusion falling action whereabouts"}
-{"predicted": "troubled precondition sought help", "gold": "help falling action altercation"}
-{"predicted": "5. 9 magnitude earthquake precondition killing", "gold": "earthquake precondition leveled"}
-{"predicted": "5. 9 magnitude earthquake precondition wounding", "gold": "earthquake precondition killing"}
-{"predicted": "earthquake precondition wounding", "gold": "earthquake precondition wounding"}
-{"predicted": "temblor precondition destroyed", "gold": "destruction falling action temblor"}
-{"predicted": "temblor precondition destruction", "gold": "destroyed falling action temblor"}
-{"predicted": "temblor precondition aftershocks", "gold": "temblor precondition aftershocks"}
-{"predicted": "temblor precondition aftershocks", "gold": "destruction falling action aftershocks"}
-{"predicted": "panic falling action aftershocks", "gold": "destroyed falling action aftershocks"}
-{"predicted": "temblor precondition aftershocks", "gold": "aftershocks precondition panic"}
-{"predicted": "Shooting precondition Dead", "gold": "Shooting precondition Dead"}
-{"predicted": "Shooting precondition Dead", "gold": "Shooting precondition Injured"}
-{"predicted": "shooting precondition killed", "gold": "suspected precondition arrested"}
-{"predicted": "shooting precondition dead", "gold": "killing precondition arrested"}
-{"predicted": "shooting precondition killing", "gold": "arrested falling action chase"}
-{"predicted": "Shooting precondition arrested", "gold": "Shooting precondition killing"}
-{"predicted": "shooting precondition caught", "gold": "Shooting precondition arrested"}
-{"predicted": "captures falling action foiled", "gold": "captures falling action foiled"}
-{"predicted": "foiled precondition capturing", "gold": "foiled precondition capturing"}
-{"predicted": "foiled falling action attack", "gold": "foiled precondition confiscating"}
-{"predicted": "action falling action operation", "gold": "action falling action mission"}
-{"predicted": "operation falling action mission", "gold": "operation falling action mission"}
-{"predicted": "problems precondition repair", "gold": "problems precondition repair time"}
-{"predicted": "problems precondition repair", "gold": "problems precondition repair"}
-{"predicted": "repair time falling action problems", "gold": "repair falling action problems"}
-{"predicted": "problems falling action problem", "gold": "problems precondition problem"}
-{"predicted": "call - out precondition mobilization", "gold": "call - out falling action permits"}
-{"predicted": "call - out precondition mobilization", "gold": "mobilization falling action permits"}
-{"predicted": "outage falling action restore", "gold": "outage precondition restore"}
-{"predicted": "outage precondition affected", "gold": "problem precondition outage"}
-{"predicted": "outage precondition affected", "gold": "outage precondition restoration"}
-{"predicted": "restoration falling action securing", "gold": "capacity precondition services"}
-{"predicted": "killed falling action snowballs", "gold": "vigil falling action slain"}
-{"predicted": "killed falling action snowballs", "gold": "vigil falling action killed"}
-{"predicted": "killed falling action snowballs", "gold": "killed falling action riot"}
-{"predicted": "gathered falling action remember", "gold": "gathered falling action remember"}
-{"predicted": "shot precondition killed", "gold": "shot precondition killed"}
-{"predicted": "killed precondition riot", "gold": "killed precondition march"}
-{"predicted": "shot precondition riot", "gold": "shot precondition march"}
-{"predicted": "shot precondition riot", "gold": "shot precondition riot"}
-{"predicted": "shot precondition turned", "gold": "killed precondition riot"}
-{"predicted": "killed falling action snowballs", "gold": "slain precondition vigil"}
-{"predicted": "killed precondition violent", "gold": "killed precondition vigil"}
-{"predicted": "killed falling action snowballs", "gold": "slain precondition gathered"}
-{"predicted": "vigil falling action killed", "gold": "killed precondition gathered"}
-{"predicted": "vigil falling action snowballs", "gold": "slain precondition remember"}
-{"predicted": "killed falling action snowballs", "gold": "killed precondition remember"}
-{"predicted": "killed falling action snowballs", "gold": "slain precondition violent"}
-{"predicted": "killed falling action snowballs", "gold": "killed precondition violent"}
-{"predicted": "killed falling action crossfire", "gold": "killed falling action crossfire"}
-{"predicted": "killed falling action walking", "gold": "killed falling action walking"}
-{"predicted": "accused falling action gunfire", "gold": "accused falling action sprayed"}
-{"predicted": "killed falling action sprayed", "gold": "killed falling action sprayed"}
-{"predicted": "killed falling action shootout", "gold": "killed falling action shootout"}
-{"predicted": "killed falling action shootout", "gold": "killed falling action picked her daughter up"}
-{"predicted": "charged precondition trial", "gold": "charged falling action killing"}
-{"predicted": "trial falling action charged", "gold": "trial falling action charged"}
-{"predicted": "pushing precondition collapses", "gold": "grips falling action firing"}
-{"predicted": "pushes precondition collapses", "gold": "out of the way falling action firing"}
-{"predicted": "pushes precondition collapses", "gold": "collapses falling action firing"}
-{"predicted": "taken care falling action murder", "gold": "on trial falling action murder"}
-{"predicted": "trial falling action threatened", "gold": "testimony precondition death"}
-{"predicted": "trial falling action threatened", "gold": "death precondition petrified"}
-{"predicted": "test falling action threatened", "gold": "death precondition emotional"}
-{"predicted": "murder falling action threatened", "gold": "death precondition reluctant"}
-{"predicted": "fire precondition tackled", "gold": "fire precondition tackled"}
-{"predicted": "tackled precondition blaze", "gold": "tackled falling action blaze"}
-{"predicted": "blaze precondition called", "gold": "blaze falling action called"}
-{"predicted": "Shot falling action Shooting", "gold": "Shot falling action Shooting"}
-{"predicted": "restored falling action outage", "gold": "restored falling action outage"}
-{"predicted": "restored falling action outage", "gold": "restored falling action outage"}
-{"predicted": "restored falling action outage", "gold": "restored falling action outage"}
-{"predicted": "outage precondition affected", "gold": "affected falling action outage"}
-{"predicted": "problems falling action problem", "gold": "problems precondition problem"}
-{"predicted": "outage precondition problems", "gold": "outage falling action problem"}
-{"predicted": "outage precondition repair", "gold": "outage precondition repair"}
-{"predicted": "running at full capacity precondition repair", "gold": "repair precondition running"}
-{"predicted": "restored falling action repairs", "gold": "repair precondition restored"}
-{"predicted": "Checks Out falling action Checks Out", "gold": "Checks Into precondition Checks Out"}
-{"predicted": "trust falling action lie", "gold": "trust falling action shifty"}
-{"predicted": "trust falling action lie", "gold": "trust falling action lie"}
-{"predicted": "spent precondition jumped", "gold": "spooked precondition jumped"}
-{"predicted": "walked precondition left", "gold": "walked falling action spooked"}
-{"predicted": "walked precondition left", "gold": "left falling action spooked"}
-{"predicted": "6. 1 - magnitude earthquake precondition running", "gold": "6. 1 - magnitude earthquake precondition running"}
-{"predicted": "ran falling action quake", "gold": "ran falling action quake"}
-{"predicted": "panic falling action quake", "gold": "in panic falling action quake"}
-{"predicted": "tsunami precondition killed", "gold": "quake precondition tsunami"}
-{"predicted": "tsunami precondition killed", "gold": "tsunami precondition killed"}
-{"predicted": "Checks Out falling action treatment", "gold": "Checks Out precondition Into"}
-{"predicted": "checked - in precondition treatment", "gold": "checked - in precondition treatment"}
-{"predicted": "checked out precondition in the clear", "gold": "checked out falling action program"}
-{"predicted": "injured falling action 6. 1 - magnitude quake", "gold": "injured falling action 6. 1 - magnitude quake"}
-{"predicted": "6. 1 - magnitude earthquake precondition injured", "gold": "6. 1 - magnitude earthquake precondition killed"}
-{"predicted": "6. 1 - magnitude earthquake precondition destroyed", "gold": "6. 1 - magnitude earthquake precondition injured"}
-{"predicted": "6. 1 - magnitude earthquake precondition injured", "gold": "6. 1 - magnitude earthquake precondition destroyed"}
-{"predicted": "6. 1 - magnitude earthquake precondition injured", "gold": "6. 1 - magnitude earthquake precondition panic"}
-{"predicted": "6. 1 - magnitude earthquake precondition injured", "gold": "devastated falling action tsunami"}
-{"predicted": "6. 1 - magnitude earthquake precondition killed", "gold": "quake precondition tsunami"}
-{"predicted": "quake precondition collapsed", "gold": "quake precondition collapsed"}
-{"predicted": "arrested falling action DUI", "gold": "arrested falling action DUI"}
-{"predicted": "arrested falling action drunken driving", "gold": "arrested falling action drunken driving"}
-{"predicted": "speeding precondition pulled over", "gold": "pulled over falling action speeding"}
-{"predicted": "booked into precondition released", "gold": "booked into precondition released"}
-{"predicted": "arrested precondition booked into", "gold": "arrested precondition booked into"}
-{"predicted": "released falling action on bail", "gold": "released falling action bail"}
-{"predicted": "arrested falling action DUI", "gold": "arrested falling action DUI"}
-{"predicted": "on probation falling action previous DUI arrest", "gold": "on probation falling action DUI arrest"}
-{"predicted": "foils falling action attempt", "gold": "foils falling action bid"}
-{"predicted": "foiled falling action bid", "gold": "foiled falling action bid"}
-{"predicted": "foiled falling action attempt", "gold": "foiled falling action attempt"}
-{"predicted": "foils falling action attempt", "gold": "foils falling action attempt"}
-{"predicted": "foiled precondition bid", "gold": "foiled falling action escorting"}
-{"predicted": "foils falling action escorting", "gold": "foils falling action escorting"}
-{"predicted": "foiled falling action intercepted", "gold": "foiled falling action intercepted"}
-{"predicted": "intercepted precondition foiled", "gold": "intercepted falling action foiled"}
-{"predicted": "intercepted precondition escorting", "gold": "foiled falling action detected"}
-{"predicted": "intercepted precondition escorting", "gold": "foiled falling action approaching"}
-{"predicted": "intercepted precondition foiled", "gold": "foiled falling action escorting"}
-{"predicted": "escorting precondition transit", "gold": "detected falling action escorting"}
-{"predicted": "foiled precondition escorting", "gold": "attack falling action approaching"}
-{"predicted": "murder falling action accused", "gold": "murder precondition filed"}
-{"predicted": "Murdering falling action gunning down", "gold": "Murdering falling action gunning down"}
-{"predicted": "charged falling action gunning down", "gold": "accused falling action gunning down"}
-{"predicted": "charged falling action murdering", "gold": "gunning down precondition murdering"}
-{"predicted": "investigating falling action shooting", "gold": "killed falling action investigating"}
-{"predicted": "investigated falling action shooting", "gold": "investigating falling action shooting"}
-{"predicted": "shot falling action hide", "gold": "shot precondition dying"}
-{"predicted": "shot precondition running", "gold": "shot precondition ran"}
-{"predicted": "shot precondition dying", "gold": "shot precondition hide"}
-{"predicted": "investigation falling action murder", "gold": "investigate falling action murder"}
-{"predicted": "crime falling action working", "gold": "case precondition working"}
-{"predicted": "investigation falling action murder", "gold": "working precondition killed"}
-{"predicted": "shot precondition death", "gold": "shot precondition death"}
-{"predicted": "problem precondition disrupts", "gold": "problem precondition disrupts"}
-{"predicted": "problem precondition disrupted", "gold": "problem precondition disrupted"}
-{"predicted": "disruptioned precondition \"downtime\"", "gold": "disrupted precondition connections"}
-{"predicted": "disrupted precondition slower internet connections", "gold": "connections falling action \"downtime\""}
-{"predicted": "problem precondition disrupted", "gold": "problem precondition \"downtime\""}
-{"predicted": "problems falling action damage", "gold": "problems falling action damage"}
-{"predicted": "damaged falling action damage", "gold": "affected falling action damage"}
-{"predicted": "damage falling action wire going", "gold": "damage precondition affected"}
-{"predicted": "affected falling action damage", "gold": "damage precondition affect"}
-{"predicted": "damaged falling action damage", "gold": "damage precondition fixed"}
-{"predicted": "problem falling action downtime", "gold": "problem falling action downtime"}
-{"predicted": "problem precondition downtime", "gold": "problem precondition affected"}
+{"sentence": "Powerful earthquake injures dozens in Indonesia's Aceh province", "predicted": "earthquake precondition injurures", "gold": "earthquake precondition injures"}
+{"sentence": "At least 50 reported injured and buildings destroyed after a 6. 1 magnitude earthquake strikes Sumatra's Aceh province.", "predicted": "earthquake precondition destroyed", "gold": "injured falling action 6. 1 magnitude earthquake"}
+{"sentence": "At least 50 reported injured and buildings destroyed after a 6. 1 magnitude earthquake strikes Sumatra's Aceh province.", "predicted": "earthquake precondition destroyed", "gold": "destroyed falling action 6. 1 magnitude earthquake"}
+{"sentence": "The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass.", "predicted": "quake precondition shaken", "gold": "quake precondition shaken"}
+{"sentence": "The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass. \"I see many houses were damaged and their roofs fell onto some people, \" central Aceh district resident Bensu Elianita told the Associated Press.", "predicted": "quake precondition damaged", "gold": "quake precondition damaged"}
+{"sentence": "The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass. \"I see many houses were damaged and their roofs fell onto some people, \" central Aceh district resident Bensu Elianita told the Associated Press.", "predicted": "quake precondition quake", "gold": "quake precondition fell onto"}
+{"sentence": "The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \"", "predicted": "quake precondition quake", "gold": "quake precondition injured"}
+{"sentence": "\"Many people were injured but it is difficult to evacuate them due to traffic jams. \"", "predicted": "injured falling action jams", "gold": "difficult falling action traffic jams"}
+{"sentence": "Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered.", "predicted": "earthquake precondition killing", "gold": "hit falling action Boxing Day earthquake"}
+{"sentence": "Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered.", "predicted": "hit falling action earthquake", "gold": "hit falling action tsunami"}
+{"sentence": "Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered.", "predicted": "earthquake precondition killing", "gold": "tsunami precondition killing"}
+{"sentence": "Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered.", "predicted": "earthquake precondition killed", "gold": "Boxing Day earthquake precondition killing"}
+{"sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11.", "predicted": "collapsed precondition death", "gold": "EARTHQUAKE precondition killed"}
+{"sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11.", "predicted": "collapsed precondition death", "gold": "trapped falling action collapsed"}
+{"sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11.", "predicted": "collapsed precondition death", "gold": "death toll falling action disaster"}
+{"sentence": "The strong 6. 1 - magnitude quake left hundreds more injured as it rocked a region that was devastated by the quake - triggered tsunami of 2004.", "predicted": "quake precondition injured", "gold": "6. 1 - magnitude quake precondition injured"}
+{"sentence": "The strong 6. 1 - magnitude quake left hundreds more injured as it rocked a region that was devastated by the quake - triggered tsunami of 2004.", "predicted": "quake precondition injured", "gold": "devastated falling action tsunami"}
+{"sentence": "The strong 6. 1 - magnitude quake left hundreds more injured as it rocked a region that was devastated by the quake - triggered tsunami of 2004.", "predicted": "quake precondition rocked", "gold": "quake precondition tsunami"}
+{"sentence": "The earthquake reduced houses in parts of Aceh to rubble, set off several landslides and badly damaged roads.", "predicted": "earthquake precondition damage", "gold": "earthquake precondition landslides"}
+{"sentence": "The earthquake reduced houses in parts of Aceh to rubble, set off several landslides and badly damaged roads.", "predicted": "earthquake precondition landslides", "gold": "earthquake precondition damaged"}
+{"sentence": "The earthquake reduced houses in parts of Aceh to rubble, set off several landslides and badly damaged roads.", "predicted": "earthquake precondition set off", "gold": "earthquake precondition reduced"}
+{"sentence": "Rescuers were struggling to find the children still trapped after the mosque collapse in Blang Mancung village, Central Aceh district.", "predicted": "trapped falling action collapse", "gold": "trapped falling action collapse"}
+{"sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean.", "predicted": "tremor precondition killed", "gold": "tremor precondition tsunami"}
+{"sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean.", "predicted": "tremor precondition tremor", "gold": "tsunami precondition killed"}
+{"sentence": "In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert.", "predicted": "quake precondition alert", "gold": "8. 6 - magnitude quake precondition tsunami alert"}
+{"sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean.", "predicted": "tremor precondition killed", "gold": "tremor precondition killed"}
+{"sentence": "A powerful 6. 1 - magnitude earthquake strikes the northern Indonesian province of Aceh, killing at least three people and injuring dozens more across the affected region.", "predicted": "earthquake precondition injuring", "gold": "6. 1 - magnitude earthquake precondition killing"}
+{"sentence": "A powerful 6. 1 - magnitude earthquake strikes the northern Indonesian province of Aceh, killing at least three people and injuring dozens more across the affected region.", "predicted": "earthquake precondition injuring", "gold": "6. 1 - magnitude earthquake precondition injuring"}
+{"sentence": "According to the US Geological Survey, the quake hit at a depth of 10 kilometers ( 6 miles ) in the Northern Province of Aceh. Eyewitnesses and local residents say many homes and properties have collapsed or been damaged.", "predicted": "quake precondition damaged", "gold": "quake precondition collapsed"}
+{"sentence": "\"I see many houses were damaged and their roofs fell onto some people, \" said Bensu Elianita, a 22 year - old resident in Bukit Sama village in Central Aceh district, adding, \"Many people were injured but it is difficult to evacuate them due to traffic jams. \"", "predicted": "storm falling action jams", "gold": "difficult falling action traffic jams"}
+{"sentence": "Last year, a 6. 4 - magnitude quake rocked the west coast of Sumatra Island, killing at least one person.", "predicted": "quake precondition killing", "gold": "6. 4 - magnitude quake precondition killing"}
+{"sentence": "An 8. 7 - magnitude earthquake also hit off the city of Banda Aceh in Sumatra Island in May 2012, triggering regional tsunami alerts.", "predicted": "earthquake precondition triggering", "gold": "8. 7 - magnitude earthquake precondition tsunami alerts"}
+{"sentence": "A strong quake off the shores of Indonesia triggered a tsunami that killed 230, 000 people in 13 countries around the Indian Ocean in 2004.", "predicted": "quake precondition killed", "gold": "quake precondition tsunami"}
+{"sentence": "A strong quake off the shores of Indonesia triggered a tsunami that killed 230, 000 people in 13 countries around the Indian Ocean in 2004.", "predicted": "quake precondition killed", "gold": "tsunami precondition killed"}
+{"sentence": "A magnitude - 6. 1 earthquake struck Indonesia's Aceh province on Tuesday at 07 : 37 a. m. UTC ( 3 : 37 a. m. EDT ), killing at least one and leaving two others missing, the Associated Press reported.", "predicted": "earthquake precondition killing", "gold": "magnitude - 6. 1 earthquake precondition killing"}
+{"sentence": "A magnitude - 6. 1 earthquake struck Indonesia's Aceh province on Tuesday at 07 : 37 a. m. UTC ( 3 : 37 a. m. EDT ), killing at least one and leaving two others missing, the Associated Press reported.", "predicted": "earthquake precondition killing", "gold": "magnitude - 6. 1 earthquake precondition missing"}
+{"sentence": "Earthquake Of Magnitude 6. 1 Strikes Indonesia's Aceh Province Killing One", "predicted": "Earthquake precondition Killing", "gold": "Earthquake precondition Killing"}
+{"sentence": "No tsunami warnings were issued following the quake, which injured dozens and damaged several houses in Takengon, the capital of Central Aceh district, AP reported.", "predicted": "tsunami precondition quake", "gold": "quake precondition injured"}
+{"sentence": "No tsunami warnings were issued following the quake, which injured dozens and damaged several houses in Takengon, the capital of Central Aceh district, AP reported.", "predicted": "warnings falling action quake", "gold": "quake precondition damaged"}
+{"sentence": "People ran out of their homes when the quake hit, AP reported, citing residents of Bukit Sama village in Central Aceh district, where the quake has led to a power outage.", "predicted": "ran falling action quake", "gold": "ran falling action quake"}
+{"sentence": "People ran out of their homes when the quake hit, AP reported, citing residents of Bukit Sama village in Central Aceh district, where the quake has led to a power outage.", "predicted": "quake precondition outage", "gold": "quake precondition power outage"}
+{"sentence": "People ran out of their homes when the quake hit, AP reported, citing residents of Bukit Sama village in Central Aceh district, where the quake has led to a power outage. \"I see many houses were damaged and their roofs fell onto some people, \" a Bukit Sama village resident told AP.", "predicted": "quake precondition ran", "gold": "quake precondition damaged"}
+{"sentence": "\"Many people were injured but it is difficult to evacuate them due to traffic jams. \" People ran out of their homes when the quake hit, AP reported, citing residents of Bukit Sama village in Central Aceh district, where the quake has led to a power outage.", "predicted": "quake precondition ran", "gold": "quake precondition injured"}
+{"sentence": "The 2004 tsunami that killed about 230, 000 people across Asia was triggered by a massive 9. 1 - magnitude quake off Aceh.", "predicted": "quake precondition quake", "gold": "2004 tsunami precondition killed"}
+{"sentence": "The 2004 tsunami that killed about 230, 000 people across Asia was triggered by a massive 9. 1 - magnitude quake off Aceh.", "predicted": "tsunami precondition quake", "gold": "2004 tsunami falling action quake"}
+{"sentence": "People ran out of their homes when the quake hit, AP reported, citing residents of Bukit Sama village in Central Aceh district, where the quake has led to a power outage. \"I see many houses were damaged and their roofs fell onto some people, \" a Bukit Sama village resident told AP.", "predicted": "quake precondition ran", "gold": "quake precondition fell onto"}
+{"sentence": "Dozens injured, child dead as 6. 1 - magnitude earthquake hits Indonesia's Aceh", "predicted": "injured falling action earthquake", "gold": "injured falling action 6. 1 - magnitude earthquake"}
+{"sentence": "Dozens injured, child dead as 6. 1 - magnitude earthquake hits Indonesia's Aceh", "predicted": "injured falling action earthquake", "gold": "dead falling action 6. 1 - magnitude earthquake"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition triggered", "gold": "6. 1 - magnitude earthquake precondition killed"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition tsunami", "gold": "6. 1 - magnitude earthquake precondition injured"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition panic", "gold": "6. 1 - magnitude earthquake precondition destroyed"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition triggered", "gold": "6. 1 - magnitude earthquake precondition panic"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition triggered", "gold": "devastated falling action tsunami"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition killed", "gold": "quake precondition tsunami"}
+{"sentence": "The quake struck inland at 0737 GMT at a depth of just 10 kilometres ( 6. 2 miles ) in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. Houses collapsed in the district, some 320 kilometres ( 200 miles ) from the provincial capital Banda Aceh.", "predicted": "quake precondition collapsed", "gold": "quake precondition collapsed"}
+{"sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean.", "predicted": "tsunami precondition killed", "gold": "tremor precondition tsunami"}
+{"sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean.", "predicted": "tremor precondition killed", "gold": "tsunami precondition killed"}
+{"sentence": "In September 2009, a major earthquake near Padang city on Sumatra killed more than 1, 000 people.", "predicted": "earthquake precondition killed", "gold": "major earthquake precondition killed"}
+{"sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province", "predicted": "earthquake precondition hit", "gold": "dead falling action 6. 1 magnitude quake"}
+{"sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province", "predicted": "earthquake precondition quake", "gold": "injured precondition 6. 1 magnitude quake"}
+{"sentence": "Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured.", "predicted": "earthquake precondition injured", "gold": "rescue operations falling action 6. 1 magnitude earthquake"}
+{"sentence": "Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured.", "predicted": "earthquake precondition dead", "gold": "6. 1 magnitude earthquake precondition dead"}
+{"sentence": "Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured.", "predicted": "earthquake precondition dead", "gold": "6. 1 magnitude earthquake precondition injured"}
+{"sentence": "The quake struck yesterday afternoon at a depth of just six miles and was centred on the far western tip of Sumatra island in Aceh province. Twelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency.", "predicted": "quake precondition injured", "gold": "quake precondition killed"}
+{"sentence": "The quake also triggered landslides and caused hundreds of people to be evacuated to 10 temporary shelters.", "predicted": "quake precondition evacuated", "gold": "quake precondition landslides"}
+{"sentence": "The quake also triggered landslides and caused hundreds of people to be evacuated to 10 temporary shelters.", "predicted": "quake precondition evacuated", "gold": "quake precondition evacuated"}
+{"sentence": "In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. The quake also triggered landslides and caused hundreds of people to be evacuated to 10 temporary shelters.", "predicted": "quake precondition evacuated", "gold": "killed falling action quake"}
+{"sentence": "In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. The quake also triggered landslides and caused hundreds of people to be evacuated to 10 temporary shelters.", "predicted": "quake precondition triggered", "gold": "injured falling action quake"}
+{"sentence": "In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. The quake also triggered landslides and caused hundreds of people to be evacuated to 10 temporary shelters.", "predicted": "quake precondition landslides", "gold": "damaged falling action quake"}
+{"sentence": "\"I see many houses were damaged and their roofs fell onto some people, \" Bensu Elianita, a 22 - year - old resident of Bukit Sama village in Central Aceh district, said shortly after the quake hit.", "predicted": "quake precondition damaged", "gold": "damaged falling action quake"}
+{"sentence": "\"I see many houses were damaged and their roofs fell onto some people, \" Bensu Elianita, a 22 - year - old resident of Bukit Sama village in Central Aceh district, said shortly after the quake hit.", "predicted": "quake precondition quake", "gold": "fell onto falling action quake"}
+{"sentence": "\"Many people were injured, but it is difficult to evacuate them due to traffic jams. \"", "predicted": "injured falling action jams", "gold": "difficult falling action traffic jams"}
+{"sentence": "In 2004, a magnitude - 9. 1 earthquake off Aceh triggered a tsunami that killed 230, 000 people in 14 countries.", "predicted": "earthquake precondition triggered", "gold": "magnitude - 9. 1 earthquake precondition tsunami"}
+{"sentence": "In 2004, a magnitude - 9. 1 earthquake off Aceh triggered a tsunami that killed 230, 000 people in 14 countries.", "predicted": "earthquake precondition caused", "gold": "tsunami precondition killed"}
+{"sentence": "Indonesia Aceh rescue operation after deadly earthquake", "predicted": "rescue operation falling action earthquake", "gold": "rescue operation falling action earthquake"}
+{"sentence": "Rescue operations are under way after a 6. 1 magnitude earthquake hit Indonesia's Aceh province, flattening houses and causing landslides.", "predicted": "earthquake precondition flattening", "gold": "Rescue operations falling action 6. 1 magnitude earthquake"}
+{"sentence": "Rescue operations are under way after a 6. 1 magnitude earthquake hit Indonesia's Aceh province, flattening houses and causing landslides.", "predicted": "earthquake precondition landslides", "gold": "6. 1 magnitude earthquake precondition flattening"}
+{"sentence": "Rescue operations are under way after a 6. 1 magnitude earthquake hit Indonesia's Aceh province, flattening houses and causing landslides.", "predicted": "earthquake precondition landslides", "gold": "6. 1 magnitude earthquake precondition landslides"}
+{"sentence": "Officials say at least 24 people were killed and more than 200 injured by the quake, which struck the western tip of Sumatra island on Tuesday.", "predicted": "killed falling action quake", "gold": "killed falling action quake"}
+{"sentence": "Officials say at least 24 people were killed and more than 200 injured by the quake, which struck the western tip of Sumatra island on Tuesday.", "predicted": "quake precondition struck", "gold": "injured falling action quake"}
+{"sentence": "One report said six children were killed and 14 trapped under debris when a mosque collapsed in Central Aceh.", "predicted": "collapsed falling action collapsed", "gold": "killed falling action collapsed"}
+{"sentence": "One report said six children were killed and 14 trapped under debris when a mosque collapsed in Central Aceh.", "predicted": "killed falling action collapsed", "gold": "trapped falling action collapsed"}
+{"sentence": "In 2004, a magnitude 9. 1 quake off Indonesia triggered a tsunami that killed some 230, 000 people around the Indian Ocean.", "predicted": "quake precondition triggered", "gold": "magnitude 9. 1 quake precondition tsunami"}
+{"sentence": "In 2004, a magnitude 9. 1 quake off Indonesia triggered a tsunami that killed some 230, 000 people around the Indian Ocean.", "predicted": "quake precondition tsunami", "gold": "tsunami precondition killed"}
+{"sentence": "A strong earthquake struck off Indonesia's Aceh province on Tuesday, damaging houses and injuring at least five people.", "predicted": "earthquake precondition injuring", "gold": "earthquake precondition damaging"}
+{"sentence": "The U. S. Geological Survey said the magnitude 6. 1 quake struck at a depth of 10 kilometers ( 6 miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island. At least five people were reportedly injured and 10 houses were damaged in Takengon, the capital of Central Aceh district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency.", "predicted": "quake precondition damaged", "gold": "magnitude 6. 1 quake precondition injured"}
+{"sentence": "The U. S. Geological Survey said the magnitude 6. 1 quake struck at a depth of 10 kilometers ( 6 miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island. At least five people were reportedly injured and 10 houses were damaged in Takengon, the capital of Central Aceh district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency.", "predicted": "quake precondition injured", "gold": "magnitude 6. 1 quake precondition damaged"}
+{"sentence": "The U. S. Geological Survey said the magnitude 6. 1 quake struck at a depth of 10 kilometers ( 6 miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island. \"I see many houses were damages and their roofs fell onto some people, \" said Bensu Elianita, a 22 year - old resident in Bukit Sama village in Central Aceh district.", "predicted": "quake precondition damage", "gold": "magnitude 6. 1 quake precondition damages"}
+{"sentence": "\"Many people were injured but it is difficult to evacuate them due to traffic jams. \" The U. S. Geological Survey said the magnitude 6. 1 quake struck at a depth of 10 kilometers ( 6 miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island.", "predicted": "quake precondition quake", "gold": "magnitude 6. 1 quake precondition injured"}
+{"sentence": "In 2004, a huge earthquake off Aceh triggered a tsunami that killed 230, 000 people across Asia.", "predicted": "earthquake precondition killed", "gold": "earthquake precondition tsunami"}
+{"sentence": "In 2004, a huge earthquake off Aceh triggered a tsunami that killed 230, 000 people across Asia.", "predicted": "earthquake precondition triggered", "gold": "tsunami precondition killed"}
+{"sentence": "Five dead, dozens injured in Indonesia quake", "predicted": "injured falling action quake", "gold": "dead falling action Indonesia quake"}
+{"sentence": "Five dead, dozens injured in Indonesia quake", "predicted": "injured falling action quake", "gold": "injured falling action Indonesia quake"}
+{"sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition sparked", "gold": "earthquake precondition flattened"}
+{"sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition injuring", "gold": "earthquake precondition landslides"}
+{"sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition injuring", "gold": "earthquake precondition killing"}
+{"sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition injuring", "gold": "earthquake precondition injuring"}
+{"sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition killing", "gold": "devastated falling action tsunami"}
+{"sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition killing", "gold": "quake precondition tsunami"}
+{"sentence": "It destroyed houses in the district, some 320 kilometers from the provincial capital Banda Aceh, and triggered several landslides.", "predicted": "triggered precondition landslides", "gold": "It precondition destroyed"}
+{"sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean.", "predicted": "tremor precondition killed", "gold": "tremor precondition tsunami"}
+{"sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean.", "predicted": "tremor precondition killed", "gold": "tsunami precondition killed"}
+{"sentence": "In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert.", "predicted": "quake precondition alert", "gold": "quake precondition tsunami alert"}
+{"sentence": "In September 2009 a major earthquake near Padang city on Sumatra killed more than 1, 000 people.", "predicted": "earthquake precondition killed", "gold": "earthquake precondition killed"}
+{"sentence": "Five people died and seven were injured in Aceh in the quake and following aftershocks.", "predicted": "quake precondition aftershocks", "gold": "died falling action quake"}
+{"sentence": "Five people died and seven were injured in Aceh in the quake and following aftershocks.", "predicted": "injured falling action quake", "gold": "died falling action aftershocks"}
+{"sentence": "Five people died and seven were injured in Aceh in the quake and following aftershocks.", "predicted": "injured falling action quake", "gold": "injured falling action quake"}
+{"sentence": "Five people died and seven were injured in Aceh in the quake and following aftershocks.", "predicted": "injured falling action quake", "gold": "injured falling action aftershocks"}
+{"sentence": "A strong 6. 1 - magnitude earthquake struck the northwestern Indonesian province of Aceh on Tuesday, the US Geological Survey said, sending people running into the streets in panic.", "predicted": "earthquake precondition running", "gold": "6. 1 - magnitude earthquake precondition running"}
+{"sentence": "People ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute, an AFP journalist at the scene said.", "predicted": "ran falling action quake", "gold": "ran falling action quake"}
+{"sentence": "People ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute, an AFP journalist at the scene said.", "predicted": "ran falling action shook", "gold": "in panic falling action quake"}
+{"sentence": "A massive quake struck off Aceh in 2004, sparking a tsunami that killed 170, 000 people in the province on Sumatra and tens of thousands more in countries around the Indian Ocean.", "predicted": "quake precondition tsunami", "gold": "quake precondition tsunami"}
+{"sentence": "A massive quake struck off Aceh in 2004, sparking a tsunami that killed 170, 000 people in the province on Sumatra and tens of thousands more in countries around the Indian Ocean.", "predicted": "quake precondition killed", "gold": "tsunami precondition killed"}
+{"sentence": "Dozens injured as 6. 1 - magnitude quake hits Indonesia's Aceh", "predicted": "quake precondition hits", "gold": "injured falling action 6. 1 - magnitude quake"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition triggered", "gold": "6. 1 - magnitude earthquake precondition killed"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition killed", "gold": "6. 1 - magnitude earthquake precondition injured"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition triggered", "gold": "6. 1 - magnitude earthquake precondition destroyed"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition killed", "gold": "6. 1 - magnitude earthquake precondition panic"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition triggered", "gold": "devastated falling action tsunami"}
+{"sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004.", "predicted": "earthquake precondition killed", "gold": "quake precondition tsunami"}
+{"sentence": "The quake hit inland at a depth of just 10km, 55km south of Bireun and 72 km southeast of Reuleuet, the US Geological Survey said. Houses collapsed in the district, some 320km from the provincial capital Banda Aceh.", "predicted": "quake precondition collapsed", "gold": "quake precondition collapsed"}
+{"sentence": "A strong earthquake struck Indonesia's Aceh province on Tuesday, killing at least one person and leaving two others missing.", "predicted": "earthquake precondition killing", "gold": "earthquake precondition killing"}
+{"sentence": "In 2004, a huge earthquake off Aceh triggered a tsunami that killed 230, 000 people across Asia.", "predicted": "earthquake precondition killed", "gold": "tsunami precondition killed"}
+{"sentence": "A strong earthquake struck Indonesia's Aceh province on Tuesday, killing at least one person and leaving two others missing.", "predicted": "earthquake precondition killing", "gold": "earthquake precondition missing"}
+{"sentence": "A strong earthquake struck Indonesia's Aceh province on Tuesday, killing at least one person and leaving two others missing. Many houses were damaged and dozens of villagers were injured.", "predicted": "earthquake precondition damaged", "gold": "earthquake precondition damaged"}
+{"sentence": "A strong earthquake struck Indonesia's Aceh province on Tuesday, killing at least one person and leaving two others missing. Many houses were damaged and dozens of villagers were injured.", "predicted": "earthquake precondition injured", "gold": "earthquake precondition injured"}
+{"sentence": "\"Many people were injured, but it is difficult to evacuate them due to traffic jams. \"", "predicted": "evacuate falling action jams", "gold": "difficult falling action traffic jams"}
+{"sentence": "In 2004, a huge earthquake off Aceh triggered a tsunami that killed 230, 000 people across Asia.", "predicted": "earthquake precondition killed", "gold": "earthquake precondition tsunami"}
+{"sentence": "Dozens injured as 6. 1 - magnitude quake hits Indonesia's Aceh", "predicted": "quake precondition hits", "gold": "injured falling action 6. 1 - magnitude quake"}
+{"sentence": "A strong 6. 1 - magnitude earthquake struck Indonesia's northwestern province of Aceh today, causing buildings to collapse and injuring at least 50 people.", "predicted": "earthquake precondition collapse", "gold": "6. 1 - magnitude earthquake precondition collapse"}
+{"sentence": "A strong 6. 1 - magnitude earthquake struck Indonesia's northwestern province of Aceh today, causing buildings to collapse and injuring at least 50 people.", "predicted": "earthquake precondition collapse", "gold": "6. 1 - magnitude earthquake precondition injuring"}
+{"sentence": "People also ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute, an AFP journalist at the scene said.", "predicted": "ran falling action quake", "gold": "ran falling action quake"}
+{"sentence": "People also ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute, an AFP journalist at the scene said.", "predicted": "panic falling action quake", "gold": "in panic falling action quake"}
+{"sentence": "A massive quake struck off Aceh in 2004, sparking a tsunami that killed 170, 000 people in the province on Sumatra and tens of thousands more in countries around the Indian Ocean.", "predicted": "quake precondition killed", "gold": "quake precondition tsunami"}
+{"sentence": "A massive quake struck off Aceh in 2004, sparking a tsunami that killed 170, 000 people in the province on Sumatra and tens of thousands more in countries around the Indian Ocean.", "predicted": "quake precondition quake", "gold": "tsunami precondition killed"}
+{"sentence": "Powerful 6. 1 magnitude earthquake injures dozens in Indonesia's Aceh province", "predicted": "earthquake precondition injurures", "gold": "6. 1 magnitude earthquake precondition injures"}
+{"sentence": "A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province, on the island of Sumatra. Dozens have been reported injured.", "predicted": "earthquake precondition injured", "gold": "6. 1 magnitude earthquake precondition injured"}
+{"sentence": "The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass.", "predicted": "quake precondition shaken", "gold": "quake precondition shaken"}
+{"sentence": "\"I see many houses were damaged and their roofs fell onto some people, \" said central Aceh district resident Bensu Elianita to the Associated Press. The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass.", "predicted": "quake precondition damaged", "gold": "quake precondition damaged"}
+{"sentence": "\"I see many houses were damaged and their roofs fell onto some people, \" said central Aceh district resident Bensu Elianita to the Associated Press. The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass.", "predicted": "quake precondition shaken", "gold": "quake precondition fell onto"}
+{"sentence": "\"Many people were injured but it is difficult to evacuate them due to traffic jams. \" The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass.", "predicted": "quake precondition quake", "gold": "quake precondition injured"}
+{"sentence": "\"Many people were injured but it is difficult to evacuate them due to traffic jams. \"", "predicted": "injured falling action jams", "gold": "difficult falling action traffic jams"}
+{"sentence": "Aceh was hit extremely hard by the massive \"Boxing Day\" earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered.", "predicted": "earthquake precondition died", "gold": "hit falling action \"Boxing Day\" earthquake"}
+{"sentence": "Aceh was hit extremely hard by the massive \"Boxing Day\" earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered.", "predicted": "earthquake precondition killing", "gold": "hit falling action tsunami"}
+{"sentence": "Aceh was hit extremely hard by the massive \"Boxing Day\" earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered.", "predicted": "earthquake precondition death", "gold": "\"Boxing Day\" earthquake precondition killing"}
+{"sentence": "Aceh was hit extremely hard by the massive \"Boxing Day\" earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered.", "predicted": "hit precondition death", "gold": "tsunami precondition killing"}
+{"sentence": "UNHCR condemns air attack on refugee camp in South Sudan", "predicted": "condemns falling action attack", "gold": "condemns falling action air attack"}
+{"sentence": "UNHCR condemns air attack on refugee camp in South Sudan The UN refugee agency on Friday strongly condemned the aerial bombing of a temporary refugee camp in South Sudan sheltering more than 20, 000 civilians fleeing from conflict in neighbouring Sudan's Nuba Mountains.", "predicted": "attack precondition fleeing", "gold": "air attack precondition condemned"}
+{"sentence": "UNHCR condemns air attack on refugee camp in South Sudan The UN refugee agency on Friday strongly condemned the aerial bombing of a temporary refugee camp in South Sudan sheltering more than 20, 000 civilians fleeing from conflict in neighbouring Sudan's Nuba Mountains.", "predicted": "bombing precondition fleeing", "gold": "air attack precondition bombing"}
+{"sentence": "The UN refugee agency on Friday strongly condemned the aerial bombing of a temporary refugee camp in South Sudan sheltering more than 20, 000 civilians fleeing from conflict in neighbouring Sudan's Nuba Mountains.", "predicted": "fleeing falling action conflict", "gold": "condemned falling action bombing"}
+{"sentence": "The UN refugee agency on Friday strongly condemned the aerial bombing of a temporary refugee camp in South Sudan sheltering more than 20, 000 civilians fleeing from conflict in neighbouring Sudan's Nuba Mountains.", "predicted": "fleeing falling action conflict", "gold": "fleeing falling action conflict"}
+{"sentence": "UNHCR condemns air attack on refugee camp in South Sudan \"Two of the bombs fell within the Yida camp, including one close to the school, \" said UNHCR spokesman Adrian Edwards.", "predicted": "attack falling action fell", "gold": "air attack precondition fell"}
+{"sentence": "The UN refugee agency on Friday strongly condemned the aerial bombing of a temporary refugee camp in South Sudan sheltering more than 20, 000 civilians fleeing from conflict in neighbouring Sudan's Nuba Mountains. \"Fortunately there were no casualties in the camp and we are verifying the situation of surrounding communities, \" he told journalists in Geneva.", "predicted": "fleeing falling action conflict", "gold": "bombing precondition casualties"}
+{"sentence": "The refugee agency is concerned by the escalating tensions in the border areas between Sudan and South Sudan, where hundreds of thousands of civilians have been uprooted since June as a result of fighting.", "predicted": "tensions falling action fighting", "gold": "concerned falling action tensions"}
+{"sentence": "The refugee agency is concerned by the escalating tensions in the border areas between Sudan and South Sudan, where hundreds of thousands of civilians have been uprooted since June as a result of fighting.", "predicted": "tensions falling action fighting", "gold": "uprooted falling action fighting"}
+{"sentence": "The UN refugee agency on Friday strongly condemned the aerial bombing of a temporary refugee camp in South Sudan sheltering more than 20, 000 civilians fleeing from conflict in neighbouring Sudan's Nuba Mountains.", "predicted": "fleeing falling action conflict", "gold": "bombing falling action conflict"}
+{"sentence": "The UN refugee agency on Friday strongly condemned the aerial bombing of a temporary refugee camp in South Sudan sheltering more than 20, 000 civilians fleeing from conflict in neighbouring Sudan's Nuba Mountains.", "predicted": "fleeing falling action conflict", "gold": "sheltering falling action fleeing"}
+{"sentence": "Bombing At Yida Refugee Camp, South Sudan Four bombs were dropped within just a few moments - two landed inside the camp itself, while the other two bombs were dropped near the airstrip where a UN helicopter was delivering much needed food aid.", "predicted": "Bombing precondition dropped", "gold": "Bombing falling action dropped"}
+{"sentence": "On Thursday, November 10th at approximately 3 : 00 pm, the Yida Refugee Camp in South Sudan was bombed. Four bombs were dropped within just a few moments - two landed inside the camp itself, while the other two bombs were dropped near the airstrip where a UN helicopter was delivering much needed food aid.", "predicted": "dropped precondition dropping", "gold": "bombed falling action dropped"}
+{"sentence": "Four bombs were dropped within just a few moments - two landed inside the camp itself, while the other two bombs were dropped near the airstrip where a UN helicopter was delivering much needed food aid.", "predicted": "dropped precondition landed", "gold": "dropped precondition landed"}
+{"sentence": "Four bombs were dropped within just a few moments - two landed inside the camp itself, while the other two bombs were dropped near the airstrip where a UN helicopter was delivering much needed food aid. Of the bombs that landed inside the camp, one detonated about a quarter mile from the NP compound.", "predicted": "dropped precondition detonated", "gold": "dropped precondition landed"}
+{"sentence": "Four bombs were dropped within just a few moments - two landed inside the camp itself, while the other two bombs were dropped near the airstrip where a UN helicopter was delivering much needed food aid. Of the bombs that landed inside the camp, one detonated about a quarter mile from the NP compound.", "predicted": "dropped precondition landed", "gold": "dropped precondition landed"}
+{"sentence": "Of the bombs that landed inside the camp, one detonated about a quarter mile from the NP compound.", "predicted": "detonated precondition detonated", "gold": "landed precondition detonated"}
+{"sentence": "The other landed next to the school building where 300 students were attending class, but it did not explode.", "predicted": "landed precondition explode", "gold": "landed precondition explode"}
+{"sentence": "However, there have been no casualties or fatalities confirmed as a result of this bombing.", "predicted": "accidentalties falling action bombing", "gold": "casualties falling action bombing"}
+{"sentence": "However, there have been no casualties or fatalities confirmed as a result of this bombing.", "predicted": "bombing precondition casualties", "gold": "fatalities falling action bombing"}
+{"sentence": "Breaking News : Sudan Bombs Yida Refugee Camp in South Sudan The Sudan Armed Forces, or SAF, attacked a refugee camp in South Sudan at 2 : 53 p. m. local time today.", "predicted": "Bombs falling action attacked", "gold": "Bombs falling action attacked"}
+{"sentence": "A SAF spokesman denied the attack occurred. At least four bombs were reportedly dropped.", "predicted": "attack precondition dropped", "gold": "attack precondition dropped"}
+{"sentence": "Sources on the ground told Enough that one bomb, which did not explode, fell directly within the camp, in a primary school yard, with several more falling in the close vicinity. A SAF spokesman denied the attack occurred.", "predicted": "fell precondition attack", "gold": "attack precondition fell"}
+{"sentence": "A Reuters correspondent reported hearing a large explosion, then saw \"a crater about two metres ( 6. 6 feet ) wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. At least four bombs were reportedly dropped.", "predicted": "explosion precondition dropped", "gold": "dropped precondition hearing"}
+{"sentence": "A Reuters correspondent reported hearing a large explosion, then saw \"a crater about two metres ( 6. 6 feet ) wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. At least four bombs were reportedly dropped.", "predicted": "explosion precondition crater", "gold": "dropped precondition explosion"}
+{"sentence": "A Reuters correspondent reported hearing a large explosion, then saw \"a crater about two metres ( 6. 6 feet ) wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. At least four bombs were reportedly dropped.", "predicted": "explosion precondition dropping", "gold": "dropped precondition wedged"}
+{"sentence": "A Reuters correspondent reported hearing a large explosion, then saw \"a crater about two metres ( 6. 6 feet ) wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. A SAF spokesman denied the attack occurred.", "predicted": "explosion precondition attack", "gold": "attack precondition flying"}
+{"sentence": "Nevertheless, on Thursday afternoon an Antonov bomber dropped four bombs on the South Sudanese area of Yida, hitting a refugee camp of roughly 21, 000 people, some of them northern Sudanese who had crossed the border since the rebellion in Sudan began.", "predicted": "dropped precondition hitting", "gold": "dropped precondition hitting"}
+{"sentence": "Nevertheless, on Thursday afternoon an Antonov bomber dropped four bombs on the South Sudanese area of Yida, hitting a refugee camp of roughly 21, 000 people, some of them northern Sudanese who had crossed the border since the rebellion in Sudan began.", "predicted": "dropped falling action crossed", "gold": "dropped precondition crossed"}
+{"sentence": "Nevertheless, on Thursday afternoon an Antonov bomber dropped four bombs on the South Sudanese area of Yida, hitting a refugee camp of roughly 21, 000 people, some of them northern Sudanese who had crossed the border since the rebellion in Sudan began. According to an aid worker with knowledge of the event, two bombs fell on an airstrip, one hit a school and one landed on a market, but did not detonate.", "predicted": "detonate precondition hit", "gold": "dropped precondition fell"}
+{"sentence": "Nevertheless, on Thursday afternoon an Antonov bomber dropped four bombs on the South Sudanese area of Yida, hitting a refugee camp of roughly 21, 000 people, some of them northern Sudanese who had crossed the border since the rebellion in Sudan began. According to an aid worker with knowledge of the event, two bombs fell on an airstrip, one hit a school and one landed on a market, but did not detonate.", "predicted": "dropped falling action hit", "gold": "dropped precondition hit"}
+{"sentence": "Nevertheless, on Thursday afternoon an Antonov bomber dropped four bombs on the South Sudanese area of Yida, hitting a refugee camp of roughly 21, 000 people, some of them northern Sudanese who had crossed the border since the rebellion in Sudan began. According to an aid worker with knowledge of the event, two bombs fell on an airstrip, one hit a school and one landed on a market, but did not detonate.", "predicted": "detonate precondition fell", "gold": "dropped precondition landed"}
+{"sentence": "Nevertheless, on Thursday afternoon an Antonov bomber dropped four bombs on the South Sudanese area of Yida, hitting a refugee camp of roughly 21, 000 people, some of them northern Sudanese who had crossed the border since the rebellion in Sudan began. According to an aid worker with knowledge of the event, two bombs fell on an airstrip, one hit a school and one landed on a market, but did not detonate.", "predicted": "detonate precondition hit", "gold": "dropped precondition detonate"}
+{"sentence": "Nevertheless, on Thursday afternoon an Antonov bomber dropped four bombs on the South Sudanese area of Yida, hitting a refugee camp of roughly 21, 000 people, some of them northern Sudanese who had crossed the border since the rebellion in Sudan began. There were varying reports of casualties, but none could be confirmed.", "predicted": "dropped precondition casualties", "gold": "dropped precondition casualties"}
+{"sentence": "Plane bombs South Sudan refugee camp - witness There appeared to be no casualties.", "predicted": "bombs precondition casualties", "gold": "bombs precondition casualties"}
+{"sentence": "A refugee camp was the target of an air strike in South Sudan's Unity state on Thursday, less than 50 km ( 30 miles ) from the tense border with Sudan, a Reuters witness said. There appeared to be no casualties.", "predicted": "strike precondition casualties", "gold": "air strike precondition casualties"}
+{"sentence": "A refugee camp was the target of an air strike in South Sudan's Unity state on Thursday, less than 50 km ( 30 miles ) from the tense border with Sudan, a Reuters witness said. The Reuters correspondent heard a large explosion, then saw a crater about two metres ( 6. 6 feet ) wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north from the Yida refugee camp.", "predicted": "strike precondition crater", "gold": "air strike precondition explosion"}
+{"sentence": "A refugee camp was the target of an air strike in South Sudan's Unity state on Thursday, less than 50 km ( 30 miles ) from the tense border with Sudan, a Reuters witness said. Witnesses at the camp said there were three other explosions at 3 p. m. ( 1200 GMT ).", "predicted": "strike precondition explosions", "gold": "air strike precondition three other explosions"}
+{"sentence": "South Sudan : \"Sudan bombed refugee camp\" A refugee camp in South Sudan's Unity state was bombed on Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan.", "predicted": "bombed precondition raise tensions", "gold": "bombed precondition tensions"}
+{"sentence": "A refugee camp in South Sudan's Unity state was bombed on Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan.", "predicted": "bombed precondition tensions", "gold": "bombed precondition tensions"}
+{"sentence": "A reporter heard a large explosion in the Yida refugee camp, then saw a crater about two metres wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. Sudan's armed forces denied they carried out the strike.", "predicted": "explosion precondition struck", "gold": "strike precondition explosion"}
+{"sentence": "A reporter heard a large explosion in the Yida refugee camp, then saw a crater about two metres wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. Sudan's armed forces denied they carried out the strike.", "predicted": "explosion precondition struck", "gold": "strike precondition wedged"}
+{"sentence": "A reporter heard a large explosion in the Yida refugee camp, then saw a crater about two metres wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. A refugee camp in South Sudan's Unity state was bombed on Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan.", "predicted": "bombed precondition tensions", "gold": "bombed precondition explosion"}
+{"sentence": "A reporter heard a large explosion in the Yida refugee camp, then saw a crater about two metres wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. A refugee camp in South Sudan's Unity state was bombed on Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan.", "predicted": "explosion precondition threatening", "gold": "bombed precondition wedged"}
+{"sentence": "Witnesses said there were three further explosions at 3 p. m. Sudan's armed forces denied they carried out the strike.", "predicted": "explosions falling action strike", "gold": "strike precondition three further explosions"}
+{"sentence": "Witnesses said there were three further explosions at 3 p. m. A refugee camp in South Sudan's Unity state was bombed on Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan.", "predicted": "explosions falling action bombed", "gold": "bombed precondition three further explosions"}
+{"sentence": "A refugee camp in South Sudan's Unity state was bombed on Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan. There were no immediate reports of any casualties.", "predicted": "threatening precondition raise tensions", "gold": "bombed precondition casualties"}
+{"sentence": "Sudan's armed forces denied they carried out the strike. There were no immediate reports of any casualties.", "predicted": "strike precondition casualties", "gold": "strike precondition casualties"}
+{"sentence": "South Sudan warns of war after Sudan bombs refugee camp", "predicted": "warns falling action bombs", "gold": "warns falling action bombs"}
+{"sentence": "Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said.", "predicted": "crossed the border falling action dropped", "gold": "crossed precondition dropped"}
+{"sentence": "Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said. A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties.", "predicted": "dropped precondition killed", "gold": "dropped precondition deaths"}
+{"sentence": "South Sudan warns of war after Sudan bombs refugee camp A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties.", "predicted": "warnings falling action kills", "gold": "bombs precondition deaths"}
+{"sentence": "South Sudan warns of war after Sudan bombs refugee camp A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties.", "predicted": "bombs falling action deaths", "gold": "bombs precondition casualties"}
+{"sentence": "Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said. A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties.", "predicted": "dropped precondition casualties", "gold": "dropped precondition casualties"}
+{"sentence": "The violence in and near the Yida refugee camp, located 10 miles south of the border, came one day after bombings were reported in another region of South Sudan, an attack that provoked strong condemnation from the U. S. State Department.", "predicted": "violence falling action bombings", "gold": "violence falling action bombings"}
+{"sentence": "The violence in and near the Yida refugee camp, located 10 miles south of the border, came one day after bombings were reported in another region of South Sudan, an attack that provoked strong condemnation from the U. S. State Department.", "predicted": "violence precondition condemnation", "gold": "attack precondition condemnation"}
+{"sentence": "Ryan Boyette, a former aid worker who lives in Sudan who is now leading a team of 15 citizen journalists, said he talked to five aid workers in the Yida camp, all of whom said that four bombs were dropped but that they caused no casualties.", "predicted": "dropped falling action casualties", "gold": "dropped precondition casualties"}
+{"sentence": "Sudan Bombs South Sudanese Refugee Camp, Reports Say Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said.", "predicted": "Bombs falling action dropped", "gold": "Bombs falling action crossed"}
+{"sentence": "Sudan Bombs South Sudanese Refugee Camp, Reports Say Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said.", "predicted": "Bombs precondition crossed", "gold": "Bombs falling action dropped"}
+{"sentence": "Sudan Bombs South Sudanese Refugee Camp, Reports Say A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties.", "predicted": "Bombs precondition dead", "gold": "Bombs precondition deaths"}
+{"sentence": "Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said. A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties.", "predicted": "crossed precondition killed", "gold": "dropped precondition deaths"}
+{"sentence": "Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said. A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties.", "predicted": "crossed precondition casualties", "gold": "dropped precondition casualties"}
+{"sentence": "Sudan Bombs South Sudanese Refugee Camp, Reports Say A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties.", "predicted": "Bombs precondition deaths", "gold": "Bombs precondition casualties"}
+{"sentence": "Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said.", "predicted": "dropped falling action filled", "gold": "crossed precondition dropped"}
+{"sentence": "Ryan Boyette, a former aid worker who lives in Sudan who is now leading a team of 15 citizen journalists, said he talked to five aid workers in the Yida camp, all of whom said that four bombs were dropped but that they caused no casualties.", "predicted": "talk precondition dropped", "gold": "dropped precondition casualties"}
+{"sentence": "Ryan Boyette, a former aid worker who lives in Sudan who is now leading a team of 15 citizen journalists, said he talked to five aid workers in the Yida camp, all of whom said that four bombs were dropped but that they caused no casualties. Boyette said a U. N. helicopter had landed on a nearby airstrip right as the first bomb hit.", "predicted": "dropped precondition hit", "gold": "dropped precondition landed"}
+{"sentence": "Ryan Boyette, a former aid worker who lives in Sudan who is now leading a team of 15 citizen journalists, said he talked to five aid workers in the Yida camp, all of whom said that four bombs were dropped but that they caused no casualties. Boyette said a U. N. helicopter had landed on a nearby airstrip right as the first bomb hit.", "predicted": "dropped precondition hit", "gold": "dropped precondition hit"}
+{"sentence": "Ryan Boyette, a former aid worker who lives in Sudan who is now leading a team of 15 citizen journalists, said he talked to five aid workers in the Yida camp, all of whom said that four bombs were dropped but that they caused no casualties. One of the bombs landed in a school yard where about 300 students were attending class, but the bomb did not explode, Boyette said, citing aid workers at the camp.", "predicted": "dropping precondition explode", "gold": "dropped precondition landed"}
+{"sentence": "Ryan Boyette, a former aid worker who lives in Sudan who is now leading a team of 15 citizen journalists, said he talked to five aid workers in the Yida camp, all of whom said that four bombs were dropped but that they caused no casualties. One of the bombs landed in a school yard where about 300 students were attending class, but the bomb did not explode, Boyette said, citing aid workers at the camp.", "predicted": "dropped precondition casualties", "gold": "dropped precondition explode"}
+{"sentence": "Hutson said at least 15, 000 refugees who fled violence in Sudan are living in the Yida camp.", "predicted": "violence falling action living", "gold": "fled falling action violence"}
+{"sentence": "Hutson said at least 15, 000 refugees who fled violence in Sudan are living in the Yida camp.", "predicted": "flee falling action violence", "gold": "fled precondition living"}
+{"sentence": "South Sudan accuses Sudan of air strike on refugee camp", "predicted": "accuses falling action strike", "gold": "accuses falling action air strike"}
+{"sentence": "A refugee camp in South Sudan's Unity state was bombed Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan in the violence - plagued border region.", "predicted": "bombed precondition threatening", "gold": "bombed precondition tensions"}
+{"sentence": "South Sudan accuses Sudan of air strike on refugee camp A refugee camp in South Sudan's Unity state was bombed Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan in the violence - plagued border region.", "predicted": "strike precondition raise tensions", "gold": "air strike precondition tensions"}
+{"sentence": "A refugee camp in South Sudan's Unity state was bombed Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan in the violence - plagued border region.", "predicted": "bombed precondition threatening", "gold": "bombed precondition threatening"}
+{"sentence": "South Sudan accuses Sudan of air strike on refugee camp A refugee camp in South Sudan's Unity state was bombed Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan in the violence - plagued border region.", "predicted": "strike falling action violence", "gold": "air strike precondition threatening"}
+{"sentence": "A Reuters correspondent heard a large explosion in the Yida refugee camp, then saw a crater about two meters ( 6. 6 feet ) wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. Sudan's armed forces denied they carried out the strike.", "predicted": "explosion precondition struck", "gold": "strike precondition explosion"}
+{"sentence": "Witnesses said there were three further explosions at 3 p. m. ( 1200 GMT ). Sudan's armed forces denied they carried out the strike.", "predicted": "explosions falling action strike", "gold": "strike precondition three further explosions"}
+{"sentence": "A Reuters correspondent heard a large explosion in the Yida refugee camp, then saw a crater about two meters ( 6. 6 feet ) wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. A refugee camp in South Sudan's Unity state was bombed Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan in the violence - plagued border region.", "predicted": "explosion precondition threatening", "gold": "bombed precondition wedged"}
+{"sentence": "A Reuters correspondent heard a large explosion in the Yida refugee camp, then saw a crater about two meters ( 6. 6 feet ) wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. A refugee camp in South Sudan's Unity state was bombed Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan in the violence - plagued border region.", "predicted": "tensions falling action violence", "gold": "bombed precondition explosion"}
+{"sentence": "A refugee camp in South Sudan's Unity state was bombed Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan in the violence - plagued border region. Witnesses said there were three further explosions at 3 p. m. ( 1200 GMT ).", "predicted": "violence precondition explosions", "gold": "bombed precondition three further explosions"}
+{"sentence": "A refugee camp in South Sudan's Unity state was bombed Thursday, South Sudan officials and witnesses said, threatening to raise tensions with Sudan in the violence - plagued border region. There were no immediate reports of any casualties at the camp, less than 25 km ( 15 miles ) from the border with Sudan.", "predicted": "bombed precondition threatening", "gold": "bombed precondition casualties"}
+{"sentence": "The bombing was a result of the heightening tensions between Sudan and South Sudan.", "predicted": "bombing precondition highening", "gold": "bombing falling action tensions"}
+{"sentence": "The government of Sudan bombed the Samaritan's Purse refugee camp in Yida, South Sudan, on Thursday, Nov. 10, alleges the nondenominational evangelical Christian organization. The bombing was a result of the heightening tensions between Sudan and South Sudan.", "predicted": "bombed falling action tensions", "gold": "bombed falling action tensions"}
+{"sentence": "Samaritan's Purse Refugee Camp Bombed, Allegedly By Sudanese Government The bombing was a result of the heightening tensions between Sudan and South Sudan.", "predicted": "Bombed falling action explosion", "gold": "Bombed falling action tensions"}
+{"sentence": "The camp, located in the oil - rich northern region of Yida, consists of over 24, 000 refugees who have fled the heavy fighting of Sudan's South Kordofan region.", "predicted": "fled falling action fighting", "gold": "fled falling action fighting"}
+{"sentence": "Sudan 'bombs refugees' in South Sudan's Unity state South Sudanese officials have condemned Sudan after an aerial bombardment of a refugee camp in their territory.", "predicted": "bombs precondition condemned", "gold": "'bombs precondition condemned"}
+{"sentence": "South Sudanese officials have condemned Sudan after an aerial bombardment of a refugee camp in their territory.", "predicted": "condemned falling action aerial bombardment", "gold": "condemned falling action bombardment"}
+{"sentence": "The refugees said the plane had circled before launching two bombing raids.", "predicted": "circled precondition bombing", "gold": "circled precondition launching"}
+{"sentence": "The refugees said the plane had circled before launching two bombing raids.", "predicted": "circled precondition raids", "gold": "circled precondition two bombing raids"}
+{"sentence": "The refugees said the plane had circled before launching two bombing raids. Five bombs were dropped, of which four exploded, they told our correspondent.", "predicted": "raids falling action dropped", "gold": "circled precondition dropped"}
+{"sentence": "Five bombs were dropped, of which four exploded, they told our correspondent.", "predicted": "dropped falling action exploded", "gold": "dropped precondition exploded"}
+{"sentence": "Five bombs were dropped, of which four exploded, they told our correspondent. Our reporter says he did not see any casualties, but Mr Lang, the commissioner of Pariang county in Unity state, said that 12 people had been killed and the death toll could rise.", "predicted": "dropped precondition death", "gold": "dropped precondition casualties"}
+{"sentence": "Five bombs were dropped, of which four exploded, they told our correspondent. Our reporter says he did not see any casualties, but Mr Lang, the commissioner of Pariang county in Unity state, said that 12 people had been killed and the death toll could rise.", "predicted": "killed precondition rise", "gold": "dropped precondition killed"}
+{"sentence": "The refugees said the plane had circled before launching two bombing raids. Our reporter says he did not see any casualties, but Mr Lang, the commissioner of Pariang county in Unity state, said that 12 people had been killed and the death toll could rise.", "predicted": "raids falling action killed", "gold": "two bombing raids precondition casualties"}
+{"sentence": "The refugees said the plane had circled before launching two bombing raids. Our reporter says he did not see any casualties, but Mr Lang, the commissioner of Pariang county in Unity state, said that 12 people had been killed and the death toll could rise.", "predicted": "striked precondition death", "gold": "two bombing raids precondition killed"}
+{"sentence": "The refugees said the plane had circled before launching two bombing raids. Our reporter says he did not see any casualties, but Mr Lang, the commissioner of Pariang county in Unity state, said that 12 people had been killed and the death toll could rise.", "predicted": "raids precondition death", "gold": "two bombing raids precondition death toll"}
+{"sentence": "The refugees said the plane had circled before launching two bombing raids. Our reporter says he did not see any casualties, but Mr Lang, the commissioner of Pariang county in Unity state, said that 12 people had been killed and the death toll could rise.", "predicted": "raids precondition killed", "gold": "two bombing raids precondition rise"}
+{"sentence": "Five bombs were dropped, of which four exploded, they told our correspondent. Our reporter says he did not see any casualties, but Mr Lang, the commissioner of Pariang county in Unity state, said that 12 people had been killed and the death toll could rise.", "predicted": "bombs precondition toll", "gold": "exploded precondition casualties"}
+{"sentence": "Five bombs were dropped, of which four exploded, they told our correspondent. Our reporter says he did not see any casualties, but Mr Lang, the commissioner of Pariang county in Unity state, said that 12 people had been killed and the death toll could rise.", "predicted": "dropped precondition death", "gold": "exploded precondition killed"}

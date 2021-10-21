@@ -7,6 +7,7 @@ from torch.optim.optimizer import Optimizer
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 from transformers import AdamW, get_linear_schedule_with_warmup
 from arguments import ModelArguments, TrainingArguments
+from tqdm import tqdm
 
 
 logger = logging.getLogger(__name__)
@@ -70,26 +71,26 @@ class GenEERModel(pl.LightningModule):
     
     def test_step(self, batch, batch_idx):
         sample_output = self.model.generate(input_ids=batch['input_token_ids'], do_sample=True, 
-                                top_k=20, top_p=0.95, max_length=16, num_return_sequences=1,num_beams=1,)
+                                top_k=20, top_p=0.95, max_length=64, num_return_sequences=1,num_beams=8,)
         sample_output = sample_output.reshape(batch['input_token_ids'].size(0), 1, -1)
         # doc_key = batch['doc_key'] # list 
         tgt_token_ids = batch['tgt_token_ids']
 
-        return (sample_output, tgt_token_ids) 
+        return (sample_output, tgt_token_ids, batch['input_token_ids']) 
 
     def test_epoch_end(self, outputs):
-        # evaluate F1 
-        with open('./predictions.jsonl','w') as writer:
-            for tup in outputs:
-                for idx in range(tup[0].size(0)):
-                    
-                    pred = {
-                        # 'doc_key': tup[0][idx],
-                        'predicted': self.tokenizer.decode(tup[0][idx].squeeze(0), skip_special_tokens=True),
-                        'gold': self.tokenizer.decode(tup[1][idx].squeeze(0), skip_special_tokens=True) 
-                    }
-                    print(pred)
-                    writer.write(json.dumps(pred)+'\n')
+        # evaluate F1
+        preds = []
+        for tup in tqdm(outputs, desc='Decoding: '):
+            for idx in range(tup[0].size(0)):    
+                pred = {
+                    'sentence': self.tokenizer.decode(tup[2][idx].squeeze(0), skip_special_tokens=True),
+                    'predicted': self.tokenizer.decode(tup[0][idx].squeeze(0), skip_special_tokens=True),
+                    'gold': self.tokenizer.decode(tup[1][idx].squeeze(0), skip_special_tokens=True) 
+                }
+                preds.append(pred)
+        with open('./predictions.json','w') as writer:
+            writer.write(json.dumps(preds, indent=6)+'\n')
         return {}
 
     def configure_optimizers(self):

@@ -15,21 +15,25 @@ from arguments import DataTrainingArguments, ModelArguments, TrainingArguments
 from pytorch_lightning.callbacks import LearningRateMonitor, ModelCheckpoint
 from pytorch_lightning.loggers import TensorBoardLogger
 from data_modules.data_modules import load_data_module
+from eval import eval_corpus
+
 
 from model.model import GenEERModel
 
 
-def objective(trial: optuna.trial):
+def objective(trial: optuna.Trial):
     config = configparser.ConfigParser(allow_no_value=False)
     config.read(args.config_file)
     job = args.job
     assert job in config
 
     defaults = {
-        'learning_rate': 5e-4,
-        'batch_size': 4,
+        'learning_rate': trial.suggest_categorical('learning_rate', [5e-6, 5e-5, 5e-4, 5e-3]),
+        'batch_size': 8,
         'warmup_ratio': 0.1,
+        'num_train_epochs': trial.suggest_categorical('num_train_epochs', [3, 5, 7, 9])
     }
+    print("Hyperparams: {}".format(defaults))
     defaults.update(dict(config.items(job)))
     for key in defaults:
         if defaults[key] in ['True', 'False']:
@@ -107,33 +111,50 @@ def objective(trial: optuna.trial):
         callbacks = [lr_logger, checkpoint_callback],
     )
 
-    if args.trained_model:
-        model.load_state_dict(torch.load(args.trained_model, map_location=model.device)['state_dict'])
+    # if args.trained_model:
+    #     model.load_state_dict(torch.load(args.trained_model, map_location=model.device)['state_dict'])
     
-    if args.eval: 
-        print("Testing.....")
-        dm.setup('test')
-        trainer.test(model, datamodule=dm) #also loads training dataloader 
-    else:
-        print("Training....")
-        dm.setup('fit')
-        trainer.fit(model, dm) 
+    # if args.eval: 
+    #     print("Testing.....")
+    #     dm.setup('test')
+    #     trainer.test(model, datamodule=dm) #also loads training dataloader 
+    # else:
+    #     print("Training....")
+    #     dm.setup('fit')
+    #     trainer.fit(model, dm)
+    print("Training....")
+    dm.setup('fit')
+    trainer.fit(model, dm)
+
+    print("Testing .....")
+    dm.setup('test')
+    trainer.test(model, dm)
+
+    f1 = eval_corpus()
+
+    with open('./experiments/results.txt', 'a', encoding='utf-8') as f:
+        f.write(f"F1: {f1}")
+        f.write(f"Hyperparams: \n {defaults}")
+        f.write("--"*10)
+
+    return f1
+
+
     
-    return 0
 if __name__ == '__main__':
     # parse arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('job')
     parser.add_argument('-c', '--config_file', type=str, default='config.ini', help='configuration file')
     parser.add_argument('-e', '--eval', action='store_true', default=False, help='run evaluation only')
-    parser.add_argument('-g', '--gpu', type=int, default=0, help='which GPU to use')
+    parser.add_argument('-g', '--gpu', type=int, default=2, help='which GPU to use')
     parser.add_argument('-l', '--trained_model', type=str, default=None, help='load trained model')
 
     args, remaining_args = parser.parse_known_args()
 
     sampler = optuna.samplers.TPESampler(seed=1741)
     study = optuna.create_study(direction='maximize', sampler=sampler)
-    study.optimize(objective, n_trials=5)
+    study.optimize(objective, n_trials=10)
     trial = study.best_trial
 
     print('Accuracy: {}'.format(trial.value))
