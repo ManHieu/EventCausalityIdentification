@@ -71,7 +71,7 @@ class GenEERModel(pl.LightningModule):
     
     def test_step(self, batch, batch_idx):
         sample_output = self.model.generate(input_ids=batch['input_token_ids'], do_sample=True, 
-                                top_k=20, top_p=0.95, max_length=64, num_return_sequences=1,num_beams=8,)
+                                top_k=20, top_p=0.95, max_length=32, num_return_sequences=1,num_beams=8,)
         sample_output = sample_output.reshape(batch['input_token_ids'].size(0), 1, -1)
         # doc_key = batch['doc_key'] # list 
         tgt_token_ids = batch['tgt_token_ids']

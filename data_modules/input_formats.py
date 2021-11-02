@@ -50,11 +50,8 @@ class IdentifyCausalRelationInputFormat(BaseInputFormat):
     def _format_input(self, example: InputExample) -> str:
         context = ' '.join(example.tokens)
         ED_template = "\n Event triggers are "
-        triggers = [f"'{get_span(example.tokens, [trigger.start, trigger.end])}'" for trigger in example.triggers]
+        triggers = [get_span(example.tokens, [trigger.start, trigger.end]) for trigger in example.triggers]
         ED_template = ED_template + ', '.join(triggers)
-        template = f"\n Causual relation between {' and '.join(triggers)} is "
-        # "something cause something"
-        options = f"\n OPTIONS: \n - {triggers[0]} causes {triggers[1]} \n - {triggers[1]} causes {triggers[0]} \n - none relation"
-        
+        template = "something cause something"
 
-        return context + '</s>' + ED_template + '</s>' + template + '</s>' + options
+        return context + '</s>' + ED_template + '</s>' + template 

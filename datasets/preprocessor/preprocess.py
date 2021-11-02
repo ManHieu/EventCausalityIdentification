@@ -5,7 +5,7 @@ random.seed(1741)
 import tqdm
 import os
 from itertools import combinations
-from preporcessor_utils import remove_special_token
+from preprocessor_utils import remove_special_token
 from sklearn.model_selection import train_test_split
 from data_reader import i2b2_xml_reader, tbd_tml_reader, tdd_tml_reader, tml_reader, tsvx_reader, cat_xml_reader
 
@@ -15,7 +15,7 @@ class Reader(object):
         super().__init__()
         self.type = type
     
-    def read(self, dir_name, file_name):
+    def read(self, dir_name, file_name, inter=False, intra=False):
         if self.type == 'tsvx':
             return tsvx_reader(dir_name, file_name)
         elif self.type == 'tml':
@@ -29,7 +29,7 @@ class Reader(object):
         elif self.type == 'tdd_auto':
             return tdd_tml_reader(dir_name, file_name, type_doc='auto')
         elif self.type == 'cat_xml':
-            return cat_xml_reader(dir_name, file_name)
+            return cat_xml_reader(dir_name, file_name, intra, inter)
         else:
             raise ValueError("We have not supported {} type yet!".format(self.type))
 
@@ -60,13 +60,17 @@ def load_dataset(dir_name, type):
             for file_name in onlyfiles:
                 file_name = os.path.join(topic, file_name)
                 if file_name.endswith('.xml'):
-                    my_dict = reader.read(dir_name, file_name)
+                    my_dict = reader.read(dir_name, file_name, inter=True, intra=False)
                     if my_dict != None:
                         corpus.append(my_dict)
                 
     return corpus
 
 def get_joint_datapoint(my_dict):
+    """
+    Read data for join task:
+    Read all sentence pairs in the doc and show all realtion in each pair.  
+    """
     pair_sents = set(combinations(range(len(my_dict['sentences'])), 2))
     data_points = []
     for pair in pair_sents:
@@ -131,6 +135,10 @@ def get_joint_datapoint(my_dict):
 
 
 def get_cr_datapoint(my_dict):
+    """
+    Read data for realtion classcification task:
+    Read all relation in the doc 
+    """
     data_points = []
     for pair, r_type in my_dict['relation_dict'].items():
         eid1, eid2 = pair
@@ -187,7 +195,11 @@ def get_cr_datapoint(my_dict):
     return data_points
 
 
-def get_ir_datapoint(my_dict):
+def get_intra_ir_datapoint(my_dict):
+    """
+    Read data for intra identify relation:
+    Read all sentence in the doc and relation of trigger pairs in each sentence ([] if no relation) 
+    """
     data_points = []
     for sid, sentence in enumerate(my_dict['sentences']):
         _data_points = []
@@ -246,6 +258,105 @@ def get_ir_datapoint(my_dict):
     
     return data_points
 
+def get_inter_ir_datapoint(my_dict):
+    """
+    Read data for inter identfy relation:
+    Read all sentence pairs in the doc and show realtion of trigger pair in sentence 
+    (only trigger pairs which locate in different sentences).  
+    """
+    data_points = []
+    triggers_in_doc = my_dict['event_dict'].items()
+    event_pairs = combinations(triggers_in_doc, 2)
+    for (eid1, ev1), (eid2, ev2) in event_pairs:
+        if ev1['sent_id'] < ev2['sent_id']:
+            data_point = {}
+
+            sent_1 = my_dict['sentences'][ev1['sent_id']]['tokens']
+            sent_2 = my_dict['sentences'][ev2['sent_id']]['tokens']
+            data_point['tokens'] = sent_1 + sent_2
+
+            trigger1 = {
+                    'eid': eid1,
+                    'type': ev1['class'],
+                    'start': ev1['token_id_list'][0],
+                    'end': ev1['token_id_list'][-1] + 1,
+                    'mention': " ".join(data_point['tokens'][ev1['token_id_list'][0]: ev1['token_id_list'][-1] + 1]),
+                }
+            try:
+                assert ev1['mention'] in trigger1['mention'], "{} - {}".format(ev1['mention'], sent_1['tokens'])
+            except:
+                print("{} - {}".format(ev1['mention'], sent_1['tokens']))
+            
+            trigger2 = {
+                    'eid': eid2,
+                    'type': ev2['class'],
+                    'start': ev2['token_id_list'][0] + len(sent_1),
+                    'end': ev2['token_id_list'][-1] + 1 + len(sent_1),
+                    'mention': " ".join(data_point['tokens'][ev2['token_id_list'][0] + len(sent_1): ev2['token_id_list'][-1] + 1 + len(sent_1)]),
+                }
+            try:
+                assert ev2['mention'] in trigger2['mention'], "{} - {}".format(ev2['mention'], sent_2['tokens'])
+            except:
+                print("{} - {}".format(ev2['mention'], sent_2['tokens']))
+            data_point['triggers'] = [trigger1, trigger2]
+
+            rel = my_dict['relation_dict'].get((eid1, eid2))
+            _rel = my_dict['relation_dict'].get((eid2, eid1))
+            if (eid1, eid2) in my_dict['relation_dict'].keys() or (eid2, eid1) in my_dict['relation_dict'].keys():
+                relation = {'type': rel, 'head': 0, 'tail': 1} if rel != None else {'type': _rel, 'head': 1, 'tail': 0}
+            else:
+                relation = None
+
+            data_point['relations'] =  [relation] if relation != None else []
+            
+            if (relation == None and random.uniform(0, 1) < 0.7) or relation != None:
+                data_points.append(data_point)
+        
+        if ev1['sent_id'] > ev2['sent_id']:
+            data_point = {}
+
+            sent_1 = my_dict['sentences'][ev1['sent_id']]['tokens']
+            sent_2 = my_dict['sentences'][ev2['sent_id']]['tokens']
+            data_point['tokens'] = sent_2 + sent_1
+
+            trigger2 = {
+                    'eid': eid2,
+                    'type': ev2['class'],
+                    'start': ev2['token_id_list'][0],
+                    'end': ev2['token_id_list'][-1] + 1,
+                    'mention': " ".join(data_point['tokens'][ev2['token_id_list'][0]: ev2['token_id_list'][-1] + 1]),
+                }
+            try:
+                assert ev2['mention'] in trigger2['mention'], "{} - {}".format(ev2['mention'], sent_2['tokens'])
+            except:
+                print("{} - {}".format(ev2['mention'], sent_2['tokens']))
+            
+            trigger1 = {
+                    'eid': eid1,
+                    'type': ev1['class'],
+                    'start': ev1['token_id_list'][0] + len(sent_2),
+                    'end': ev1['token_id_list'][-1] + 1 + len(sent_2),
+                    'mention': " ".join(data_point['tokens'][ev1['token_id_list'][0] + len(sent_2): ev1['token_id_list'][-1] + 1 + len(sent_2)]),
+                }
+            try:
+                assert ev1['mention'] in trigger1['mention'], "{} - {}".format(ev1['mention'], sent_1['tokens'])
+            except:
+                print("{} - {}".format(ev1['mention'], sent_1['tokens']))
+            data_point['triggers'] = [trigger1, trigger2]
+
+            rel = my_dict['relation_dict'].get((eid1, eid2))
+            _rel = my_dict['relation_dict'].get((eid2, eid1))
+            if (eid1, eid2) in my_dict['relation_dict'].keys() or (eid2, eid1) in my_dict['relation_dict'].keys():
+                relation = {'type': rel, 'head': 0, 'tail': 1} if rel != None else {'type': _rel, 'head': 1, 'tail': 0}
+            else:
+                relation = None
+
+            data_point['relations'] =  [relation] if relation != None else []
+            
+            if (relation == None and random.uniform(0, 1) < 0.7) or relation != None:
+                data_points.append(data_point)
+    
+    return data_points
 
 def loader(dataset):
     if dataset == "MATRES":
@@ -292,25 +403,29 @@ def loader(dataset):
 
         processed_train = []
         for my_dict in train:
-            processed_train.extend(get_ir_datapoint(my_dict))
-        processed_path = "./datasets/ESL/ESL_train.json"
+            processed_train.extend(get_inter_ir_datapoint(my_dict))
+        processed_path = "./datasets/ESL/ESL_inter_train.json"
         with open(processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_train, f, indent=6)
         
         processed_validate = []
         for my_dict in validate:
-            processed_validate.extend(get_ir_datapoint(my_dict))
-        processed_path = "./datasets/ESL/ESL_dev.json"
+            processed_validate.extend(get_inter_ir_datapoint(my_dict))
+        processed_path = "./datasets/ESL/ESL_inter_dev.json"
         with open(processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_validate, f, indent=6)
         
         processed_test = []
         for my_dict in test:
-            processed_test.extend(get_ir_datapoint(my_dict))
-        processed_path = "./datasets/ESL/ESL_test.json"
+            processed_test.extend(get_inter_ir_datapoint(my_dict))
+        processed_path = "./datasets/ESL/ESL_inter_test.json"
         with open(processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_test, f, indent=6)
-        
+    
+    print("Number datapoints in dataset: {}".format(len(processed_train + processed_validate + processed_test)))
+    print("Number training points: {}".format(len(processed_train)))
+    print("Number validate points: {}".format(len(processed_validate)))
+    print("Number test points: {}".format(len(processed_test)))
 
 if __name__ == "__main__":
     loader('ESL')

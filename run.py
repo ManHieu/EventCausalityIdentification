@@ -28,10 +28,10 @@ def objective(trial: optuna.Trial):
     assert job in config
 
     defaults = {
-        'learning_rate': trial.suggest_categorical('learning_rate', [5e-6, 5e-5, 5e-4, 5e-3]),
-        'batch_size': 8,
+        'learning_rate': trial.suggest_categorical('learning_rate', [1e-5, 5e-5, 1e-4, 5e-4, 1e-3,]),
+        'batch_size': trial.suggest_categorical('batch_size', [8, 16, 32]),
         'warmup_ratio': 0.1,
-        'num_train_epochs': trial.suggest_categorical('num_train_epochs', [3, 5, 7, 9])
+        'num_train_epochs': trial.suggest_categorical('num_train_epochs', [1, 2, 3, 5, 7])
     }
     print("Hyperparams: {}".format(defaults))
     defaults.update(dict(config.items(job)))
@@ -66,7 +66,7 @@ def objective(trial: optuna.Trial):
         f'-ep{round(training_args.num_train_epochs)}'
         f'-len{data_args.max_seq_length}'
         f'-lr{training_args.learning_rate}'
-        f'-b{training_args.per_device_train_batch_size}')
+        f'-b{training_args.batch_size}')
     if data_args.output_format is not None:
         output_dir += f'-{data_args.output_format}'
     if data_args.input_format is not None:
@@ -108,7 +108,7 @@ def objective(trial: optuna.Trial):
         gradient_clip_val=training_args.gradient_clip_val, 
         num_sanity_val_steps=1, 
         val_check_interval=0.5, # use float to check every n epochs 
-        callbacks = [lr_logger, checkpoint_callback],
+        callbacks = [lr_logger],
     )
 
     # if args.trained_model:
@@ -131,11 +131,11 @@ def objective(trial: optuna.Trial):
     trainer.test(model, dm)
 
     f1 = eval_corpus()
-
-    with open('./experiments/results.txt', 'a', encoding='utf-8') as f:
-        f.write(f"F1: {f1}")
-        f.write(f"Hyperparams: \n {defaults}")
-        f.write("--"*10)
+    if f1 > 0.4:
+        with open('./results.txt', 'a', encoding='utf-8') as f:
+            f.write(f"F1: {f1} \n")
+            f.write(f"Hyperparams: \n {defaults}\n")
+            f.write(f"{'--'*10} \n")
 
     return f1
 
@@ -154,7 +154,7 @@ if __name__ == '__main__':
 
     sampler = optuna.samplers.TPESampler(seed=1741)
     study = optuna.create_study(direction='maximize', sampler=sampler)
-    study.optimize(objective, n_trials=10)
+    study.optimize(objective, n_trials=75)
     trial = study.best_trial
 
     print('Accuracy: {}'.format(trial.value))

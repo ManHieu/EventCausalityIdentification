@@ -9,7 +9,7 @@ import bs4
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from constants import *
-from preporcessor_utils import *
+from preprocessor_utils import *
 # from nltk import sent_tokenize
 from bs4 import BeautifulSoup as Soup
 import csv
@@ -650,7 +650,7 @@ def tdd_tml_reader(dir_name, file_name, type_doc):
     return my_dict
 
     
-def cat_xml_reader(dir_name, file_name):
+def cat_xml_reader(dir_name, file_name, intra=True, inter=False):
     my_dict = {}
     my_dict['event_dict'] = {}
     my_dict['doc_id'] = file_name.replace('.xml', '')
@@ -717,32 +717,55 @@ def cat_xml_reader(dir_name, file_name):
                 mention = ' '.join(doc_toks[mention_span[0]-1:mention_span[-1]])
                 my_dict['event_dict'][eid] = {}
                 my_dict['event_dict'][eid]['mention'] = mention
+                my_dict['event_dict'][eid]['mention_span'] = mention_span
                 my_dict['event_dict'][eid]['token_id_list'] = mention_span_sent
                 my_dict['event_dict'][eid]['class'] = e_typ
                 my_dict['event_dict'][eid]['sent_id'] = find_sent_id(my_dict['sentences'], mention_span)
                 assert my_dict['event_dict'][eid]['sent_id'] != None
     
     my_dict['relation_dict'] = {}
-    for item in xml_dom.find('relations').children:
-        if type(item)== bs4.element.Tag and 'plot_link' in item.name:
-            r_id = item.attrs['r_id']
-            if item.has_attr('signal'):
-                signal = item.attrs['signal']
-            else:
-                signal = ''
-            try:
-                r_typ = item.attrs['reltype']
-            except:
-                # print(my_dict['doc_id'])
-                # print(item)
-                continue
-            cause = item.attrs['causes']
-            cause_by = item.attrs['caused_by']
-            head = int(item.find('source').attrs['m_id'])
-            tail = int(item.find('target').attrs['m_id'])
+    if intra==True:
+        for item in xml_dom.find('relations').children:
+            if type(item)== bs4.element.Tag and 'plot_link' in item.name:
+                r_id = item.attrs['r_id']
+                if item.has_attr('signal'):
+                    signal = item.attrs['signal']
+                else:
+                    signal = ''
+                try:
+                    r_typ = item.attrs['reltype']
+                except:
+                    # print(my_dict['doc_id'])
+                    # print(item)
+                    continue
+                cause = item.attrs['causes']
+                cause_by = item.attrs['caused_by']
+                head = int(item.find('source').attrs['m_id'])
+                tail = int(item.find('target').attrs['m_id'])
 
-            assert head in my_dict['event_dict'].keys() and tail in my_dict['event_dict'].keys()
-            my_dict['relation_dict'][(head, tail)] = r_typ
+                assert head in my_dict['event_dict'].keys() and tail in my_dict['event_dict'].keys()
+                my_dict['relation_dict'][(head, tail)] = r_typ
+                
+    if inter==True:
+        dir_name = './datasets/ESL/annotated_data/v0.9/'
+        inter_dir_name = dir_name.replace('annotated_data', 'evaluation_format/full_corpus') + 'event_mentions_extended/'
+        file_name = file_name.replace('.xml.xml', '.xml')
+        lines = []
+        try:
+            with open(inter_dir_name+file_name, 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+        except:
+            print("{} is not exit!".format(inter_dir_name+file_name))
+        for line in lines:
+            rel = line.strip().split('\t')
+            r_typ = rel[2]
+            head_span, tail_span = get_mention_span(rel[0]), get_mention_span(rel[1])
+            # print(head_span, tail_span)
+            head, tail = find_m_id(head_span, my_dict['event_dict']), find_m_id(tail_span, my_dict['event_dict'])
+            assert head != None and tail != None, f"doc: {inter_dir_name+file_name}, line: {line}, rel: {rel}"
+
+            if r_typ != 'null':
+                my_dict['relation_dict'][(head, tail)] = r_typ
     
     return my_dict
 

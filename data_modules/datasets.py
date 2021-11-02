@@ -71,7 +71,7 @@ class JointERDataset(BaseDataset):
     def load_data(self, split:str, seed: int = None) -> List[InputExample]:
         examples = []
         name = self.name if self.data_name is None else self.data_name
-        file_path = os.path.join(self.data_dir(), f'{name}_{split}.json')
+        file_path = os.path.join(self.data_dir(), f'{name}_inter_{split}.json')
 
         with open(file_path, 'r') as f:
             data = json.load(f)
@@ -83,12 +83,13 @@ class JointERDataset(BaseDataset):
                     for j, y in enumerate(x['triggers'])
                 ]
 
-                relations = [
-                    Relation(
-                        type=self.relation_types[y['type']], head=triggers[y['head']], tail=triggers[y['tail']]
-                    )
-                    for y in x['relations']
-                ]
+                relations = []
+                for y in x['relations']:
+                    # print(y)
+                    relations.append(Relation(
+                            type=self.relation_types[y['type']], head=triggers[y['head']], tail=triggers[y['tail']]
+                        ))
+                    
 
                 tokens = x['tokens']
 

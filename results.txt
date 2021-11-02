@@ -1,0 +1,4 @@
+F1: 0.5840220380757538 
+Hyperparams: 
+ {'learning_rate': 0.0005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '32'}
+-------------------- 
