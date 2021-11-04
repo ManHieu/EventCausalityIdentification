@@ -19,7 +19,7 @@ class Reader(object):
         super().__init__()
         self.type = type
     
-    def read(self, dir_name, file_name, inter=False, intra=False):
+    def read(self, dir_name, file_name, inter=False, intra=True):
         if self.type == 'tsvx':
             return tsvx_reader(dir_name, file_name)
         elif self.type == 'tml':
@@ -37,7 +37,7 @@ class Reader(object):
         else:
             raise ValueError("We have not supported {} type yet!".format(self.type))
 
-def load_dataset(dir_name, type):
+def load_dataset(dir_name, type, inter = False, intra = True):
     reader = Reader(type)
     corpus = []
     if type != 'cat_xml':
@@ -64,7 +64,7 @@ def load_dataset(dir_name, type):
             for file_name in onlyfiles:
                 file_name = os.path.join(topic, file_name)
                 if file_name.endswith('.xml'):
-                    my_dict = reader.read(dir_name, file_name, inter=True, intra=False)
+                    my_dict = reader.read(dir_name, file_name, inter=inter, intra=intra)
                     if my_dict != None:
                         corpus.append(my_dict)
                 
@@ -421,7 +421,7 @@ def loader(dataset):
     
     if dataset == 'ESL':
         dir_name = './datasets/ESL/annotated_data/v0.9/'
-        corpus = load_dataset(dir_name, 'cat_xml')
+        corpus = load_dataset(dir_name, 'cat_xml', intra=True, inter=False)
 
         train, test, validate = [], [], []
         for my_dict in corpus:
