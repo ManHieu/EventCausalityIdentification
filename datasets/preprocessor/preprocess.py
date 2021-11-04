@@ -213,7 +213,7 @@ def get_intra_ir_datapoint(my_dict):
         doc_tokens_pasered = []
 
         dep = p.posdep(sentence['content'])
-        doc_tokens_pasered = covert_to_doc_id(dep)
+        doc_tokens_pasered = covert_to_doc_id(dep, sentence['d_span'])
 
         for token in doc_tokens_pasered:
             dep_tree.add_edge(token['head'], token['id'])
