@@ -160,7 +160,7 @@ def covert_to_doc_id(parsed_sentences, span_in_doc=(0, 0)):
 def id_mapping(dspan_entity, doc_token):
     span_entity = []
     for token in doc_token:
-        if set(range(doc_token['dspan'][0], token['dspan'][1])).issubset(set(range(dspan_entity[0], dspan_entity[1]))):
+        if set(range(token['dspan'][0], token['dspan'][1])).issubset(set(range(dspan_entity[0], dspan_entity[1]))):
             span_entity.append(token['id'])
     
     return span_entity

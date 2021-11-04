@@ -42,11 +42,11 @@ def load_dataset(dir_name, type):
     corpus = []
     if type != 'cat_xml':
         onlyfiles = [f for f in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name, f))]
-        i = 0
+        # i = 0
         for file_name in tqdm.tqdm(onlyfiles):
-            if i == 1:
-                break
-            i = i + 1
+            # if i == 1:
+            #     break
+            # i = i + 1
             if type == 'i2b2_xml':
                 if file_name.endswith('.xml'):
                     my_dict = reader.read(dir_name, file_name)
@@ -240,8 +240,12 @@ def get_intra_ir_datapoint(my_dict):
             e1_ids, e2_ids = id_mapping(ev1['dspan'], doc_tokens_pasered), id_mapping(ev2['dspan'], doc_tokens_pasered)
             if len(e1_ids) > 1:
                 e1_id = nx.lowest_common_ancestor(dep_tree, *e1_ids)
+            else:
+                e1_id = e1_ids[0]
             if len(e2_ids) > 1:
                 e2_id = nx.lowest_common_ancestor(dep_tree, *e2_ids)
+            else:
+                e2_id = e2_ids[0]
             
             lowest_ancestor = nx.lowest_common_ancestor(dep_tree, e1_id, e2_id)
             path1 = nx.shortest_path(dep_tree, lowest_ancestor, e1_id)
