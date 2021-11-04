@@ -1,3 +1,4 @@
+import json
 import re
 import torch
 torch.manual_seed(1741)
@@ -661,7 +662,7 @@ def cat_xml_reader(dir_name, file_name, intra=True, inter=False):
             doc = f.read()
             xml_dom = Soup(doc, 'lxml')
     except Exception as e:
-        print("Can't load this file: {} Please check it T_T". format(dir_name + file_name))
+        print("Can't load this file: {}. Please check it T_T". format(dir_name + file_name))
         print(e)
         return None
 
@@ -691,6 +692,10 @@ def cat_xml_reader(dir_name, file_name, intra=True, inter=False):
 
     my_dict['sentences'] = []
     for k, v in _sent_dict.items():
+        start_token_id = _sent_token_span_doc[k][0]
+        start = len(' '.join(doc_toks[0:start_token_id-1]))
+        if start != 0:
+            start = start + 1 # space at the end of the previous sent
         sent_dict = {}
         sent_dict['sent_id'] = k
         sent_dict['token_span_doc'] = _sent_token_span_doc[k] # from 1
@@ -699,6 +704,8 @@ def cat_xml_reader(dir_name, file_name, intra=True, inter=False):
         sent_dict['pos'] = []
         for tok in v:
             sent_dict['pos'].append(nlp(tok)[0].pos_)
+        sent_dict['d_span'] = (start, start + len(sent_dict['content']))
+        assert my_dict['doc_content'][sent_dict['d_span'][0]: sent_dict['d_span'][1]] == sent_dict['content'], f"\n'{sent_dict['content']}' \n '{my_dict['doc_content'][sent_dict['d_span'][0]: sent_dict['d_span'][1]]}'"
         my_dict['sentences'].append(sent_dict)
 
     if xml_dom.find('markables') == None:
@@ -710,18 +717,22 @@ def cat_xml_reader(dir_name, file_name, intra=True, inter=False):
             eid = int(item.attrs['m_id'])
             e_typ = item.name
             mention_span = [int(anchor.attrs['t_id']) for anchor in item.find_all('token_anchor')]
-            
             mention_span_sent = [my_dict['doc_tokens'][t_id]['tok_sent_id'] for t_id in mention_span]
-
+            
             if len(mention_span) != 0:
                 mention = ' '.join(doc_toks[mention_span[0]-1:mention_span[-1]])
+                start = len(' '.join(doc_toks[0:mention_span[0]-1]))
+                if start != 0:
+                    start = start + 1 # space at the end of the previous
                 my_dict['event_dict'][eid] = {}
                 my_dict['event_dict'][eid]['mention'] = mention
                 my_dict['event_dict'][eid]['mention_span'] = mention_span
+                my_dict['event_dict'][eid]['d_span'] = (start, start + len(mention))
                 my_dict['event_dict'][eid]['token_id_list'] = mention_span_sent
                 my_dict['event_dict'][eid]['class'] = e_typ
                 my_dict['event_dict'][eid]['sent_id'] = find_sent_id(my_dict['sentences'], mention_span)
                 assert my_dict['event_dict'][eid]['sent_id'] != None
+                assert my_dict['doc_content'][start:  start + len(mention)] == mention, f"\n'{mention}' \n'{my_dict['doc_content'][start:  start + len(mention)]}'"
     
     my_dict['relation_dict'] = {}
     if intra==True:
@@ -772,4 +783,6 @@ def cat_xml_reader(dir_name, file_name, intra=True, inter=False):
 
 if __name__ == '__main__':
     my_dict = cat_xml_reader('./datasets/ESL/annotated_data/v0.9/1/','1_1ecbplus.xml.xml')
-    print(my_dict)
+    with open('1_1ecbplus.json', 'w', encoding='utf-8') as f:
+        json.dump(my_dict, f, indent=6)
+    

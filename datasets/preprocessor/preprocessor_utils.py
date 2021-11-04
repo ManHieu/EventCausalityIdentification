@@ -37,6 +37,7 @@ def RoBERTa_list(content, token_list = None, token_span_SENT = None):
     else:
         return roberta_subword_to_ID, roberta_subwords, roberta_subword_span, -1
 
+
 def tokenized_to_origin_span(text, token_list):
     token_span = []
     pointer = 0
@@ -52,6 +53,7 @@ def tokenized_to_origin_span(text, token_list):
         token_span.append([start, end])
     return token_span
 
+
 def sent_id_lookup(my_dict, start_char, end_char = None):
     for sent_dict in my_dict['sentences']:
         if end_char is None:
@@ -61,10 +63,12 @@ def sent_id_lookup(my_dict, start_char, end_char = None):
             if start_char >= sent_dict['sent_start_char'] and end_char <= sent_dict['sent_end_char']:
                 return sent_dict['sent_id']
 
+
 def token_id_lookup(token_span_SENT, start_char, end_char):
     for index, token_span in enumerate(token_span_SENT):
         if start_char >= token_span[0] and end_char <= token_span[1]:
             return index
+
 
 def span_SENT_to_DOC(token_span_SENT, sent_start):
     token_span_DOC = []
@@ -76,6 +80,7 @@ def span_SENT_to_DOC(token_span_SENT, sent_start):
         token_span_DOC.append([start_char, end_char])
         #token_count += 1
     return token_span_DOC
+
 
 def id_lookup(span_SENT, start_char):
     # this function is applicable to RoBERTa subword or token from ltf/spaCy
@@ -101,6 +106,7 @@ def list_id_lookup(span_SENT: List[Set[int]], start_char: int, end_char: int):
     assert len(list_id) != 0, "Nothing is found. \n span sentence: {} \n start_char: {} \n end_char: {}".format(span_SENT, start_char, end_char)
     return list_id
 
+
 def find_sent_id(sentences: List[Dict], mention_span: List[int]):
     """
     Find sentence id of mention (ESL)
@@ -112,12 +118,15 @@ def find_sent_id(sentences: List[Dict], mention_span: List[int]):
     
     return None
 
+
 def remove_special_token(seq: List[str]) -> List[str]:
     return [re.sub("[^A-Za-z0-9.,?']", " ", token) for token in seq]
+
 
 def get_mention_span(span: str) -> List[int]:
     span = [int(tok.strip()) for tok in span.split('_')]
     return span
+
 
 def find_m_id(mention: List[int], eventdict:Dict):
     for m_id, ev in eventdict.items():
@@ -126,6 +135,35 @@ def find_m_id(mention: List[int], eventdict:Dict):
             return m_id
     
     return None
+
+
+def covert_to_doc_id(parsed_sentences, span_in_doc=(0, 0)):
+    doc = []
+    num_previous = 0
+    for sent in parsed_sentences['sentences']:
+        for token in sent['tokens']:
+            token['id'] = token['id'] + num_previous
+            if token['head'] != 0:
+                token['head'] = token['head'] + num_previous
+            else:
+                token['head'] = token['head']
+    
+            token['dspan'] = (token['dspan'][0] + span_in_doc[0], token['dspan'][1] + span_in_doc[0])
+            
+            doc.append(token)
+
+        num_previous = num_previous + len(sent['tokens'])
+    
+    return doc
+
+
+def id_mapping(dspan_entity, doc_token):
+    span_entity = []
+    for token in doc_token:
+        if set(range(doc_token['dspan'][0], token['dspan'][1])).issubset(set(range(dspan_entity[0], dspan_entity[1]))):
+            span_entity.append(token['id'])
+    
+    return span_entity
 
     
 

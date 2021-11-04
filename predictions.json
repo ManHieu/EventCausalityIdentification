@@ -21,7 +21,7 @@
       },
       {
             "sentence": "The government of Sudan bombed the Samaritan's Purse refugee camp in Yida, South Sudan, on Thursday, Nov. 10, alleges the nondenominational evangelical Christian organization. The bombing was a result of the heightening tensions between Sudan and South Sudan. Event triggers are bombed, tensions something cause something",
-            "predicted": "tensions causes bombed",
+            "predicted": "none",
             "gold": "tensions causes bombed"
       },
       {
@@ -191,7 +191,7 @@
       },
       {
             "sentence": "Samaritan's Purse Refugee Camp Bombed, Allegedly By Sudanese Government The bombing was a result of the heightening tensions between Sudan and South Sudan. Event triggers are Bombed, tensions something cause something",
-            "predicted": "tensions causes Bombed",
+            "predicted": "none",
             "gold": "tensions causes Bombed"
       },
       {
@@ -906,7 +906,7 @@
       },
       {
             "sentence": "A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties. The violence in and near the Yida refugee camp, located 10 miles south of the border, came one day after bombings were reported in another region of South Sudan, an attack that provoked strong condemnation from the U. S. State Department. Event triggers are bombings, deaths something cause something",
-            "predicted": "none",
+            "predicted": "bombings causes deaths",
             "gold": "none"
       },
       {
@@ -1226,7 +1226,7 @@
       },
       {
             "sentence": "South Sudan warns of war after Sudan bombs refugee camp A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties. Event triggers are deaths, bombs something cause something",
-            "predicted": "none",
+            "predicted": "bombs causes deaths",
             "gold": "bombs causes deaths"
       },
       {
@@ -1406,7 +1406,7 @@
       },
       {
             "sentence": "South Sudan warns of war after Sudan bombs refugee camp Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said. Event triggers are bombs, crossed something cause something",
-            "predicted": "crossed causes bombs",
+            "predicted": "none",
             "gold": "crossed causes bombs"
       },
       {
@@ -1446,7 +1446,7 @@
       },
       {
             "sentence": "South Sudan warns of war after Sudan bombs refugee camp A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties. Event triggers are bombs, casualties something cause something",
-            "predicted": "none",
+            "predicted": "bombs causes casualties",
             "gold": "bombs causes casualties"
       },
       {
@@ -1456,7 +1456,7 @@
       },
       {
             "sentence": "South Sudan warns of war after Sudan bombs refugee camp Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said. Event triggers are war, crossed something cause something",
-            "predicted": "crossed causes war",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -1981,7 +1981,7 @@
       },
       {
             "sentence": "The UN refugee agency on Friday strongly condemned the aerial bombing of a temporary refugee camp in South Sudan sheltering more than 20, 000 civilians fleeing from conflict in neighbouring Sudan's Nuba Mountains. The refugee agency is concerned by the escalating tensions in the border areas between Sudan and South Sudan, where hundreds of thousands of civilians have been uprooted since June as a result of fighting. Event triggers are sheltering, fighting something cause something",
-            "predicted": "none",
+            "predicted": "fighting causes sheltering",
             "gold": "none"
       },
       {
@@ -2266,7 +2266,7 @@
       },
       {
             "sentence": "\"Fortunately there were no casualties in the camp and we are verifying the situation of surrounding communities, \" he told journalists in Geneva. The refugee agency is concerned by the escalating tensions in the border areas between Sudan and South Sudan, where hundreds of thousands of civilians have been uprooted since June as a result of fighting. Event triggers are fighting, casualties something cause something",
-            "predicted": "none",
+            "predicted": "fighting causes casualties",
             "gold": "none"
       },
       {
@@ -2361,7 +2361,7 @@
       },
       {
             "sentence": "Sudan 'bombs refugees' in South Sudan's Unity state Our reporter says he did not see any casualties, but Mr Lang, the commissioner of Pariang county in Unity state, said that 12 people had been killed and the death toll could rise. Event triggers are killed, 'bombs something cause something",
-            "predicted": "none",
+            "predicted": "'bombs causes killed",
             "gold": "none"
       },
       {
@@ -2556,12 +2556,12 @@
       },
       {
             "sentence": "South Sudanese officials have condemned Sudan after an aerial bombardment of a refugee camp in their territory. The refugees said the plane had circled before launching two bombing raids. Event triggers are two bombing raids, condemned something cause something",
-            "predicted": "two bombing raids causes condemned",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "The refugees said the plane had circled before launching two bombing raids. Our reporter says he did not see any casualties, but Mr Lang, the commissioner of Pariang county in Unity state, said that 12 people had been killed and the death toll could rise. Event triggers are two bombing raids, death toll something cause something",
-            "predicted": "none",
+            "predicted": "bombing raids causes death toll",
             "gold": "two bombing raids causes death toll"
       },
       {
@@ -2616,7 +2616,7 @@
       },
       {
             "sentence": "Sudan 'bombs refugees' in South Sudan's Unity state South Sudanese officials have condemned Sudan after an aerial bombardment of a refugee camp in their territory. Event triggers are 'bombs, condemned something cause something",
-            "predicted": "none",
+            "predicted": "'bombs causes condemned",
             "gold": "'bombs causes condemned"
       },
       {
@@ -4186,7 +4186,7 @@
       },
       {
             "sentence": "Sudan Bombs South Sudanese Refugee Camp, Reports Say Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said. Event triggers are Bombs, crossed something cause something",
-            "predicted": "crossed causes Bombs",
+            "predicted": "none",
             "gold": "crossed causes Bombs"
       },
       {
@@ -4326,7 +4326,7 @@
       },
       {
             "sentence": "Military aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees, officials said. A government official initially reported deaths, but an American activist who spoke to aid workers at the camp later said there were no casualties. Event triggers are dropped, deaths something cause something",
-            "predicted": "dropped causes deaths",
+            "predicted": "none",
             "gold": "dropped causes deaths"
       },
       {
@@ -5086,7 +5086,7 @@
       },
       {
             "sentence": "A reporter heard a large explosion in the Yida refugee camp, then saw a crater about two metres wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. Yida is a camp of about 20, 000 refugees from the Nuba Mountains region of South Kordofan, a state north of the border where rebels have been fighting Sudan's army since June. Event triggers are explosion, fighting something cause something",
-            "predicted": "fighting causes explosion",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -5276,7 +5276,7 @@
       },
       {
             "sentence": "A reporter heard a large explosion in the Yida refugee camp, then saw a crater about two metres wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. Yida is a camp of about 20, 000 refugees from the Nuba Mountains region of South Kordofan, a state north of the border where rebels have been fighting Sudan's army since June. Event triggers are flying, fighting something cause something",
-            "predicted": "none",
+            "predicted": "fighting causes flying",
             "gold": "none"
       },
       {
@@ -6146,7 +6146,7 @@
       },
       {
             "sentence": "Sudan has denied striking South Sudanese territory. There were varying reports of casualties, but none could be confirmed. Event triggers are casualties, striking something cause something",
-            "predicted": "striking causes casualties",
+            "predicted": "none",
             "gold": "striking causes casualties"
       },
       {
@@ -6461,7 +6461,7 @@
       },
       {
             "sentence": "A SAF spokesman denied the attack occurred. A Reuters correspondent reported hearing a large explosion, then saw \"a crater about two metres ( 6. 6 feet ) wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. Event triggers are explosion, attack something cause something",
-            "predicted": "none",
+            "predicted": "explosion causes attack",
             "gold": "none"
       },
       {
@@ -6946,7 +6946,7 @@
       },
       {
             "sentence": "A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province, on the island of Sumatra. \"I see many houses were damaged and their roofs fell onto some people, \" said central Aceh district resident Bensu Elianita to the Associated Press. Event triggers are 6. 1 magnitude earthquake, damaged something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes damaged",
             "gold": "none"
       },
       {
@@ -6956,17 +6956,17 @@
       },
       {
             "sentence": "A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province, on the island of Sumatra. \"I see many houses were damaged and their roofs fell onto some people, \" said central Aceh district resident Bensu Elianita to the Associated Press. Event triggers are 6. 1 magnitude earthquake, fell onto something cause something",
-            "predicted": "earthquake causes fell onto",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province, on the island of Sumatra. Dozens have been reported injured. Event triggers are 6. 1 magnitude earthquake, injured something cause something",
-            "predicted": "6. 1 magnitude earthquake causes injured",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes injured"
       },
       {
             "sentence": "A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province, on the island of Sumatra. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are 6. 1 magnitude earthquake, injured something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes injured",
             "gold": "none"
       },
       {
@@ -6996,7 +6996,7 @@
       },
       {
             "sentence": "Powerful 6. 1 magnitude earthquake injures dozens in Indonesia's Aceh province A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province, on the island of Sumatra. Event triggers are 6. 1 magnitude earthquake, injures something cause something",
-            "predicted": "6. 1 magnitude earthquake causes injures",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes injures"
       },
       {
@@ -7121,7 +7121,7 @@
       },
       {
             "sentence": "The epicenter of the quake was roughly 55 kilometers from the town of Bireuen, a regency of the larger Aceh province, and took place at 7 : 37 AM local time according to data from the US Geological Survey. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are quake, traffic jams something cause something",
-            "predicted": "none",
+            "predicted": "quake causes traffic jams",
             "gold": "none"
       },
       {
@@ -7156,7 +7156,7 @@
       },
       {
             "sentence": "The epicenter of the quake was roughly 55 kilometers from the town of Bireuen, a regency of the larger Aceh province, and took place at 7 : 37 AM local time according to data from the US Geological Survey. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are quake, difficult something cause something",
-            "predicted": "none",
+            "predicted": "quake causes difficult",
             "gold": "none"
       },
       {
@@ -7186,7 +7186,7 @@
       },
       {
             "sentence": "The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are quake, traffic jams something cause something",
-            "predicted": "none",
+            "predicted": "quake causes traffic jams",
             "gold": "none"
       },
       {
@@ -7216,7 +7216,7 @@
       },
       {
             "sentence": "The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are quake, difficult something cause something",
-            "predicted": "none",
+            "predicted": "quake causes difficult",
             "gold": "none"
       },
       {
@@ -7411,12 +7411,12 @@
       },
       {
             "sentence": "\"I see many houses were damaged and their roofs fell onto some people, \" said central Aceh district resident Bensu Elianita to the Associated Press. Aceh was hit extremely hard by the massive \"Boxing Day\" earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are fell onto, \"Boxing Day\" earthquake something cause something",
-            "predicted": "\"Boxing Day\" earthquake causes fell onto",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "\"I see many houses were damaged and their roofs fell onto some people, \" said central Aceh district resident Bensu Elianita to the Associated Press. Aceh was hit extremely hard by the massive \"Boxing Day\" earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are fell onto, tsunami something cause something",
-            "predicted": "tsunami causes fell onto",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -7476,7 +7476,7 @@
       },
       {
             "sentence": "\"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Aceh was hit extremely hard by the massive \"Boxing Day\" earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are injured, \"Boxing Day\" earthquake something cause something",
-            "predicted": "\"Boxing Day\" earthquake causes injured",
+            "predicted": "earthquake causes injured",
             "gold": "none"
       },
       {
@@ -7516,7 +7516,7 @@
       },
       {
             "sentence": "\"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Aceh was hit extremely hard by the massive \"Boxing Day\" earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are evacuate, \"Boxing Day\" earthquake something cause something",
-            "predicted": "\"Boxing Day\" earthquake causes evacuate",
+            "predicted": "earthquake causes evacuate",
             "gold": "none"
       },
       {
@@ -7616,7 +7616,7 @@
       },
       {
             "sentence": "\"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Aceh was hit extremely hard by the massive \"Boxing Day\" earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are \"Boxing Day\" earthquake, difficult something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes difficult",
             "gold": "none"
       },
       {
@@ -7626,7 +7626,7 @@
       },
       {
             "sentence": "Powerful 6. 1 magnitude earthquake injures dozens in Indonesia's Aceh province Aceh was hit extremely hard by the massive \"Boxing Day\" earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are tsunami, injures something cause something",
-            "predicted": "tsunami causes injures",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -7866,7 +7866,7 @@
       },
       {
             "sentence": "Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured. \"I see many houses were damaged and their roofs fell onto some people, \" Bensu Elianita, a 22 - year - old resident of Bukit Sama village in Central Aceh district, said shortly after the quake hit. Event triggers are leaving, quake something cause something",
-            "predicted": "none",
+            "predicted": "quake causes leaving",
             "gold": "none"
       },
       {
@@ -8371,12 +8371,12 @@
       },
       {
             "sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province Twelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency. Event triggers are Indonesia earthquake, killed something cause something",
-            "predicted": "Indonesia earthquake causes killed",
+            "predicted": "earthquake causes killed",
             "gold": "Indonesia earthquake causes killed"
       },
       {
             "sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province Twelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency. Event triggers are Indonesia earthquake, injured something cause something",
-            "predicted": "Indonesia earthquake causes injured",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -8391,7 +8391,7 @@
       },
       {
             "sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. Event triggers are Indonesia earthquake, damaged something cause something",
-            "predicted": "Indonesia earthquake causes damaged",
+            "predicted": "earthquake causes damaged",
             "gold": "Indonesia earthquake causes damaged"
       },
       {
@@ -8616,7 +8616,7 @@
       },
       {
             "sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province Twelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency. Event triggers are injured, landslide something cause something",
-            "predicted": "landslide causes injured",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -8711,7 +8711,7 @@
       },
       {
             "sentence": "Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured. The quake also triggered landslides and caused hundreds of people to be evacuated to 10 temporary shelters. Event triggers are leading, quake something cause something",
-            "predicted": "none",
+            "predicted": "quake causes leading",
             "gold": "none"
       },
       {
@@ -8891,7 +8891,7 @@
       },
       {
             "sentence": "Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured. Twelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency. Event triggers are rescue operations, landslide something cause something",
-            "predicted": "landslide causes rescue operations",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -9076,7 +9076,7 @@
       },
       {
             "sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured. Event triggers are 6. 1 magnitude quake, dead something cause something",
-            "predicted": "6. 1 magnitude quake causes dead",
+            "predicted": "none",
             "gold": "6. 1 magnitude quake causes dead"
       },
       {
@@ -9106,27 +9106,27 @@
       },
       {
             "sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province Twelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency. Event triggers are 6. 1 magnitude quake, killed something cause something",
-            "predicted": "6. 1 magnitude quake causes killed",
+            "predicted": "1 magnitude quake causes killed",
             "gold": "6. 1 magnitude quake causes killed"
       },
       {
             "sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province Twelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency. Event triggers are 6. 1 magnitude quake, injured something cause something",
-            "predicted": "6. 1 magnitude quake causes injured",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. Event triggers are 6. 1 magnitude quake, killed something cause something",
-            "predicted": "6. 1 magnitude quake causes killed",
+            "predicted": "quake causes killed",
             "gold": "6. 1 magnitude quake causes killed"
       },
       {
             "sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. Event triggers are 6. 1 magnitude quake, injured something cause something",
-            "predicted": "6. 1 magnitude quake causes injured",
+            "predicted": "1 magnitude quake causes injured",
             "gold": "6. 1 magnitude quake causes injured"
       },
       {
             "sentence": "Indonesia earthquake : 24 dead and over 200 injured as 6. 1 magnitude quake hits Aceh province In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. Event triggers are 6. 1 magnitude quake, damaged something cause something",
-            "predicted": "none",
+            "predicted": "1 magnitude quake causes damaged",
             "gold": "6. 1 magnitude quake causes damaged"
       },
       {
@@ -9201,7 +9201,7 @@
       },
       {
             "sentence": "The quake struck yesterday afternoon at a depth of just six miles and was centred on the far western tip of Sumatra island in Aceh province. \"Many people were injured, but it is difficult to evacuate them due to traffic jams. \" Event triggers are traffic jams, quake something cause something",
-            "predicted": "quake causes traffic jams",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -9596,17 +9596,17 @@
       },
       {
             "sentence": "Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured. Twelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency. Event triggers are 6. 1 magnitude earthquake, killed something cause something",
-            "predicted": "6. 1 magnitude earthquake causes killed",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes killed"
       },
       {
             "sentence": "Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured. In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. Event triggers are 6. 1 magnitude earthquake, killed something cause something",
-            "predicted": "6. 1 magnitude earthquake causes killed",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes killed"
       },
       {
             "sentence": "Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured. In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. Event triggers are 6. 1 magnitude earthquake, injured something cause something",
-            "predicted": "6. 1 magnitude earthquake causes injured",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes injured"
       },
       {
@@ -9626,7 +9626,7 @@
       },
       {
             "sentence": "Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured. The quake also triggered landslides and caused hundreds of people to be evacuated to 10 temporary shelters. Event triggers are 6. 1 magnitude earthquake, evacuated something cause something",
-            "predicted": "earthquake causes evacuated",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes evacuated"
       },
       {
@@ -9671,7 +9671,7 @@
       },
       {
             "sentence": "Soldiers and police are leading rescue operations in Indonesia after a 6. 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured. In 2004, a magnitude - 9. 1 earthquake off Aceh triggered a tsunami that killed 230, 000 people in 14 countries. Event triggers are dead, tsunami something cause something",
-            "predicted": "tsunami causes dead",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -9801,7 +9801,7 @@
       },
       {
             "sentence": "In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. In 2004, a magnitude - 9. 1 earthquake off Aceh triggered a tsunami that killed 230, 000 people in 14 countries. Event triggers are tsunami, damaged something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes damaged",
             "gold": "none"
       },
       {
@@ -9816,7 +9816,7 @@
       },
       {
             "sentence": "The quake also triggered landslides and caused hundreds of people to be evacuated to 10 temporary shelters. In 2004, a magnitude - 9. 1 earthquake off Aceh triggered a tsunami that killed 230, 000 people in 14 countries. Event triggers are tsunami, quake something cause something",
-            "predicted": "quake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -10336,7 +10336,7 @@
       },
       {
             "sentence": "Twelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency. In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. Event triggers are killed, collapsing something cause something",
-            "predicted": "collapsing causes killed",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -10376,7 +10376,7 @@
       },
       {
             "sentence": "Twelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency. In neighbouring Central Aceh district, 10 people were killed, 140 were injured and about 1, 500 houses and buildings were damaged, Nugroho said. Event triggers are injured, landslide something cause something",
-            "predicted": "landslide causes injured",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -10651,7 +10651,7 @@
       },
       {
             "sentence": "The quake struck yesterday afternoon at a depth of just six miles and was centred on the far western tip of Sumatra island in Aceh province. The quake also triggered landslides and caused hundreds of people to be evacuated to 10 temporary shelters. Event triggers are evacuated, depth of just six miles something cause something",
-            "predicted": "depth of just six miles causes evacuated",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -10701,7 +10701,7 @@
       },
       {
             "sentence": "\"I see many houses were damaged and their roofs fell onto some people, \" Bensu Elianita, a 22 - year - old resident of Bukit Sama village in Central Aceh district, said shortly after the quake hit. \"Many people were injured, but it is difficult to evacuate them due to traffic jams. \" Event triggers are quake, difficult something cause something",
-            "predicted": "none",
+            "predicted": "quake causes difficult",
             "gold": "none"
       },
       {
@@ -11341,12 +11341,12 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. In September 2009 a major earthquake near Padang city on Sumatra killed more than 1, 000 people. Event triggers are landslides, killed something cause something",
-            "predicted": "landslides causes killed",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. The 6. 1 - magnitude quake struck inland at a depth of just 10 kilometers in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. Event triggers are landslides, 6. 1 - magnitude quake something cause something",
-            "predicted": "landslides causes 6. 1 - magnitude quake",
+            "predicted": "none",
             "gold": "6. 1 - magnitude quake causes landslides"
       },
       {
@@ -11456,7 +11456,7 @@
       },
       {
             "sentence": "Five dead, dozens injured in Indonesia quake The 6. 1 - magnitude quake struck inland at a depth of just 10 kilometers in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. Event triggers are injured, 6. 1 - magnitude quake something cause something",
-            "predicted": "6. 1 - magnitude quake causes injured",
+            "predicted": "none",
             "gold": "6. 1 - magnitude quake causes injured"
       },
       {
@@ -11551,7 +11551,7 @@
       },
       {
             "sentence": "Five dead, dozens injured in Indonesia quake Five people died and seven were injured in Aceh in the quake and following aftershocks. Event triggers are Indonesia quake, injured something cause something",
-            "predicted": "Indonesia quake causes injured",
+            "predicted": "quake causes injured",
             "gold": "none"
       },
       {
@@ -11581,12 +11581,12 @@
       },
       {
             "sentence": "Five dead, dozens injured in Indonesia quake It destroyed houses in the district, some 320 kilometers from the provincial capital Banda Aceh, and triggered several landslides. Event triggers are Indonesia quake, destroyed something cause something",
-            "predicted": "Indonesia quake causes destroyed",
+            "predicted": "quake causes destroyed",
             "gold": "Indonesia quake causes destroyed"
       },
       {
             "sentence": "Five dead, dozens injured in Indonesia quake It destroyed houses in the district, some 320 kilometers from the provincial capital Banda Aceh, and triggered several landslides. Event triggers are Indonesia quake, landslides something cause something",
-            "predicted": "Indonesia quake causes landslides",
+            "predicted": "quake causes landslides",
             "gold": "none"
       },
       {
@@ -11621,7 +11621,7 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are earthquake, tsunami something cause something",
-            "predicted": "earthquake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -11746,7 +11746,7 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. The 6. 1 - magnitude quake struck inland at a depth of just 10 kilometers in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. Event triggers are flattened, 6. 1 - magnitude quake something cause something",
-            "predicted": "quake causes flattened",
+            "predicted": "none",
             "gold": "6. 1 - magnitude quake causes flattened"
       },
       {
@@ -11771,7 +11771,7 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. The 6. 1 - magnitude quake struck inland at a depth of just 10 kilometers in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. Event triggers are flattened, depth of just 10 kilometers something cause something",
-            "predicted": "depth of just 10 kilometers causes flattened",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -11826,7 +11826,7 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. The 6. 1 - magnitude quake struck inland at a depth of just 10 kilometers in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. Event triggers are killing, 6. 1 - magnitude quake something cause something",
-            "predicted": "6. 1 - magnitude quake causes killing",
+            "predicted": "none",
             "gold": "6. 1 - magnitude quake causes killing"
       },
       {
@@ -11896,7 +11896,7 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. The 6. 1 - magnitude quake struck inland at a depth of just 10 kilometers in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. Event triggers are injuring, 6. 1 - magnitude quake something cause something",
-            "predicted": "6. 1 - magnitude quake causes injuring",
+            "predicted": "none",
             "gold": "6. 1 - magnitude quake causes injuring"
       },
       {
@@ -11911,7 +11911,7 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. It destroyed houses in the district, some 320 kilometers from the provincial capital Banda Aceh, and triggered several landslides. Event triggers are injuring, landslides something cause something",
-            "predicted": "none",
+            "predicted": "landslides causes injuring",
             "gold": "none"
       },
       {
@@ -11931,7 +11931,7 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. Aceh, on the northern tip of Sumatra, is regularly hit by quakes. Event triggers are quakes, devastated something cause something",
-            "predicted": "quakes causes devastated",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -11991,7 +11991,7 @@
       },
       {
             "sentence": "It destroyed houses in the district, some 320 kilometers from the provincial capital Banda Aceh, and triggered several landslides. Aceh, on the northern tip of Sumatra, is regularly hit by quakes. Event triggers are quakes, landslides something cause something",
-            "predicted": "quakes causes landslides",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12021,7 +12021,7 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are devastated, tsunami something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes devastated",
             "gold": "none"
       },
       {
@@ -12201,7 +12201,7 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Event triggers are tsunami, quake something cause something",
-            "predicted": "quake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12216,7 +12216,7 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. Five people died and seven were injured in Aceh in the quake and following aftershocks. Event triggers are tsunami, injured something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes injured",
             "gold": "none"
       },
       {
@@ -12251,7 +12251,7 @@
       },
       {
             "sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Event triggers are tremor, tsunami alert something cause something",
-            "predicted": "tremor causes tsunami alert",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12266,7 +12266,7 @@
       },
       {
             "sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Five people died and seven were injured in Aceh in the quake and following aftershocks. Event triggers are tremor, aftershocks something cause something",
-            "predicted": "tremor causes aftershocks",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12346,12 +12346,12 @@
       },
       {
             "sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Event triggers are tsunami, quake something cause something",
-            "predicted": "quake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Five people died and seven were injured in Aceh in the quake and following aftershocks. Event triggers are tsunami, injured something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes injured",
             "gold": "none"
       },
       {
@@ -12366,7 +12366,7 @@
       },
       {
             "sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. In September 2009 a major earthquake near Padang city on Sumatra killed more than 1, 000 people. Event triggers are tsunami, killed something cause something",
-            "predicted": "tsunami causes killed",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12386,12 +12386,12 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are tsunami, quake something cause something",
-            "predicted": "quake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "It destroyed houses in the district, some 320 kilometers from the provincial capital Banda Aceh, and triggered several landslides. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are tsunami, destroyed something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes destroyed",
             "gold": "none"
       },
       {
@@ -12596,7 +12596,7 @@
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Event triggers are tsunami alert, quake something cause something",
-            "predicted": "quake causes tsunami alert",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12606,7 +12606,7 @@
       },
       {
             "sentence": "The 6. 1 - magnitude quake struck inland at a depth of just 10 kilometers in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. Five people died and seven were injured in Aceh in the quake and following aftershocks. Event triggers are died, 6. 1 - magnitude quake something cause something",
-            "predicted": "6. 1 - magnitude quake causes died",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12626,7 +12626,7 @@
       },
       {
             "sentence": "It destroyed houses in the district, some 320 kilometers from the provincial capital Banda Aceh, and triggered several landslides. Five people died and seven were injured in Aceh in the quake and following aftershocks. Event triggers are died, landslides something cause something",
-            "predicted": "landslides causes died",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12646,7 +12646,7 @@
       },
       {
             "sentence": "The 6. 1 - magnitude quake struck inland at a depth of just 10 kilometers in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. Five people died and seven were injured in Aceh in the quake and following aftershocks. Event triggers are injured, 6. 1 - magnitude quake something cause something",
-            "predicted": "6. 1 - magnitude quake causes injured",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12716,12 +12716,12 @@
       },
       {
             "sentence": "Five people died and seven were injured in Aceh in the quake and following aftershocks. In September 2009 a major earthquake near Padang city on Sumatra killed more than 1, 000 people. Event triggers are aftershocks, earthquake something cause something",
-            "predicted": "earthquake causes aftershocks",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "Five people died and seven were injured in Aceh in the quake and following aftershocks. In September 2009 a major earthquake near Padang city on Sumatra killed more than 1, 000 people. Event triggers are aftershocks, killed something cause something",
-            "predicted": "aftershocks causes killed",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12731,12 +12731,12 @@
       },
       {
             "sentence": "Five dead, dozens injured in Indonesia quake Five people died and seven were injured in Aceh in the quake and following aftershocks. Event triggers are aftershocks, dead something cause something",
-            "predicted": "aftershocks causes dead",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. Five people died and seven were injured in Aceh in the quake and following aftershocks. Event triggers are aftershocks, quake something cause something",
-            "predicted": "quake causes aftershocks",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12836,12 +12836,12 @@
       },
       {
             "sentence": "The 6. 1 - magnitude quake struck inland at a depth of just 10 kilometers in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. It destroyed houses in the district, some 320 kilometers from the provincial capital Banda Aceh, and triggered several landslides. Event triggers are 6. 1 - magnitude quake, destroyed something cause something",
-            "predicted": "6. 1 - magnitude quake causes destroyed",
+            "predicted": "none",
             "gold": "6. 1 - magnitude quake causes destroyed"
       },
       {
             "sentence": "The 6. 1 - magnitude quake struck inland at a depth of just 10 kilometers in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. It destroyed houses in the district, some 320 kilometers from the provincial capital Banda Aceh, and triggered several landslides. Event triggers are 6. 1 - magnitude quake, landslides something cause something",
-            "predicted": "6. 1 - magnitude quake causes landslides",
+            "predicted": "none",
             "gold": "6. 1 - magnitude quake causes landslides"
       },
       {
@@ -12871,7 +12871,7 @@
       },
       {
             "sentence": "It destroyed houses in the district, some 320 kilometers from the provincial capital Banda Aceh, and triggered several landslides. In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Event triggers are It, Indian Ocean - wide something cause something",
-            "predicted": "none",
+            "predicted": "It causes Indian Ocean - wide",
             "gold": "none"
       },
       {
@@ -12881,7 +12881,7 @@
       },
       {
             "sentence": "Five dead, dozens injured in Indonesia quake It destroyed houses in the district, some 320 kilometers from the provincial capital Banda Aceh, and triggered several landslides. Event triggers are dead, landslides something cause something",
-            "predicted": "landslides causes dead",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -12966,7 +12966,7 @@
       },
       {
             "sentence": "At least 50 reported injured and buildings destroyed after a 6. 1 magnitude earthquake strikes Sumatra's Aceh province. It took place at 7 : 37 AM local time. Event triggers are It, strikes something cause something",
-            "predicted": "none",
+            "predicted": "It causes strikes",
             "gold": "none"
       },
       {
@@ -12976,7 +12976,7 @@
       },
       {
             "sentence": "A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province on the island of Sumatra early Tuesday. It took place at 7 : 37 AM local time. Event triggers are It, hit something cause something",
-            "predicted": "none",
+            "predicted": "It causes hit",
             "gold": "none"
       },
       {
@@ -12986,7 +12986,7 @@
       },
       {
             "sentence": "It took place at 7 : 37 AM local time. \"I see many houses were damaged and their roofs fell onto some people, \" central Aceh district resident Bensu Elianita told the Associated Press. Event triggers are It, fell onto something cause something",
-            "predicted": "none",
+            "predicted": "It causes fell onto",
             "gold": "none"
       },
       {
@@ -13001,7 +13001,7 @@
       },
       {
             "sentence": "It took place at 7 : 37 AM local time. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are It, injured something cause something",
-            "predicted": "none",
+            "predicted": "It causes injured",
             "gold": "none"
       },
       {
@@ -13021,7 +13021,7 @@
       },
       {
             "sentence": "It took place at 7 : 37 AM local time. Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are It, tsunami something cause something",
-            "predicted": "none",
+            "predicted": "It causes tsunami",
             "gold": "none"
       },
       {
@@ -13211,12 +13211,12 @@
       },
       {
             "sentence": "Powerful earthquake injures dozens in Indonesia's Aceh province At least 50 reported injured and buildings destroyed after a 6. 1 magnitude earthquake strikes Sumatra's Aceh province. Event triggers are injures, 6. 1 magnitude earthquake something cause something",
-            "predicted": "earthquake causes injures",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes injures"
       },
       {
             "sentence": "Powerful earthquake injures dozens in Indonesia's Aceh province A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province on the island of Sumatra early Tuesday. Event triggers are injures, 6. 1 magnitude earthquake something cause something",
-            "predicted": "6. 1 magnitude earthquake causes injures",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes injures"
       },
       {
@@ -13271,7 +13271,7 @@
       },
       {
             "sentence": "Powerful earthquake injures dozens in Indonesia's Aceh province Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are injures, tsunami something cause something",
-            "predicted": "tsunami causes injures",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -13306,7 +13306,7 @@
       },
       {
             "sentence": "At least 50 reported injured and buildings destroyed after a 6. 1 magnitude earthquake strikes Sumatra's Aceh province. A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province on the island of Sumatra early Tuesday. Event triggers are injured, 6. 1 magnitude earthquake something cause something",
-            "predicted": "6. 1 magnitude earthquake causes injured",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes injured"
       },
       {
@@ -13341,7 +13341,7 @@
       },
       {
             "sentence": "At least 50 reported injured and buildings destroyed after a 6. 1 magnitude earthquake strikes Sumatra's Aceh province. Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are injured, Boxing Day earthquake something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes injured",
             "gold": "none"
       },
       {
@@ -13366,7 +13366,7 @@
       },
       {
             "sentence": "At least 50 reported injured and buildings destroyed after a 6. 1 magnitude earthquake strikes Sumatra's Aceh province. A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province on the island of Sumatra early Tuesday. Event triggers are destroyed, 6. 1 magnitude earthquake something cause something",
-            "predicted": "6. 1 magnitude earthquake causes destroyed",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes destroyed"
       },
       {
@@ -13416,7 +13416,7 @@
       },
       {
             "sentence": "At least 50 reported injured and buildings destroyed after a 6. 1 magnitude earthquake strikes Sumatra's Aceh province. Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are destroyed, tsunami something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes destroyed",
             "gold": "none"
       },
       {
@@ -13486,7 +13486,7 @@
       },
       {
             "sentence": "At least 50 reported injured and buildings destroyed after a 6. 1 magnitude earthquake strikes Sumatra's Aceh province. Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are 6. 1 magnitude earthquake, killing something cause something",
-            "predicted": "earthquake causes killing",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -13591,17 +13591,17 @@
       },
       {
             "sentence": "A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province on the island of Sumatra early Tuesday. The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass. Event triggers are 6. 1 magnitude earthquake, shaken something cause something",
-            "predicted": "6. 1 magnitude earthquake causes shaken",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province on the island of Sumatra early Tuesday. \"I see many houses were damaged and their roofs fell onto some people, \" central Aceh district resident Bensu Elianita told the Associated Press. Event triggers are 6. 1 magnitude earthquake, damaged something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes damaged",
             "gold": "none"
       },
       {
             "sentence": "A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province on the island of Sumatra early Tuesday. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are 6. 1 magnitude earthquake, injured something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes injured",
             "gold": "none"
       },
       {
@@ -13626,7 +13626,7 @@
       },
       {
             "sentence": "A powerful 6. 1 magnitude earthquake hit Indonesia's northwestern Aceh province on the island of Sumatra early Tuesday. Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are 6. 1 magnitude earthquake, killing something cause something",
-            "predicted": "earthquake causes killing",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -13736,7 +13736,7 @@
       },
       {
             "sentence": "The epicenter of the quake was roughly 55 kilometers from the town of Bireuen, a regency of the larger Aceh province, according to data from the US Geological Survey. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are quake, traffic jams something cause something",
-            "predicted": "none",
+            "predicted": "quake causes traffic jams",
             "gold": "none"
       },
       {
@@ -13816,12 +13816,12 @@
       },
       {
             "sentence": "The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are quake, difficult something cause something",
-            "predicted": "none",
+            "predicted": "quake causes difficult",
             "gold": "none"
       },
       {
             "sentence": "The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass. Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are quake, recovered something cause something",
-            "predicted": "none",
+            "predicted": "quake causes recovered",
             "gold": "none"
       },
       {
@@ -13896,7 +13896,7 @@
       },
       {
             "sentence": "The quake appears to have shaken the provincial capital of Banda Aceh, which is located at the northern tip of the Sumatran land mass. Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are shaken, tsunami something cause something",
-            "predicted": "tsunami causes shaken",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -14031,7 +14031,7 @@
       },
       {
             "sentence": "\"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Aceh was hit extremely hard by the massive Boxing Day earthquake and tsunami in 2004, killing 170, 000 people in Sumatra alone - with 35, 000 bodies never recovered. Event triggers are evacuate, Boxing Day earthquake something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes evacuate",
             "gold": "none"
       },
       {
@@ -14316,7 +14316,7 @@
       },
       {
             "sentence": "The quake hit inland at a depth of just 10km, 55km south of Bireun and 72 km southeast of Reuleuet, the US Geological Survey said. Houses collapsed in the district, some 320km from the provincial capital Banda Aceh. Event triggers are collapsed, depth of just 10km something cause something",
-            "predicted": "depth of just 10km causes collapsed",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -14326,7 +14326,7 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. The quake hit inland at a depth of just 10km, 55km south of Bireun and 72 km southeast of Reuleuet, the US Geological Survey said. Event triggers are quake, hit something cause something",
-            "predicted": "none",
+            "predicted": "quake causes hit",
             "gold": "none"
       },
       {
@@ -14336,7 +14336,7 @@
       },
       {
             "sentence": "Dozens injured as 6. 1 - magnitude quake hits Indonesia's Aceh A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. Event triggers are quake, hits something cause something",
-            "predicted": "none",
+            "predicted": "quake causes hits",
             "gold": "none"
       },
       {
@@ -14351,12 +14351,12 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. The quake hit inland at a depth of just 10km, 55km south of Bireun and 72 km southeast of Reuleuet, the US Geological Survey said. Event triggers are quake, hit something cause something",
-            "predicted": "none",
+            "predicted": "quake causes hit",
             "gold": "none"
       },
       {
             "sentence": "Dozens injured as 6. 1 - magnitude quake hits Indonesia's Aceh The quake hit inland at a depth of just 10km, 55km south of Bireun and 72 km southeast of Reuleuet, the US Geological Survey said. Event triggers are quake, hits something cause something",
-            "predicted": "none",
+            "predicted": "quake causes hits",
             "gold": "none"
       },
       {
@@ -14451,7 +14451,7 @@
       },
       {
             "sentence": "Dozens injured as 6. 1 - magnitude quake hits Indonesia's Aceh A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. Event triggers are 6. 1 - magnitude earthquake, injured something cause something",
-            "predicted": "6. 1 - magnitude earthquake causes injured",
+            "predicted": "none",
             "gold": "6. 1 - magnitude earthquake causes injured"
       },
       {
@@ -14536,7 +14536,7 @@
       },
       {
             "sentence": "Dozens injured as 6. 1 - magnitude quake hits Indonesia's Aceh A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. Event triggers are 6. 1 - magnitude quake, injured something cause something",
-            "predicted": "6. 1 - magnitude quake causes injured",
+            "predicted": "none",
             "gold": "6. 1 - magnitude quake causes injured"
       },
       {
@@ -14546,7 +14546,7 @@
       },
       {
             "sentence": "Dozens injured as 6. 1 - magnitude quake hits Indonesia's Aceh A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. Event triggers are 6. 1 - magnitude quake, devastated something cause something",
-            "predicted": "6. 1 - magnitude quake causes devastated",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -14601,7 +14601,7 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. The quake hit inland at a depth of just 10km, 55km south of Bireun and 72 km southeast of Reuleuet, the US Geological Survey said. Event triggers are destroyed, depth of just 10km something cause something",
-            "predicted": "none",
+            "predicted": "depth of just 10km causes destroyed",
             "gold": "none"
       },
       {
@@ -14846,7 +14846,7 @@
       },
       {
             "sentence": "Earthquake Of Magnitude 6. 1 Strikes Indonesia's Aceh Province Killing One A magnitude - 6. 1 earthquake struck Indonesia's Aceh province on Tuesday at 07 : 37 a. m. UTC ( 3 : 37 a. m. EDT ), killing at least one and leaving two others missing, the Associated Press reported. Event triggers are magnitude - 6. 1 earthquake, Killing something cause something",
-            "predicted": "earthquake causes Killing",
+            "predicted": "none",
             "gold": "magnitude - 6. 1 earthquake causes Killing"
       },
       {
@@ -14961,7 +14961,7 @@
       },
       {
             "sentence": "Earthquake Of Magnitude 6. 1 Strikes Indonesia's Aceh Province Killing One A magnitude - 6. 1 earthquake struck Indonesia's Aceh province on Tuesday at 07 : 37 a. m. UTC ( 3 : 37 a. m. EDT ), killing at least one and leaving two others missing, the Associated Press reported. Event triggers are Earthquake, struck something cause something",
-            "predicted": "none",
+            "predicted": "Earthquake causes struck",
             "gold": "none"
       },
       {
@@ -14996,7 +14996,7 @@
       },
       {
             "sentence": "Earthquake Of Magnitude 6. 1 Strikes Indonesia's Aceh Province Killing One People ran out of their homes when the quake hit, AP reported, citing residents of Bukit Sama village in Central Aceh district, where the quake has led to a power outage. Event triggers are Earthquake, hit something cause something",
-            "predicted": "none",
+            "predicted": "Earthquake causes hit",
             "gold": "none"
       },
       {
@@ -15071,7 +15071,7 @@
       },
       {
             "sentence": "Earthquake Of Magnitude 6. 1 Strikes Indonesia's Aceh Province Killing One No tsunami warnings were issued following the quake, which injured dozens and damaged several houses in Takengon, the capital of Central Aceh district, AP reported. Event triggers are Earthquake, issued something cause something",
-            "predicted": "none",
+            "predicted": "Earthquake causes issued",
             "gold": "none"
       },
       {
@@ -15081,7 +15081,7 @@
       },
       {
             "sentence": "Earthquake Of Magnitude 6. 1 Strikes Indonesia's Aceh Province Killing One The 2004 tsunami that killed about 230, 000 people across Asia was triggered by a massive 9. 1 - magnitude quake off Aceh. Event triggers are killed, Strikes something cause something",
-            "predicted": "Strikes causes killed",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -15511,7 +15511,7 @@
       },
       {
             "sentence": "No tsunami warnings were issued following the quake, which injured dozens and damaged several houses in Takengon, the capital of Central Aceh district, AP reported. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are traffic jams, quake something cause something",
-            "predicted": "none",
+            "predicted": "quake causes traffic jams",
             "gold": "none"
       },
       {
@@ -15601,7 +15601,7 @@
       },
       {
             "sentence": "Earthquake Of Magnitude 6. 1 Strikes Indonesia's Aceh Province Killing One The epicenter of the quake, which originated six miles beneath the surface, was located 34 miles west of the town of Bireun, near the western coast of Sumatra island, according to the U. S. Geological Survey. Event triggers are Strikes, quake something cause something",
-            "predicted": "quake causes Strikes",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -15621,12 +15621,12 @@
       },
       {
             "sentence": "Earthquake Of Magnitude 6. 1 Strikes Indonesia's Aceh Province Killing One People ran out of their homes when the quake hit, AP reported, citing residents of Bukit Sama village in Central Aceh district, where the quake has led to a power outage. Event triggers are Strikes, quake something cause something",
-            "predicted": "quake causes Strikes",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "Earthquake Of Magnitude 6. 1 Strikes Indonesia's Aceh Province Killing One People ran out of their homes when the quake hit, AP reported, citing residents of Bukit Sama village in Central Aceh district, where the quake has led to a power outage. Event triggers are Strikes, quake something cause something",
-            "predicted": "quake causes Strikes",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -15856,7 +15856,7 @@
       },
       {
             "sentence": "Earthquake Of Magnitude 6. 1 Strikes Indonesia's Aceh Province Killing One The 2004 tsunami that killed about 230, 000 people across Asia was triggered by a massive 9. 1 - magnitude quake off Aceh. Event triggers are Killing, 2004 tsunami something cause something",
-            "predicted": "tsunami causes Killing",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -16301,7 +16301,7 @@
       },
       {
             "sentence": "No tsunami warnings were issued following the quake, which injured dozens and damaged several houses in Takengon, the capital of Central Aceh district, AP reported. \"I see many houses were damaged and their roofs fell onto some people, \" a Bukit Sama village resident told AP. Event triggers are tsunami warnings, damaged something cause something",
-            "predicted": "none",
+            "predicted": "tsunami warnings causes damaged",
             "gold": "none"
       },
       {
@@ -16346,7 +16346,7 @@
       },
       {
             "sentence": "No tsunami warnings were issued following the quake, which injured dozens and damaged several houses in Takengon, the capital of Central Aceh district, AP reported. People ran out of their homes when the quake hit, AP reported, citing residents of Bukit Sama village in Central Aceh district, where the quake has led to a power outage. Event triggers are quake, hit something cause something",
-            "predicted": "none",
+            "predicted": "quake causes hit",
             "gold": "none"
       },
       {
@@ -16541,7 +16541,7 @@
       },
       {
             "sentence": "People ran out of their homes when the quake hit, AP reported, citing residents of Bukit Sama village in Central Aceh district, where the quake has led to a power outage. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are quake, difficult something cause something",
-            "predicted": "none",
+            "predicted": "quake causes difficult",
             "gold": "none"
       },
       {
@@ -16646,7 +16646,7 @@
       },
       {
             "sentence": "People ran out of their homes when the quake hit, AP reported, citing residents of Bukit Sama village in Central Aceh district, where the quake has led to a power outage. \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" Event triggers are quake, difficult something cause something",
-            "predicted": "none",
+            "predicted": "quake causes difficult",
             "gold": "none"
       },
       {
@@ -16876,7 +16876,7 @@
       },
       {
             "sentence": "A magnitude - 6. 1 earthquake struck Indonesia's Aceh province on Tuesday at 07 : 37 a. m. UTC ( 3 : 37 a. m. EDT ), killing at least one and leaving two others missing, the Associated Press reported. The 2004 tsunami that killed about 230, 000 people across Asia was triggered by a massive 9. 1 - magnitude quake off Aceh. Event triggers are 2004 tsunami, missing something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes missing",
             "gold": "none"
       },
       {
@@ -17296,7 +17296,7 @@
       },
       {
             "sentence": "Dozens injured, child dead as 6. 1 - magnitude earthquake hits Indonesia's Aceh A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. Event triggers are 6. 1 - magnitude earthquake, dead something cause something",
-            "predicted": "earthquake causes dead",
+            "predicted": "none",
             "gold": "6. 1 - magnitude earthquake causes dead"
       },
       {
@@ -17431,7 +17431,7 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are which, tremor something cause something",
-            "predicted": "none",
+            "predicted": "which causes tremor",
             "gold": "none"
       },
       {
@@ -17476,7 +17476,7 @@
       },
       {
             "sentence": "Dozens injured, child dead as 6. 1 - magnitude earthquake hits Indonesia's Aceh A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. Event triggers are killed, 6. 1 - magnitude earthquake something cause something",
-            "predicted": "6. 1 - magnitude earthquake causes killed",
+            "predicted": "none",
             "gold": "6. 1 - magnitude earthquake causes killed"
       },
       {
@@ -17551,7 +17551,7 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are quake, tsunami something cause something",
-            "predicted": "quake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -17581,7 +17581,7 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. The quake struck inland at 0737 GMT at a depth of just 10 kilometres ( 6. 2 miles ) in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. Event triggers are quake, depth of just 10 kilometres ( 6. 2 miles something cause something",
-            "predicted": "quake causes depth of just 10 kilometres",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -17651,7 +17651,7 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. In September 2009, a major earthquake near Padang city on Sumatra killed more than 1, 000 people. Event triggers are injured, major earthquake something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes injured",
             "gold": "none"
       },
       {
@@ -17666,7 +17666,7 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are injured, tsunami something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes injured",
             "gold": "none"
       },
       {
@@ -17716,7 +17716,7 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are destroyed, tsunami something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes destroyed",
             "gold": "none"
       },
       {
@@ -17771,7 +17771,7 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are devastated, tsunami something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes devastated",
             "gold": "none"
       },
       {
@@ -17836,7 +17836,7 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. The quake struck inland at 0737 GMT at a depth of just 10 kilometres ( 6. 2 miles ) in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. Event triggers are tsunami, quake something cause something",
-            "predicted": "quake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -17986,7 +17986,7 @@
       },
       {
             "sentence": "Houses collapsed in the district, some 320 kilometres ( 200 miles ) from the provincial capital Banda Aceh. In September 2009, a major earthquake near Padang city on Sumatra killed more than 1, 000 people. Event triggers are major earthquake, collapsed something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes collapsed",
             "gold": "none"
       },
       {
@@ -18006,7 +18006,7 @@
       },
       {
             "sentence": "A 6. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. In September 2009, a major earthquake near Padang city on Sumatra killed more than 1, 000 people. Event triggers are major earthquake, panic something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes panic",
             "gold": "none"
       },
       {
@@ -18016,7 +18016,7 @@
       },
       {
             "sentence": "In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. In September 2009, a major earthquake near Padang city on Sumatra killed more than 1, 000 people. Event triggers are killed, tsunami something cause something",
-            "predicted": "tsunami causes killed",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -18071,7 +18071,7 @@
       },
       {
             "sentence": "The quake struck inland at 0737 GMT at a depth of just 10 kilometres ( 6. 2 miles ) in the mountainous Bener Meriah district in the heart of Aceh, the US Geological Survey said. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are tremor, depth of just 10 kilometres ( 6. 2 miles something cause something",
-            "predicted": "tremor causes depth of just 10 kilometres",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -18146,7 +18146,7 @@
       },
       {
             "sentence": "Houses collapsed in the district, some 320 kilometres ( 200 miles ) from the provincial capital Banda Aceh. Aceh, on the northern tip of Sumatra, is regularly hit by quakes. Event triggers are quakes, collapsed something cause something",
-            "predicted": "quakes causes collapsed",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -18296,7 +18296,7 @@
       },
       {
             "sentence": "A strong 6. 1 - magnitude earthquake struck the northwestern Indonesian province of Aceh on Tuesday, the US Geological Survey said, sending people running into the streets in panic. There were no immediate reports of damage after the quake struck inland at a depth of just 10 kilometres ( 6. 2 miles ), 55 kilometres south of Bireun and 72 kilometres southeast of Reuleuet, said the USGS. Event triggers are sending, quake something cause something",
-            "predicted": "none",
+            "predicted": "quake causes sending",
             "gold": "none"
       },
       {
@@ -18311,7 +18311,7 @@
       },
       {
             "sentence": "A strong 6. 1 - magnitude earthquake struck the northwestern Indonesian province of Aceh on Tuesday, the US Geological Survey said, sending people running into the streets in panic. People ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute, an AFP journalist at the scene said. Event triggers are sending, quake something cause something",
-            "predicted": "none",
+            "predicted": "quake causes sending",
             "gold": "none"
       },
       {
@@ -18371,7 +18371,7 @@
       },
       {
             "sentence": "6. 1 - magnitude quake strikes Indonesia's Aceh : USGS There were no immediate reports of damage after the quake struck inland at a depth of just 10 kilometres ( 6. 2 miles ), 55 kilometres south of Bireun and 72 kilometres southeast of Reuleuet, said the USGS. Event triggers are 6. 1 - magnitude quake, damage something cause something",
-            "predicted": "6. 1 - magnitude quake causes damage",
+            "predicted": "quake causes damage",
             "gold": "none"
       },
       {
@@ -18541,7 +18541,7 @@
       },
       {
             "sentence": "A powerful 6. 1 - magnitude earthquake struck the Indonesian province of Aceh with no tsunami warning issued There were no immediate reports of damage after the quake struck inland at a depth of just 10 kilometres ( 6. 2 miles ), 55 kilometres south of Bireun and 72 kilometres southeast of Reuleuet, said the USGS. Event triggers are 6. 1 - magnitude earthquake, damage something cause something",
-            "predicted": "earthquake causes damage",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -18671,7 +18671,7 @@
       },
       {
             "sentence": "A powerful 6. 1 - magnitude earthquake struck the Indonesian province of Aceh with no tsunami warning issued There were no immediate reports of damage after the quake struck inland at a depth of just 10 kilometres ( 6. 2 miles ), 55 kilometres south of Bireun and 72 kilometres southeast of Reuleuet, said the USGS. Event triggers are tsunami warning, quake something cause something",
-            "predicted": "quake causes tsunami warning",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -18686,12 +18686,12 @@
       },
       {
             "sentence": "A powerful 6. 1 - magnitude earthquake struck the Indonesian province of Aceh with no tsunami warning issued People ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute, an AFP journalist at the scene said. Event triggers are tsunami warning, quake something cause something",
-            "predicted": "quake causes tsunami warning",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "A powerful 6. 1 - magnitude earthquake struck the Indonesian province of Aceh with no tsunami warning issued A massive quake struck off Aceh in 2004, sparking a tsunami that killed 170, 000 people in the province on Sumatra and tens of thousands more in countries around the Indian Ocean. Event triggers are tsunami warning, quake something cause something",
-            "predicted": "quake causes tsunami warning",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -18731,7 +18731,7 @@
       },
       {
             "sentence": "A strong 6. 1 - magnitude earthquake struck the northwestern Indonesian province of Aceh on Tuesday, the US Geological Survey said, sending people running into the streets in panic. There were no immediate reports of damage after the quake struck inland at a depth of just 10 kilometres ( 6. 2 miles ), 55 kilometres south of Bireun and 72 kilometres southeast of Reuleuet, said the USGS. Event triggers are 6. 1 - magnitude earthquake, damage something cause something",
-            "predicted": "earthquake causes damage",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -18741,7 +18741,7 @@
       },
       {
             "sentence": "A strong 6. 1 - magnitude earthquake struck the northwestern Indonesian province of Aceh on Tuesday, the US Geological Survey said, sending people running into the streets in panic. People ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute, an AFP journalist at the scene said. Event triggers are 6. 1 - magnitude earthquake, ran something cause something",
-            "predicted": "earthquake causes ran",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -18871,7 +18871,7 @@
       },
       {
             "sentence": "A strong 6. 1 - magnitude earthquake struck the northwestern Indonesian province of Aceh on Tuesday, the US Geological Survey said, sending people running into the streets in panic. A massive quake struck off Aceh in 2004, sparking a tsunami that killed 170, 000 people in the province on Sumatra and tens of thousands more in countries around the Indian Ocean. Event triggers are running, tsunami something cause something",
-            "predicted": "tsunami causes running",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -18976,7 +18976,7 @@
       },
       {
             "sentence": "There were no immediate reports of damage after the quake struck inland at a depth of just 10 kilometres ( 6. 2 miles ), 55 kilometres south of Bireun and 72 kilometres southeast of Reuleuet, said the USGS. A massive quake struck off Aceh in 2004, sparking a tsunami that killed 170, 000 people in the province on Sumatra and tens of thousands more in countries around the Indian Ocean. Event triggers are quake, tsunami something cause something",
-            "predicted": "quake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -19076,7 +19076,7 @@
       },
       {
             "sentence": "People ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute, an AFP journalist at the scene said. A massive quake struck off Aceh in 2004, sparking a tsunami that killed 170, 000 people in the province on Sumatra and tens of thousands more in countries around the Indian Ocean. Event triggers are quake, tsunami something cause something",
-            "predicted": "quake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -19511,7 +19511,7 @@
       },
       {
             "sentence": "Rescue operations are under way after a 6. 1 magnitude earthquake hit Indonesia's Aceh province, flattening houses and causing landslides. In 2004, a magnitude 9. 1 quake off Indonesia triggered a tsunami that killed some 230, 000 people around the Indian Ocean. Event triggers are tsunami, flattening something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes flattening",
             "gold": "none"
       },
       {
@@ -19716,7 +19716,7 @@
       },
       {
             "sentence": "Indonesia Aceh rescue operation after deadly earthquake Officials say that the quake was felt for around 15 seconds, from Banda Aceh, the regional capital, to Bener Meriah, one of the worst - hit areas. Event triggers are earthquake, felt something cause something",
-            "predicted": "earthquake causes felt",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -19821,12 +19821,12 @@
       },
       {
             "sentence": "Rescue operations are under way after a 6. 1 magnitude earthquake hit Indonesia's Aceh province, flattening houses and causing landslides. Officials say at least 24 people were killed and more than 200 injured by the quake, which struck the western tip of Sumatra island on Tuesday. Event triggers are 6. 1 magnitude earthquake, killed something cause something",
-            "predicted": "6. 1 magnitude earthquake causes killed",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes killed"
       },
       {
             "sentence": "Rescue operations are under way after a 6. 1 magnitude earthquake hit Indonesia's Aceh province, flattening houses and causing landslides. Officials say at least 24 people were killed and more than 200 injured by the quake, which struck the western tip of Sumatra island on Tuesday. Event triggers are 6. 1 magnitude earthquake, injured something cause something",
-            "predicted": "6. 1 magnitude earthquake causes injured",
+            "predicted": "none",
             "gold": "6. 1 magnitude earthquake causes injured"
       },
       {
@@ -20436,7 +20436,7 @@
       },
       {
             "sentence": "Rescue operations are under way after a 6. 1 magnitude earthquake hit Indonesia's Aceh province, flattening houses and causing landslides. Officials say that the quake was felt for around 15 seconds, from Banda Aceh, the regional capital, to Bener Meriah, one of the worst - hit areas. Event triggers are quake, under way something cause something",
-            "predicted": "quake causes under way",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -20451,7 +20451,7 @@
       },
       {
             "sentence": "One report said six children were killed and 14 trapped under debris when a mosque collapsed in Central Aceh. Officials say that the quake was felt for around 15 seconds, from Banda Aceh, the regional capital, to Bener Meriah, one of the worst - hit areas. Event triggers are quake, under debris something cause something",
-            "predicted": "quake causes under debris",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -20621,7 +20621,7 @@
       },
       {
             "sentence": "Strong earthquake hits Indonesia's Aceh province A strong earthquake struck off Indonesia's Aceh province on Tuesday, damaging houses and injuring at least five people. Event triggers are earthquake, struck something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes struck",
             "gold": "none"
       },
       {
@@ -20651,7 +20651,7 @@
       },
       {
             "sentence": "Strong earthquake hits Indonesia's Aceh province In 2004, a huge earthquake off Aceh triggered a tsunami that killed 230, 000 people across Asia. Event triggers are earthquake, tsunami something cause something",
-            "predicted": "earthquake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -21246,7 +21246,7 @@
       },
       {
             "sentence": "The U. S. Geological Survey said the magnitude 6. 1 quake struck at a depth of 10 kilometers ( 6 miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island. At least five people were reportedly injured and 10 houses were damaged in Takengon, the capital of Central Aceh district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency. Event triggers are injured, magnitude 6. 1 quake something cause something",
-            "predicted": "magnitude 6. 1 quake causes injured",
+            "predicted": "none",
             "gold": "magnitude 6. 1 quake causes injured"
       },
       {
@@ -21296,7 +21296,7 @@
       },
       {
             "sentence": "The U. S. Geological Survey said the magnitude 6. 1 quake struck at a depth of 10 kilometers ( 6 miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island. At least five people were reportedly injured and 10 houses were damaged in Takengon, the capital of Central Aceh district, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency. Event triggers are damaged, magnitude 6. 1 quake something cause something",
-            "predicted": "magnitude 6. 1 quake causes damaged",
+            "predicted": "none",
             "gold": "magnitude 6. 1 quake causes damaged"
       },
       {
@@ -21441,7 +21441,7 @@
       },
       {
             "sentence": "The U. S. Geological Survey said the magnitude 6. 1 quake struck at a depth of 10 kilometers ( 6 miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island. \"I see many houses were damages and their roofs fell onto some people, \" said Bensu Elianita, a 22 year - old resident in Bukit Sama village in Central Aceh district. Event triggers are fell onto, magnitude 6. 1 quake something cause something",
-            "predicted": "magnitude 6. 1 quake causes fell onto",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -21836,7 +21836,7 @@
       },
       {
             "sentence": "A strong earthquake struck Indonesia's Aceh province on Tuesday, killing at least one person and leaving two others missing. In 2004, a huge earthquake off Aceh triggered a tsunami that killed 230, 000 people across Asia. Event triggers are tsunami, missing something cause something",
-            "predicted": "tsunami causes missing",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -22116,7 +22116,7 @@
       },
       {
             "sentence": "A strong earthquake struck Indonesia's Aceh province on Tuesday, killing at least one person and leaving two others missing. The magnitude - 6. 1 quake struck at a depth of just 10 kilometers ( six miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island, the US Geological Survey said. Event triggers are killing, magnitude - 6. 1 quake something cause something",
-            "predicted": "magnitude - 6. 1 quake causes killing",
+            "predicted": "none",
             "gold": "magnitude - 6. 1 quake causes killing"
       },
       {
@@ -22126,7 +22126,7 @@
       },
       {
             "sentence": "Magnitude - 6. 1 quake hits Indonesia ; 1 dead A strong earthquake struck Indonesia's Aceh province on Tuesday, killing at least one person and leaving two others missing. Event triggers are killing, hits something cause something",
-            "predicted": "hits causes killing",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -22301,7 +22301,7 @@
       },
       {
             "sentence": "The magnitude - 6. 1 quake struck at a depth of just 10 kilometers ( six miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island, the US Geological Survey said. She said people in the village ran out from their houses in panic and screamed for help. Event triggers are ran, magnitude - 6. 1 quake something cause something",
-            "predicted": "magnitude - 6. 1 quake causes ran",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -22346,7 +22346,7 @@
       },
       {
             "sentence": "The magnitude - 6. 1 quake struck at a depth of just 10 kilometers ( six miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island, the US Geological Survey said. \"I see many houses were damaged and their roofs fell onto some people, \" said Bensu Elianita, a 22 - year - old resident in Bukit Sama village in Central Aceh district. Event triggers are fell onto, magnitude - 6. 1 quake something cause something",
-            "predicted": "magnitude - 6. 1 quake causes fell onto",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -22521,7 +22521,7 @@
       },
       {
             "sentence": "Magnitude - 6. 1 quake hits Indonesia ; 1 dead In 2004, a huge earthquake off Aceh triggered a tsunami that killed 230, 000 people across Asia. Event triggers are Magnitude - 6. 1 quake, killed something cause something",
-            "predicted": "quake causes killed",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -22601,7 +22601,7 @@
       },
       {
             "sentence": "Magnitude - 6. 1 quake hits Indonesia ; 1 dead The magnitude - 6. 1 quake struck at a depth of just 10 kilometers ( six miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island, the US Geological Survey said. Event triggers are magnitude - 6. 1 quake, dead something cause something",
-            "predicted": "magnitude - 6. 1 quake causes dead",
+            "predicted": "none",
             "gold": "magnitude - 6. 1 quake causes dead"
       },
       {
@@ -22611,7 +22611,7 @@
       },
       {
             "sentence": "A strong earthquake struck Indonesia's Aceh province on Tuesday, killing at least one person and leaving two others missing. The magnitude - 6. 1 quake struck at a depth of just 10 kilometers ( six miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island, the US Geological Survey said. Event triggers are magnitude - 6. 1 quake, missing something cause something",
-            "predicted": "magnitude - 6. 1 quake causes missing",
+            "predicted": "none",
             "gold": "magnitude - 6. 1 quake causes missing"
       },
       {
@@ -22926,7 +22926,7 @@
       },
       {
             "sentence": "Dozens injured as 6. 1 - magnitude quake hits Indonesia's Aceh A strong 6. 1 - magnitude earthquake struck Indonesia's northwestern province of Aceh today, causing buildings to collapse and injuring at least 50 people. Event triggers are 6. 1 - magnitude quake, injuring something cause something",
-            "predicted": "6. 1 - magnitude quake causes injuring",
+            "predicted": "none",
             "gold": "6. 1 - magnitude quake causes injuring"
       },
       {
@@ -23041,7 +23041,7 @@
       },
       {
             "sentence": "A strong 6. 1 - magnitude earthquake struck Indonesia's northwestern province of Aceh today, causing buildings to collapse and injuring at least 50 people. People also ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute, an AFP journalist at the scene said. Event triggers are 6. 1 - magnitude earthquake, ran something cause something",
-            "predicted": "earthquake causes ran",
+            "predicted": "none",
             "gold": "6. 1 - magnitude earthquake causes ran"
       },
       {
@@ -23116,7 +23116,7 @@
       },
       {
             "sentence": "A strong 6. 1 - magnitude earthquake struck Indonesia's northwestern province of Aceh today, causing buildings to collapse and injuring at least 50 people. The quake hit inland at 0737 GMT at a depth of just 10 kilometres, 55 kilometres south of Bireun and 72 kilometres southeast of Reuleuet, the US Geological Survey said. Event triggers are collapse, depth of just 10 kilometres something cause something",
-            "predicted": "depth of just 10 kilometres causes collapse",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -23231,7 +23231,7 @@
       },
       {
             "sentence": "The quake hit inland at 0737 GMT at a depth of just 10 kilometres, 55 kilometres south of Bireun and 72 kilometres southeast of Reuleuet, the US Geological Survey said. People also ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute, an AFP journalist at the scene said. Event triggers are quake, shook something cause something",
-            "predicted": "none",
+            "predicted": "quake causes shook",
             "gold": "none"
       },
       {
@@ -23296,7 +23296,7 @@
       },
       {
             "sentence": "People also ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute, an AFP journalist at the scene said. A massive quake struck off Aceh in 2004, sparking a tsunami that killed 170, 000 people in the province on Sumatra and tens of thousands more in countries around the Indian Ocean. Event triggers are quake, tsunami something cause something",
-            "predicted": "quake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -23916,7 +23916,7 @@
       },
       {
             "sentence": "According to the US Geological Survey, the quake hit at a depth of 10 kilometers ( 6 miles ) in the Northern Province of Aceh. On April 20, a 6. 4 - magnitude earthquake jolted Indonesia's Maluku, but caused no casualties or material damage. Event triggers are quake, jolted something cause something",
-            "predicted": "quake causes jolted",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -23926,7 +23926,7 @@
       },
       {
             "sentence": "According to the US Geological Survey, the quake hit at a depth of 10 kilometers ( 6 miles ) in the Northern Province of Aceh. Last year, a 6. 4 - magnitude quake rocked the west coast of Sumatra Island, killing at least one person. Event triggers are quake, rocked something cause something",
-            "predicted": "quake causes rocked",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -24026,7 +24026,7 @@
       },
       {
             "sentence": "\"I see many houses were damaged and their roofs fell onto some people, \" said Bensu Elianita, a 22 year - old resident in Bukit Sama village in Central Aceh district, adding, \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" A strong quake off the shores of Indonesia triggered a tsunami that killed 230, 000 people in 13 countries around the Indian Ocean in 2004. Event triggers are damaged, tsunami something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes damaged",
             "gold": "none"
       },
       {
@@ -24136,7 +24136,7 @@
       },
       {
             "sentence": "\"I see many houses were damaged and their roofs fell onto some people, \" said Bensu Elianita, a 22 year - old resident in Bukit Sama village in Central Aceh district, adding, \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" An 8. 7 - magnitude earthquake also hit off the city of Banda Aceh in Sumatra Island in May 2012, triggering regional tsunami alerts. Event triggers are fell onto, 8. 7 - magnitude earthquake something cause something",
-            "predicted": "earthquake causes fell onto",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -24231,7 +24231,7 @@
       },
       {
             "sentence": "\"I see many houses were damaged and their roofs fell onto some people, \" said Bensu Elianita, a 22 year - old resident in Bukit Sama village in Central Aceh district, adding, \"Many people were injured but it is difficult to evacuate them due to traffic jams. \" A strong quake off the shores of Indonesia triggered a tsunami that killed 230, 000 people in 13 countries around the Indian Ocean in 2004. Event triggers are injured, tsunami something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes injured",
             "gold": "none"
       },
       {
@@ -24471,7 +24471,7 @@
       },
       {
             "sentence": "On April 6, an earthquake measuring 7. 2 on the Richter scale struck eastern Indonesia's mountainous West Papua province. A strong quake off the shores of Indonesia triggered a tsunami that killed 230, 000 people in 13 countries around the Indian Ocean in 2004. Event triggers are tsunami, earthquake something cause something",
-            "predicted": "earthquake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -24506,7 +24506,7 @@
       },
       {
             "sentence": "A powerful 6. 1 - magnitude earthquake strikes the northern Indonesian province of Aceh, killing at least three people and injuring dozens more across the affected region. A strong quake off the shores of Indonesia triggered a tsunami that killed 230, 000 people in 13 countries around the Indian Ocean in 2004. Event triggers are tsunami, injuring something cause something",
-            "predicted": "tsunami causes injuring",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -24556,7 +24556,7 @@
       },
       {
             "sentence": "An 8. 7 - magnitude earthquake also hit off the city of Banda Aceh in Sumatra Island in May 2012, triggering regional tsunami alerts. A strong quake off the shores of Indonesia triggered a tsunami that killed 230, 000 people in 13 countries around the Indian Ocean in 2004. Event triggers are killed, tsunami alerts something cause something",
-            "predicted": "none",
+            "predicted": "tsunami alerts causes killed",
             "gold": "none"
       },
       {
@@ -24741,17 +24741,17 @@
       },
       {
             "sentence": "A powerful 6. 1 - magnitude earthquake strikes the northern Indonesian province of Aceh, killing at least three people and injuring dozens more across the affected region. An 8. 7 - magnitude earthquake also hit off the city of Banda Aceh in Sumatra Island in May 2012, triggering regional tsunami alerts. Event triggers are 8. 7 - magnitude earthquake, killing something cause something",
-            "predicted": "earthquake causes killing",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "A powerful 6. 1 - magnitude earthquake strikes the northern Indonesian province of Aceh, killing at least three people and injuring dozens more across the affected region. An 8. 7 - magnitude earthquake also hit off the city of Banda Aceh in Sumatra Island in May 2012, triggering regional tsunami alerts. Event triggers are 8. 7 - magnitude earthquake, injuring something cause something",
-            "predicted": "earthquake causes injuring",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "Eyewitnesses and local residents say many homes and properties have collapsed or been damaged. An 8. 7 - magnitude earthquake also hit off the city of Banda Aceh in Sumatra Island in May 2012, triggering regional tsunami alerts. Event triggers are 8. 7 - magnitude earthquake, collapsed something cause something",
-            "predicted": "earthquake causes collapsed",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -24916,7 +24916,7 @@
       },
       {
             "sentence": "On April 6, an earthquake measuring 7. 2 on the Richter scale struck eastern Indonesia's mountainous West Papua province. An 8. 7 - magnitude earthquake also hit off the city of Banda Aceh in Sumatra Island in May 2012, triggering regional tsunami alerts. Event triggers are hit, earthquake something cause something",
-            "predicted": "none",
+            "predicted": "earthquake causes hit",
             "gold": "none"
       },
       {
@@ -25091,7 +25091,7 @@
       },
       {
             "sentence": "A powerful 6. 1 - magnitude earthquake strikes the northern Indonesian province of Aceh, killing at least three people and injuring dozens more across the affected region. Last year, a 6. 4 - magnitude quake rocked the west coast of Sumatra Island, killing at least one person. Event triggers are 6. 4 - magnitude quake, killing something cause something",
-            "predicted": "quake causes killing",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -25101,7 +25101,7 @@
       },
       {
             "sentence": "A powerful 6. 1 - magnitude earthquake strikes the northern Indonesian province of Aceh, killing at least three people and injuring dozens more across the affected region. Last year, a 6. 4 - magnitude quake rocked the west coast of Sumatra Island, killing at least one person. Event triggers are 6. 4 - magnitude quake, injuring something cause something",
-            "predicted": "quake causes injuring",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -25356,7 +25356,7 @@
       },
       {
             "sentence": "6. 1 - magnitude quake strikes Indonesia's Aceh province A powerful 6. 1 - magnitude earthquake strikes the northern Indonesian province of Aceh, killing at least three people and injuring dozens more across the affected region. Event triggers are 6. 1 - magnitude quake, killing something cause something",
-            "predicted": "6. 1 - magnitude quake causes killing",
+            "predicted": "none",
             "gold": "6. 1 - magnitude quake causes killing"
       },
       {
@@ -25366,7 +25366,7 @@
       },
       {
             "sentence": "6. 1 - magnitude quake strikes Indonesia's Aceh province A powerful 6. 1 - magnitude earthquake strikes the northern Indonesian province of Aceh, killing at least three people and injuring dozens more across the affected region. Event triggers are 6. 1 - magnitude quake, injuring something cause something",
-            "predicted": "6. 1 - magnitude quake causes injuring",
+            "predicted": "none",
             "gold": "6. 1 - magnitude quake causes injuring"
       },
       {
@@ -25706,12 +25706,12 @@
       },
       {
             "sentence": "A powerful 6. 1 - magnitude earthquake strikes the northern Indonesian province of Aceh, killing at least three people and injuring dozens more across the affected region. On April 20, a 6. 4 - magnitude earthquake jolted Indonesia's Maluku, but caused no casualties or material damage. Event triggers are 6. 4 - magnitude earthquake, killing something cause something",
-            "predicted": "6. 4 - magnitude earthquake causes killing",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "A powerful 6. 1 - magnitude earthquake strikes the northern Indonesian province of Aceh, killing at least three people and injuring dozens more across the affected region. On April 20, a 6. 4 - magnitude earthquake jolted Indonesia's Maluku, but caused no casualties or material damage. Event triggers are 6. 4 - magnitude earthquake, injuring something cause something",
-            "predicted": "earthquake causes injuring",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -26681,7 +26681,7 @@
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are trapped, tsunami something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes trapped",
             "gold": "none"
       },
       {
@@ -26731,7 +26731,7 @@
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Event triggers are tsunami alert, EARTHQUAKE something cause something",
-            "predicted": "EARTHQUAKE causes tsunami alert",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -26771,12 +26771,12 @@
       },
       {
             "sentence": "The earthquake reduced houses in parts of Aceh to rubble, set off several landslides and badly damaged roads. In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Event triggers are tsunami alert, earthquake something cause something",
-            "predicted": "earthquake causes tsunami alert",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Event triggers are tsunami alert, disaster something cause something",
-            "predicted": "disaster causes tsunami alert",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -26841,7 +26841,7 @@
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Event triggers are tsunami alert, killed something cause something",
-            "predicted": "none",
+            "predicted": "tsunami alert causes killed",
             "gold": "none"
       },
       {
@@ -27121,7 +27121,7 @@
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. The strong 6. 1 - magnitude quake left hundreds more injured as it rocked a region that was devastated by the quake - triggered tsunami of 2004. Event triggers are EARTHQUAKE, injured something cause something",
-            "predicted": "none",
+            "predicted": "EARTHQUAKE causes injured",
             "gold": "EARTHQUAKE causes injured"
       },
       {
@@ -27166,7 +27166,7 @@
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. As police and military personnel struggled to reach affected areas late Tuesday, there were two aftershocks of more than 5. 0 magnitude. Event triggers are EARTHQUAKE, reach something cause something",
-            "predicted": "EARTHQUAKE causes reach",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -27321,7 +27321,7 @@
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. The strong 6. 1 - magnitude quake left hundreds more injured as it rocked a region that was devastated by the quake - triggered tsunami of 2004. Event triggers are quake, Koran reading session something cause something",
-            "predicted": "none",
+            "predicted": "quake causes Koran reading session",
             "gold": "none"
       },
       {
@@ -27351,7 +27351,7 @@
       },
       {
             "sentence": "The strong 6. 1 - magnitude quake left hundreds more injured as it rocked a region that was devastated by the quake - triggered tsunami of 2004. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are quake, tsunami something cause something",
-            "predicted": "quake causes tsunami",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -27381,7 +27381,7 @@
       },
       {
             "sentence": "The strong 6. 1 - magnitude quake left hundreds more injured as it rocked a region that was devastated by the quake - triggered tsunami of 2004. Rescuers were struggling to find the children still trapped after the mosque collapse in Blang Mancung village, Central Aceh district. Event triggers are quake, find something cause something",
-            "predicted": "none",
+            "predicted": "quake causes find",
             "gold": "none"
       },
       {
@@ -27741,7 +27741,7 @@
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. The strong 6. 1 - magnitude quake left hundreds more injured as it rocked a region that was devastated by the quake - triggered tsunami of 2004. Event triggers are 6. 1 - magnitude quake, death toll something cause something",
-            "predicted": "quake causes death toll",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -27861,12 +27861,12 @@
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. The earthquake reduced houses in parts of Aceh to rubble, set off several landslides and badly damaged roads. Event triggers are death toll, landslides something cause something",
-            "predicted": "landslides causes death toll",
+            "predicted": "none",
             "gold": "none"
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. In April last year an 8. 6 - magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Event triggers are death toll, 8. 6 - magnitude quake something cause something",
-            "predicted": "8. 6 - magnitude quake causes death toll",
+            "predicted": "none",
             "gold": "none"
       },
       {
@@ -28051,7 +28051,7 @@
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. Rescuers were struggling to find the children still trapped after the mosque collapse in Blang Mancung village, Central Aceh district. Event triggers are disaster, collapse something cause something",
-            "predicted": "none",
+            "predicted": "disaster causes collapse",
             "gold": "none"
       },
       {
@@ -28371,7 +28371,7 @@
       },
       {
             "sentence": "The strong 6. 1 - magnitude quake left hundreds more injured as it rocked a region that was devastated by the quake - triggered tsunami of 2004. In 2004 a massive tremor sparked a tsunami that killed 170, 000 people in the province and tens of thousands more in countries around the Indian Ocean. Event triggers are tsunami, killed something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes killed",
             "gold": "none"
       },
       {
@@ -28386,7 +28386,7 @@
       },
       {
             "sentence": "The strong 6. 1 - magnitude quake left hundreds more injured as it rocked a region that was devastated by the quake - triggered tsunami of 2004. Rescuers were struggling to find the children still trapped after the mosque collapse in Blang Mancung village, Central Aceh district. Event triggers are tsunami, trapped something cause something",
-            "predicted": "none",
+            "predicted": "tsunami causes trapped",
             "gold": "none"
       },
       {
@@ -28596,7 +28596,7 @@
       },
       {
             "sentence": "AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province, bringing the confirmed death toll from the disaster to 11. The earthquake reduced houses in parts of Aceh to rubble, set off several landslides and badly damaged roads. Event triggers are landslides, killed something cause something",
-            "predicted": "landslides causes killed",
+            "predicted": "none",
             "gold": "none"
       },
       {

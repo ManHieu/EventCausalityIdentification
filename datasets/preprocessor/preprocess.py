@@ -5,9 +5,13 @@ random.seed(1741)
 import tqdm
 import os
 from itertools import combinations
-from preprocessor_utils import remove_special_token
+import networkx as nx
+from trankit import Pipeline
+from preprocessor_utils import covert_to_doc_id, id_mapping, remove_special_token
 from sklearn.model_selection import train_test_split
 from data_reader import i2b2_xml_reader, tbd_tml_reader, tdd_tml_reader, tml_reader, tsvx_reader, cat_xml_reader
+
+p = Pipeline('english')
 
 
 class Reader(object):
@@ -38,11 +42,11 @@ def load_dataset(dir_name, type):
     corpus = []
     if type != 'cat_xml':
         onlyfiles = [f for f in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name, f))]
-        # i = 0
+        i = 0
         for file_name in tqdm.tqdm(onlyfiles):
-            # if i == 1:
-            #     break
-            # i = i + 1
+            if i == 1:
+                break
+            i = i + 1
             if type == 'i2b2_xml':
                 if file_name.endswith('.xml'):
                     my_dict = reader.read(dir_name, file_name)
@@ -201,8 +205,18 @@ def get_intra_ir_datapoint(my_dict):
     Read all sentence in the doc and relation of trigger pairs in each sentence ([] if no relation) 
     """
     data_points = []
+    
     for sid, sentence in enumerate(my_dict['sentences']):
         _data_points = []
+
+        dep_tree = nx.DiGraph()
+        doc_tokens_pasered = []
+
+        dep = p.posdep(sentence['content'])
+        doc_tokens_pasered = covert_to_doc_id(dep)
+
+        for token in doc_tokens_pasered:
+            dep_tree.add_edge(token['head'], token['id'])
 
         triggers = []
         for eid, event in my_dict['event_dict'].items():
@@ -213,6 +227,7 @@ def get_intra_ir_datapoint(my_dict):
                         'start': event['token_id_list'][0],
                         'end': event['token_id_list'][-1] + 1,
                         'mention': " ".join(sentence['tokens'][event['token_id_list'][0]: event['token_id_list'][-1] + 1]),
+                        'dspan': event['d_span']
                     }
                 try:
                     assert event['mention'] in trigger['mention'], "{} - {}".format(event['mention'], sentence['tokens'])
@@ -222,6 +237,33 @@ def get_intra_ir_datapoint(my_dict):
         
         event_pairs = combinations(triggers, 2)
         for ev1, ev2 in event_pairs:
+            e1_ids, e2_ids = id_mapping(ev1['dspan'], doc_tokens_pasered), id_mapping(ev2['dspan'], doc_tokens_pasered)
+            if len(e1_ids) > 1:
+                e1_id = nx.lowest_common_ancestor(dep_tree, *e1_ids)
+            if len(e2_ids) > 1:
+                e2_id = nx.lowest_common_ancestor(dep_tree, *e2_ids)
+            
+            lowest_ancestor = nx.lowest_common_ancestor(dep_tree, e1_id, e2_id)
+            path1 = nx.shortest_path(dep_tree, lowest_ancestor, e1_id)
+            path2 = nx.shortest_path(dep_tree, lowest_ancestor, e2_id)
+
+            dep_path = []
+            if len(path1) > 1:
+                dep_path1 = []
+                for node in path1:
+                    for token in doc_tokens_pasered:
+                        if token['id'] == node:
+                            dep_path1.append(token['text'])
+                dep_path.append(dep_path1)
+            
+            if len(path2) > 1:
+                dep_path2 = []
+                for node in path2:
+                    for token in doc_tokens_pasered:
+                        if token['id'] == node:
+                            dep_path2.append(token['text'])
+                dep_path.append(dep_path2)
+
             eid1, eid2 = ev1['eid'], ev2['eid']
             rel = my_dict['relation_dict'].get((eid1, eid2))
             _rel = my_dict['relation_dict'].get((eid2, eid1))
@@ -234,7 +276,8 @@ def get_intra_ir_datapoint(my_dict):
                 _data_points.append({
                     'tokens': sentence['tokens'],
                     'triggers': [ev1, ev2],
-                    'relations': [relation] if relation != None else []
+                    'relations': [relation] if relation != None else [], 
+                    'dep_path': dep_path
                 })
 
         # relations = []
@@ -403,22 +446,22 @@ def loader(dataset):
 
         processed_train = []
         for my_dict in train:
-            processed_train.extend(get_inter_ir_datapoint(my_dict))
-        processed_path = "./datasets/ESL/ESL_inter_train.json"
+            processed_train.extend(get_intra_ir_datapoint(my_dict))
+        processed_path = "./datasets/ESL/ESL_intra_train.json"
         with open(processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_train, f, indent=6)
         
         processed_validate = []
         for my_dict in validate:
-            processed_validate.extend(get_inter_ir_datapoint(my_dict))
-        processed_path = "./datasets/ESL/ESL_inter_dev.json"
+            processed_validate.extend(get_intra_ir_datapoint(my_dict))
+        processed_path = "./datasets/ESL/ESL_intra_dev.json"
         with open(processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_validate, f, indent=6)
         
         processed_test = []
         for my_dict in test:
-            processed_test.extend(get_inter_ir_datapoint(my_dict))
-        processed_path = "./datasets/ESL/ESL_inter_test.json"
+            processed_test.extend(get_intra_ir_datapoint(my_dict))
+        processed_path = "./datasets/ESL/ESL_intra_test.json"
         with open(processed_path, 'w', encoding='utf-8') as f:
             json.dump(processed_test, f, indent=6)
     

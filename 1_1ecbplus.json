@@ -1,0 +1,2268 @@
+{
+      "event_dict": {
+            "1": {
+                  "mention": "completed",
+                  "mention_span": [
+                        149
+                  ],
+                  "d_span": [
+                        736,
+                        745
+                  ],
+                  "token_id_list": [
+                        2
+                  ],
+                  "class": "action_aspectual",
+                  "sent_id": 7
+            },
+            "2": {
+                  "mention": "continuing",
+                  "mention_span": [
+                        159
+                  ],
+                  "d_span": [
+                        797,
+                        807
+                  ],
+                  "token_id_list": [
+                        12
+                  ],
+                  "class": "action_aspectual",
+                  "sent_id": 7
+            },
+            "3": {
+                  "mention": "continue",
+                  "mention_span": [
+                        107
+                  ],
+                  "d_span": [
+                        533,
+                        541
+                  ],
+                  "token_id_list": [
+                        27
+                  ],
+                  "class": "action_aspectual",
+                  "sent_id": 4
+            },
+            "4": {
+                  "mention": "stemming from",
+                  "mention_span": [
+                        197,
+                        198
+                  ],
+                  "d_span": [
+                        999,
+                        1012
+                  ],
+                  "token_id_list": [
+                        16,
+                        17
+                  ],
+                  "class": "action_causative",
+                  "sent_id": 8
+            },
+            "5": {
+                  "mention": "treatment",
+                  "mention_span": [
+                        138
+                  ],
+                  "d_span": [
+                        678,
+                        687
+                  ],
+                  "token_id_list": [
+                        6
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 6
+            },
+            "6": {
+                  "mention": "treatment",
+                  "mention_span": [
+                        153
+                  ],
+                  "d_span": [
+                        760,
+                        769
+                  ],
+                  "token_id_list": [
+                        6
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 7
+            },
+            "7": {
+                  "mention": "checked into",
+                  "mention_span": [
+                        183,
+                        184
+                  ],
+                  "d_span": [
+                        934,
+                        946
+                  ],
+                  "token_id_list": [
+                        2,
+                        3
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 8
+            },
+            "8": {
+                  "mention": "Leaves",
+                  "mention_span": [
+                        34
+                  ],
+                  "d_span": [
+                        146,
+                        152
+                  ],
+                  "token_id_list": [
+                        2
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 1
+            },
+            "9": {
+                  "mention": "Checks Into",
+                  "mention_span": [
+                        38,
+                        39
+                  ],
+                  "d_span": [
+                        166,
+                        177
+                  ],
+                  "token_id_list": [
+                        6,
+                        7
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 1
+            },
+            "10": {
+                  "mention": "left",
+                  "mention_span": [
+                        57
+                  ],
+                  "d_span": [
+                        256,
+                        260
+                  ],
+                  "token_id_list": [
+                        3
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 3
+            },
+            "11": {
+                  "mention": "building",
+                  "mention_span": [
+                        163
+                  ],
+                  "d_span": [
+                        826,
+                        834
+                  ],
+                  "token_id_list": [
+                        16
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 7
+            },
+            "12": {
+                  "mention": "moving",
+                  "mention_span": [
+                        64
+                  ],
+                  "d_span": [
+                        290,
+                        296
+                  ],
+                  "token_id_list": [
+                        10
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 3
+            },
+            "13": {
+                  "mention": "treatment",
+                  "mention_span": [
+                        161
+                  ],
+                  "d_span": [
+                        812,
+                        821
+                  ],
+                  "token_id_list": [
+                        14
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 7
+            },
+            "14": {
+                  "mention": "established",
+                  "mention_span": [
+                        167
+                  ],
+                  "d_span": [
+                        853,
+                        864
+                  ],
+                  "token_id_list": [
+                        20
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 7
+            },
+            "15": {
+                  "mention": "case",
+                  "mention_span": [
+                        204
+                  ],
+                  "d_span": [
+                        1040,
+                        1044
+                  ],
+                  "token_id_list": [
+                        23
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 8
+            },
+            "16": {
+                  "mention": "signed",
+                  "mention_span": [
+                        94
+                  ],
+                  "d_span": [
+                        455,
+                        461
+                  ],
+                  "token_id_list": [
+                        14
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 4
+            },
+            "17": {
+                  "mention": "accident",
+                  "mention_span": [
+                        203
+                  ],
+                  "d_span": [
+                        1031,
+                        1039
+                  ],
+                  "token_id_list": [
+                        22
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 8
+            },
+            "18": {
+                  "mention": "allowing",
+                  "mention_span": [
+                        98
+                  ],
+                  "d_span": [
+                        481,
+                        489
+                  ],
+                  "token_id_list": [
+                        18
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 4
+            },
+            "19": {
+                  "mention": "deal",
+                  "mention_span": [
+                        196
+                  ],
+                  "d_span": [
+                        994,
+                        998
+                  ],
+                  "token_id_list": [
+                        15
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 8
+            },
+            "20": {
+                  "mention": "transfer",
+                  "mention_span": [
+                        100
+                  ],
+                  "d_span": [
+                        494,
+                        502
+                  ],
+                  "token_id_list": [
+                        20
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 4
+            },
+            "21": {
+                  "mention": "plea",
+                  "mention_span": [
+                        195
+                  ],
+                  "d_span": [
+                        989,
+                        993
+                  ],
+                  "token_id_list": [
+                        14
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 8
+            },
+            "22": {
+                  "mention": "statement",
+                  "mention_span": [
+                        177
+                  ],
+                  "d_span": [
+                        900,
+                        909
+                  ],
+                  "token_id_list": [
+                        30
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 7
+            },
+            "23": {
+                  "mention": "rehab",
+                  "mention_span": [
+                        116
+                  ],
+                  "d_span": [
+                        577,
+                        582
+                  ],
+                  "token_id_list": [
+                        36
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 4
+            },
+            "24": {
+                  "mention": "move",
+                  "mention_span": [
+                        130
+                  ],
+                  "d_span": [
+                        641,
+                        645
+                  ],
+                  "token_id_list": [
+                        12
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 5
+            },
+            "25": {
+                  "mention": "received",
+                  "mention_span": [
+                        140
+                  ],
+                  "d_span": [
+                        692,
+                        700
+                  ],
+                  "token_id_list": [
+                        8
+                  ],
+                  "class": "action_occurrence",
+                  "sent_id": 6
+            },
+            "29": {
+                  "mention": "spoke",
+                  "mention_span": [
+                        126
+                  ],
+                  "d_span": [
+                        621,
+                        626
+                  ],
+                  "token_id_list": [
+                        8
+                  ],
+                  "class": "action_reporting",
+                  "sent_id": 5
+            },
+            "26": {
+                  "mention": "said",
+                  "mention_span": [
+                        174
+                  ],
+                  "d_span": [
+                        890,
+                        894
+                  ],
+                  "token_id_list": [
+                        27
+                  ],
+                  "class": "action_reporting",
+                  "sent_id": 7
+            },
+            "27": {
+                  "mention": "confirmed",
+                  "mention_span": [
+                        78
+                  ],
+                  "d_span": [
+                        360,
+                        369
+                  ],
+                  "token_id_list": [
+                        24
+                  ],
+                  "class": "action_reporting",
+                  "sent_id": 3
+            },
+            "28": {
+                  "mention": "confirmed",
+                  "mention_span": [
+                        88
+                  ],
+                  "d_span": [
+                        422,
+                        431
+                  ],
+                  "token_id_list": [
+                        8
+                  ],
+                  "class": "action_reporting",
+                  "sent_id": 4
+            },
+            "30": {
+                  "mention": "grateful",
+                  "mention_span": [
+                        135
+                  ],
+                  "d_span": [
+                        661,
+                        669
+                  ],
+                  "token_id_list": [
+                        3
+                  ],
+                  "class": "action_state",
+                  "sent_id": 6
+            },
+            "31": {
+                  "mention": "looks forward",
+                  "mention_span": [
+                        156,
+                        157
+                  ],
+                  "d_span": [
+                        780,
+                        793
+                  ],
+                  "token_id_list": [
+                        9,
+                        10
+                  ],
+                  "class": "action_state",
+                  "sent_id": 7
+            },
+            "32": {
+                  "mention": "attorney",
+                  "mention_span": [
+                        121
+                  ],
+                  "d_span": [
+                        595,
+                        603
+                  ],
+                  "token_id_list": [
+                        3
+                  ],
+                  "class": "action_state",
+                  "sent_id": 5
+            }
+      },
+      "doc_id": "1_1ecbplus",
+      "doc_tokens": {
+            "1": {
+                  "token": "http",
+                  "sent_id": 0,
+                  "tok_sent_id": 0
+            },
+            "2": {
+                  "token": ":",
+                  "sent_id": 0,
+                  "tok_sent_id": 1
+            },
+            "3": {
+                  "token": "/",
+                  "sent_id": 0,
+                  "tok_sent_id": 2
+            },
+            "4": {
+                  "token": "/",
+                  "sent_id": 0,
+                  "tok_sent_id": 3
+            },
+            "5": {
+                  "token": "www",
+                  "sent_id": 0,
+                  "tok_sent_id": 4
+            },
+            "6": {
+                  "token": ".",
+                  "sent_id": 0,
+                  "tok_sent_id": 5
+            },
+            "7": {
+                  "token": "accesshollywood",
+                  "sent_id": 0,
+                  "tok_sent_id": 6
+            },
+            "8": {
+                  "token": ".",
+                  "sent_id": 0,
+                  "tok_sent_id": 7
+            },
+            "9": {
+                  "token": "com",
+                  "sent_id": 0,
+                  "tok_sent_id": 8
+            },
+            "10": {
+                  "token": "/",
+                  "sent_id": 0,
+                  "tok_sent_id": 9
+            },
+            "11": {
+                  "token": "lindsay",
+                  "sent_id": 0,
+                  "tok_sent_id": 10
+            },
+            "12": {
+                  "token": "-",
+                  "sent_id": 0,
+                  "tok_sent_id": 11
+            },
+            "13": {
+                  "token": "lohan",
+                  "sent_id": 0,
+                  "tok_sent_id": 12
+            },
+            "14": {
+                  "token": "-",
+                  "sent_id": 0,
+                  "tok_sent_id": 13
+            },
+            "15": {
+                  "token": "leaves",
+                  "sent_id": 0,
+                  "tok_sent_id": 14
+            },
+            "16": {
+                  "token": "-",
+                  "sent_id": 0,
+                  "tok_sent_id": 15
+            },
+            "17": {
+                  "token": "betty",
+                  "sent_id": 0,
+                  "tok_sent_id": 16
+            },
+            "18": {
+                  "token": "-",
+                  "sent_id": 0,
+                  "tok_sent_id": 17
+            },
+            "19": {
+                  "token": "ford",
+                  "sent_id": 0,
+                  "tok_sent_id": 18
+            },
+            "20": {
+                  "token": "-",
+                  "sent_id": 0,
+                  "tok_sent_id": 19
+            },
+            "21": {
+                  "token": "checks",
+                  "sent_id": 0,
+                  "tok_sent_id": 20
+            },
+            "22": {
+                  "token": "-",
+                  "sent_id": 0,
+                  "tok_sent_id": 21
+            },
+            "23": {
+                  "token": "into",
+                  "sent_id": 0,
+                  "tok_sent_id": 22
+            },
+            "24": {
+                  "token": "-",
+                  "sent_id": 0,
+                  "tok_sent_id": 23
+            },
+            "25": {
+                  "token": "malibu",
+                  "sent_id": 0,
+                  "tok_sent_id": 24
+            },
+            "26": {
+                  "token": "-",
+                  "sent_id": 0,
+                  "tok_sent_id": 25
+            },
+            "27": {
+                  "token": "rehab",
+                  "sent_id": 0,
+                  "tok_sent_id": 26
+            },
+            "28": {
+                  "token": "_",
+                  "sent_id": 0,
+                  "tok_sent_id": 27
+            },
+            "29": {
+                  "token": "article",
+                  "sent_id": 0,
+                  "tok_sent_id": 28
+            },
+            "30": {
+                  "token": "_",
+                  "sent_id": 0,
+                  "tok_sent_id": 29
+            },
+            "31": {
+                  "token": "80744",
+                  "sent_id": 0,
+                  "tok_sent_id": 30
+            },
+            "32": {
+                  "token": "Lindsay",
+                  "sent_id": 1,
+                  "tok_sent_id": 0
+            },
+            "33": {
+                  "token": "Lohan",
+                  "sent_id": 1,
+                  "tok_sent_id": 1
+            },
+            "34": {
+                  "token": "Leaves",
+                  "sent_id": 1,
+                  "tok_sent_id": 2
+            },
+            "35": {
+                  "token": "Betty",
+                  "sent_id": 1,
+                  "tok_sent_id": 3
+            },
+            "36": {
+                  "token": "Ford",
+                  "sent_id": 1,
+                  "tok_sent_id": 4
+            },
+            "37": {
+                  "token": ",",
+                  "sent_id": 1,
+                  "tok_sent_id": 5
+            },
+            "38": {
+                  "token": "Checks",
+                  "sent_id": 1,
+                  "tok_sent_id": 6
+            },
+            "39": {
+                  "token": "Into",
+                  "sent_id": 1,
+                  "tok_sent_id": 7
+            },
+            "40": {
+                  "token": "Malibu",
+                  "sent_id": 1,
+                  "tok_sent_id": 8
+            },
+            "41": {
+                  "token": "Rehab",
+                  "sent_id": 1,
+                  "tok_sent_id": 9
+            },
+            "42": {
+                  "token": "First",
+                  "sent_id": 2,
+                  "tok_sent_id": 0
+            },
+            "43": {
+                  "token": "Published",
+                  "sent_id": 2,
+                  "tok_sent_id": 1
+            },
+            "44": {
+                  "token": ":",
+                  "sent_id": 2,
+                  "tok_sent_id": 2
+            },
+            "45": {
+                  "token": "June",
+                  "sent_id": 2,
+                  "tok_sent_id": 3
+            },
+            "46": {
+                  "token": "13",
+                  "sent_id": 2,
+                  "tok_sent_id": 4
+            },
+            "47": {
+                  "token": ",",
+                  "sent_id": 2,
+                  "tok_sent_id": 5
+            },
+            "48": {
+                  "token": "2013",
+                  "sent_id": 2,
+                  "tok_sent_id": 6
+            },
+            "49": {
+                  "token": "4",
+                  "sent_id": 2,
+                  "tok_sent_id": 7
+            },
+            "50": {
+                  "token": ":",
+                  "sent_id": 2,
+                  "tok_sent_id": 8
+            },
+            "51": {
+                  "token": "59",
+                  "sent_id": 2,
+                  "tok_sent_id": 9
+            },
+            "52": {
+                  "token": "PM",
+                  "sent_id": 2,
+                  "tok_sent_id": 10
+            },
+            "53": {
+                  "token": "EDT",
+                  "sent_id": 2,
+                  "tok_sent_id": 11
+            },
+            "54": {
+                  "token": "Lindsay",
+                  "sent_id": 3,
+                  "tok_sent_id": 0
+            },
+            "55": {
+                  "token": "Lohan",
+                  "sent_id": 3,
+                  "tok_sent_id": 1
+            },
+            "56": {
+                  "token": "has",
+                  "sent_id": 3,
+                  "tok_sent_id": 2
+            },
+            "57": {
+                  "token": "left",
+                  "sent_id": 3,
+                  "tok_sent_id": 3
+            },
+            "58": {
+                  "token": "the",
+                  "sent_id": 3,
+                  "tok_sent_id": 4
+            },
+            "59": {
+                  "token": "Betty",
+                  "sent_id": 3,
+                  "tok_sent_id": 5
+            },
+            "60": {
+                  "token": "Ford",
+                  "sent_id": 3,
+                  "tok_sent_id": 6
+            },
+            "61": {
+                  "token": "Center",
+                  "sent_id": 3,
+                  "tok_sent_id": 7
+            },
+            "62": {
+                  "token": "and",
+                  "sent_id": 3,
+                  "tok_sent_id": 8
+            },
+            "63": {
+                  "token": "is",
+                  "sent_id": 3,
+                  "tok_sent_id": 9
+            },
+            "64": {
+                  "token": "moving",
+                  "sent_id": 3,
+                  "tok_sent_id": 10
+            },
+            "65": {
+                  "token": "to",
+                  "sent_id": 3,
+                  "tok_sent_id": 11
+            },
+            "66": {
+                  "token": "a",
+                  "sent_id": 3,
+                  "tok_sent_id": 12
+            },
+            "67": {
+                  "token": "rehab",
+                  "sent_id": 3,
+                  "tok_sent_id": 13
+            },
+            "68": {
+                  "token": "facility",
+                  "sent_id": 3,
+                  "tok_sent_id": 14
+            },
+            "69": {
+                  "token": "in",
+                  "sent_id": 3,
+                  "tok_sent_id": 15
+            },
+            "70": {
+                  "token": "Malibu",
+                  "sent_id": 3,
+                  "tok_sent_id": 16
+            },
+            "71": {
+                  "token": ",",
+                  "sent_id": 3,
+                  "tok_sent_id": 17
+            },
+            "72": {
+                  "token": "Calif",
+                  "sent_id": 3,
+                  "tok_sent_id": 18
+            },
+            "73": {
+                  "token": ".",
+                  "sent_id": 3,
+                  "tok_sent_id": 19
+            },
+            "74": {
+                  "token": ",",
+                  "sent_id": 3,
+                  "tok_sent_id": 20
+            },
+            "75": {
+                  "token": "Access",
+                  "sent_id": 3,
+                  "tok_sent_id": 21
+            },
+            "76": {
+                  "token": "Hollywood",
+                  "sent_id": 3,
+                  "tok_sent_id": 22
+            },
+            "77": {
+                  "token": "has",
+                  "sent_id": 3,
+                  "tok_sent_id": 23
+            },
+            "78": {
+                  "token": "confirmed",
+                  "sent_id": 3,
+                  "tok_sent_id": 24
+            },
+            "79": {
+                  "token": ".",
+                  "sent_id": 3,
+                  "tok_sent_id": 25
+            },
+            "80": {
+                  "token": "A",
+                  "sent_id": 4,
+                  "tok_sent_id": 0
+            },
+            "81": {
+                  "token": "spokesperson",
+                  "sent_id": 4,
+                  "tok_sent_id": 1
+            },
+            "82": {
+                  "token": "for",
+                  "sent_id": 4,
+                  "tok_sent_id": 2
+            },
+            "83": {
+                  "token": "The",
+                  "sent_id": 4,
+                  "tok_sent_id": 3
+            },
+            "84": {
+                  "token": "Los",
+                  "sent_id": 4,
+                  "tok_sent_id": 4
+            },
+            "85": {
+                  "token": "Angeles",
+                  "sent_id": 4,
+                  "tok_sent_id": 5
+            },
+            "86": {
+                  "token": "Superior",
+                  "sent_id": 4,
+                  "tok_sent_id": 6
+            },
+            "87": {
+                  "token": "Court",
+                  "sent_id": 4,
+                  "tok_sent_id": 7
+            },
+            "88": {
+                  "token": "confirmed",
+                  "sent_id": 4,
+                  "tok_sent_id": 8
+            },
+            "89": {
+                  "token": "to",
+                  "sent_id": 4,
+                  "tok_sent_id": 9
+            },
+            "90": {
+                  "token": "Access",
+                  "sent_id": 4,
+                  "tok_sent_id": 10
+            },
+            "91": {
+                  "token": "that",
+                  "sent_id": 4,
+                  "tok_sent_id": 11
+            },
+            "92": {
+                  "token": "a",
+                  "sent_id": 4,
+                  "tok_sent_id": 12
+            },
+            "93": {
+                  "token": "judge",
+                  "sent_id": 4,
+                  "tok_sent_id": 13
+            },
+            "94": {
+                  "token": "signed",
+                  "sent_id": 4,
+                  "tok_sent_id": 14
+            },
+            "95": {
+                  "token": "an",
+                  "sent_id": 4,
+                  "tok_sent_id": 15
+            },
+            "96": {
+                  "token": "order",
+                  "sent_id": 4,
+                  "tok_sent_id": 16
+            },
+            "97": {
+                  "token": "yesterday",
+                  "sent_id": 4,
+                  "tok_sent_id": 17
+            },
+            "98": {
+                  "token": "allowing",
+                  "sent_id": 4,
+                  "tok_sent_id": 18
+            },
+            "99": {
+                  "token": "the",
+                  "sent_id": 4,
+                  "tok_sent_id": 19
+            },
+            "100": {
+                  "token": "transfer",
+                  "sent_id": 4,
+                  "tok_sent_id": 20
+            },
+            "101": {
+                  "token": "to",
+                  "sent_id": 4,
+                  "tok_sent_id": 21
+            },
+            "102": {
+                  "token": "Cliffside",
+                  "sent_id": 4,
+                  "tok_sent_id": 22
+            },
+            "103": {
+                  "token": ",",
+                  "sent_id": 4,
+                  "tok_sent_id": 23
+            },
+            "104": {
+                  "token": "where",
+                  "sent_id": 4,
+                  "tok_sent_id": 24
+            },
+            "105": {
+                  "token": "she",
+                  "sent_id": 4,
+                  "tok_sent_id": 25
+            },
+            "106": {
+                  "token": "will",
+                  "sent_id": 4,
+                  "tok_sent_id": 26
+            },
+            "107": {
+                  "token": "continue",
+                  "sent_id": 4,
+                  "tok_sent_id": 27
+            },
+            "108": {
+                  "token": "with",
+                  "sent_id": 4,
+                  "tok_sent_id": 28
+            },
+            "109": {
+                  "token": "her",
+                  "sent_id": 4,
+                  "tok_sent_id": 29
+            },
+            "110": {
+                  "token": "90",
+                  "sent_id": 4,
+                  "tok_sent_id": 30
+            },
+            "111": {
+                  "token": "-",
+                  "sent_id": 4,
+                  "tok_sent_id": 31
+            },
+            "112": {
+                  "token": "day",
+                  "sent_id": 4,
+                  "tok_sent_id": 32
+            },
+            "113": {
+                  "token": "court",
+                  "sent_id": 4,
+                  "tok_sent_id": 33
+            },
+            "114": {
+                  "token": "-",
+                  "sent_id": 4,
+                  "tok_sent_id": 34
+            },
+            "115": {
+                  "token": "mandated",
+                  "sent_id": 4,
+                  "tok_sent_id": 35
+            },
+            "116": {
+                  "token": "rehab",
+                  "sent_id": 4,
+                  "tok_sent_id": 36
+            },
+            "117": {
+                  "token": ".",
+                  "sent_id": 4,
+                  "tok_sent_id": 37
+            },
+            "118": {
+                  "token": "Lohan",
+                  "sent_id": 5,
+                  "tok_sent_id": 0
+            },
+            "119": {
+                  "token": "\u2019",
+                  "sent_id": 5,
+                  "tok_sent_id": 1
+            },
+            "120": {
+                  "token": "s",
+                  "sent_id": 5,
+                  "tok_sent_id": 2
+            },
+            "121": {
+                  "token": "attorney",
+                  "sent_id": 5,
+                  "tok_sent_id": 3
+            },
+            "122": {
+                  "token": ",",
+                  "sent_id": 5,
+                  "tok_sent_id": 4
+            },
+            "123": {
+                  "token": "Shawn",
+                  "sent_id": 5,
+                  "tok_sent_id": 5
+            },
+            "124": {
+                  "token": "Holley",
+                  "sent_id": 5,
+                  "tok_sent_id": 6
+            },
+            "125": {
+                  "token": ",",
+                  "sent_id": 5,
+                  "tok_sent_id": 7
+            },
+            "126": {
+                  "token": "spoke",
+                  "sent_id": 5,
+                  "tok_sent_id": 8
+            },
+            "127": {
+                  "token": "out",
+                  "sent_id": 5,
+                  "tok_sent_id": 9
+            },
+            "128": {
+                  "token": "about",
+                  "sent_id": 5,
+                  "tok_sent_id": 10
+            },
+            "129": {
+                  "token": "the",
+                  "sent_id": 5,
+                  "tok_sent_id": 11
+            },
+            "130": {
+                  "token": "move",
+                  "sent_id": 5,
+                  "tok_sent_id": 12
+            },
+            "131": {
+                  "token": ".",
+                  "sent_id": 5,
+                  "tok_sent_id": 13
+            },
+            "132": {
+                  "token": "\u201c",
+                  "sent_id": 6,
+                  "tok_sent_id": 0
+            },
+            "133": {
+                  "token": "Lindsay",
+                  "sent_id": 6,
+                  "tok_sent_id": 1
+            },
+            "134": {
+                  "token": "is",
+                  "sent_id": 6,
+                  "tok_sent_id": 2
+            },
+            "135": {
+                  "token": "grateful",
+                  "sent_id": 6,
+                  "tok_sent_id": 3
+            },
+            "136": {
+                  "token": "for",
+                  "sent_id": 6,
+                  "tok_sent_id": 4
+            },
+            "137": {
+                  "token": "the",
+                  "sent_id": 6,
+                  "tok_sent_id": 5
+            },
+            "138": {
+                  "token": "treatment",
+                  "sent_id": 6,
+                  "tok_sent_id": 6
+            },
+            "139": {
+                  "token": "she",
+                  "sent_id": 6,
+                  "tok_sent_id": 7
+            },
+            "140": {
+                  "token": "received",
+                  "sent_id": 6,
+                  "tok_sent_id": 8
+            },
+            "141": {
+                  "token": "at",
+                  "sent_id": 6,
+                  "tok_sent_id": 9
+            },
+            "142": {
+                  "token": "the",
+                  "sent_id": 6,
+                  "tok_sent_id": 10
+            },
+            "143": {
+                  "token": "Betty",
+                  "sent_id": 6,
+                  "tok_sent_id": 11
+            },
+            "144": {
+                  "token": "Ford",
+                  "sent_id": 6,
+                  "tok_sent_id": 12
+            },
+            "145": {
+                  "token": "Center",
+                  "sent_id": 6,
+                  "tok_sent_id": 13
+            },
+            "146": {
+                  "token": ".",
+                  "sent_id": 6,
+                  "tok_sent_id": 14
+            },
+            "147": {
+                  "token": "She",
+                  "sent_id": 7,
+                  "tok_sent_id": 0
+            },
+            "148": {
+                  "token": "has",
+                  "sent_id": 7,
+                  "tok_sent_id": 1
+            },
+            "149": {
+                  "token": "completed",
+                  "sent_id": 7,
+                  "tok_sent_id": 2
+            },
+            "150": {
+                  "token": "her",
+                  "sent_id": 7,
+                  "tok_sent_id": 3
+            },
+            "151": {
+                  "token": "course",
+                  "sent_id": 7,
+                  "tok_sent_id": 4
+            },
+            "152": {
+                  "token": "of",
+                  "sent_id": 7,
+                  "tok_sent_id": 5
+            },
+            "153": {
+                  "token": "treatment",
+                  "sent_id": 7,
+                  "tok_sent_id": 6
+            },
+            "154": {
+                  "token": "there",
+                  "sent_id": 7,
+                  "tok_sent_id": 7
+            },
+            "155": {
+                  "token": "and",
+                  "sent_id": 7,
+                  "tok_sent_id": 8
+            },
+            "156": {
+                  "token": "looks",
+                  "sent_id": 7,
+                  "tok_sent_id": 9
+            },
+            "157": {
+                  "token": "forward",
+                  "sent_id": 7,
+                  "tok_sent_id": 10
+            },
+            "158": {
+                  "token": "to",
+                  "sent_id": 7,
+                  "tok_sent_id": 11
+            },
+            "159": {
+                  "token": "continuing",
+                  "sent_id": 7,
+                  "tok_sent_id": 12
+            },
+            "160": {
+                  "token": "her",
+                  "sent_id": 7,
+                  "tok_sent_id": 13
+            },
+            "161": {
+                  "token": "treatment",
+                  "sent_id": 7,
+                  "tok_sent_id": 14
+            },
+            "162": {
+                  "token": "and",
+                  "sent_id": 7,
+                  "tok_sent_id": 15
+            },
+            "163": {
+                  "token": "building",
+                  "sent_id": 7,
+                  "tok_sent_id": 16
+            },
+            "164": {
+                  "token": "on",
+                  "sent_id": 7,
+                  "tok_sent_id": 17
+            },
+            "165": {
+                  "token": "the",
+                  "sent_id": 7,
+                  "tok_sent_id": 18
+            },
+            "166": {
+                  "token": "foundation",
+                  "sent_id": 7,
+                  "tok_sent_id": 19
+            },
+            "167": {
+                  "token": "established",
+                  "sent_id": 7,
+                  "tok_sent_id": 20
+            },
+            "168": {
+                  "token": "at",
+                  "sent_id": 7,
+                  "tok_sent_id": 21
+            },
+            "169": {
+                  "token": "Betty",
+                  "sent_id": 7,
+                  "tok_sent_id": 22
+            },
+            "170": {
+                  "token": "Ford",
+                  "sent_id": 7,
+                  "tok_sent_id": 23
+            },
+            "171": {
+                  "token": ",",
+                  "sent_id": 7,
+                  "tok_sent_id": 24
+            },
+            "172": {
+                  "token": "\u201d",
+                  "sent_id": 7,
+                  "tok_sent_id": 25
+            },
+            "173": {
+                  "token": "Holley",
+                  "sent_id": 7,
+                  "tok_sent_id": 26
+            },
+            "174": {
+                  "token": "said",
+                  "sent_id": 7,
+                  "tok_sent_id": 27
+            },
+            "175": {
+                  "token": "in",
+                  "sent_id": 7,
+                  "tok_sent_id": 28
+            },
+            "176": {
+                  "token": "a",
+                  "sent_id": 7,
+                  "tok_sent_id": 29
+            },
+            "177": {
+                  "token": "statement",
+                  "sent_id": 7,
+                  "tok_sent_id": 30
+            },
+            "178": {
+                  "token": "to",
+                  "sent_id": 7,
+                  "tok_sent_id": 31
+            },
+            "179": {
+                  "token": "Access",
+                  "sent_id": 7,
+                  "tok_sent_id": 32
+            },
+            "180": {
+                  "token": ".",
+                  "sent_id": 7,
+                  "tok_sent_id": 33
+            },
+            "181": {
+                  "token": "The",
+                  "sent_id": 8,
+                  "tok_sent_id": 0
+            },
+            "182": {
+                  "token": "actress",
+                  "sent_id": 8,
+                  "tok_sent_id": 1
+            },
+            "183": {
+                  "token": "checked",
+                  "sent_id": 8,
+                  "tok_sent_id": 2
+            },
+            "184": {
+                  "token": "into",
+                  "sent_id": 8,
+                  "tok_sent_id": 3
+            },
+            "185": {
+                  "token": "the",
+                  "sent_id": 8,
+                  "tok_sent_id": 4
+            },
+            "186": {
+                  "token": "Betty",
+                  "sent_id": 8,
+                  "tok_sent_id": 5
+            },
+            "187": {
+                  "token": "Ford",
+                  "sent_id": 8,
+                  "tok_sent_id": 6
+            },
+            "188": {
+                  "token": "Center",
+                  "sent_id": 8,
+                  "tok_sent_id": 7
+            },
+            "189": {
+                  "token": "in",
+                  "sent_id": 8,
+                  "tok_sent_id": 8
+            },
+            "190": {
+                  "token": "May",
+                  "sent_id": 8,
+                  "tok_sent_id": 9
+            },
+            "191": {
+                  "token": "as",
+                  "sent_id": 8,
+                  "tok_sent_id": 10
+            },
+            "192": {
+                  "token": "part",
+                  "sent_id": 8,
+                  "tok_sent_id": 11
+            },
+            "193": {
+                  "token": "of",
+                  "sent_id": 8,
+                  "tok_sent_id": 12
+            },
+            "194": {
+                  "token": "a",
+                  "sent_id": 8,
+                  "tok_sent_id": 13
+            },
+            "195": {
+                  "token": "plea",
+                  "sent_id": 8,
+                  "tok_sent_id": 14
+            },
+            "196": {
+                  "token": "deal",
+                  "sent_id": 8,
+                  "tok_sent_id": 15
+            },
+            "197": {
+                  "token": "stemming",
+                  "sent_id": 8,
+                  "tok_sent_id": 16
+            },
+            "198": {
+                  "token": "from",
+                  "sent_id": 8,
+                  "tok_sent_id": 17
+            },
+            "199": {
+                  "token": "her",
+                  "sent_id": 8,
+                  "tok_sent_id": 18
+            },
+            "200": {
+                  "token": "June",
+                  "sent_id": 8,
+                  "tok_sent_id": 19
+            },
+            "201": {
+                  "token": "2012",
+                  "sent_id": 8,
+                  "tok_sent_id": 20
+            },
+            "202": {
+                  "token": "car",
+                  "sent_id": 8,
+                  "tok_sent_id": 21
+            },
+            "203": {
+                  "token": "accident",
+                  "sent_id": 8,
+                  "tok_sent_id": 22
+            },
+            "204": {
+                  "token": "case",
+                  "sent_id": 8,
+                  "tok_sent_id": 23
+            },
+            "205": {
+                  "token": ".",
+                  "sent_id": 8,
+                  "tok_sent_id": 24
+            }
+      },
+      "doc_content": "http : / / www . accesshollywood . com / lindsay - lohan - leaves - betty - ford - checks - into - malibu - rehab _ article _ 80744 Lindsay Lohan Leaves Betty Ford , Checks Into Malibu Rehab First Published : June 13 , 2013 4 : 59 PM EDT Lindsay Lohan has left the Betty Ford Center and is moving to a rehab facility in Malibu , Calif . , Access Hollywood has confirmed . A spokesperson for The Los Angeles Superior Court confirmed to Access that a judge signed an order yesterday allowing the transfer to Cliffside , where she will continue with her 90 - day court - mandated rehab . Lohan \u2019 s attorney , Shawn Holley , spoke out about the move . \u201c Lindsay is grateful for the treatment she received at the Betty Ford Center . She has completed her course of treatment there and looks forward to continuing her treatment and building on the foundation established at Betty Ford , \u201d Holley said in a statement to Access . The actress checked into the Betty Ford Center in May as part of a plea deal stemming from her June 2012 car accident case .",
+      "sentences": [
+            {
+                  "sent_id": 0,
+                  "token_span_doc": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31
+                  ],
+                  "content": "http : / / www . accesshollywood . com / lindsay - lohan - leaves - betty - ford - checks - into - malibu - rehab _ article _ 80744",
+                  "tokens": [
+                        "http",
+                        ":",
+                        "/",
+                        "/",
+                        "www",
+                        ".",
+                        "accesshollywood",
+                        ".",
+                        "com",
+                        "/",
+                        "lindsay",
+                        "-",
+                        "lohan",
+                        "-",
+                        "leaves",
+                        "-",
+                        "betty",
+                        "-",
+                        "ford",
+                        "-",
+                        "checks",
+                        "-",
+                        "into",
+                        "-",
+                        "malibu",
+                        "-",
+                        "rehab",
+                        "_",
+                        "article",
+                        "_",
+                        "80744"
+                  ],
+                  "pos": [
+                        "X",
+                        "PUNCT",
+                        "SYM",
+                        "SYM",
+                        "NOUN",
+                        "PUNCT",
+                        "NOUN",
+                        "PUNCT",
+                        "NOUN",
+                        "SYM",
+                        "VERB",
+                        "PUNCT",
+                        "NOUN",
+                        "PUNCT",
+                        "VERB",
+                        "PUNCT",
+                        "VERB",
+                        "PUNCT",
+                        "NOUN",
+                        "PUNCT",
+                        "NOUN",
+                        "PUNCT",
+                        "ADP",
+                        "PUNCT",
+                        "NOUN",
+                        "PUNCT",
+                        "NOUN",
+                        "NOUN",
+                        "NOUN",
+                        "NOUN",
+                        "NUM"
+                  ],
+                  "d_span": [
+                        0,
+                        131
+                  ]
+            },
+            {
+                  "sent_id": 1,
+                  "token_span_doc": [
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41
+                  ],
+                  "content": "Lindsay Lohan Leaves Betty Ford , Checks Into Malibu Rehab",
+                  "tokens": [
+                        "Lindsay",
+                        "Lohan",
+                        "Leaves",
+                        "Betty",
+                        "Ford",
+                        ",",
+                        "Checks",
+                        "Into",
+                        "Malibu",
+                        "Rehab"
+                  ],
+                  "pos": [
+                        "PROPN",
+                        "PROPN",
+                        "NOUN",
+                        "PROPN",
+                        "PROPN",
+                        "PUNCT",
+                        "NOUN",
+                        "ADP",
+                        "PROPN",
+                        "PROPN"
+                  ],
+                  "d_span": [
+                        132,
+                        190
+                  ]
+            },
+            {
+                  "sent_id": 2,
+                  "token_span_doc": [
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53
+                  ],
+                  "content": "First Published : June 13 , 2013 4 : 59 PM EDT",
+                  "tokens": [
+                        "First",
+                        "Published",
+                        ":",
+                        "June",
+                        "13",
+                        ",",
+                        "2013",
+                        "4",
+                        ":",
+                        "59",
+                        "PM",
+                        "EDT"
+                  ],
+                  "pos": [
+                        "ADV",
+                        "VERB",
+                        "PUNCT",
+                        "PROPN",
+                        "NUM",
+                        "PUNCT",
+                        "NUM",
+                        "NUM",
+                        "PUNCT",
+                        "NUM",
+                        "NOUN",
+                        "PROPN"
+                  ],
+                  "d_span": [
+                        191,
+                        237
+                  ]
+            },
+            {
+                  "sent_id": 3,
+                  "token_span_doc": [
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79
+                  ],
+                  "content": "Lindsay Lohan has left the Betty Ford Center and is moving to a rehab facility in Malibu , Calif . , Access Hollywood has confirmed .",
+                  "tokens": [
+                        "Lindsay",
+                        "Lohan",
+                        "has",
+                        "left",
+                        "the",
+                        "Betty",
+                        "Ford",
+                        "Center",
+                        "and",
+                        "is",
+                        "moving",
+                        "to",
+                        "a",
+                        "rehab",
+                        "facility",
+                        "in",
+                        "Malibu",
+                        ",",
+                        "Calif",
+                        ".",
+                        ",",
+                        "Access",
+                        "Hollywood",
+                        "has",
+                        "confirmed",
+                        "."
+                  ],
+                  "pos": [
+                        "PROPN",
+                        "PROPN",
+                        "VERB",
+                        "VERB",
+                        "DET",
+                        "PROPN",
+                        "PROPN",
+                        "VERB",
+                        "CCONJ",
+                        "AUX",
+                        "VERB",
+                        "ADP",
+                        "DET",
+                        "NOUN",
+                        "NOUN",
+                        "ADP",
+                        "PROPN",
+                        "PUNCT",
+                        "PROPN",
+                        "PUNCT",
+                        "PUNCT",
+                        "NOUN",
+                        "PROPN",
+                        "VERB",
+                        "VERB",
+                        "PUNCT"
+                  ],
+                  "d_span": [
+                        238,
+                        371
+                  ]
+            },
+            {
+                  "sent_id": 4,
+                  "token_span_doc": [
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117
+                  ],
+                  "content": "A spokesperson for The Los Angeles Superior Court confirmed to Access that a judge signed an order yesterday allowing the transfer to Cliffside , where she will continue with her 90 - day court - mandated rehab .",
+                  "tokens": [
+                        "A",
+                        "spokesperson",
+                        "for",
+                        "The",
+                        "Los",
+                        "Angeles",
+                        "Superior",
+                        "Court",
+                        "confirmed",
+                        "to",
+                        "Access",
+                        "that",
+                        "a",
+                        "judge",
+                        "signed",
+                        "an",
+                        "order",
+                        "yesterday",
+                        "allowing",
+                        "the",
+                        "transfer",
+                        "to",
+                        "Cliffside",
+                        ",",
+                        "where",
+                        "she",
+                        "will",
+                        "continue",
+                        "with",
+                        "her",
+                        "90",
+                        "-",
+                        "day",
+                        "court",
+                        "-",
+                        "mandated",
+                        "rehab",
+                        "."
+                  ],
+                  "pos": [
+                        "DET",
+                        "NOUN",
+                        "ADP",
+                        "DET",
+                        "PROPN",
+                        "NOUN",
+                        "PROPN",
+                        "NOUN",
+                        "VERB",
+                        "ADP",
+                        "NOUN",
+                        "SCONJ",
+                        "DET",
+                        "VERB",
+                        "VERB",
+                        "DET",
+                        "NOUN",
+                        "NOUN",
+                        "VERB",
+                        "DET",
+                        "NOUN",
+                        "ADP",
+                        "PROPN",
+                        "PUNCT",
+                        "ADV",
+                        "PRON",
+                        "AUX",
+                        "VERB",
+                        "ADP",
+                        "PRON",
+                        "NUM",
+                        "PUNCT",
+                        "NOUN",
+                        "NOUN",
+                        "PUNCT",
+                        "VERB",
+                        "NOUN",
+                        "PUNCT"
+                  ],
+                  "d_span": [
+                        372,
+                        584
+                  ]
+            },
+            {
+                  "sent_id": 5,
+                  "token_span_doc": [
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131
+                  ],
+                  "content": "Lohan \u2019 s attorney , Shawn Holley , spoke out about the move .",
+                  "tokens": [
+                        "Lohan",
+                        "\u2019",
+                        "s",
+                        "attorney",
+                        ",",
+                        "Shawn",
+                        "Holley",
+                        ",",
+                        "spoke",
+                        "out",
+                        "about",
+                        "the",
+                        "move",
+                        "."
+                  ],
+                  "pos": [
+                        "PROPN",
+                        "PUNCT",
+                        "VERB",
+                        "NOUN",
+                        "PUNCT",
+                        "NOUN",
+                        "PROPN",
+                        "PUNCT",
+                        "VERB",
+                        "ADP",
+                        "ADP",
+                        "DET",
+                        "VERB",
+                        "PUNCT"
+                  ],
+                  "d_span": [
+                        585,
+                        647
+                  ]
+            },
+            {
+                  "sent_id": 6,
+                  "token_span_doc": [
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146
+                  ],
+                  "content": "\u201c Lindsay is grateful for the treatment she received at the Betty Ford Center .",
+                  "tokens": [
+                        "\u201c",
+                        "Lindsay",
+                        "is",
+                        "grateful",
+                        "for",
+                        "the",
+                        "treatment",
+                        "she",
+                        "received",
+                        "at",
+                        "the",
+                        "Betty",
+                        "Ford",
+                        "Center",
+                        "."
+                  ],
+                  "pos": [
+                        "PUNCT",
+                        "PROPN",
+                        "AUX",
+                        "ADJ",
+                        "ADP",
+                        "DET",
+                        "NOUN",
+                        "PRON",
+                        "VERB",
+                        "ADP",
+                        "DET",
+                        "PROPN",
+                        "PROPN",
+                        "VERB",
+                        "PUNCT"
+                  ],
+                  "d_span": [
+                        648,
+                        727
+                  ]
+            },
+            {
+                  "sent_id": 7,
+                  "token_span_doc": [
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180
+                  ],
+                  "content": "She has completed her course of treatment there and looks forward to continuing her treatment and building on the foundation established at Betty Ford , \u201d Holley said in a statement to Access .",
+                  "tokens": [
+                        "She",
+                        "has",
+                        "completed",
+                        "her",
+                        "course",
+                        "of",
+                        "treatment",
+                        "there",
+                        "and",
+                        "looks",
+                        "forward",
+                        "to",
+                        "continuing",
+                        "her",
+                        "treatment",
+                        "and",
+                        "building",
+                        "on",
+                        "the",
+                        "foundation",
+                        "established",
+                        "at",
+                        "Betty",
+                        "Ford",
+                        ",",
+                        "\u201d",
+                        "Holley",
+                        "said",
+                        "in",
+                        "a",
+                        "statement",
+                        "to",
+                        "Access",
+                        "."
+                  ],
+                  "pos": [
+                        "PRON",
+                        "VERB",
+                        "VERB",
+                        "PRON",
+                        "NOUN",
+                        "ADP",
+                        "NOUN",
+                        "ADV",
+                        "CCONJ",
+                        "VERB",
+                        "ADV",
+                        "ADP",
+                        "VERB",
+                        "PRON",
+                        "NOUN",
+                        "CCONJ",
+                        "VERB",
+                        "ADP",
+                        "DET",
+                        "NOUN",
+                        "VERB",
+                        "ADP",
+                        "PROPN",
+                        "PROPN",
+                        "PUNCT",
+                        "PUNCT",
+                        "PROPN",
+                        "VERB",
+                        "ADP",
+                        "DET",
+                        "NOUN",
+                        "ADP",
+                        "NOUN",
+                        "PUNCT"
+                  ],
+                  "d_span": [
+                        728,
+                        921
+                  ]
+            },
+            {
+                  "sent_id": 8,
+                  "token_span_doc": [
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192,
+                        193,
+                        194,
+                        195,
+                        196,
+                        197,
+                        198,
+                        199,
+                        200,
+                        201,
+                        202,
+                        203,
+                        204,
+                        205
+                  ],
+                  "content": "The actress checked into the Betty Ford Center in May as part of a plea deal stemming from her June 2012 car accident case .",
+                  "tokens": [
+                        "The",
+                        "actress",
+                        "checked",
+                        "into",
+                        "the",
+                        "Betty",
+                        "Ford",
+                        "Center",
+                        "in",
+                        "May",
+                        "as",
+                        "part",
+                        "of",
+                        "a",
+                        "plea",
+                        "deal",
+                        "stemming",
+                        "from",
+                        "her",
+                        "June",
+                        "2012",
+                        "car",
+                        "accident",
+                        "case",
+                        "."
+                  ],
+                  "pos": [
+                        "DET",
+                        "NOUN",
+                        "VERB",
+                        "ADP",
+                        "DET",
+                        "PROPN",
+                        "PROPN",
+                        "VERB",
+                        "ADP",
+                        "AUX",
+                        "ADP",
+                        "NOUN",
+                        "ADP",
+                        "DET",
+                        "NOUN",
+                        "VERB",
+                        "VERB",
+                        "ADP",
+                        "PRON",
+                        "PROPN",
+                        "NUM",
+                        "NOUN",
+                        "NOUN",
+                        "NOUN",
+                        "PUNCT"
+                  ],
+                  "d_span": [
+                        922,
+                        1046
+                  ]
+            }
+      ],
+      "relation_dict": {
+            "_comment": "This haven't been loaded yet"
+      }
+}
+            
