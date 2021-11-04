@@ -3,6 +3,7 @@ from transformers import RobertaTokenizer
 from constants import *
 import spacy
 import re
+import networkx as nx
 
 
 tokenizer = RobertaTokenizer.from_pretrained('/vinai/hieumdt/pretrained_models/tokenizers/roberta-base', unk_token='<unk>')
@@ -165,6 +166,12 @@ def id_mapping(dspan_entity, doc_token):
     
     return span_entity
 
+
+def find_common_lowest_ancestor(tree, nodes):
+    ancestor = nx.lowest_common_ancestor(tree, nodes[0], nodes[1])
+    for node in nodes[2:]:
+        ancestor = nx.lowest_common_ancestor(tree, ancestor, node)
+    return ancestor
     
 
 

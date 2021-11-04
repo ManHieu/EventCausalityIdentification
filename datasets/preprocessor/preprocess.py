@@ -7,11 +7,11 @@ import os
 from itertools import combinations
 import networkx as nx
 from trankit import Pipeline
-from preprocessor_utils import covert_to_doc_id, id_mapping, remove_special_token
+from preprocessor_utils import covert_to_doc_id, find_common_lowest_ancestor, id_mapping, remove_special_token
 from sklearn.model_selection import train_test_split
 from data_reader import i2b2_xml_reader, tbd_tml_reader, tdd_tml_reader, tml_reader, tsvx_reader, cat_xml_reader
 
-p = Pipeline('english')
+p = Pipeline('english', gpu=True)
 
 
 class Reader(object):
@@ -239,11 +239,11 @@ def get_intra_ir_datapoint(my_dict):
         for ev1, ev2 in event_pairs:
             e1_ids, e2_ids = id_mapping(ev1['dspan'], doc_tokens_pasered), id_mapping(ev2['dspan'], doc_tokens_pasered)
             if len(e1_ids) > 1:
-                e1_id = nx.lowest_common_ancestor(dep_tree, *e1_ids)
+                e1_id = find_common_lowest_ancestor(dep_tree, e1_ids)
             else:
                 e1_id = e1_ids[0]
             if len(e2_ids) > 1:
-                e2_id = nx.lowest_common_ancestor(dep_tree, *e2_ids)
+                e2_id = find_common_lowest_ancestor(dep_tree, e2_ids)
             else:
                 e2_id = e2_ids[0]
             
@@ -284,23 +284,6 @@ def get_intra_ir_datapoint(my_dict):
                     'dep_path': dep_path
                 })
 
-        # relations = []
-        # for pair, r_type in my_dict['relation_dict'].items():
-        #     eid1, eid2 = pair
-        #     id = [None, None]
-        #     for i, trigger in enumerate(triggers):
-        #         if trigger['eid'] == eid1:
-        #             id[0] = i
-        #         if trigger['eid'] == eid2:
-        #             id[1] = i
-        #     if None not in id:
-        #         relation = {
-        #             'type': r_type,
-        #             'head': id[0],
-        #             'tail': id[1]
-        #         }
-        #         relations.append(relation)
-        # data_point['relations'] = relations
         data_points.extend(_data_points)
     
     return data_points
