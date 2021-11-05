@@ -237,7 +237,7 @@ def get_intra_ir_datapoint(my_dict):
         
         event_pairs = combinations(triggers, 2)
         for ev1, ev2 in event_pairs:
-            e1_ids, e2_ids = id_mapping(ev1['dspan'], doc_tokens_pasered), id_mapping(ev2['dspan'], doc_tokens_pasered)
+            e1_ids, e2_ids = id_mapping(ev1['dspan'], doc_tokens_pasered, my_dict['doc_content']), id_mapping(ev2['dspan'], doc_tokens_pasered, my_dict['doc_content'])
             if len(e1_ids) > 1:
                 e1_id = find_common_lowest_ancestor(dep_tree, e1_ids)
             else:
