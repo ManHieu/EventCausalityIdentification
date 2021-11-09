@@ -70,6 +70,7 @@ class InputExample:
     triggers: List[Entity] = None
     relations: List[Relation] = None
     arguments: List[Relation] = None
+    dep_path: List[List[str]] = None
 
 
 @dataclass

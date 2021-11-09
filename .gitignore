@@ -2,3 +2,4 @@
 *cached_*
 experiments/*
 lightning_logs/*
+cache/*

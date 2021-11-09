@@ -98,6 +98,7 @@ class JointERDataset(BaseDataset):
                         tokens=tokens,
                         triggers=triggers,
                         relations=relations,
+                        dep_path=x['dep_path']
                     )
                 examples.append(example)
 
