@@ -1,8 +1,8 @@
 from abc import ABC
 import json
 import random
-from datasets.preprocessor.data_reader import cat_xml_reader, tbd_tml_reader, tdd_tml_reader, tml_reader, tsvx_reader
-from datasets.preprocessor.datapoint_formats import get_datapoint
+from data_reader import cat_xml_reader, tbd_tml_reader, tdd_tml_reader, tml_reader, tsvx_reader
+from datapoint_formats import get_datapoint
 random.seed(1741)
 import tqdm
 import os

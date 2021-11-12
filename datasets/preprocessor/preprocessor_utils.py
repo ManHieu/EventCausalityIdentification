@@ -185,6 +185,7 @@ def expand_entity(node, prunted_dep_tree, doc_tokens_pasered):
     span = []
     try:
         descendants = nx.descendants(prunted_dep_tree, node)
+        descendants = list(descendants) + [node]
         for n in descendants:
             for tok in doc_tokens_pasered:
                 if tok['id'] == n:
@@ -193,7 +194,6 @@ def expand_entity(node, prunted_dep_tree, doc_tokens_pasered):
         for tok in doc_tokens_pasered:
             if tok['id'] == node:
                 span.append(tok)
-        print("Span: {}".format(span))
     
     span.sort(key=lambda tok: tok['dspan'][0])
     expand_enity = ' '.join([tok['text'] for tok in span])
