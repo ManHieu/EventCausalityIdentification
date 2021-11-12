@@ -67,7 +67,7 @@ class Proprocessor(object):
     
     def process_and_save(self, save_path, corpus):
         processed_corpus = []
-        for my_dict in corpus:
+        for my_dict in tqdm.tqdm(corpus):
             processed_corpus.extend(get_datapoint(self.type_datapoint, my_dict))
         with open(save_path, 'w', encoding='utf-8') as f:
             json.dump(processed_corpus, f, indent=6)
