@@ -178,6 +178,19 @@ def find_common_lowest_ancestor(tree, nodes):
     for node in nodes[2:]:
         ancestor = nx.lowest_common_ancestor(tree, ancestor, node)
     return ancestor
+
+
+def expand_entity(node, prunted_dep_tree, doc_tokens_pasered):
+    descendants = nx.descendants(prunted_dep_tree, node)
+    span = []
+    for node in descendants:
+        for tok in doc_tokens_pasered:
+            if tok['id'] == node:
+                span.append(tok)
     
+    span.sort(key=lambda tok: tok['dspan'][0])
+    expand_enity = ' '.join([tok['text'] for tok in span])
+    
+    return expand_enity
 
 
