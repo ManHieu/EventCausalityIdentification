@@ -108,3 +108,24 @@ def augment_sentence(tokens: List[str], augmentations: List[Tuple[List[tuple], i
     return ' '.join(expand_tokens(
         tokens, augmentations, entity_tree, root, begin_entity_token, sep_token, relation_sep_token, end_entity_token
     ))
+
+
+def compute_f1(predicts: List[str], golds: List[str]):
+    n_predict = 0
+    n_gold = 0
+    tp = 0
+    for predict, gold in zip(predicts, golds):
+        if predict.startswith('none')==False and gold.startswith('none')==False:
+            tp = tp + 1
+        if predict.startswith('none')==False:
+            n_predict = n_predict + 1
+        if gold.startswith('none')==False:
+            n_gold = n_gold + 1
+    
+    if n_predict==n_gold==0:
+        return 1.0, 1.0, 1.0
+    else:
+        p = tp/(n_predict + 1)
+        r = tp/(n_gold + 1)
+        f1 = 2 * p * r / (p + r + 1e-9)
+        return f1, p, r

@@ -52,6 +52,11 @@ class IdentifyCausalRelationInputFormat(BaseInputFormat):
         ED_template = "\n Event triggers are "
         triggers = [get_span(example.tokens, [trigger.start, trigger.end]) for trigger in example.triggers]
         ED_template = ED_template + ', '.join(triggers)
-        template = "something cause something"
 
-        return context + '</s>' + ED_template + '</s>' + template 
+        return context + '\n' + ED_template
+    
+    def format_input_for_selector(self, ctx: str, task_prefix: str) -> str:
+        return f"{task_prefix} context: {ctx}"
+    
+    def format_input_for_predictor(self, ctx: str, task_prefix: str, additional_info: str, ) -> str:
+        return f"{task_prefix} context: {ctx} \nadditional infomations: {additional_info}"

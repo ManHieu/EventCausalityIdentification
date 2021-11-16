@@ -114,7 +114,7 @@ def intra_ir_datapoint(my_dict):
             else:
                 relation = None
             
-            if (relation == None and random.uniform(0, 1) < 0.8) or relation != None:
+            if (relation == None and random.uniform(0, 1) < 0.75) or relation != None:
                 _data_points.append({
                     'tokens': sentence['tokens'],
                     'triggers': [ev1, ev2],

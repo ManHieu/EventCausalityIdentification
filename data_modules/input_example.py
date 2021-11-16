@@ -84,3 +84,12 @@ class InputFeatures:
     label_ids: Optional[List[int]] = None
     tgt_attention_mask: Optional[List[int]] = None
 
+
+@dataclass
+class ProcessedInputExample:
+    input_sentence: str
+    output_sentene: str
+
+    def __hash__(self):
+        return hash((self.input_sentence, self.output_sentene))
+

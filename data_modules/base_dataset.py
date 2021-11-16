@@ -2,7 +2,7 @@ from arguments import DataTrainingArguments
 from .input_formats import INPUT_FORMATS, BaseInputFormat
 from .output_formats import OUTPUT_FORMATS, BaseOutputFormat
 from typing import Dict, Generator, List, Tuple
-from .input_example import InputExample, InputFeatures
+from .input_example import InputExample, InputFeatures, ProcessedInputExample
 import os 
 import logging
 import random
@@ -14,23 +14,30 @@ from transformers import PreTrainedTokenizer, torch_distributed_zero_first, defa
 
 
 def my_collate(batch: List[InputFeatures]):
-    '''
-    'input_token_ids':input_tokens['input_ids'],
-    'input_attn_mask': input_tokens['attention_mask'],
-    'tgt_token_ids': tgt_tokens['input_ids'],
-    'tgt_attn_mask': tgt_tokens['attention_mask'],
-    '''
-    input_token_ids = torch.stack([torch.LongTensor(input_feature.input_ids) for input_feature in batch]) 
-    input_attn_mask = torch.stack([torch.BoolTensor(input_feature.input_attention_mask) for input_feature in batch])
-    tgt_token_ids = torch.stack([torch.LongTensor(input_feature.label_ids) for input_feature in batch]) 
-    tgt_attn_mask = torch.stack([torch.BoolTensor(input_feature.tgt_attention_mask) for input_feature in batch])
+    # '''
+    # 'input_token_ids':input_tokens['input_ids'],
+    # 'input_attn_mask': input_tokens['attention_mask'],
+    # 'tgt_token_ids': tgt_tokens['input_ids'],
+    # 'tgt_attn_mask': tgt_tokens['attention_mask'],
+    # '''
+    # input_token_ids = torch.stack([torch.LongTensor(input_feature.input_ids) for input_feature in batch]) 
+    # input_attn_mask = torch.stack([torch.BoolTensor(input_feature.input_attention_mask) for input_feature in batch])
+    # tgt_token_ids = torch.stack([torch.LongTensor(input_feature.label_ids) for input_feature in batch]) 
+    # tgt_attn_mask = torch.stack([torch.BoolTensor(input_feature.tgt_attention_mask) for input_feature in batch])
 
-    return {
-        'input_token_ids': input_token_ids,
-        'input_attn_mask': input_attn_mask,
-        'tgt_token_ids': tgt_token_ids,
-        'tgt_attn_mask': tgt_attn_mask,
-    }
+    # return {
+    #     'input_token_ids': input_token_ids,
+    #     'input_attn_mask': input_attn_mask,
+    #     'tgt_token_ids': tgt_token_ids,
+    #     'tgt_attn_mask': tgt_attn_mask,
+    # }
+    input_sentences = []
+    output_sentences = []
+    for example in batch:
+        input_sentences.append(example.input_sentence)
+        output_sentences.append(example.output_sentene)
+    
+    return (input_sentences, output_sentences)
 
 
 class BaseDataset(Dataset, ABC):
@@ -82,7 +89,7 @@ class BaseDataset(Dataset, ABC):
         for example in self.examples:
             example.dataset = self
 
-        self.features: List[InputFeatures] = self.compute_features()
+        self.features: List[ProcessedInputExample] = self.compute_features()
 
         # compute effective size of the dataset
         self.effective_size = round(train_subset * len(self.examples))
@@ -92,7 +99,7 @@ class BaseDataset(Dataset, ABC):
     def __len__(self) -> int:
         return self.effective_size
 
-    def __getitem__(self, index) -> InputFeatures:
+    def __getitem__(self, index) -> ProcessedInputExample:
         return self.features[index]
 
     def data_dir(self):
@@ -134,23 +141,29 @@ class BaseDataset(Dataset, ABC):
             output_sentence = self.output_format.format_output(example)
             # print(output_sentence)
 
-            input_tokens = self.tokenizer.encode_plus(input_sentence, 
-                                add_special_tokens=True,
-                                max_length=self.max_input_length,
-                                truncation=True,
-                                padding='max_length')
-            output_tokens = self.tokenizer.encode_plus(output_sentence, 
-                                add_special_tokens=True,
-                                max_length=self.max_output_length,
-                                truncation=True,
-                                padding='max_length')
+            # input_tokens = self.tokenizer.encode_plus(input_sentence, 
+            #                     add_special_tokens=True,
+            #                     max_length=self.max_input_length,
+            #                     truncation=True,
+            #                     padding='max_length')
+            # output_tokens = self.tokenizer.encode_plus(output_sentence, 
+            #                     add_special_tokens=True,
+            #                     max_length=self.max_output_length,
+            #                     truncation=True,
+            #                     padding='max_length')
 
+            # input_features.append(
+            #     InputFeatures(
+            #         input_ids= input_tokens['input_ids'],
+            #         input_attention_mask= input_tokens['attention_mask'],
+            #         label_ids=output_tokens['input_ids'],
+            #         tgt_attention_mask=output_tokens['attention_mask']
+            #     )
+            # )
             input_features.append(
-                InputFeatures(
-                    input_ids= input_tokens['input_ids'],
-                    input_attention_mask= input_tokens['attention_mask'],
-                    label_ids=output_tokens['input_ids'],
-                    tgt_attention_mask=output_tokens['attention_mask']
+                ProcessedInputExample(
+                    input_sentence=input_sentence,
+                    output_sentene=output_sentence
                 )
             )
             input_sentences.append(input_sentence)
