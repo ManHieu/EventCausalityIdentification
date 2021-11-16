@@ -36240,24 +36240,4 @@
                         "case submitted"
                   ]
             ]
-      },
-      {
-            "tokens": [
-                  "Chargers",
-                  "general",
-                  "manager",
-                  "A",
-                  ".",
-                  "J",
-                  ".",
-                  "Smith",
-                  "did",
-                  "not",
-                  "return",
-                  "a",
-                  "call",
-                  "."
-            ],
-            "triggers": [
-                  {
-                        "eid"
+      }]

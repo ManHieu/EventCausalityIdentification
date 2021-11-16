@@ -34,6 +34,7 @@ class Entity:
     """
     start: int                  # start index in the sentence
     end: int                    # end index in the sentence
+    mention: str                # mention of entity
     type: Optional[EntityType] = None   # entity type
     id: Optional[int] = None    # id in the current training/test example
 

@@ -21,9 +21,9 @@ logger.addHandler(logging.StreamHandler())
 
 
 class GenEERModel(pl.LightningModule):
-    def __init__(self, model_args: ModelArguments, training_args: TrainingArguments,
+    def __init__(self, model_args: ModelArguments, training_args: TrainingArguments, data_training_args: DataTrainingArguments,
                 templates: Dict[int, str], name: str, s_weight: float, p_weight: float,
-                learning_rate: float, adam_epsilon: float, fn_activate: str='relu', 
+                learning_rate: float, adam_epsilon: float, fn_activate: str='leakyrelu', 
                 weight_decay: float=0,warmup: float=0) -> None:
         super().__init__()
         self.save_hyperparameters()
@@ -34,7 +34,7 @@ class GenEERModel(pl.LightningModule):
         # so the padding should be on the left
         self.tokenizer_for_generating.padding_side = 'left'
         self.tokenizer_for_generating.pad_token = self.tokenizer_for_generating.eos_token # to avoid an error
-        self.input_formater = INPUT_FORMATS[name]
+        self.input_formater = INPUT_FORMATS[name]()
 
         self.t5 = T5ForConditionalGeneration.from_pretrained(model_args.model_name_or_path)
         self.t5_hidden_dim = self.t5.model_dim
@@ -108,8 +108,8 @@ class GenEERModel(pl.LightningModule):
                                                                 return_tensors="pt")
                             
         last_hidden_state  = self.t5.encoder(
-                        input_ids=inputs_encoding_for_template_selector.input_ids,
-                        attention_mask=inputs_encoding_for_template_selector.attention_mask,
+                        input_ids=inputs_encoding_for_template_selector.input_ids.cuda(),
+                        attention_mask=inputs_encoding_for_template_selector.attention_mask.cuda(),
                         output_hidden_states=True,
         ).last_hidden_state  # (batch_size, sequence_length, hidden_size)
         sc = self.s_classifier(last_hidden_state[:, 0]) # (batch_size x num_templates)
@@ -128,25 +128,25 @@ class GenEERModel(pl.LightningModule):
                                                         truncation=True,return_tensors="pt")
         
         predicted_loss = self.t5(
-                    input_ids=inputs_encoding_for_classifier.input_ids, 
-                    attention_mask=inputs_encoding_for_classifier.attention_mask, 
-                    labels=labels
+                    input_ids=inputs_encoding_for_classifier.input_ids.cuda(), 
+                    attention_mask=inputs_encoding_for_classifier.attention_mask.cuda(), 
+                    labels=labels.cuda()
         ).loss
         predicted_loss = torch.mean(predicted_loss)
 
         inputs_encoding_for_generating = self.tokenizer_for_generating(inputs_for_classifier, padding='longest',
                                                                     max_length=self.hparams.data_training_args.max_seq_length,
                                                                     truncation=True,return_tensors="pt")
-        sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids, do_sample=True, 
+        sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids.cuda(), do_sample=True, 
                                          top_k=20, top_p=0.95, max_length=self.hparams.data_training_args.max_output_seq_length, 
                                          num_return_sequences=1, num_beams=1,)
         sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
         
-        reward = compute_f1(sample_outputs, output_sentences)
+        reward = compute_f1(sample_outputs, output_sentences)[0]
         policy_loss = []
         for log_prob in log_probs:
             policy_loss.append(-log_prob * reward)
-        policy_loss = torch.cat(policy_loss).sum()
+        policy_loss = sum(policy_loss)
 
         loss = self.hparams.s_weight * policy_loss + self.hparams.p_weight *predicted_loss
 
@@ -186,10 +186,11 @@ class GenEERModel(pl.LightningModule):
                                                                 max_length=self.hparams.data_training_args.max_seq_length,
                                                                 truncation=True,
                                                                 return_tensors="pt")
+        
                             
         last_hidden_state  = self.t5.encoder(
-                        input_ids=inputs_encoding_for_template_selector.input_ids,
-                        attention_mask=inputs_encoding_for_template_selector.attention_mask,
+                        input_ids=inputs_encoding_for_template_selector.input_ids.cuda(),
+                        attention_mask=inputs_encoding_for_template_selector.attention_mask.cuda(),
                         output_hidden_states=True,
         ).last_hidden_state  # (batch_size, sequence_length, hidden_size)
         sc = self.s_classifier(last_hidden_state[:, 0]) # (batch_size x num_templates)
@@ -208,24 +209,24 @@ class GenEERModel(pl.LightningModule):
                                                         truncation=True,return_tensors="pt")
         
         predicted_loss = self.t5(
-                    input_ids=inputs_encoding_for_classifier.input_ids, 
-                    attention_mask=inputs_encoding_for_classifier.attention_mask, 
-                    labels=labels
+                    input_ids=inputs_encoding_for_classifier.input_ids.cuda(), 
+                    attention_mask=inputs_encoding_for_classifier.attention_mask.cuda(), 
+                    labels=labels.cuda()
         ).loss
-        
+
         inputs_encoding_for_generating = self.tokenizer_for_generating(inputs_for_classifier, padding='longest',
                                                                     max_length=self.hparams.data_training_args.max_seq_length,
                                                                     truncation=True,return_tensors="pt")
-        sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids, do_sample=True, 
+        sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids.cuda(), do_sample=True, 
                                          top_k=20, top_p=0.95, max_length=self.hparams.data_training_args.max_output_seq_length, 
                                          num_return_sequences=1, num_beams=1,)
         sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
         
-        reward = compute_f1(sample_outputs, output_sentences)
+        reward = compute_f1(sample_outputs, output_sentences)[0]
         policy_loss = []
         for log_prob in log_probs:
             policy_loss.append(-log_prob * reward)
-        policy_loss = torch.cat(policy_loss).sum()
+        policy_loss = sum(policy_loss)
 
         self.log_dict({"policy_loss": policy_loss, "predicted_loss": predicted_loss}, prog_bar=True)
 
@@ -257,8 +258,8 @@ class GenEERModel(pl.LightningModule):
                                                                 return_tensors="pt")
                             
         last_hidden_state  = self.t5.encoder(
-                        input_ids=inputs_encoding_for_template_selector.input_ids,
-                        attention_mask=inputs_encoding_for_template_selector.attention_mask,
+                        input_ids=inputs_encoding_for_template_selector.input_ids.cuda(),
+                        attention_mask=inputs_encoding_for_template_selector.attention_mask.cuda(),
                         output_hidden_states=True,
         ).last_hidden_state  # (batch_size, sequence_length, hidden_size)
         sc = self.s_classifier(last_hidden_state[:, 0]) # (batch_size x num_templates)
@@ -273,19 +274,24 @@ class GenEERModel(pl.LightningModule):
                                                                     max_length=self.hparams.data_training_args.max_seq_length,
                                                                     truncation=True,return_tensors="pt")
         
-        sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids, do_sample=True, 
+        sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids.cuda(), do_sample=True, 
                                          top_k=20, top_p=0.95, max_length=self.hparams.data_training_args.max_output_seq_length, 
                                          num_return_sequences=1, num_beams=8,)
 
         sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
 
-        return (sample_outputs, output_sentences, input_sentences) 
+        return sample_outputs, output_sentences, input_sentences
 
     def test_epoch_end(self, outputs):
         # evaluate F1
         preds = []
         for output in outputs:
-            preds.extend(zip(output))
+            for sample in zip(*output):
+                preds.append({
+                    'sentence': sample[2],
+                    'predicted': sample[0],
+                    'gold': sample[1]
+                })
 
         with open('./predictions.json','w') as writer:
             writer.write(json.dumps(preds, indent=6)+'\n')

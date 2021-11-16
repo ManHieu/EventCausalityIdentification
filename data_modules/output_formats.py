@@ -75,10 +75,10 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
 
         sents = []
         for head, tails in rels.items():
-            head_mention = get_span(words, [head.start, head.end])
-            tail_mentions = [get_span(words, (tail.start, tail.end)) for tail in tails]
+            head_mention = head.mention
+            tail_mentions = [f'"{tail.mention}"' for tail in tails]
 
-            sent = f"{head_mention} causes {' and '.join(tail_mentions)}"
+            sent = f'"{head_mention}" causes {" and ".join(tail_mentions)}'
             sents.append(sent)
         
         if len(sents) == 0:

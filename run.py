@@ -31,7 +31,11 @@ def objective(trial: optuna.Trial):
         'learning_rate': trial.suggest_categorical('learning_rate', [1e-5, 5e-5, 1e-4, 5e-4, 1e-3,]),
         'batch_size': trial.suggest_categorical('batch_size', [8, 16, 32]),
         'warmup_ratio': 0.1,
-        'num_train_epochs': trial.suggest_categorical('num_train_epochs', [1, 2, 3, 5, 7])
+        'num_train_epochs': trial.suggest_categorical('num_train_epochs', [1, 2, 3, 5, 7]),
+    }
+    weights = {
+        's_weight': trial.suggest_categorical('s_weight', [1]),
+        'p_weight': trial.suggest_categorical('p_weight', [0.1, 0.01, 1])
     }
     print("Hyperparams: {}".format(defaults))
     defaults.update(dict(config.items(job)))
@@ -89,7 +93,12 @@ def objective(trial: optuna.Trial):
     lr_logger = LearningRateMonitor() 
     tb_logger = TensorBoardLogger('logs/')
 
-    model = GenEERModel(model_args=model_args, training_args=training_args,
+    model = GenEERModel(model_args=model_args, training_args=training_args, data_training_args= data_args,
+                        name='ECI_input',
+                        templates={0: 'something causes something',
+                                   1: 'somthing is the consequence of somthing'},
+                        s_weight=weights['s_weight'],
+                        p_weight=weights['p_weight'],
                         learning_rate=training_args.learning_rate,
                         adam_epsilon=training_args.adam_epsilon,
                         warmup=training_args.warmup_ratio)
@@ -134,7 +143,7 @@ def objective(trial: optuna.Trial):
     if f1 > 0.4:
         with open('./results.txt', 'a', encoding='utf-8') as f:
             f.write(f"F1: {f1} \n")
-            f.write(f"Hyperparams: \n {defaults}\n")
+            f.write(f"Hyperparams: \n {defaults}\n{weights}\n")
             f.write(f"{'--'*10} \n")
 
     return f1
@@ -147,7 +156,7 @@ if __name__ == '__main__':
     parser.add_argument('job')
     parser.add_argument('-c', '--config_file', type=str, default='config.ini', help='configuration file')
     parser.add_argument('-e', '--eval', action='store_true', default=False, help='run evaluation only')
-    parser.add_argument('-g', '--gpu', type=int, default=2, help='which GPU to use')
+    parser.add_argument('-g', '--gpu', type=int, default=0, help='which GPU to use')
     parser.add_argument('-l', '--trained_model', type=str, default=None, help='load trained model')
 
     args, remaining_args = parser.parse_known_args()
