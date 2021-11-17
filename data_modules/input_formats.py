@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from .input_example import InputExample
-from typing import Dict
+from typing import Dict, Tuple
 from utils.utils import get_span
 
 
@@ -47,16 +47,16 @@ class IdentifyCausalRelationInputFormat(BaseInputFormat):
     """
     name = 'ECI_input'
     
-    def _format_input(self, example: InputExample) -> str:
+    def _format_input(self, example: InputExample) -> Tuple[str, str]:
         context = ' '.join(example.tokens)
         ED_template = "\n Event triggers are "
         triggers = [f'{trigger.mention}' for trigger in example.triggers]
         ED_template = ED_template + ', '.join(triggers)
 
-        return context + '\n' + ED_template
+        return context, ED_template
     
     def format_input_for_selector(self, ctx: str, task_prefix: str) -> str:
         return f"{task_prefix} context: {ctx}"
     
     def format_input_for_predictor(self, ctx: str, task_prefix: str, additional_info: str, ) -> str:
-        return f"{task_prefix} context: {ctx} \nadditional infomations: {additional_info}"
+        return f"{task_prefix} context: {ctx} \nAdditional infomations: {additional_info}"

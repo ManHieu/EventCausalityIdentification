@@ -88,9 +88,11 @@ class InputFeatures:
 
 @dataclass
 class ProcessedInputExample:
-    input_sentence: str
-    output_sentene: str
+    context_sentence: str
+    ED_template: str
+    output_sentence: str
 
     def __hash__(self):
-        return hash((self.input_sentence, self.output_sentene))
+        return hash((self.context_sentence, self.ED_template, self.output_sentence))
+
 

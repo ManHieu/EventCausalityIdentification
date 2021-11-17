@@ -13,6 +13,7 @@ from transformers import AdamW, get_linear_schedule_with_warmup
 from arguments import DataTrainingArguments, ModelArguments, TrainingArguments
 from tqdm import tqdm
 from data_modules.input_formats import INPUT_FORMATS
+from model.selector_model import Selector
 from utils.utils import compute_f1
 
 
@@ -21,110 +22,52 @@ logger.addHandler(logging.StreamHandler())
 
 
 class GenEERModel(pl.LightningModule):
-    def __init__(self, model_args: ModelArguments, training_args: TrainingArguments, data_training_args: DataTrainingArguments,
-                templates: Dict[int, str], name: str, s_weight: float, p_weight: float,
-                learning_rate: float, adam_epsilon: float, fn_activate: str='leakyrelu', 
-                weight_decay: float=0,warmup: float=0) -> None:
+    def __init__(self, tokenizer_name: str, model_name_or_path: str, selector_name_or_path:str,
+                templates: Dict[int, str], input_format: str, max_input_len: int, max_oupt_len: int,
+                s_weight: float, p_weight: float, learning_rate: float, adam_epsilon: float, 
+                fn_activate: str='leakyrelu', weight_decay: float=0, warmup: float=0) -> None:
         super().__init__()
         self.save_hyperparameters()
 
-        self.tokenizer = T5Tokenizer.from_pretrained(model_args.tokenizer_name)
+        self.tokenizer = T5Tokenizer.from_pretrained(tokenizer_name)
         self.tokenizer_for_generating = copy.deepcopy(self.tokenizer)
         # when generating, we will use the logits of right-most token to predict the next token
         # so the padding should be on the left
         self.tokenizer_for_generating.padding_side = 'left'
         self.tokenizer_for_generating.pad_token = self.tokenizer_for_generating.eos_token # to avoid an error
-        self.input_formater = INPUT_FORMATS[name]()
-
-        self.t5 = T5ForConditionalGeneration.from_pretrained(model_args.model_name_or_path)
-        self.t5_hidden_dim = self.t5.model_dim
         
-        self.dropout = nn.Dropout(0.5)
-
-        if fn_activate=='leakyrelu':
-            self.fn_activate = nn.LeakyReLU(0.2, True)
-        elif fn_activate=='tanh':
-            self.fn_activate = nn.Tanh()
-        elif fn_activate=='relu6':
-            self.fn_activate = nn.ReLU6()
-        elif fn_activate=='silu':
-            self.fn_activate = nn.SiLU()
-        elif fn_activate=='hardtanh':
-            self.fn_activate = nn.Hardtanh()
-
+        self.input_formater = INPUT_FORMATS[input_format]()
         self.templates = templates
-        self.s_mlp_in = self.t5_hidden_dim
-        self.s_classifier = nn.Sequential(OrderedDict([
-                                                    ('dropout1', self.dropout),
-                                                    ('mlp1', nn.Linear(in_features=self.s_mlp_in, out_features=int(self.s_mlp_in/2))),
-                                                    ('dropout2', self.dropout),
-                                                    ('activate', self.fn_activate),
-                                                    ('mlp2', nn.Linear(in_features=int(self.s_mlp_in/2), out_features=len(self.templates.keys()))) # num_templates temporaly fixed is 2
-        ]))
+
+        self.t5 = T5ForConditionalGeneration.from_pretrained(model_name_or_path)
+        self.selector = Selector(sentence_encoder=selector_name_or_path, 
+                                number_layers=len(templates.keys()), 
+                                tokenizer=self.tokenizer,
+                                max_input_len=max_input_len, 
+                                input_format=input_format, 
+                                fn_activate=fn_activate)
     
-    # def forward(self, input_ids, attention_mask=None, 
-    #             decoder_input_ids=None, decoder_attention_mask=None, lm_labels=None):
-        
-    #     return self.model(
-    #         input_ids,
-    #         attention_mask=attention_mask,
-    #         decoder_input_ids=decoder_input_ids,
-    #         decoder_attention_mask=decoder_attention_mask,
-    #         labels =lm_labels,
-    #     )
     
     def training_step(self, batch, batch_idx):
-        # print(f'Epoch {self.trainer.current_epoch} / Step {self.trainer.global_step}: lr {self.trainer.optimizers[0].param_groups[0]["lr"]}')
-        # lm_labels = batch['tgt_token_ids']
-        # lm_labels[lm_labels[:, :] == self.tokenizer.pad_token_id] = -100
-
-        # outputs = self(
-        #             input_ids=batch['input_token_ids'],
-        #             attention_mask=batch['input_attn_mask'],
-        #             lm_labels =lm_labels,
-        #             decoder_attention_mask=batch['tgt_attn_mask']
-        #             )
-        # loss = outputs[0]
-        # loss = torch.mean(loss)
-        # self.log('train_loss', loss)
-
         input_sentences, output_sentences = batch
 
         target_encoding = self.tokenizer(output_sentences,
                                         padding='longest',
-                                        max_length=self.hparams.data_training_args.max_output_seq_length,
+                                        max_length=self.hparams.max_oupt_len,
                                         truncation=True,
                                         return_tensors="pt")
         labels = target_encoding.input_ids
         # replace padding token id's of the labels by -100
         labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 
 
-        task_prefix = 'select input template'
-        inputs_encoding_for_template_selector = self.tokenizer([self.input_formater.format_input_for_selector(ctx=sentence, task_prefix=task_prefix) 
-                                                                for sentence in input_sentences], 
-                                                                padding='longest',
-                                                                max_length=self.hparams.data_training_args.max_seq_length,
-                                                                truncation=True,
-                                                                return_tensors="pt")
-                            
-        last_hidden_state  = self.t5.encoder(
-                        input_ids=inputs_encoding_for_template_selector.input_ids.cuda(),
-                        attention_mask=inputs_encoding_for_template_selector.attention_mask.cuda(),
-                        output_hidden_states=True,
-        ).last_hidden_state  # (batch_size, sequence_length, hidden_size)
-        sc = self.s_classifier(last_hidden_state[:, 0]) # (batch_size x num_templates)
-        
-        probs = F.softmax(sc, dim=-1)
-        action_distribution = torch.distributions.Categorical(probs=probs)
-        action = action_distribution.sample() # bs x 1: index of selected template 
-        log_probs = action_distribution.log_prob(action) # bs x 1: log_prob of actions
+        action, log_probs, probs = self.selector(input_sentences)
 
         template = [self.templates[int(index)] for index in action]
         task_prefix = 'causality identification'
         inputs_for_classifier = [self.input_formater.format_input_for_predictor(ctx=ctx, task_prefix=task_prefix, additional_info=temp) 
                                 for temp, ctx in zip(template, input_sentences)]
         inputs_encoding_for_classifier = self.tokenizer(inputs_for_classifier, padding='longest',
-                                                        max_length=self.hparams.data_training_args.max_seq_length,
+                                                        max_length=self.hparams.max_input_len,
                                                         truncation=True,return_tensors="pt")
         
         predicted_loss = self.t5(
@@ -135,10 +78,10 @@ class GenEERModel(pl.LightningModule):
         predicted_loss = torch.mean(predicted_loss)
 
         inputs_encoding_for_generating = self.tokenizer_for_generating(inputs_for_classifier, padding='longest',
-                                                                    max_length=self.hparams.data_training_args.max_seq_length,
+                                                                    max_length=self.hparams.max_input_len,
                                                                     truncation=True,return_tensors="pt")
         sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids.cuda(), do_sample=True, 
-                                         top_k=20, top_p=0.95, max_length=self.hparams.data_training_args.max_output_seq_length, 
+                                         top_k=20, top_p=0.95, max_length=self.hparams.max_oupt_len, 
                                          num_return_sequences=1, num_beams=1,)
         sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
         
@@ -148,22 +91,8 @@ class GenEERModel(pl.LightningModule):
             policy_loss.append(-log_prob * reward)
         policy_loss = sum(policy_loss)
 
-        loss = self.hparams.s_weight * policy_loss + self.hparams.p_weight *predicted_loss
-
-        # s_optimizer, p_optimizer = self.optimizers()
-        # s_scheduler, p_scheduler = self.lr_schedulers()
-
-        # s_optimizer.zero_grad()
-        # p_optimizer.zero_grad()
-        
-        # self.manual_backward(policy_loss)
-        # self.manual_backward(predicted_loss)
-        
-        # s_optimizer.step()
-        # s_scheduler.step()
-        
-        # p_optimizer.step()
-        # p_scheduler.step()
+        loss = self.hparams.s_weight * policy_loss + self.hparams.p_weight * predicted_loss
+        self.log_dict({"policy_loss": policy_loss, "predicted_loss": predicted_loss}, prog_bar=True)
 
         return loss
     
@@ -172,40 +101,21 @@ class GenEERModel(pl.LightningModule):
 
         target_encoding = self.tokenizer(output_sentences,
                                         padding='longest',
-                                        max_length=self.hparams.data_training_args.max_output_seq_length,
+                                        max_length=self.hparams.max_oupt_len,
                                         truncation=True,
                                         return_tensors="pt")
         labels = target_encoding.input_ids
         # replace padding token id's of the labels by -100
         labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 
 
-        task_prefix = 'select input template'
-        inputs_encoding_for_template_selector = self.tokenizer([self.input_formater.format_input_for_selector(ctx=sentence, task_prefix=task_prefix) 
-                                                                for sentence in input_sentences], 
-                                                                padding='longest',
-                                                                max_length=self.hparams.data_training_args.max_seq_length,
-                                                                truncation=True,
-                                                                return_tensors="pt")
-        
-                            
-        last_hidden_state  = self.t5.encoder(
-                        input_ids=inputs_encoding_for_template_selector.input_ids.cuda(),
-                        attention_mask=inputs_encoding_for_template_selector.attention_mask.cuda(),
-                        output_hidden_states=True,
-        ).last_hidden_state  # (batch_size, sequence_length, hidden_size)
-        sc = self.s_classifier(last_hidden_state[:, 0]) # (batch_size x num_templates)
-        
-        probs = F.softmax(sc, dim=-1)
-        action_distribution = torch.distributions.Categorical(probs=probs)
-        action = action_distribution.sample() # bs x 1: index of selected template 
-        log_probs = action_distribution.log_prob(action) # bs x 1: log_prob of actions
+        action, log_probs, probs = self.selector(input_sentences)
 
         template = [self.templates[int(index)] for index in action]
         task_prefix = 'causality identification'
         inputs_for_classifier = [self.input_formater.format_input_for_predictor(ctx=ctx, task_prefix=task_prefix, additional_info=temp) 
                                 for temp, ctx in zip(template, input_sentences)]
         inputs_encoding_for_classifier = self.tokenizer(inputs_for_classifier, padding='longest',
-                                                        max_length=self.hparams.data_training_args.max_seq_length,
+                                                        max_length=self.hparams.max_input_len,
                                                         truncation=True,return_tensors="pt")
         
         predicted_loss = self.t5(
@@ -213,12 +123,13 @@ class GenEERModel(pl.LightningModule):
                     attention_mask=inputs_encoding_for_classifier.attention_mask.cuda(), 
                     labels=labels.cuda()
         ).loss
+        predicted_loss = torch.mean(predicted_loss)
 
         inputs_encoding_for_generating = self.tokenizer_for_generating(inputs_for_classifier, padding='longest',
-                                                                    max_length=self.hparams.data_training_args.max_seq_length,
+                                                                    max_length=self.hparams.max_input_len,
                                                                     truncation=True,return_tensors="pt")
         sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids.cuda(), do_sample=True, 
-                                         top_k=20, top_p=0.95, max_length=self.hparams.data_training_args.max_output_seq_length, 
+                                         top_k=20, top_p=0.95, max_length=self.hparams.max_oupt_len, 
                                          num_return_sequences=1, num_beams=1,)
         sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
         
@@ -228,9 +139,11 @@ class GenEERModel(pl.LightningModule):
             policy_loss.append(-log_prob * reward)
         policy_loss = sum(policy_loss)
 
+        loss = self.hparams.s_weight * policy_loss + self.hparams.p_weight * predicted_loss
+
         self.log_dict({"policy_loss": policy_loss, "predicted_loss": predicted_loss}, prog_bar=True)
 
-        return policy_loss, predicted_loss
+        return loss
 
     def validation_epoch_end(self, outputs):
         avg_policy_loss = torch.mean(torch.stack([output[0] for output in outputs]))
@@ -242,28 +155,22 @@ class GenEERModel(pl.LightningModule):
 
         target_encoding = self.tokenizer(output_sentences,
                                         padding='longest',
-                                        max_length=self.hparams.data_training_args.max_output_seq_length,
+                                        max_length=self.hparams.max_oupt_len,
                                         truncation=True,
                                         return_tensors="pt")
         labels = target_encoding.input_ids
         # replace padding token id's of the labels by -100
         labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 
 
-        task_prefix = 'select input template'
-        inputs_encoding_for_template_selector = self.tokenizer([self.input_formater.format_input_for_selector(ctx=sentence, task_prefix=task_prefix) 
-                                                                for sentence in input_sentences], 
-                                                                padding='longest',
-                                                                max_length=self.hparams.data_training_args.max_seq_length,
-                                                                truncation=True,
-                                                                return_tensors="pt")
-                            
-        last_hidden_state  = self.t5.encoder(
-                        input_ids=inputs_encoding_for_template_selector.input_ids.cuda(),
-                        attention_mask=inputs_encoding_for_template_selector.attention_mask.cuda(),
-                        output_hidden_states=True,
-        ).last_hidden_state  # (batch_size, sequence_length, hidden_size)
-        sc = self.s_classifier(last_hidden_state[:, 0]) # (batch_size x num_templates)
-        action = sc.max(dim=-1)[1]
+        action, log_probs, probs = self.selector(input_sentences)
+
+        template = [self.templates[int(index)] for index in action]
+        task_prefix = 'causality identification'
+        inputs_for_classifier = [self.input_formater.format_input_for_predictor(ctx=ctx, task_prefix=task_prefix, additional_info=temp) 
+                                for temp, ctx in zip(template, input_sentences)]
+        inputs_encoding_for_classifier = self.tokenizer(inputs_for_classifier, padding='longest',
+                                                        max_length=self.hparams.max_input_len,
+                                                        truncation=True,return_tensors="pt")
 
         template = [self.templates[int(index)] for index in action]
         task_prefix = 'causality identification'

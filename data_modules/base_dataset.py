@@ -2,7 +2,7 @@ from arguments import DataTrainingArguments
 from .input_formats import INPUT_FORMATS, BaseInputFormat
 from .output_formats import OUTPUT_FORMATS, BaseOutputFormat
 from typing import Dict, Generator, List, Tuple
-from .input_example import InputExample, InputFeatures, ProcessedInputExample
+from .input_example import InputExample, ProcessedInputExample
 import os 
 import logging
 import random
@@ -13,31 +13,18 @@ from tqdm import tqdm
 from transformers import PreTrainedTokenizer, torch_distributed_zero_first, default_data_collator
 
 
-def my_collate(batch: List[InputFeatures]):
-    # '''
-    # 'input_token_ids':input_tokens['input_ids'],
-    # 'input_attn_mask': input_tokens['attention_mask'],
-    # 'tgt_token_ids': tgt_tokens['input_ids'],
-    # 'tgt_attn_mask': tgt_tokens['attention_mask'],
-    # '''
-    # input_token_ids = torch.stack([torch.LongTensor(input_feature.input_ids) for input_feature in batch]) 
-    # input_attn_mask = torch.stack([torch.BoolTensor(input_feature.input_attention_mask) for input_feature in batch])
-    # tgt_token_ids = torch.stack([torch.LongTensor(input_feature.label_ids) for input_feature in batch]) 
-    # tgt_attn_mask = torch.stack([torch.BoolTensor(input_feature.tgt_attention_mask) for input_feature in batch])
-
-    # return {
-    #     'input_token_ids': input_token_ids,
-    #     'input_attn_mask': input_attn_mask,
-    #     'tgt_token_ids': tgt_token_ids,
-    #     'tgt_attn_mask': tgt_attn_mask,
-    # }
+def my_collate(batch: List[ProcessedInputExample]):
     input_sentences = []
     output_sentences = []
+    context_sentences = []
+    ED_templates = []
     for example in batch:
-        input_sentences.append(example.input_sentence)
-        output_sentences.append(example.output_sentene)
+        input_sentences.append(example.context_sentence + '\n' + example.ED_template)
+        output_sentences.append(example.output_sentence)
+        context_sentences.extend(example.context_sentence)
+        ED_templates.extend(example.ED_template)
     
-    return (input_sentences, output_sentences)
+    return (input_sentences, output_sentences, context_sentences, ED_templates)
 
 
 class BaseDataset(Dataset, ABC):
@@ -136,37 +123,18 @@ class BaseDataset(Dataset, ABC):
         input_features = []
 
         for example in self.examples:
-            input_sentence  = self.input_format.format_input(example, multitask=multitask)
+            context_sentence, ED_template  = self.input_format.format_input(example, multitask=multitask)
             # print(input_sentence)
             output_sentence = self.output_format.format_output(example)
             # print(output_sentence)
-
-            # input_tokens = self.tokenizer.encode_plus(input_sentence, 
-            #                     add_special_tokens=True,
-            #                     max_length=self.max_input_length,
-            #                     truncation=True,
-            #                     padding='max_length')
-            # output_tokens = self.tokenizer.encode_plus(output_sentence, 
-            #                     add_special_tokens=True,
-            #                     max_length=self.max_output_length,
-            #                     truncation=True,
-            #                     padding='max_length')
-
-            # input_features.append(
-            #     InputFeatures(
-            #         input_ids= input_tokens['input_ids'],
-            #         input_attention_mask= input_tokens['attention_mask'],
-            #         label_ids=output_tokens['input_ids'],
-            #         tgt_attention_mask=output_tokens['attention_mask']
-            #     )
-            # )
             input_features.append(
                 ProcessedInputExample(
-                    input_sentence=input_sentence,
-                    output_sentene=output_sentence
+                    context_sentence=context_sentence,
+                    ED_template=ED_template,
+                    output_sentence=output_sentence
                 )
             )
-            input_sentences.append(input_sentence)
+            input_sentences.append(context_sentence + '\n' + ED_template)
             output_sentences.append(output_sentence)
         
         self._warn_max_sequence_length(self.max_input_length, input_sentences, "input")

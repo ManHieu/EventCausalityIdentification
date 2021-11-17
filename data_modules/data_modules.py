@@ -33,7 +33,7 @@ class EEREDataModule(pl.LightningDataModule):
     Dataset processing for Event Event Relation Extraction.
     """
     SPECIAL_TOKENS = []
-    name = 'EERE'
+    name = 'ECI'
 
     def __init__(self, data_args: DataTrainingArguments, data_name, batch_size: int=8):
         super().__init__()

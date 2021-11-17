@@ -78,6 +78,14 @@ class TrainingArguments(transformers.TrainingArguments):
         default=1741,
         metadata={"help": "seeding for reproductivity"}
     )
+    selector_weight: int = field(
+        default=1.0,
+        metadata="The weight of selector loss"
+    )
+    predictor_weight: int = field(
+        default=1.0,
+        metadata="The weight of predictor loss"
+    )
 
 
 @dataclass
@@ -90,11 +98,19 @@ class ModelArguments:
         default=None, metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
     )
 
+    selector_name_or_path: Optional[str] = field(
+        default=None, metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
+    )
+
     config_name: Optional[str] = field(
         default=None, metadata={"help": "Pretrained config name or path if not the same as model_name"}
     )
 
     tokenizer_name: Optional[str] = field(
         default=None, metadata={"help": "Pretrained tokenizer name or path if not the same as model_name"}
+    )
+    fn_activate: Optional[str] = field(
+        default='leakyrelu',
+        metadata="Type of activate function using in selector"
     )
 
