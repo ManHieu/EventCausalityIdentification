@@ -28,12 +28,13 @@ def objective(trial: optuna.Trial):
     assert job in config
 
     defaults = {
-        'learning_rate': trial.suggest_categorical('learning_rate', [1e-5, 1e-4, 1e-3,]),
-        'batch_size': trial.suggest_categorical('batch_size', [8, 16, 32]),
+        'p_learning_rate': trial.suggest_categorical('p_learning_rate', [5e-5, 5e-4]),
+        's_learning_rate': 5e-4,
+        'batch_size': trial.suggest_categorical('batch_size', [16, 32]),
         'warmup_ratio': 0.1,
-        'num_train_epochs': trial.suggest_categorical('num_train_epochs', [1, 3, 5, 7, 10]),
-        's_weight': trial.suggest_categorical('s_weight', [1]),
-        'p_weight': trial.suggest_categorical('p_weight', [0.1, 0.01, 1])
+        'num_train_epochs': trial.suggest_categorical('num_train_epochs', [3, 5, 7, 10]),
+        'selector_weight': trial.suggest_categorical('s_weight', [1]),
+        'predictor_weight': trial.suggest_categorical('p_weight', [0.1, 0.01, 1])
     }
     print("Hyperparams: {}".format(defaults))
     defaults.update(dict(config.items(job)))
@@ -53,7 +54,7 @@ def objective(trial: optuna.Trial):
     model_args, data_args, training_args = second_parser.parse_args_into_dataclasses(remaining_args)
     if job == 'ESL':
         print("Config input format")
-        data_args.input_format = 'ESL_input'
+        data_args.input_format = 'ECI_input'
 
     if data_args.tokenizer == None:
         data_args.tokenizer = model_args.tokenizer_name
@@ -104,14 +105,16 @@ def objective(trial: optuna.Trial):
                         input_format=data_args.input_format,
                         max_input_len=data_args.max_seq_length,
                         max_oupt_len=data_args.max_output_seq_length,
+                        num_train_epochs=training_args.num_train_epochs,
                         s_weight=training_args.selector_weight,
                         p_weight=training_args.predictor_weight,
-                        learning_rate=training_args.learning_rate,
+                        p_learning_rate=training_args.p_learning_rate,
+                        s_learning_rate=training_args.s_learning_rate,
                         adam_epsilon=training_args.adam_epsilon,
                         warmup=training_args.warmup_ratio,
     )
 
-    dm = load_data_module(module_name = 'EIC',
+    dm = load_data_module(module_name = 'ECI',
                         data_args=data_args,
                         batch_size=training_args.batch_size,
                         data_name=args.job)

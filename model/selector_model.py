@@ -21,7 +21,7 @@ class Selector(nn.Module):
         self.sentence_encoder = T5EncoderModel.from_pretrained(sentence_encoder)
         self.max_input_len = max_input_len
 
-        self.hidden_dim = int(self.sentence_encoder.model_dim)
+        self.hidden_dim = 768
         self.number_layers = number_layers
 
         self.dropout = nn.Dropout(0.5)

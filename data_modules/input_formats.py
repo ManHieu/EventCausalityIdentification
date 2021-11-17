@@ -50,7 +50,7 @@ class IdentifyCausalRelationInputFormat(BaseInputFormat):
     def _format_input(self, example: InputExample) -> Tuple[str, str]:
         context = ' '.join(example.tokens)
         ED_template = "\n Event triggers are "
-        triggers = [f'{trigger.mention}' for trigger in example.triggers]
+        triggers = [trigger.mention for trigger in example.triggers]
         ED_template = ED_template + ', '.join(triggers)
 
         return context, ED_template

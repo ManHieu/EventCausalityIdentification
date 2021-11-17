@@ -76,9 +76,9 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
         sents = []
         for head, tails in rels.items():
             head_mention = head.mention
-            tail_mentions = [f'"{tail.mention}"' for tail in tails]
+            tail_mentions = [f'{tail.mention}' for tail in tails]
 
-            sent = f'"{head_mention}" causes {" and ".join(tail_mentions)}'
+            sent = f'{head_mention} causes {" and ".join(tail_mentions)}'
             sents.append(sent)
         
         if len(sents) == 0:

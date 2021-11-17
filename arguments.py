@@ -70,6 +70,14 @@ class TrainingArguments(transformers.TrainingArguments):
         default=8,
         metadata={"help": "Batch_size for training and evaluating"}
     )
+    p_learning_rate: float = field(
+        default=5e-5,
+        metadata={"help": "Learning rate of predictor"}
+    )
+    s_learning_rate: float = field(
+        default=5e-5,
+        metadata={"help": "Learning rate of selector"}
+    )
     gradient_clip_val: float = field(
         default=0.0,
         metadata={"help":"Gradient clipping value"}
@@ -80,11 +88,11 @@ class TrainingArguments(transformers.TrainingArguments):
     )
     selector_weight: int = field(
         default=1.0,
-        metadata="The weight of selector loss"
+        metadata={'help': "The weight of selector loss"}
     )
     predictor_weight: int = field(
         default=1.0,
-        metadata="The weight of predictor loss"
+        metadata={'help': "The weight of predictor loss"}
     )
 
 
@@ -111,6 +119,6 @@ class ModelArguments:
     )
     fn_activate: Optional[str] = field(
         default='leakyrelu',
-        metadata="Type of activate function using in selector"
+        metadata={'help': "Type of activate function using in selector"}
     )
 
