@@ -46,7 +46,7 @@ def intra_ir_datapoint(my_dict):
         
         prunted_dep_tree = nx.DiGraph()
         for token in doc_tokens_pasered:
-            if token['deprel'].split(':')[0].strip() in ['nsubj', 'obj', 'iobj', 'compound']:
+            if token['deprel'].split(':')[0].strip() in ['nsubj', 'obj', 'compound']:
                 prunted_dep_tree.add_edge(token['head'], token['id'])
 
         # reading triggers 

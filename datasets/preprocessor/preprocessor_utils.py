@@ -180,15 +180,20 @@ def find_common_lowest_ancestor(tree, nodes):
     return ancestor
 
 
-def expand_entity(node, prunted_dep_tree, doc_tokens_pasered):
+def expand_entity(node, prunted_dep_tree, doc_tokens_pasered, in_path=False):
     
     span = []
     try:
-        descendants = nx.descendants(prunted_dep_tree, node)
-        descendants = list(descendants) + [node]
-        for n in descendants:
+        if in_path == False:
+            descendants = nx.descendants(prunted_dep_tree, node)
+            descendants = list(descendants) + [node]
+            for n in descendants:
+                for tok in doc_tokens_pasered:
+                    if tok['id'] == n:
+                        span.append(tok)
+        else:
             for tok in doc_tokens_pasered:
-                if tok['id'] == n:
+                if tok['id'] == node:
                     span.append(tok)
     except:
         for tok in doc_tokens_pasered:
