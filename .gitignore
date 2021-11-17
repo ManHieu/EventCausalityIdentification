@@ -3,3 +3,4 @@
 experiments/*
 lightning_logs/*
 cache/*
+predictions.json
