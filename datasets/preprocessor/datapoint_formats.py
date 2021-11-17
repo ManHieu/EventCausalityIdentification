@@ -94,14 +94,14 @@ def intra_ir_datapoint(my_dict):
             if len(path1) > 1:
                 dep_path1 = []
                 for node in path1:
-                    enitity = expand_entity(node, prunted_dep_tree, doc_tokens_pasered)
+                    enitity = expand_entity(node, prunted_dep_tree, doc_tokens_pasered, in_path=True)
                     dep_path1.append(enitity)
                 dep_path.append(dep_path1)
             
             if len(path2) > 1:
                 dep_path2 = []
                 for node in path2:
-                    enitity = expand_entity(node, prunted_dep_tree, doc_tokens_pasered)
+                    enitity = expand_entity(node, prunted_dep_tree, doc_tokens_pasered, in_path=True)
                     dep_path2.append(enitity)
                 dep_path.append(dep_path2)
 
