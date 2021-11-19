@@ -123,9 +123,11 @@ def compute_f1(predicts: List[str], golds: List[str]):
             n_gold = n_gold + 1
     
     if n_predict==n_gold==0:
-        return 1.0, 1.0, 1.0
+        return 0.1, 0.1, 0.1, 0, 0
     else:
         p = tp/(n_predict + 1)
         r = tp/(n_gold + 1)
         f1 = 2 * p * r / (p + r + 1e-9)
-        return f1, p, r
+        return f1, p, r, tp, n_predict, n_gold
+
+

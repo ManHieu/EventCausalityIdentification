@@ -4,6 +4,7 @@ from sklearn.metrics import confusion_matrix, classification_report
 from collections import defaultdict
 
 from data_modules.input_example import InputExample
+from utils.utils import compute_f1
 
 
 
@@ -44,67 +45,21 @@ def inference(sentence: str):
         return rels
     else:
         return []
+        
 def eval_corpus():        
-    tp = 0
-    n_gold = 0
-    n_pred = 0
+    golds = []
+    predicts = []
 
     with open('./predictions.json','r') as f:
         lines = json.load(f)
-        # print(lines)
-        # predicts = defaultdict(list)
-        # golds = defaultdict(list)
-        golds = []
-        predicts = []
-        
         for result in lines:
             predict = result['predicted']
             gold = result['gold']
 
-            predict = [item.strip() for item in predict.split('causes')]
-            # print(predict)
-            gold = [item.strip() for item in gold.split('causes')]
-            # print(gold)
-            # if 'precondition' in result['predicted']:
-            #     predict = predict.split('precondition')
-            # else:
-            #     predict = predict.split('falling action')
-            
-            # if 'precondition' in result['gold']:
-            #     gold = gold.split('precondition')
-            # else:
-            #     gold = gold.split('falling action')
-            if len(predict) == 2:
-                n_pred += 1
-            if len(gold) == 2:
-                n_gold += 1
-            if len(predict) == 2 and len(gold) == 2:
-                # print(f"predict: {predict} - gold: {gold} - {is_true(predict, gold)}")
-                if is_true(predict, gold):
-                    tp = tp + 1
-                
-    #         predicts[result['sentence']] = inference(predict)
-    #         golds[result['sentence']] = inference(gold)
-
-    # print(golds)
-    # print(predicts)
-
-    # for key in golds.keys():
-    #     predict = predicts[key]
-    #     gold = golds[key]
-    #     n_gold += len(set([(item[0]+'0', item[1]+'1')for item in gold]))
-    #     n_pred += len(set([(item[0]+'0', item[1]+'1')for item in predict]))
-    #     for item in predict:
-    #         print(key)
-    #         print(f"predict: {item}")
-    #         print(f"gold: {gold}")
-    #         print(f"is mention: {is_mention(item, gold)}")
-    #         print("_" * 10)
-    #         tp += is_mention(item, gold)
-
-    p = tp/(n_pred + 1e-9)
-    r = tp/n_gold
-    f1 = 2*p*r/(p+r + 1e-9)
+            predicts.append(predict)
+            golds.append(gold)
+        
+    f1, p, r, tp, n_pred, n_gold = compute_f1(predicts, golds)
 
     print(tp)
     print(n_pred)

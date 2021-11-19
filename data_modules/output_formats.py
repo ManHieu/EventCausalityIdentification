@@ -89,8 +89,8 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
         paths = []
         for path in example.dep_path:
             paths.append(', '.join(path))
-        dep_path = f"Dependency path: {';'.join(path)}."
+        dep_path = f"Dependency path: {'; '.join(paths)}."
         
         # print("Output: {}".format(sent_out))
-        print(f"{sent_out}. {dep_path}")
+        # print(f"{sent_out}. {dep_path}")
         return f"{sent_out}. {dep_path}"

@@ -65,7 +65,7 @@ class Selector(nn.Module):
         
         probs = F.softmax(sc, dim=-1)
         if self.training:
-            action_distribution = torch.distributions.Categorical(probs=probs)
+            action_distribution = torch.distributions.Categorical(probs)
             action = action_distribution.sample() # bs x 1: index of selected template 
             log_probs = action_distribution.log_prob(action) # bs x 1: log_prob of actions
         else:

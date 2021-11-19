@@ -23,6 +23,11 @@ class DataTrainingArguments:
         metadata= {"help": "The tokenizer used to prepare data"}
     )
 
+    tokenizer_for_encode_input_sentence: str = field(
+        default = None,
+        metadata= {"help": "The tokenizer used to prepare data"}
+    )
+
     max_seq_length: int = field(
         default=512,
         metadata={

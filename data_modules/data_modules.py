@@ -4,9 +4,9 @@ from transformers import T5Tokenizer
 from torch.utils.data import DataLoader 
 import pytorch_lightning as pl
 from arguments import DataTrainingArguments
-from transformers import T5Tokenizer
-from .base_dataset import my_collate
+from transformers import T5Tokenizer, AutoTokenizer, AutoModel
 from .datasets import load_dataset
+import copy
 
 DATA_MODULES: Dict[str, pl.LightningDataModule] = {}
 
@@ -41,6 +41,13 @@ class EEREDataModule(pl.LightningDataModule):
         self.data_name = data_name
         self.tokenizer = T5Tokenizer.from_pretrained(data_args.tokenizer)
         self.tokenizer.add_tokens(self.SPECIAL_TOKENS)
+
+        self.tokenizer_for_generating = T5Tokenizer.from_pretrained(data_args.tokenizer)
+        # when generating, we will use the logits of right-most token to predict the next token
+        # so the padding should be on the left
+        self.tokenizer_for_generating.padding_side = 'left'
+        self.tokenizer_for_generating.pad_token = self.tokenizer_for_generating.eos_token # to avoid an error
+        
         self.max_input_len = data_args.max_seq_length
         self.max_ouput_len = data_args.max_output_seq_length
     
@@ -49,6 +56,7 @@ class EEREDataModule(pl.LightningDataModule):
             dataset_name=self.data_name,
             data_args=self.hparams.data_args,
             tokenizer=self.tokenizer,
+            tokenizer_for_generating=self.tokenizer_for_generating,
             max_input_length=self.max_input_len,
             max_output_length=self.max_ouput_len,
             split='train',
@@ -57,7 +65,7 @@ class EEREDataModule(pl.LightningDataModule):
             dataset= dataset,
             batch_size= self.hparams.batch_size,
             shuffle=True,
-            collate_fn=my_collate,
+            collate_fn=dataset.my_collate,
         )
         return dataloader
     
@@ -66,6 +74,7 @@ class EEREDataModule(pl.LightningDataModule):
             dataset_name=self.data_name,
             data_args=self.hparams.data_args,
             tokenizer=self.tokenizer,
+            tokenizer_for_generating=self.tokenizer_for_generating,
             max_input_length=self.max_input_len,
             max_output_length=self.max_ouput_len,
             split='dev',
@@ -74,7 +83,7 @@ class EEREDataModule(pl.LightningDataModule):
             dataset= dataset,
             batch_size= self.hparams.batch_size,
             shuffle=True,
-            collate_fn=my_collate,
+            collate_fn=dataset.my_collate,
         )
         return dataloader
     
@@ -83,6 +92,7 @@ class EEREDataModule(pl.LightningDataModule):
             dataset_name=self.data_name,
             data_args=self.hparams.data_args,
             tokenizer=self.tokenizer,
+            tokenizer_for_generating=self.tokenizer_for_generating,
             max_input_length=self.max_input_len,
             max_output_length=self.max_ouput_len,
             split='test',
@@ -91,6 +101,6 @@ class EEREDataModule(pl.LightningDataModule):
             dataset= dataset,
             batch_size= self.hparams.batch_size,
             shuffle=False,
-            collate_fn=my_collate,
+            collate_fn=dataset.my_collate,
         )
         return dataloader

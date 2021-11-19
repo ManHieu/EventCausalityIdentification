@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Optional, Any, Dict, Union
+from torch.tensor import Tensor
 from torch.utils.data.dataset import Dataset
 
 

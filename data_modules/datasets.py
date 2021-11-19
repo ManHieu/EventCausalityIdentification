@@ -6,7 +6,7 @@ import numpy as np
 from typing import Dict, List
 from .base_dataset import BaseDataset
 import torch
-from transformers import PreTrainedTokenizer
+from transformers import PreTrainedTokenizer, PreTrainedModel
 from arguments import DataTrainingArguments
 
 DATASETS: Dict[str, BaseDataset] = {}
@@ -21,6 +21,7 @@ def load_dataset(
                 dataset_name: str,
                 data_args: DataTrainingArguments,
                 tokenizer: PreTrainedTokenizer,
+                tokenizer_for_generating: PreTrainedTokenizer,
                 max_input_length: int,
                 max_output_length: int,
                 seed: int = None,
@@ -32,6 +33,7 @@ def load_dataset(
     """
     return DATASETS[dataset_name](
             tokenizer=tokenizer,
+            tokenizer_for_generating=tokenizer_for_generating,
             max_input_length=max_input_length,
             max_output_length=max_output_length,
             seed=seed,

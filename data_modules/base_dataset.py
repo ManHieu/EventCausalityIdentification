@@ -10,21 +10,7 @@ from abc import ABC, abstractmethod
 import torch
 from torch.utils.data.dataset import Dataset, T_co
 from tqdm import tqdm
-from transformers import PreTrainedTokenizer, torch_distributed_zero_first, default_data_collator
-
-
-def my_collate(batch: List[ProcessedInputExample]):
-    input_sentences = []
-    output_sentences = []
-    context_sentences = []
-    ED_templates = []
-    for example in batch:
-        input_sentences.append(example.context_sentence + '\n' + example.ED_template)
-        output_sentences.append(example.output_sentence)
-        context_sentences.extend(example.context_sentence)
-        ED_templates.extend(example.ED_template)
-    
-    return (input_sentences, output_sentences, context_sentences, ED_templates)
+from transformers import PreTrainedTokenizer, PreTrainedModel
 
 
 class BaseDataset(Dataset, ABC):
@@ -42,6 +28,7 @@ class BaseDataset(Dataset, ABC):
     def __init__(
             self,
             tokenizer: PreTrainedTokenizer,
+            tokenizer_for_generating: PreTrainedTokenizer,
             max_input_length: int,
             max_output_length: int,
             seed: int = None,
@@ -56,6 +43,7 @@ class BaseDataset(Dataset, ABC):
             torch.manual_seed(seed)
         
         self.tokenizer = tokenizer
+        self.tokenizer_for_generating = tokenizer_for_generating
         self.data_args = data_args
         
         self.max_input_length = max_input_length
@@ -127,17 +115,39 @@ class BaseDataset(Dataset, ABC):
             # print(input_sentence)
             output_sentence = self.output_format.format_output(example)
             # print(output_sentence)
+            
             input_features.append(
                 ProcessedInputExample(
                     context_sentence=context_sentence,
                     ED_template=ED_template,
-                    output_sentence=output_sentence
+                    output_sentence=output_sentence,
                 )
             )
             input_sentences.append(context_sentence + '\n' + ED_template)
             output_sentences.append(output_sentence)
-        
+
         self._warn_max_sequence_length(self.max_input_length, input_sentences, "input")
         self._warn_max_sequence_length(self.max_output_length, output_sentences, "output")
         
         return input_features
+    
+    def my_collate(self, batch: List[ProcessedInputExample]):
+        input_sentences = []
+        output_sentences = []
+        context_sentences = []
+        ED_templates = []
+        for example in batch:
+            input_sentences.append(example.context_sentence + '\n' + example.ED_template)
+            output_sentences.append(example.output_sentence)
+            context_sentences.append(example.context_sentence)
+            ED_templates.append(example.ED_template)
+
+        output_sentence_encoding = self.tokenizer_for_generating(output_sentences,
+                                                    padding='longest',
+                                                    max_length=self.data_args.max_output_seq_length,
+                                                    truncation=True,
+                                                    return_tensors="pt")
+        label_token_ids = output_sentence_encoding.input_ids
+        label_token_ids[label_token_ids[:, :] == self.tokenizer_for_generating.pad_token_id] = -100 # replace padding token id's of the labels by -100
+            
+        return (input_sentences, output_sentences, context_sentences, ED_templates, label_token_ids)
