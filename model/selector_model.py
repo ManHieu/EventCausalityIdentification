@@ -46,7 +46,7 @@ class Selector(nn.Module):
         ]))
 
     def forward(self, input_sentence):
-        task_prefix = 'select input template'
+        task_prefix = ''
         input_sentence = [self.input_format.format_input_for_selector(ctx=sentence, task_prefix=task_prefix) 
                          for sentence in input_sentence]
         inputs_encoding_for_template_selector = self.tokenizer(input_sentence, 

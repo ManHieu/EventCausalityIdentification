@@ -158,6 +158,7 @@ class ESLDataset(JointERDataset):
         'neg_action_causative': 'action causative',
         'neg_action_generic': 'action generic',
         }
+    
     natural_relation_types = {
         'FALLING_ACTION': 'falling action', 
         'PRECONDITION': 'precondition', 

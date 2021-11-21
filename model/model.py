@@ -81,7 +81,6 @@ class GenEERModel(pl.LightningModule):
 
         # prepare input for predictor
         template = [self.templates[int(index)] for index in action]
-        template = [self.templates[0] for index in range(len(input_sentences))]
         task_prefix = 'causality identification'
         inputs_for_classifier = [self.input_formater.format_input_for_predictor(ctx=ctx, task_prefix=task_prefix, additional_info=temp) 
                                 for temp, ctx in zip(template, input_sentences)]
@@ -123,7 +122,6 @@ class GenEERModel(pl.LightningModule):
 
         # prepare input for predictor
         template = [self.templates[int(index)] for index in action]
-        template = [self.templates[0] for index in range(len(input_sentences))]
         task_prefix = 'causality identification'
         inputs_for_classifier = [self.input_formater.format_input_for_predictor(ctx=ctx, task_prefix=task_prefix, additional_info=temp) 
                                 for temp, ctx in zip(template, input_sentences)]
@@ -163,7 +161,6 @@ class GenEERModel(pl.LightningModule):
 
         # prepare input for predictor
         template = [self.templates[int(index)] for index in action]
-        template = [self.templates[0] for index in range(len(input_sentences))]
         task_prefix = 'causality identification'
         inputs_for_classifier = [self.input_formater.format_input_for_predictor(ctx=ctx, task_prefix=task_prefix, additional_info=temp) 
                                 for temp, ctx in zip(template, input_sentences)]
