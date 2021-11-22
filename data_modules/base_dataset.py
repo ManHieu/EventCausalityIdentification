@@ -106,48 +106,50 @@ class BaseDataset(Dataset, ABC):
             )
     
     def compute_features(self, multitask: bool = False):
-        input_sentences = []
-        output_sentences = []
-        input_features = []
+        # input_sentences = []
+        # output_sentences = []
+        # input_features = []
 
-        for example in self.examples:
-            context_sentence, ED_template  = self.input_format.format_input(example, multitask=multitask)
-            # print(input_sentence)
-            output_sentence = self.output_format.format_output(example)
-            # print(output_sentence)
+        # for example in self.examples:
+        #     context_sentence, ED_template  = self.input_format.format_input(example, multitask=multitask)
+        #     # print(input_sentence)
+        #     output_sentence = self.output_format.format_output(example)
+        #     # print(output_sentence)
             
-            input_features.append(
-                ProcessedInputExample(
-                    context_sentence=context_sentence,
-                    ED_template=ED_template,
-                    output_sentence=output_sentence,
-                )
-            )
-            input_sentences.append(context_sentence + '\n' + ED_template)
-            output_sentences.append(output_sentence)
+        #     input_features.append(
+        #         ProcessedInputExample(
+        #             context_sentence=context_sentence,
+        #             ED_template=ED_template,
+        #             output_sentence=output_sentence,
+        #         )
+        #     )
+        #     input_sentences.append(context_sentence + '\n' + ED_template)
+        #     output_sentences.append(output_sentence)
 
-        self._warn_max_sequence_length(self.max_input_length, input_sentences, "input")
-        self._warn_max_sequence_length(self.max_output_length, output_sentences, "output")
+        # self._warn_max_sequence_length(self.max_input_length, input_sentences, "input")
+        # self._warn_max_sequence_length(self.max_output_length, output_sentences, "output")
+        input_features = self.examples
         
         return input_features
     
-    def my_collate(self, batch: List[ProcessedInputExample]):
-        input_sentences = []
-        output_sentences = []
-        context_sentences = []
-        ED_templates = []
-        for example in batch:
-            input_sentences.append(example.context_sentence + '\n' + example.ED_template)
-            output_sentences.append(example.output_sentence)
-            context_sentences.append(example.context_sentence)
-            ED_templates.append(example.ED_template)
+    def my_collate(self, batch: List[InputExample]):
+        # input_sentences = []
+        # output_sentences = []
+        # context_sentences = []
+        # ED_templates = []
+        # for example in batch:
+        #     input_sentences.append(example.context_sentence + '\n' + example.ED_template)
+        #     output_sentences.append(example.output_sentence)
+        #     context_sentences.append(example.context_sentence)
+        #     ED_templates.append(example.ED_template)
 
-        output_sentence_encoding = self.tokenizer_for_generating(output_sentences,
-                                                    padding='longest',
-                                                    max_length=self.data_args.max_output_seq_length,
-                                                    truncation=True,
-                                                    return_tensors="pt")
-        label_token_ids = output_sentence_encoding.input_ids
-        label_token_ids[label_token_ids[:, :] == self.tokenizer_for_generating.pad_token_id] = -100 # replace padding token id's of the labels by -100
+        # output_sentence_encoding = self.tokenizer_for_generating(output_sentences,
+        #                                             padding='longest',
+        #                                             max_length=self.data_args.max_output_seq_length,
+        #                                             truncation=True,
+        #                                             return_tensors="pt")
+        # label_token_ids = output_sentence_encoding.input_ids
+        # label_token_ids[label_token_ids[:, :] == self.tokenizer_for_generating.pad_token_id] = -100 # replace padding token id's of the labels by -100
             
-        return (input_sentences, output_sentences, context_sentences, ED_templates, label_token_ids)
+        # return (input_sentences, output_sentences, context_sentences, ED_templates, label_token_ids)
+        return batch

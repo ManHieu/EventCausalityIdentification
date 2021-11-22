@@ -2,6 +2,7 @@ import itertools
 from abc import ABC, abstractmethod
 from collections import defaultdict
 from typing import Tuple, List, Dict
+from data_modules.templates import TEMPLATES
 from utils.utils import get_span
 import numpy as np 
 
@@ -12,7 +13,7 @@ class BaseOutputFormat(ABC):
     name = None
     
     @abstractmethod
-    def format_output(self, example: InputExample) -> str:
+    def format_output(self, example: InputExample, template_type: int=0) -> str:
         """
         Format output for feeding into the model.
         """
@@ -61,8 +62,11 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
     Output format uses in ECI task
     """
     name = 'ECI_ouput'
+    templates: List[Tuple[str, str]] = TEMPLATES['eci']
 
-    def format_output(self, example: InputExample) -> str:
+    def format_output(self, example: InputExample, template_type: int) -> str:
+        template = self.templates[template_type][1]
+        
         rels = defaultdict(list)
         for relation in example.relations:
             if relation.type.natural == 'falling action':
@@ -70,8 +74,6 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
                 rels[relation.tail].append(relation.head)
             else:
                 rels[relation.head].append(relation.tail)
-
-        words = example.tokens
 
         sents = []
         for head, tails in rels.items():
@@ -83,14 +85,18 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
         
         if len(sents) == 0:
             sent_out = "none"
+            oupt = template.format(answer='No', conclusion='None')
         else:
             sent_out = ' '.join(sents)
+            oupt = template.format(answer='Yes', conclusion=sent_out)
         
-        paths = []
-        for path in example.dep_path:
-            paths.append(', '.join(path))
-        dep_path = f"Dependency path: {'; '.join(paths)}."
+        return oupt
         
-        # print("Output: {}".format(sent_out))
-        # print(f"{sent_out}. {dep_path}")
-        return f"{sent_out}. {dep_path}"
+        # paths = []
+        # for path in example.dep_path:
+        #     paths.append(', '.join(path))
+        # dep_path = f"Dependency path: {'; '.join(paths)}."
+        
+        # # print("Output: {}".format(sent_out))
+        # # print(f"{sent_out}. {dep_path}")
+        # return f"{sent_out}. {dep_path}"

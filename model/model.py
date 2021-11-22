@@ -10,6 +10,7 @@ import torch.optim as optim
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 from transformers import AdamW, get_linear_schedule_with_warmup
 from data_modules.input_formats import INPUT_FORMATS
+from data_modules.output_formats import OUTPUT_FORMATS
 from model.selector_model import Selector
 from utils.utils import compute_f1
 import numpy as np
@@ -21,8 +22,8 @@ logger.addHandler(logging.StreamHandler())
 
 class GenEERModel(pl.LightningModule):
     def __init__(self, tokenizer_name: str, model_name_or_path: str, selector_name_or_path:str,
-                templates: Dict[int, str], input_format: str, max_input_len: int, max_oupt_len: int,
-                number_step: int, num_train_epochs: int, s_weight: float, p_weight: float, 
+                input_format: str, oupt_format: str, max_input_len: int, max_oupt_len: int,
+                number_step: int, num_train_epochs: int,
                 p_learning_rate: float, s_learning_rate: float,
                 adam_epsilon: float, fn_activate: str='leakyrelu', weight_decay: float=0, warmup: float=0) -> None:
         super().__init__()
@@ -36,13 +37,14 @@ class GenEERModel(pl.LightningModule):
         self.tokenizer_for_generating.pad_token = self.tokenizer_for_generating.eos_token # to avoid an error
         
         self.input_formater = INPUT_FORMATS[input_format]()
-        self.templates = templates
+        self.oupt_formater = OUTPUT_FORMATS[oupt_format]()
+        self.number_templates = len(self.input_formater.templates)
 
         self.number_step = number_step
 
         self.t5 = T5ForConditionalGeneration.from_pretrained(model_name_or_path)
         self.selector = Selector(sentence_encoder=selector_name_or_path, 
-                                number_layers=len(templates.keys()), 
+                                number_layers=self.number_templates, 
                                 tokenizer=self.tokenizer,
                                 max_input_len=max_input_len, 
                                 input_format=input_format, 
@@ -63,6 +65,7 @@ class GenEERModel(pl.LightningModule):
                                         max_length=self.hparams.max_oupt_len, 
                                         num_return_sequences=1, num_beams=1,)
         sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
+        # print(sample_outputs)
         f1_reward = compute_f1(sample_outputs, golds)[0]
         return f1_reward
     
@@ -75,18 +78,28 @@ class GenEERModel(pl.LightningModule):
         self.rewards = []
     
     def training_step(self, batch, batch_idx, optimizer_idx):
-        input_sentences, output_sentences, context_sentences, ED_templates, labels = batch
-
-        action, log_probs, probs = self.selector(input_sentences)
+        # input_sentences, output_sentences, context_sentences, ED_templates, labels = batch
+        action, log_probs, probs = self.selector(batch)
 
         # prepare input for predictor
-        template = [self.templates[int(index)] for index in action]
+        template = [int(index) for index in action]
         task_prefix = 'causality identification'
-        inputs_for_classifier = [self.input_formater.format_input_for_predictor(ctx=ctx, task_prefix=task_prefix, additional_info=temp) 
-                                for temp, ctx in zip(template, input_sentences)]
+        inputs_for_classifier = [self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor=task_prefix)[-1]
+                                for temp_id, example in zip(template, batch)]
         inputs_encoding_for_classifier = self.tokenizer(inputs_for_classifier, padding='longest',
                                                         max_length=self.hparams.max_input_len,
                                                         truncation=True,return_tensors="pt")
+        
+        output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
+                for temp_id, example in zip(template, batch)]
+        output_sentence_encoding = self.tokenizer(output_sentences,
+                                                                padding='longest',
+                                                                max_length=self.hparams.max_input_len,
+                                                                truncation=True,
+                                                                return_tensors="pt")
+        labels = output_sentence_encoding.input_ids
+        labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
+
         predicted_loss = self.t5(
                     input_ids=inputs_encoding_for_classifier.input_ids.cuda(), 
                     attention_mask=inputs_encoding_for_classifier.attention_mask.cuda(), 
@@ -116,18 +129,29 @@ class GenEERModel(pl.LightningModule):
         self.val_rewards = []
     
     def validation_step(self,batch, batch_idx):
-        input_sentences, output_sentences, context_sentences, ED_templates, labels = batch
-
-        action, log_probs, probs = self.selector(input_sentences)
+        # input_sentences, output_sentences, context_sentences, ED_templates, labels = batch
+        action, log_probs, probs = self.selector(batch)
 
         # prepare input for predictor
-        template = [self.templates[int(index)] for index in action]
+        template = [int(index) for index in action]
         task_prefix = 'causality identification'
-        inputs_for_classifier = [self.input_formater.format_input_for_predictor(ctx=ctx, task_prefix=task_prefix, additional_info=temp) 
-                                for temp, ctx in zip(template, input_sentences)]
+        inputs_for_classifier = [self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor=task_prefix)[-1] 
+                                for temp_id, example in zip(template, batch)]
         inputs_encoding_for_classifier = self.tokenizer(inputs_for_classifier, padding='longest',
                                                         max_length=self.hparams.max_input_len,
                                                         truncation=True,return_tensors="pt")
+        
+        # prepare output for predictor
+        output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
+                for temp_id, example in zip(template, batch)]
+        output_sentence_encoding = self.tokenizer(output_sentences,
+                                                                padding='longest',
+                                                                max_length=self.hparams.max_input_len,
+                                                                truncation=True,
+                                                                return_tensors="pt")
+        labels = output_sentence_encoding.input_ids
+        labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
+        
         predicted_loss = self.t5(
                     input_ids=inputs_encoding_for_classifier.input_ids.cuda(), 
                     attention_mask=inputs_encoding_for_classifier.attention_mask.cuda(), 
@@ -155,27 +179,29 @@ class GenEERModel(pl.LightningModule):
         self.log_dict({"policy_loss": avg_policy_loss, "predicted_loss": avg_predicted_loss}, prog_bar=True)
     
     def test_step(self, batch, batch_idx):
-        input_sentences, output_sentences, context_sentences, ED_templates, labels = batch
-
-        action, log_probs, probs = self.selector(input_sentences)
+        # input_sentences, output_sentences, context_sentences, ED_templates, labels = batch
+        action, log_probs, probs = self.selector(batch)
 
         # prepare input for predictor
-        template = [self.templates[int(index)] for index in action]
+        template = [int(index) for index in action]
         task_prefix = 'causality identification'
-        inputs_for_classifier = [self.input_formater.format_input_for_predictor(ctx=ctx, task_prefix=task_prefix, additional_info=temp) 
-                                for temp, ctx in zip(template, input_sentences)]
-
+        inputs_for_classifier = [self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor=task_prefix)[-1]
+                                for temp_id, example in zip(template, batch)]
         inputs_encoding_for_generating = self.tokenizer_for_generating(inputs_for_classifier, padding='longest',
                                                                     max_length=self.hparams.max_input_len,
                                                                     truncation=True,return_tensors="pt")
         
+        # generate output 
         sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids.cuda(), do_sample=True, 
                                          top_k=20, top_p=0.95, max_length=self.hparams.max_oupt_len, 
                                          num_return_sequences=1, num_beams=8,)
-
         sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
 
-        return sample_outputs, output_sentences, input_sentences
+        # gold output
+        output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
+                for temp_id, example in zip(template, batch)]
+
+        return sample_outputs, output_sentences, inputs_for_classifier
 
     def test_epoch_end(self, outputs):
         # evaluate F1

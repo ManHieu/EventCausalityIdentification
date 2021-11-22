@@ -91,14 +91,6 @@ class TrainingArguments(transformers.TrainingArguments):
         default=1741,
         metadata={"help": "seeding for reproductivity"}
     )
-    selector_weight: int = field(
-        default=1.0,
-        metadata={'help': "The weight of selector loss"}
-    )
-    predictor_weight: int = field(
-        default=1.0,
-        metadata={'help': "The weight of predictor loss"}
-    )
 
 
 @dataclass

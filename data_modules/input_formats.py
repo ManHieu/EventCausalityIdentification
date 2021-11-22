@@ -1,6 +1,9 @@
 from abc import ABC, abstractmethod
+from collections import defaultdict
+
+from data_modules.templates import TEMPLATES
 from .input_example import InputExample
-from typing import Dict, Tuple
+from typing import Dict, List, Tuple
 from utils.utils import get_span
 
 
@@ -9,15 +12,12 @@ class BaseInputFormat(ABC):
 
     QUERY_SEPARATOR_TOKEN = ':'
 
-    def format_input(self, example: InputExample, multitask=False, task_descriptor=None):
-        res = self._format_input(example=example)
-        if multitask:
-            name = task_descriptor or example.dataset.task_descriptor or example.dataset.name
-            res = f'{name} {self.QUERY_SEPARATOR_TOKEN} ' + res
+    def format_input(self, example: InputExample, template_type: int=0, task_descriptor: str=''):
+        res = self._format_input(example=example, template_type=template_type, task_prefix=task_descriptor)
         return res
     
     @abstractmethod
-    def _format_input(self, example: InputExample) -> str:
+    def _format_input(self, example: InputExample, template_type: int=0, task_prefix: str='') -> str:
         raise NotImplementedError
 
 
@@ -47,16 +47,23 @@ class IdentifyCausalRelationInputFormat(BaseInputFormat):
     """
     name = 'ECI_input'
     
-    def _format_input(self, example: InputExample) -> Tuple[str, str]:
+    templates: List[Tuple[str, str]] = TEMPLATES['eci']
+    
+    def _format_input(self, example: InputExample, template_type:int, task_prefix: str):
         context = ' '.join(example.tokens)
-        ED_template = "\n Event triggers are "
+        # ED_template = "\n Event triggers are "
         triggers = [trigger.mention for trigger in example.triggers]
-        ED_template = ED_template + ', '.join(triggers)
+        # ED_template = ED_template + ', '.join(triggers)
 
-        return context, ED_template
+        template = self.templates[template_type][0]
+        template = template.format(
+                                context=context,
+                                head=triggers[0],
+                                tail=triggers[1])
+        
+        return context, triggers, f"{task_prefix}\n{template}"
     
-    def format_input_for_selector(self, ctx: str, task_prefix: str) -> str:
-        return f"{task_prefix} context: {ctx}"
+    def format_input_for_selector(self, example: InputExample, task_prefix: str) -> str:
+        context = ' '.join(example.tokens)
+        return f"{task_prefix}\nContext: {context}"
     
-    def format_input_for_predictor(self, ctx: str, task_prefix: str, additional_info: str, ) -> str:
-        return f"{task_prefix} context: {ctx} \nAdditional infomations: {additional_info}"

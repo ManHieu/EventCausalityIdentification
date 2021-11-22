@@ -2,3 +2,139 @@ F1: 0.5840220380757538
 Hyperparams: 
  {'learning_rate': 0.0005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '32'}
 -------------------- 
+F1: 0.4664536736214109 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.48299319678122543 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 5e-05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.4664536736214109 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.48299319678122543 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 5e-05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.48299319678122543 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 5e-05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.48299319678122543 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 5e-05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.48299319678122543 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 5e-05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.48299319678122543 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 5e-05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.48299319678122543 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 5e-05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.48299319678122543 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 5e-05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.48299319678122543 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 5e-05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.48299319678122543 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 5e-05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.48299319678122543 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 5e-05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'selector_weight': 1, 'predictor_weight': 1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
+-------------------- 
+F1: 0.5299539165889167 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5029239761834258 
+Hyperparams: 
+ {'p_learning_rate': 0.0005, 's_learning_rate': 0.0005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5299539165889167 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5299539165889167 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5299539165889167 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5299539165889167 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5299539165889167 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.4568965512763915 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 3, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5545023692009949 
+Hyperparams: 
+ {'p_learning_rate': 0.0005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.525059665402521 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.0005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 3, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.4568965512763915 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 3, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.4891518733397134 
+Hyperparams: 
+ {'p_learning_rate': 0.0005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 3, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5674418600015035 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 3, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.533057850801354 
+Hyperparams: 
+ {'p_learning_rate': 0.0005, 's_learning_rate': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.4316770182648287 
+Hyperparams: 
+ {'p_learning_rate': 0.0005, 's_learning_rate': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 5, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5674418600015035 
+Hyperparams: 
+ {'p_learning_rate': 0.005, 's_learning_rate': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 3, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5897435892625771 
+Hyperparams: 
+ {'p_learning_rate': 0.001, 's_learning_rate': 0.0005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5897435892625771 
+Hyperparams: 
+ {'p_learning_rate': 0.001, 's_learning_rate': 0.0005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5897435892625771 
+Hyperparams: 
+ {'p_learning_rate': 0.001, 's_learning_rate': 0.0005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5897435892625771 
+Hyperparams: 
+ {'p_learning_rate': 0.001, 's_learning_rate': 0.0005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 
+F1: 0.5897435892625771 
+Hyperparams: 
+ {'p_learning_rate': 0.001, 's_learning_rate': 0.0005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'selector_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-encoder-base/', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '2'}
+-------------------- 

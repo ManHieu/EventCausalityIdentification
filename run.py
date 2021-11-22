@@ -28,13 +28,11 @@ def objective(trial: optuna.Trial):
     assert job in config
 
     defaults = {
-        'p_learning_rate': trial.suggest_categorical('p_learning_rate', [5e-5, 5e-4, 5e-3]),
-        's_learning_rate': trial.suggest_categorical('s_learning_rate', [5e-5, 5e-4, 5e-3]),
+        'p_learning_rate': trial.suggest_categorical('p_learning_rate', [5e-4, 1e-3, 5e-3]),
+        's_learning_rate': trial.suggest_categorical('s_learning_rate', [5e-4, 1e-3, 5e-3]),
         'batch_size': trial.suggest_categorical('batch_size', [32]),
         'warmup_ratio': 0.1,
-        'num_train_epochs': trial.suggest_categorical('num_train_epochs', [1, 3, 5, 7]),
-        'selector_weight': trial.suggest_categorical('s_weight', [1]),
-        'predictor_weight': trial.suggest_categorical('p_weight', [1])
+        'num_train_epochs': trial.suggest_categorical('num_train_epochs', [3, 5, 7]),
     }
     print("Hyperparams: {}".format(defaults))
     defaults.update(dict(config.items(job)))
@@ -54,6 +52,7 @@ def objective(trial: optuna.Trial):
     model_args, data_args, training_args = second_parser.parse_args_into_dataclasses(remaining_args)
     if job == 'ESL':
         data_args.input_format = 'ECI_input'
+        data_args.output_format = 'ECI_ouput'
 
     if data_args.tokenizer == None:
         data_args.tokenizer = model_args.tokenizer_name
@@ -104,15 +103,12 @@ def objective(trial: optuna.Trial):
                         model_name_or_path=model_args.model_name_or_path,
                         selector_name_or_path=model_args.selector_name_or_path,
                         fn_activate=model_args.fn_activate,
-                        templates={0: 'something causes something',
-                                   1: 'somthing is the consequence of somthing'},
                         input_format=data_args.input_format,
+                        oupt_format=data_args.output_format,
                         max_input_len=data_args.max_seq_length,
                         max_oupt_len=data_args.max_output_seq_length,
                         number_step=int(len(dm.train_dataloader())/training_args.gradient_accumulation_steps),
                         num_train_epochs=training_args.num_train_epochs,
-                        s_weight=training_args.selector_weight,
-                        p_weight=training_args.predictor_weight,
                         p_learning_rate=training_args.p_learning_rate,
                         s_learning_rate=training_args.s_learning_rate,
                         adam_epsilon=training_args.adam_epsilon,
@@ -161,7 +157,7 @@ if __name__ == '__main__':
 
     args, remaining_args = parser.parse_known_args()
 
-    # sampler = optuna.samplers.TPESampler(seed=1741)
+    sampler = optuna.samplers.TPESampler(seed=1741)
     study = optuna.create_study(direction='maximize')
     study.optimize(objective, n_trials=75)
     trial = study.best_trial

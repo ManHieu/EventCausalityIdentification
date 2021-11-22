@@ -115,11 +115,11 @@ def compute_f1(predicts: List[str], golds: List[str]):
     n_gold = 0
     tp = 0
     for predict, gold in zip(predicts, golds):
-        if predict.startswith('none')==False and gold.startswith('none')==False:
+        if predict.startswith('No')==False and gold.startswith('No')==False:
             tp = tp + 1
-        if predict.startswith('none')==False:
+        if predict.startswith('No')==False:
             n_predict = n_predict + 1
-        if gold.startswith('none')==False:
+        if gold.startswith('No')==False:
             n_gold = n_gold + 1
     
     if n_predict==n_gold==0:

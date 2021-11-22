@@ -45,10 +45,10 @@ class Selector(nn.Module):
                                                     ('mlp2', nn.Linear(in_features=int(self.hidden_dim/2), out_features=self.number_layers)) # num_templates temporaly fixed is 2
         ]))
 
-    def forward(self, input_sentence):
+    def forward(self, examples):
         task_prefix = ''
-        input_sentence = [self.input_format.format_input_for_selector(ctx=sentence, task_prefix=task_prefix) 
-                         for sentence in input_sentence]
+        input_sentence = [self.input_format.format_input_for_selector(example=example, task_prefix=task_prefix) 
+                         for example in examples]
         inputs_encoding_for_template_selector = self.tokenizer(input_sentence, 
                                                                 padding='longest',
                                                                 max_length=self.max_input_len,
