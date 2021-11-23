@@ -61,13 +61,13 @@ def eval_corpus():
         
     f1, p, r, tp, n_pred, n_gold = compute_f1(predicts, golds)
 
-    print(tp)
-    print(n_pred)
-    print(n_gold)
-    print('precision: {}'.format(p))
-    print('recall: {}'.format(r))
-    print('f1: {}'.format(f1))
-    return f1
+    # print(tp)
+    # print(n_pred)
+    # print(n_gold)
+    # print('precision: {}'.format(p))
+    # print('recall: {}'.format(r))
+    # print('f1: {}'.format(f1))
+    return f1, p, r
 # CM = confusion_matrix(gold, predict)
 # print(classification_report(gold, predict))
 # print(CM)

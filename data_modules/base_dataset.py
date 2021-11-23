@@ -34,7 +34,8 @@ class BaseDataset(Dataset, ABC):
             seed: int = None,
             data_args: DataTrainingArguments = None,
             train_subset = 1,
-            split = 'train'
+            split = 'train',
+            data_name = None,
         ) -> None:
         super().__init__()
         if seed is not None:
@@ -45,6 +46,8 @@ class BaseDataset(Dataset, ABC):
         self.tokenizer = tokenizer
         self.tokenizer_for_generating = tokenizer_for_generating
         self.data_args = data_args
+
+        self.data_name = data_name
         
         self.max_input_length = max_input_length
         self.max_output_length = max_output_length

@@ -91,6 +91,22 @@ class TrainingArguments(transformers.TrainingArguments):
         default=1741,
         metadata={"help": "seeding for reproductivity"}
     )
+    kl_weight: float = field(
+        default=1.0,
+        metadata={"help": "Weight of KL reward"}
+    )
+    f1_weight: float = field(
+        default=1.0,
+        metadata={"help": "Weight of f1 reward"}
+    )
+    predict_weight: float = field(
+        default=1.0,
+        metadata={"help": "Weight of predict task loss"}
+    )
+    reconstruct_weight: float = field(
+        default=1.0,
+        metadata={"help": "Weight of reconstruct task loss"}
+    )
 
 
 @dataclass

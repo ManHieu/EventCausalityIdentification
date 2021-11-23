@@ -27,6 +27,7 @@ def load_dataset(
                 seed: int = None,
                 train_subset = 1,
                 split = 'train',
+                data_name = None,
             ) -> BaseDataset:
     """
     Load a registered dataset.
@@ -39,7 +40,8 @@ def load_dataset(
             seed=seed,
             data_args=data_args,
             train_subset=train_subset,
-            split = split
+            split = split,
+            data_name=data_name
             )
 
 
@@ -72,8 +74,9 @@ class JointERDataset(BaseDataset):
     
     def load_data(self, split:str, seed: int = None) -> List[InputExample]:
         examples = []
-        name = self.name if self.data_name is None else self.data_name
+        name = self.name
         file_path = os.path.join(self.data_dir(), f'{name}_intra_{split}.json')
+        print(file_path)
 
         with open(file_path, 'r') as f:
             data = json.load(f)

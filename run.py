@@ -16,8 +16,6 @@ from pytorch_lightning.callbacks import LearningRateMonitor, ModelCheckpoint
 from pytorch_lightning.loggers import TensorBoardLogger
 from data_modules.data_modules import load_data_module
 from eval import eval_corpus
-
-
 from model.model import GenEERModel
 
 
@@ -33,6 +31,10 @@ def objective(trial: optuna.Trial):
         'batch_size': trial.suggest_categorical('batch_size', [32]),
         'warmup_ratio': 0.1,
         'num_train_epochs': trial.suggest_categorical('num_train_epochs', [3, 5, 7]),
+        'kl_weight': trial.suggest_categorical('kl_weight', [1.0]),
+        'f1_weight': trial.suggest_categorical('f1_weight', [1.0, 0.1, 0.01]),
+        'predict_weight': trial.suggest_categorical('predict_weight', [1.0]),
+        'reconstruct_weight': trial.suggest_categorical('reconstruct_weight', [1.0, 0.1, 0.01])
     }
     print("Hyperparams: {}".format(defaults))
     defaults.update(dict(config.items(job)))
@@ -53,6 +55,8 @@ def objective(trial: optuna.Trial):
     if job == 'ESL':
         data_args.input_format = 'ECI_input'
         data_args.output_format = 'ECI_ouput'
+        n_fold = 5
+        data_dir = 'ESL'
 
     if data_args.tokenizer == None:
         data_args.tokenizer = model_args.tokenizer_name
@@ -93,59 +97,83 @@ def objective(trial: optuna.Trial):
     lr_logger = LearningRateMonitor(logging_interval='step') 
     tb_logger = TensorBoardLogger('logs/')
 
-    dm = load_data_module(module_name = 'ECI',
-                        data_args=data_args,
-                        batch_size=training_args.batch_size,
-                        data_name=args.job)
+    f1s = []
+    ps = []
+    rs = []
+    for i in range(n_fold):
+        print(f"TRAINING AND TESTING IN FOLD {i}: ")
+        fold_dir = f'{data_dir}/{i}'
+        dm = load_data_module(module_name = 'ECI',
+                            data_args=data_args,
+                            batch_size=training_args.batch_size,
+                            data_name=args.job,
+                            fold_name=fold_dir)
 
-    model = GenEERModel(
-                        tokenizer_name=model_args.tokenizer_name,
-                        model_name_or_path=model_args.model_name_or_path,
-                        selector_name_or_path=model_args.selector_name_or_path,
-                        fn_activate=model_args.fn_activate,
-                        input_format=data_args.input_format,
-                        oupt_format=data_args.output_format,
-                        max_input_len=data_args.max_seq_length,
-                        max_oupt_len=data_args.max_output_seq_length,
-                        number_step=int(len(dm.train_dataloader())/training_args.gradient_accumulation_steps),
-                        num_train_epochs=training_args.num_train_epochs,
-                        p_learning_rate=training_args.p_learning_rate,
-                        s_learning_rate=training_args.s_learning_rate,
-                        adam_epsilon=training_args.adam_epsilon,
-                        warmup=training_args.warmup_ratio,
-    )
+        model = GenEERModel(
+                            tokenizer_name=model_args.tokenizer_name,
+                            model_name_or_path=model_args.model_name_or_path,
+                            selector_name_or_path=model_args.selector_name_or_path,
+                            fn_activate=model_args.fn_activate,
+                            input_format=data_args.input_format,
+                            oupt_format=data_args.output_format,
+                            max_input_len=data_args.max_seq_length,
+                            max_oupt_len=data_args.max_output_seq_length,
+                            number_step=int(len(dm.train_dataloader())/training_args.gradient_accumulation_steps),
+                            num_train_epochs=training_args.num_train_epochs,
+                            p_learning_rate=training_args.p_learning_rate,
+                            s_learning_rate=training_args.s_learning_rate,
+                            predict_weight=training_args.predict_weight,
+                            reconstruct_weight=training_args.reconstruct_weight,
+                            kl_weight=training_args.kl_weight, 
+                            f1_weight=training_args.f1_weight,
+                            adam_epsilon=training_args.adam_epsilon,
+                            warmup=training_args.warmup_ratio,
+        )
 
-    trainer = Trainer(
-        # logger=tb_logger,
-        min_epochs=training_args.num_train_epochs,
-        max_epochs=training_args.num_train_epochs, 
-        gpus=[args.gpu], 
-        accumulate_grad_batches=training_args.gradient_accumulation_steps,
-        gradient_clip_val=training_args.gradient_clip_val, 
-        num_sanity_val_steps=1, 
-        val_check_interval=0.5, # use float to check every n epochs 
-        callbacks = [lr_logger],
-    )
+        trainer = Trainer(
+            # logger=tb_logger,
+            min_epochs=training_args.num_train_epochs,
+            max_epochs=training_args.num_train_epochs, 
+            gpus=[args.gpu], 
+            accumulate_grad_batches=training_args.gradient_accumulation_steps,
+            gradient_clip_val=training_args.gradient_clip_val, 
+            num_sanity_val_steps=1, 
+            val_check_interval=0.5, # use float to check every n epochs 
+            callbacks = [lr_logger],
+        )
 
-    print("Training....")
-    dm.setup('fit')
-    trainer.fit(model, dm)
+        print("Training....")
+        dm.setup('fit')
+        trainer.fit(model, dm)
 
-    print("Testing .....")
-    dm.setup('test')
-    trainer.test(model, dm)
+        print("Testing .....")
+        dm.setup('test')
+        trainer.test(model, dm)
 
-    f1 = eval_corpus()
+        f1, p, r = eval_corpus()
+        f1s.append(f1)
+        ps.append(p)
+        rs.append(r)
+        print(f"RESULT IN FOLD {i}: ")
+        print(f"F1: {f1}")
+        print(f"P: {p}")
+        print(f"R: {r}")
+    
+    f1 = sum(f1s)/len(f1s)
+    p = sum(ps)/len(ps)
+    r = sum(ps)/len(ps)
+    print(f"F1: {f1} - P: {p} - R: {r}")
     if f1 > 0.4:
         with open('./results.txt', 'a', encoding='utf-8') as f:
             f.write(f"F1: {f1} \n")
+            f.write(f"P: {p} \n")
+            f.write(f"R: {r} \n")
             f.write(f"Hyperparams: \n {defaults}\n")
             f.write(f"{'--'*10} \n")
 
     return f1
 
 
-    
 if __name__ == '__main__':
     # parse arguments
     parser = argparse.ArgumentParser()
