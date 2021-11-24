@@ -161,7 +161,7 @@ def objective(trial: optuna.Trial):
     
     f1 = sum(f1s)/len(f1s)
     p = sum(ps)/len(ps)
-    r = sum(ps)/len(ps)
+    r = sum(rs)/len(rs)
     print(f"F1: {f1} - P: {p} - R: {r}")
     if f1 > 0.4:
         with open('./results.txt', 'a', encoding='utf-8') as f:
