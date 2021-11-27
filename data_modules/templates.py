@@ -10,7 +10,7 @@ TEMPLATES = {
     ("Answer based on context:\n\n{context}\n\nIs there a causal relationship between the events {head} and {tail}?", "{answer}"),
     ("{context}\n\nIs there a causal relationship between the events {head} and {tail}?", "{answer}"),
     ("{context}\n\nIs it true that there is a causal relationship between the events {head} and {tail}?", "{answer}"),
-    ("{context}\n\nIs plausible if we state that {head} and {tail} have a causal relationship?", "{answer}"),
+    ("{context}\n\nIs plausible if we state that {head} and {tail} have a causal relationship?", "{answer}"), # *
     # context has form: sentence + event pair is event and event
     ("{context}\n\nDoes causality relation exist between the events {head} and {tail}?", "{answer}"),
     # baseline

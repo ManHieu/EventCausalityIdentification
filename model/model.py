@@ -12,7 +12,8 @@ from transformers import AdamW, get_linear_schedule_with_warmup
 from data_modules.input_example import InputExample, Relation, RelationType
 from data_modules.input_formats import INPUT_FORMATS
 from data_modules.output_formats import OUTPUT_FORMATS
-from model.selector_model import Selector
+from model.predictor_model import T5WithGenerateForReinforce
+from model.selector_model import AdditionalInfoGenerator
 from utils.utils import compute_f1
 import numpy as np
 
@@ -43,18 +44,16 @@ class GenEERModel(pl.LightningModule):
 
         self.number_step = number_step
 
-        self.t5 = T5ForConditionalGeneration.from_pretrained(model_name_or_path)
-        self.selector = Selector(sentence_encoder=selector_name_or_path, 
-                                number_layers=self.number_templates, 
-                                tokenizer=self.tokenizer,
-                                max_input_len=max_input_len, 
-                                input_format=input_format, 
-                                fn_activate=fn_activate)
+        self.t5 = T5WithGenerateForReinforce.from_pretrained(model_name_or_path)
+        self.selector = AdditionalInfoGenerator(generator=self.t5,
+                                                tokenizer=self.tokenizer_for_generating, 
+                                                max_input_len=max_input_len, max_output_len=max_oupt_len, # need to fix to other 
+                                                input_format=input_format)
         
         self.rewards = []
         self.val_rewards = []
     
-    def compute_reward(self, examples, templates, sample_outputs, golds):
+    def compute_reward(self, examples, templates, actions, sample_outputs, golds, label_encoding):
         #-------------------F1_REWARD-----------------------
         # prepare input for generating to compute reward
         # task_prefix = 'causality identification'
@@ -64,38 +63,30 @@ class GenEERModel(pl.LightningModule):
 
         #---------------------KL REWARD-----------------------
         self.t5.eval()
-        output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
-                            for temp_id, example in zip(templates, examples)]
-        output_sentence_encoding = self.tokenizer(output_sentences,
-                                                padding='longest',
-                                                max_length=self.hparams.max_oupt_len,
-                                                truncation=True,
-                                                return_tensors="pt")
-        labels = output_sentence_encoding.input_ids
-        labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
-        
         task_prefix = 'causality identification'
-        augmented_inputs = [self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor=task_prefix)[-1]
-                                for temp_id, example in zip(templates, examples)]
+        augmented_inputs = [self.input_formater.format_input(example=example, additional_info=action,
+                                                                    template_type=temp_id, task_descriptor=task_prefix)[-1]
+                                for temp_id, example, action in zip(templates, examples, actions)]
         augmented_inputs_encoding = self.tokenizer(augmented_inputs, padding='longest',
                                                             max_length=self.hparams.max_input_len,
                                                             truncation=True,return_tensors="pt")
         final_logits = self.t5(
                             input_ids=augmented_inputs_encoding.input_ids.cuda(), 
                             attention_mask=augmented_inputs_encoding.attention_mask.cuda(),
-                            labels=labels.cuda()
+                            labels=label_encoding.cuda()
                             ).logits
         
-        baseline_templates = [-1]*len(templates)
-        baseline_inputs = [self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor=task_prefix)[-1]
-                                for temp_id, example in zip(baseline_templates, examples)]
+        # baseline_templates = [-1]*len(templates)
+        baseline_inputs = [self.input_formater.format_input(example=example, additional_info='',
+                                                                    template_type=temp_id, task_descriptor=task_prefix)[-1]
+                                for temp_id, example, action in zip(templates, examples, actions)]
         baseline_inputs_encoding = self.tokenizer(baseline_inputs, padding='longest',
                                                             max_length=self.hparams.max_input_len,
                                                             truncation=True,return_tensors="pt")
         baseline_logits = self.t5(
                             input_ids=baseline_inputs_encoding.input_ids.cuda(), 
                             attention_mask=baseline_inputs_encoding.attention_mask.cuda(),
-                            labels=labels.cuda()
+                            labels=label_encoding.cuda()
                             ).logits
         
         KL_reward = F.kl_div(baseline_logits.log_softmax(0), final_logits.softmax(0), reduction='mean')
@@ -110,49 +101,49 @@ class GenEERModel(pl.LightningModule):
         # print(f"Reward: {f1_reward + KL_reward}")
         return float(self.hparams.f1_weight * f1_reward + self.hparams.kl_weight * KL_reward)
     
-    def nll_inference(self, examples: List[InputExample], template: List[int], relations=['Yes', 'No']):
-        scores = []
-        predicts = []
-        for temp_id, example in zip(template, examples):
-            task_prefix = 'causality identification'
-            inputs_for_classifier = self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor=task_prefix)[-1]
-            inputs_encoding_for_classifier = self.tokenizer(inputs_for_classifier, padding='longest',
-                                                            max_length=self.hparams.max_input_len,
-                                                            truncation=True,return_tensors="pt")
-            score = []
-            for relation in relations:
-                candidate = copy.deepcopy(example)
-                if relation == 'No':
-                    candidate.relations = []
-                if relation == 'Yes':
-                    candidate.relations = [Relation(type=RelationType(short='cause', natural='cause'),
-                                                    head=candidate.triggers[0],
-                                                    tail=candidate.triggers[1])]
+    # def nll_inference(self, examples: List[InputExample], template: List[int], relations=['Yes', 'No']):
+    #     scores = []
+    #     predicts = []
+    #     for temp_id, example in zip(template, examples):
+    #         task_prefix = 'causality identification'
+    #         inputs_for_classifier = self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor=task_prefix)[-1]
+    #         inputs_encoding_for_classifier = self.tokenizer(inputs_for_classifier, padding='longest',
+    #                                                         max_length=self.hparams.max_input_len,
+    #                                                         truncation=True,return_tensors="pt")
+    #         score = []
+    #         for relation in relations:
+    #             candidate = copy.deepcopy(example)
+    #             if relation == 'No':
+    #                 candidate.relations = []
+    #             if relation == 'Yes':
+    #                 candidate.relations = [Relation(type=RelationType(short='cause', natural='cause'),
+    #                                                 head=candidate.triggers[0],
+    #                                                 tail=candidate.triggers[1])]
                 
-                output_sentences = self.oupt_formater.format_output(example=candidate, template_type=temp_id)
-                output_sentence_encoding = self.tokenizer(output_sentences,
-                                                padding='longest',
-                                                max_length=self.hparams.max_input_len,
-                                                truncation=True,
-                                                return_tensors="pt")
-                labels = output_sentence_encoding.input_ids
-                labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
+    #             output_sentences = self.oupt_formater.format_output(example=candidate, template_type=temp_id)
+    #             output_sentence_encoding = self.tokenizer(output_sentences,
+    #                                             padding='longest',
+    #                                             max_length=self.hparams.max_input_len,
+    #                                             truncation=True,
+    #                                             return_tensors="pt")
+    #             labels = output_sentence_encoding.input_ids
+    #             labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
                 
-                predicted_loss = self.t5(
-                    input_ids=inputs_encoding_for_classifier.input_ids.cuda(), 
-                    attention_mask=inputs_encoding_for_classifier.attention_mask.cuda(), 
-                    labels=labels.cuda()
-                ).loss
-                score.append(float(predicted_loss))
-            score = torch.FloatTensor(score)
-            predict = relation[score.max(0)[1]]
+    #             predicted_loss = self.t5(
+    #                 input_ids=inputs_encoding_for_classifier.input_ids.cuda(), 
+    #                 attention_mask=inputs_encoding_for_classifier.attention_mask.cuda(), 
+    #                 labels=labels.cuda()
+    #             ).loss
+    #             score.append(float(predicted_loss))
+    #         score = torch.FloatTensor(score)
+    #         predict = relation[score.max(0)[1]]
             
-            predicts.append(predict)
-            scores.append(score)
+    #         predicts.append(predict)
+    #         scores.append(score)
         
-        scores = torch.stack(scores, dim=0) # (batch_size, num_class)
-        # print(scores.size())
-        return scores, predicts
+    #     scores = torch.stack(scores, dim=0) # (batch_size, num_class)
+    #     # print(scores.size())
+    #     return scores, predicts
 
     # def on_epoch_start(self) -> None:
     #     for i, optimizer in enumerate(self.optimizers()):
@@ -164,13 +155,14 @@ class GenEERModel(pl.LightningModule):
     
     def training_step(self, batch, batch_idx, optimizer_idx):
         # input_sentences, output_sentences, context_sentences, ED_templates, labels = batch
-        action, log_probs, probs = self.selector(batch)
+        actions, log_probs = self.selector(batch)
 
-        # prepare input for predictor
-        template = [int(index) for index in action]
+        # predict loss
+        template = [5]*len(batch)
         task_prefix = 'causality identification'
-        inputs_for_classifier = [self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor=task_prefix)[-1]
-                                for temp_id, example in zip(template, batch)]
+        inputs_for_classifier = [self.input_formater.format_input(example=example, additional_info=action,
+                                                                    template_type=temp_id, task_descriptor=task_prefix)[-1]
+                                for temp_id, example, action in zip(template, batch, actions)]
         inputs_encoding_for_classifier = self.tokenizer(inputs_for_classifier, padding='longest',
                                                         max_length=self.hparams.max_input_len,
                                                         truncation=True,return_tensors="pt")
@@ -210,33 +202,34 @@ class GenEERModel(pl.LightningModule):
                                                         max_length=self.hparams.max_oupt_len,
                                                         truncation=True,return_tensors="pt")
 
-        outputs_for_reconstruct = [self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor='')[-1]
-                                for temp_id, example in zip(template, batch)]                                                  
+        outputs_for_reconstruct = [self.input_formater.format_input(example=example, additional_info=action,
+                                                                    template_type=temp_id, task_descriptor=task_prefix)[-1]
+                                    for temp_id, example, action in zip(template, batch, actions)]                                         
         outputs_encoding_for_reconstruct = self.tokenizer(outputs_for_reconstruct, padding='longest',
                                                         max_length=self.hparams.max_input_len,
                                                         truncation=True,return_tensors="pt")
-        labels = outputs_encoding_for_reconstruct.input_ids
-        labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
+        reconstruct_labels = outputs_encoding_for_reconstruct.input_ids
+        reconstruct_labels[reconstruct_labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
         
         reconstruct_loss = self.t5(
                                 input_ids=inputs_encoding_for_reconstruct.input_ids.cuda(), 
                                 attention_mask=inputs_encoding_for_reconstruct.attention_mask.cuda(), 
-                                labels=labels.cuda()
+                                labels=reconstruct_labels.cuda()
                             ).loss
         reconstruct_loss = torch.mean(reconstruct_loss)
         self.log_dict({'predicted_loss': predicted_loss, 'reconstruct_loss': reconstruct_loss}, prog_bar=True)
         if optimizer_idx == 0:
             return self.hparams.predict_weight * predicted_loss + self.hparams.reconstruct_weight * reconstruct_loss
 
-        # compute policy loss
-        reward = self.compute_reward(examples=batch, templates=template, sample_outputs=sample_outputs, golds=output_sentences)
-
+        # policy loss
+        reward = self.compute_reward(examples=batch, templates=template, actions=actions, sample_outputs=sample_outputs, 
+                                        golds=output_sentences, label_encoding=labels)
         self.rewards.append(reward)
         normalized_reward = reward - mean(self.rewards)
         # print(f"Reward: {normalized_reward} - log_prob: {log_probs}")
         policy_loss = []
-
-        for log_prob in  log_probs:
+        for seq_log_prob in log_probs:
+            log_prob = sum(seq_log_prob)/len(seq_log_prob) # normalize (avoid the case of different sentence lenth)
             policy_loss.append(-log_prob * normalized_reward)
         policy_loss = sum(policy_loss)
         self.log_dict({"policy_loss": policy_loss}, prog_bar=True)
@@ -247,21 +240,21 @@ class GenEERModel(pl.LightningModule):
         self.val_rewards = []
     
     def validation_step(self,batch, batch_idx):
-        # input_sentences, output_sentences, context_sentences, ED_templates, labels = batch
-        action, log_probs, probs = self.selector(batch)
+         # input_sentences, output_sentences, context_sentences, ED_templates, labels = batch
+        actions, log_probs = self.selector(batch)
 
-        # prepare input for predictor
-        template = [int(index) for index in action]
+        # predict loss
+        template = [5]*len(batch)
         task_prefix = 'causality identification'
-        inputs_for_classifier = [self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor=task_prefix)[-1] 
-                                for temp_id, example in zip(template, batch)]
+        inputs_for_classifier = [self.input_formater.format_input(example=example, additional_info=action,
+                                                                    template_type=temp_id, task_descriptor=task_prefix)[-1]
+                                for temp_id, example, action in zip(template, batch, actions)]
         inputs_encoding_for_classifier = self.tokenizer(inputs_for_classifier, padding='longest',
                                                         max_length=self.hparams.max_input_len,
                                                         truncation=True,return_tensors="pt")
         
-        # prepare output for predictor
         output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
-                for temp_id, example in zip(template, batch)]
+                            for temp_id, example in zip(template, batch)]
         output_sentence_encoding = self.tokenizer(output_sentences,
                                                 padding='longest',
                                                 max_length=self.hparams.max_oupt_len,
@@ -269,7 +262,7 @@ class GenEERModel(pl.LightningModule):
                                                 return_tensors="pt")
         labels = output_sentence_encoding.input_ids
         labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
-        
+
         predicted_loss = self.t5(
                     input_ids=inputs_encoding_for_classifier.input_ids.cuda(), 
                     attention_mask=inputs_encoding_for_classifier.attention_mask.cuda(), 
@@ -295,29 +288,31 @@ class GenEERModel(pl.LightningModule):
                                                         max_length=self.hparams.max_oupt_len,
                                                         truncation=True,return_tensors="pt")
 
-        outputs_for_reconstruct = [self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor='')[-1]
-                                for temp_id, example in zip(template, batch)]                                                  
+        outputs_for_reconstruct = [self.input_formater.format_input(example=example, additional_info=action,
+                                                                    template_type=temp_id, task_descriptor=task_prefix)[-1]
+                                    for temp_id, example, action in zip(template, batch, actions)]                                         
         outputs_encoding_for_reconstruct = self.tokenizer(outputs_for_reconstruct, padding='longest',
                                                         max_length=self.hparams.max_input_len,
                                                         truncation=True,return_tensors="pt")
-        labels = outputs_encoding_for_reconstruct.input_ids
-        labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
+        reconstruct_labels = outputs_encoding_for_reconstruct.input_ids
+        reconstruct_labels[reconstruct_labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
         
         reconstruct_loss = self.t5(
                                 input_ids=inputs_encoding_for_reconstruct.input_ids.cuda(), 
                                 attention_mask=inputs_encoding_for_reconstruct.attention_mask.cuda(), 
-                                labels=labels.cuda()
+                                labels=reconstruct_labels.cuda()
                             ).loss
         reconstruct_loss = torch.mean(reconstruct_loss)
         self.log_dict({'predicted_loss': predicted_loss, 'reconstruct_loss': reconstruct_loss}, prog_bar=True)
 
         # compute policy loss
-        reward = self.compute_reward(examples=batch, templates=template, sample_outputs=sample_outputs, golds=output_sentences)
+        reward = self.compute_reward(examples=batch, templates=template, actions=actions, sample_outputs=sample_outputs, 
+                                        golds=output_sentences, label_encoding=labels)
         self.val_rewards.append(reward)
         normalized_reward = reward - mean(self.val_rewards)
-
         policy_loss = []
-        for log_prob in log_probs:
+        for seq_log_prob in log_probs:
+            log_prob = sum(seq_log_prob)/len(seq_log_prob) # normalize (avoid the case of different sentence lenth)
             policy_loss.append(-log_prob * normalized_reward)
         policy_loss = sum(policy_loss)
         self.log_dict({"policy_loss": policy_loss}, prog_bar=True)
@@ -331,13 +326,14 @@ class GenEERModel(pl.LightningModule):
     
     def test_step(self, batch, batch_idx):
         # input_sentences, output_sentences, context_sentences, ED_templates, labels = batch
-        action, log_probs, probs = self.selector(batch)
+        actions, log_probs = self.selector(batch)
 
-        # prepare input for predictor
-        template = [int(index) for index in action]
+        # predict loss
+        template = [5]*len(batch)
         task_prefix = 'causality identification'
-        inputs_for_classifier = [self.input_formater.format_input(example=example, template_type=temp_id, task_descriptor=task_prefix)[-1]
-                                for temp_id, example in zip(template, batch)]
+        inputs_for_classifier = [self.input_formater.format_input(example=example, additional_info=action,
+                                                                    template_type=temp_id, task_descriptor=task_prefix)[-1]
+                                for temp_id, example, action in zip(template, batch, actions)]
         inputs_encoding_for_generating = self.tokenizer_for_generating(inputs_for_classifier, padding='longest',
                                                                     max_length=self.hparams.max_input_len,
                                                                     truncation=True,return_tensors="pt")

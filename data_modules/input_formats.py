@@ -49,8 +49,12 @@ class IdentifyCausalRelationInputFormat(BaseInputFormat):
     
     templates: List[Tuple[str, str]] = TEMPLATES['eci']
     
-    def _format_input(self, example: InputExample, template_type:int, task_prefix: str):
+    def _format_input(self, example: InputExample, template_type:int, additional_info: str, task_prefix: str):
         context = ' '.join(example.tokens)
+        if context.endswith('.'):
+            context = f"{context} {additional_info}"
+        else:
+            context = f"{context}. {additional_info}"
         # ED_template = "\n Event triggers are "
         triggers = [trigger.mention for trigger in example.triggers]
         # ED_template = ED_template + ', '.join(triggers)
