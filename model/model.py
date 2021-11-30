@@ -219,7 +219,7 @@ class GenEERModel(pl.LightningModule):
             # print(f"Reward: {normalized_reward} - log_prob: {log_probs}")
             reinforce_loss = []
             for i in range(log_probs.size(0)):
-                log_prob = torch.mean(log_probs[i]) # normalize (avoid the case of different sentence lenth)
+                log_prob = torch.mean(log_probs[i]).unsqueeze(0) # normalize (avoid the case of different sentence lenth)
                 reinforce_loss.append(-log_prob * normalized_reward)
             reinforce_loss = torch.cat(reinforce_loss).sum()
             self.log_dict({"reinforce_val_loss": reinforce_loss}, prog_bar=True)
@@ -250,7 +250,6 @@ class GenEERModel(pl.LightningModule):
         # gold output
         output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
                              for temp_id, example in zip(template, batch)]
-
         return sample_outputs, output_sentences, [f"{task_prefix}\n\n{sent}" for sent in inputs_sentences]
 
     def test_epoch_end(self, outputs):
