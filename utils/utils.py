@@ -1,4 +1,5 @@
 from typing import Dict, List, Tuple
+import random
 
 
 def get_span(l: List[str], span: List[int]):
@@ -129,5 +130,14 @@ def compute_f1(predicts: List[str], golds: List[str]):
         r = tp/(n_gold + 1)
         f1 = 2 * p * r / (p + r + 1e-9)
         return f1, p, r, tp, n_predict, n_gold
+
+
+def create_distractor(items: List[str]):
+    items = set(items)
+    distracted_items = []
+    for item in items:
+        distracted_item = random.choice(list(items - set([item])))
+        distracted_items.append(distracted_item)
+    return distracted_items
 
 

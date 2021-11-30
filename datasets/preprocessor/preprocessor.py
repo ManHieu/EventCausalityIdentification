@@ -1,4 +1,5 @@
 from abc import ABC
+from collections import defaultdict
 import json
 import random
 from data_reader import cat_xml_reader, tbd_tml_reader, tdd_tml_reader, tml_reader, tsvx_reader
@@ -7,7 +8,7 @@ random.seed(1741)
 import tqdm
 import os
 from itertools import combinations
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, KFold
 
 
 class Proprocessor(object):
@@ -80,31 +81,45 @@ if __name__ == '__main__':
     dataset = 'ESL'
 
     if dataset == 'ESL':
+        kfold = KFold(n_splits=5)
         processor = Proprocessor(dataset, 'intra_ir_datapoint', intra=True, inter=False)
         corpus_dir = './datasets/ESL/annotated_data/v0.9/'
         corpus = processor.load_dataset(corpus_dir)
-        train, test, validate = [], [], []
+        
+        _train, test = [], []
+        data = defaultdict(list)
         for my_dict in corpus:
             if '37/' in my_dict['doc_id'] or '41/' in my_dict['doc_id']:
                 test.append(my_dict)
             else:
-                train.append(my_dict)
-        train, validate = train_test_split(train, test_size=0.1, train_size=0.9)
-    
-        processed_path = "./datasets/ESL/ESL_intra_train.json"
-        processed_train = processor.process_and_save(processed_path, train)
-
-        processed_path = "./datasets/ESL/ESL_intra_dev.json"
-        processed_validate = processor.process_and_save(processed_path, validate)
+                _train.append(my_dict)
         
-        processed_path = "./datasets/ESL/ESL_intra_test.json"
-        processed_test = processor.process_and_save(processed_path, test)
+        for fold, (train_ids, valid_ids) in enumerate(kfold.split(random.shuffle(_train))):
+            try:
+                os.mkdir(f"./datasets/ESL/{fold}")
+            except FileExistsError:
+                pass
+
+            train = [_train[id] for id in train_ids]
+            validate = [_train[id] for id in valid_ids]
+        
+            processed_path = f"./datasets/ESL/{fold}/ESL_intra_train.json"
+            processed_train = processor.process_and_save(processed_path, train)
+
+            processed_path = f"./datasets/ESL/{fold}/ESL_intra_dev.json"
+            processed_validate = processor.process_and_save(processed_path, validate)
+            
+            processed_path = f"./datasets/ESL/{fold}/ESL_intra_test.json"
+            processed_test = processor.process_and_save(processed_path, test)
+
+            print(f"Statistic in fold {fold}")
+            print("Number datapoints in dataset: {}".format(len(processed_train + processed_validate + processed_test)))
+            print("Number training points: {}".format(len(processed_train)))
+            print("Number validate points: {}".format(len(processed_validate)))
+            print("Number test points: {}".format(len(processed_test)))
     
     if dataset == 'MATRES': 
         pass
     
-    print("Number datapoints in dataset: {}".format(len(processed_train + processed_validate + processed_test)))
-    print("Number training points: {}".format(len(processed_train)))
-    print("Number validate points: {}".format(len(processed_validate)))
-    print("Number test points: {}".format(len(processed_test)))
+    
 

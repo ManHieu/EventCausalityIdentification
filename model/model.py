@@ -14,7 +14,7 @@ from transformers import AdamW, get_linear_schedule_with_warmup
 from data_modules.input_example import InputExample, Relation, RelationType
 from data_modules.input_formats import INPUT_FORMATS
 from data_modules.output_formats import OUTPUT_FORMATS
-from utils.utils import compute_f1
+from utils.utils import compute_f1, create_distractor
 import numpy as np
 
 
@@ -58,7 +58,7 @@ class GenEERModel(pl.LightningModule):
         #---------------------RECONSTRUCT REWARD-----------------------
         with torch.no_grad():
             score, _ = self.scoring_in_out(inputs_sentences, generated_output)
-            random.shuffle(inputs_sentences)
+            inputs_sentences = create_distractor(inputs_sentences)
             distractor_score, _ = self.scoring_in_out(inputs_sentences, generated_output)
             
             reconstruct_reward = - max(0, self.hparams.margin + float(distractor_score) - float(score))
@@ -129,7 +129,7 @@ class GenEERModel(pl.LightningModule):
         
         
         # distractor score
-        random.shuffle(output_sentences)
+        output_sentences = create_distractor(output_sentences)
         distractor_score, _ = self.scoring_in_out(inputs_sentences, output_sentences)
         
         # discriminative loss 
