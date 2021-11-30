@@ -75,11 +75,11 @@ class TrainingArguments(transformers.TrainingArguments):
         default=8,
         metadata={"help": "Batch_size for training and evaluating"}
     )
-    p_learning_rate: float = field(
+    pretrain_lr: float = field(
         default=5e-5,
         metadata={"help": "Learning rate of predictor"}
     )
-    s_learning_rate: float = field(
+    reinforce_lr: float = field(
         default=5e-5,
         metadata={"help": "Learning rate of selector"}
     )
@@ -87,27 +87,30 @@ class TrainingArguments(transformers.TrainingArguments):
         default=0.0,
         metadata={"help":"Gradient clipping value"}
     )
+    pretrain_epoches : int = field(
+        default=5,
+        metadata={"help": "number pretrain epoches"}
+    )
+    reinforce_train_epoches : int = field(
+        default=5,
+        metadata={"help": "number reinforce training epoches"}
+    )
     seed: int = field(
         default=1741,
         metadata={"help": "seeding for reproductivity"}
     )
-    kl_weight: float = field(
+    generate_weight: float = field(
         default=1.0,
-        metadata={"help": "Weight of KL reward"}
+        metadata={"help": "Weight of generate score"}
     )
     f1_weight: float = field(
         default=1.0,
         metadata={"help": "Weight of f1 reward"}
     )
-    predict_weight: float = field(
+    margin: float = field(
         default=1.0,
-        metadata={"help": "Weight of predict task loss"}
+        metadata={"help": "margin for Hinge loss"}
     )
-    reconstruct_weight: float = field(
-        default=1.0,
-        metadata={"help": "Weight of reconstruct task loss"}
-    )
-
 
 @dataclass
 class ModelArguments:
@@ -118,20 +121,11 @@ class ModelArguments:
     model_name_or_path: Optional[str] = field(
         default=None, metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
     )
-
-    selector_name_or_path: Optional[str] = field(
-        default=None, metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
-    )
-
     config_name: Optional[str] = field(
         default=None, metadata={"help": "Pretrained config name or path if not the same as model_name"}
     )
 
     tokenizer_name: Optional[str] = field(
         default=None, metadata={"help": "Pretrained tokenizer name or path if not the same as model_name"}
-    )
-    fn_activate: Optional[str] = field(
-        default='leakyrelu',
-        metadata={'help': "Type of activate function using in selector"}
     )
 

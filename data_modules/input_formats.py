@@ -13,7 +13,7 @@ class BaseInputFormat(ABC):
     QUERY_SEPARATOR_TOKEN = ':'
 
     def format_input(self, example: InputExample, template_type: int=0, task_descriptor: str=''):
-        res = self._format_input(example=example, template_type=template_type, task_prefix=task_descriptor)
+        res = self._format_input(example=example, template_type=template_type)
         return res
     
     @abstractmethod
@@ -49,12 +49,12 @@ class IdentifyCausalRelationInputFormat(BaseInputFormat):
     
     templates: List[Tuple[str, str]] = TEMPLATES['eci']
     
-    def _format_input(self, example: InputExample, template_type:int, additional_info: str, task_prefix: str):
+    def _format_input(self, example: InputExample, template_type:int):
         context = ' '.join(example.tokens)
-        if context.endswith('.'):
-            context = f"{context} {additional_info}"
-        else:
-            context = f"{context}. {additional_info}"
+        # if context.endswith('.'):
+        #     context = f"{context} {additional_info}"
+        # else:
+        #     context = f"{context}. {additional_info}"
         # ED_template = "\n Event triggers are "
         triggers = [trigger.mention for trigger in example.triggers]
         # ED_template = ED_template + ', '.join(triggers)
@@ -65,9 +65,4 @@ class IdentifyCausalRelationInputFormat(BaseInputFormat):
                                 head=triggers[0],
                                 tail=triggers[1])
         
-        return context, triggers, f"{task_prefix}\n{template}"
-    
-    def format_input_for_selector(self, example: InputExample, task_prefix: str) -> str:
-        context = ' '.join(example.tokens)
-        return f"{task_prefix}\nContext: {context}"
-    
+        return context, triggers, f"{template}"

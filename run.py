@@ -26,15 +26,15 @@ def objective(trial: optuna.Trial):
     assert job in config
 
     defaults = {
-        'p_learning_rate': trial.suggest_categorical('p_learning_rate', [5e-4, 1e-3, 5e-3]),
-        's_learning_rate': trial.suggest_categorical('s_learning_rate', [5e-4, 1e-3, 5e-3]),
-        'batch_size': trial.suggest_categorical('batch_size', [32]),
+        'pretrain_lr': trial.suggest_categorical('pretrain_lr', [1e-5, 5e-5, 1e-4, 5e-4, 1e-3]),
+        'reinforce_lr': trial.suggest_categorical('reinforce_lr', [1e-5, 5e-5, 1e-4, 5e-4, 1e-3]),
+        'batch_size': trial.suggest_categorical('batch_size', [16]),
         'warmup_ratio': 0.1,
-        'num_train_epochs': trial.suggest_categorical('num_train_epochs', [3, 5, 7]),
-        'kl_weight': trial.suggest_categorical('kl_weight', [1.0]),
-        'f1_weight': trial.suggest_categorical('f1_weight', [1.0, 0.1, 0.01]),
-        'predict_weight': trial.suggest_categorical('predict_weight', [1.0]),
-        'reconstruct_weight': trial.suggest_categorical('reconstruct_weight', [1.0, 0.1, 0.01])
+        'pretrain_epoches': trial.suggest_categorical('pretrain_epoches', [1, 3]),
+        'reinforce_train_epoches': trial.suggest_categorical('reinforce_train_epoches', [3, 5, 7]),
+        'margin': trial.suggest_categorical('margin', [1]),
+        'generate_weight': trial.suggest_categorical('generate_weight', [1.0, 0.5, 0.9, 0.95]),
+        'f1_weight': trial.suggest_categorical('f1_weight', [1.0, 0.5, 0.9, 0.95]),
     }
     print("Hyperparams: {}".format(defaults))
     defaults.update(dict(config.items(job)))
@@ -51,6 +51,7 @@ def objective(trial: optuna.Trial):
     model_args: ModelArguments
     data_args: DataTrainingArguments
     training_args: TrainingArguments
+    # print(second_parser.parse_args_into_dataclasses(remaining_args))
     model_args, data_args, training_args = second_parser.parse_args_into_dataclasses(remaining_args)
     if job == 'ESL':
         data_args.input_format = 'ECI_input'
@@ -108,36 +109,36 @@ def objective(trial: optuna.Trial):
                             batch_size=training_args.batch_size,
                             data_name=args.job,
                             fold_name=fold_dir)
+        
+        number_step_in_epoch = len(dm.train_dataloader())/training_args.gradient_accumulation_steps
 
         model = GenEERModel(
                             tokenizer_name=model_args.tokenizer_name,
                             model_name_or_path=model_args.model_name_or_path,
-                            selector_name_or_path=model_args.selector_name_or_path,
-                            fn_activate=model_args.fn_activate,
                             input_format=data_args.input_format,
                             oupt_format=data_args.output_format,
                             max_input_len=data_args.max_seq_length,
                             max_oupt_len=data_args.max_output_seq_length,
-                            number_step=int(len(dm.train_dataloader())/training_args.gradient_accumulation_steps),
-                            num_train_epochs=training_args.num_train_epochs,
-                            p_learning_rate=training_args.p_learning_rate,
-                            s_learning_rate=training_args.s_learning_rate,
-                            predict_weight=training_args.predict_weight,
-                            reconstruct_weight=training_args.reconstruct_weight,
-                            kl_weight=training_args.kl_weight, 
+                            generate_weight=training_args.generate_weight,
                             f1_weight=training_args.f1_weight,
+                            margin=training_args.margin,
+                            pretrain_step=int(number_step_in_epoch) * training_args.pretrain_epoches,
+                            reinforce_step=int(number_step_in_epoch) * training_args.reinforce_train_epoches,
+                            pretrain_lr=training_args.pretrain_lr,
+                            reinforce_lr=training_args.reinforce_lr,
                             adam_epsilon=training_args.adam_epsilon,
+                            weight_decay=training_args.weight_decay,
                             warmup=training_args.warmup_ratio,
         )
 
         trainer = Trainer(
             # logger=tb_logger,
-            min_epochs=training_args.num_train_epochs,
-            max_epochs=training_args.num_train_epochs, 
+            min_epochs=training_args.pretrain_epoches + training_args.reinforce_train_epoches,
+            max_epochs=training_args.pretrain_epoches + training_args.reinforce_train_epoches, 
             gpus=[args.gpu], 
             accumulate_grad_batches=training_args.gradient_accumulation_steps,
             gradient_clip_val=training_args.gradient_clip_val, 
-            num_sanity_val_steps=1, 
+            num_sanity_val_steps=5, 
             val_check_interval=0.5, # use float to check every n epochs 
             callbacks = [lr_logger],
         )
