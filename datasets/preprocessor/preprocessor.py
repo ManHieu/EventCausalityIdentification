@@ -94,7 +94,8 @@ if __name__ == '__main__':
             else:
                 _train.append(my_dict)
         
-        for fold, (train_ids, valid_ids) in enumerate(kfold.split(random.shuffle(_train))):
+        random.shuffle(_train)
+        for fold, (train_ids, valid_ids) in enumerate(kfold.split(_train)):
             try:
                 os.mkdir(f"./datasets/ESL/{fold}")
             except FileExistsError:
