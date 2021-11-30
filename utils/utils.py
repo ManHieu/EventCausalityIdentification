@@ -133,11 +133,13 @@ def compute_f1(predicts: List[str], golds: List[str]):
 
 
 def create_distractor(items: List[str]):
-    items = set(items)
     distracted_items = []
-    for item in items:
-        distracted_item = random.choice(list(items - set([item])))
-        distracted_items.append(distracted_item)
-    return distracted_items
+    if len(set(items)) == 1:
+        return items
+    else:
+        for item in items:
+            distracted_item = random.choice(list(set(items) - set([item])))
+            distracted_items.append(distracted_item)
+        return distracted_items
 
 

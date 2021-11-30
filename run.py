@@ -26,8 +26,8 @@ def objective(trial: optuna.Trial):
     assert job in config
 
     defaults = {
-        'pretrain_lr': trial.suggest_categorical('pretrain_lr', [1e-5, 5e-5, 1e-4, 5e-4, 1e-3]),
-        'reinforce_lr': trial.suggest_categorical('reinforce_lr', [1e-5, 5e-5, 1e-4, 5e-4, 1e-3]),
+        'pretrain_lr': trial.suggest_categorical('pretrain_lr', [1e-5, 5e-5, 1e-4, 5e-4]),
+        'reinforce_lr': trial.suggest_categorical('reinforce_lr', [1e-5, 5e-5, 1e-4, 5e-4]),
         'batch_size': trial.suggest_categorical('batch_size', [16]),
         'warmup_ratio': 0.1,
         'pretrain_epoches': trial.suggest_categorical('pretrain_epoches', [1, 3]),

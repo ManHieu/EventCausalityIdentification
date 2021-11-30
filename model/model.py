@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import copy
 from typing import Dict, List
 from statistics import mean
@@ -43,7 +44,13 @@ class GenEERModel(pl.LightningModule):
         self.number_templates = len(self.input_formater.templates) - 1
 
         self.t5 = T5ForConditionalGeneration.from_pretrained(model_name_or_path)
-        self.mlp = nn.Linear(2, 1, bias=True)
+        self.drop_out = nn.Dropout(0.9)
+        self.mlp = nn.Sequential(OrderedDict([
+                                            ('dropout1',self.drop_out), 
+                                            ('fc1', nn.Linear(2, 2)), 
+                                            ('dropout2', self.drop_out), 
+                                            ('relu', nn.ReLU()), 
+                                            ('fc2', nn.Linear(2, 1)),]))
         self.fn_actiavte = nn.Sigmoid()
         
         self.rewards = []
@@ -81,11 +88,15 @@ class GenEERModel(pl.LightningModule):
                                                 return_tensors="pt")
         labels = output_sentence_encoding.input_ids
         labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
-        generate_loss = self.t5(
-                                input_ids=inputs_sentences_encoding.input_ids.cuda(), 
-                                attention_mask=inputs_sentences_encoding.attention_mask.cuda(), 
-                                labels=labels.cuda()
-                    ).loss
+        try:
+            generate_loss = self.t5(
+                                    input_ids=inputs_sentences_encoding.input_ids.cuda(), 
+                                    attention_mask=inputs_sentences_encoding.attention_mask.cuda(), 
+                                    labels=labels.cuda()
+                        ).loss
+        except:
+            print(f"inputs_sentences_encoding: {inputs_sentences_encoding.input_ids.cuda().size()} \n {inputs_sentences_encoding.attention_mask.cuda().size()}")
+            print(f"label: {labels.cuda().size()}")
         
         # reconstruct loss (out->in)
         task_prefix = 'Generate question and context'
