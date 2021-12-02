@@ -28,13 +28,13 @@ def objective(trial: optuna.Trial):
     defaults = {
         'pretrain_lr': trial.suggest_categorical('pretrain_lr', [1e-4, 5e-4, 1e-3, 5e-3]),
         'reinforce_lr': trial.suggest_categorical('reinforce_lr', [1e-5, 1e-4, 1e-3]),
-        'reconstruct_lr': trial.suggest_categorical('reconstruct_lr', [1e-4, 5e-4, 1e-3, 5e-3]),
+        'reconstruct_lr': trial.suggest_categorical('reconstruct_lr', [1e-5]),
         'batch_size': trial.suggest_categorical('batch_size', [16]),
         'warmup_ratio': 0.1,
-        'pretrain_epoches': trial.suggest_categorical('pretrain_epoches', [1, 3]),
+        'pretrain_epoches': trial.suggest_categorical('pretrain_epoches', [1]),
         'reinforce_train_epoches': trial.suggest_categorical('reinforce_train_epoches', [3, 5, 7]),
-        'generate_weight': trial.suggest_categorical('generate_weight', [0.5, 0.7]),
-        'f1_weight': trial.suggest_categorical('f1_weight', [0.1, 0.5, 0.9, 0.95]),
+        'generate_weight': trial.suggest_categorical('generate_weight', [0.5]),
+        'f1_weight': trial.suggest_categorical('f1_weight', [0.5, 0.7, 0.9, 0.95]),
     }
     print("Hyperparams: {}".format(defaults))
     defaults.update(dict(config.items(job)))

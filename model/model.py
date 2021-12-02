@@ -80,10 +80,6 @@ class GenEERModel(pl.LightningModule):
                                             num_beams=1,)
             reconstructed_inputs = self.tokenizer_for_generating.batch_decode(reconstructed_inputs, skip_special_tokens=True)
             avg_sim = compute_sentences_similar(inputs_sentences, reconstructed_inputs)
-        # inputs_sentences = create_distractor(inputs_sentences)
-        # distractor_score, _ = self.scoring_in_out(inputs_sentences, generated_output)
-        
-        # reconstruct_reward = - max(0, self.hparams.margin + float(distractor_score) - float(score))
         reconstruct_reward = avg_sim
         self.log_dict({'f1_reward': f1_reward, 'reconstruct_reward': reconstruct_reward}, prog_bar=True)
         return float(self.hparams.f1_weight * f1_reward + (1 - self.hparams.f1_weight) * reconstruct_reward) 
@@ -202,16 +198,16 @@ class GenEERModel(pl.LightningModule):
                 reinforce_loss.append(-log_prob * normalized_reward)
             reinforce_loss = torch.cat(reinforce_loss).sum()
 
-            template = [5]*len(batch)
-            inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
-                                    for temp_id, example in zip(template, batch)]
-            reconstruct_loss = self.compute_reconstruct_loss(inputs=inputs_sentences, outputs=outputs)[0]
+            # template = [5]*len(batch)
+            # inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
+            #                         for temp_id, example in zip(template, batch)]
+            # reconstruct_loss = self.compute_reconstruct_loss(inputs=inputs_sentences, outputs=outputs)[0]
 
-            reconstructor_optimizer.zero_grad()
-            self.manual_backward(reconstruct_loss)
-            reconstructor_optimizer.step()
-            reconstructor_scheduler.step()
-            self.log_dict({'reconstruct_loss': reconstruct_loss})
+            # reconstructor_optimizer.zero_grad()
+            # self.manual_backward(reconstruct_loss)
+            # reconstructor_optimizer.step()
+            # reconstructor_scheduler.step()
+            # self.log_dict({'reconstruct_loss': reconstruct_loss})
 
             reinforce_optimizer.zero_grad()
             self.manual_backward(reinforce_loss)
