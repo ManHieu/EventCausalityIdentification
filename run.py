@@ -26,15 +26,15 @@ def objective(trial: optuna.Trial):
     assert job in config
 
     defaults = {
-        'pretrain_lr': trial.suggest_categorical('pretrain_lr', [1e-5, 5e-5, 1e-4, 5e-4]),
-        'reinforce_lr': trial.suggest_categorical('reinforce_lr', [1e-5, 5e-5, 1e-4, 5e-4]),
-        'batch_size': trial.suggest_categorical('batch_size', [16]),
+        'pretrain_lr': trial.suggest_categorical('pretrain_lr', [1e-4, 1e-3, 5e-3]),
+        'reinforce_lr': trial.suggest_categorical('reinforce_lr', [1e-5, 1e-4, 1e-3]),
+        'reconstruct_lr': trial.suggest_categorical('reconstruct_lr', [1e-5, 1e-4, 1e-3]),
+        'batch_size': trial.suggest_categorical('batch_size', [32]),
         'warmup_ratio': 0.1,
         'pretrain_epoches': trial.suggest_categorical('pretrain_epoches', [1, 3]),
         'reinforce_train_epoches': trial.suggest_categorical('reinforce_train_epoches', [3, 5, 7]),
-        'margin': trial.suggest_categorical('margin', [1]),
-        'generate_weight': trial.suggest_categorical('generate_weight', [1.0, 0.5, 0.9, 0.95]),
-        'f1_weight': trial.suggest_categorical('f1_weight', [1.0, 0.5, 0.9, 0.95]),
+        'generate_weight': trial.suggest_categorical('generate_weight', [0.5, 0.7]),
+        'f1_weight': trial.suggest_categorical('f1_weight', [0.5, 0.9, 0.95]),
     }
     print("Hyperparams: {}".format(defaults))
     defaults.update(dict(config.items(job)))
@@ -56,7 +56,7 @@ def objective(trial: optuna.Trial):
     if job == 'ESL':
         data_args.input_format = 'ECI_input'
         data_args.output_format = 'ECI_ouput'
-        n_fold = 5
+        n_fold = 1
         data_dir = 'ESL'
 
     if data_args.tokenizer == None:
@@ -121,11 +121,11 @@ def objective(trial: optuna.Trial):
                             max_oupt_len=data_args.max_output_seq_length,
                             generate_weight=training_args.generate_weight,
                             f1_weight=training_args.f1_weight,
-                            margin=training_args.margin,
                             pretrain_step=int(number_step_in_epoch) * training_args.pretrain_epoches,
                             reinforce_step=int(number_step_in_epoch) * training_args.reinforce_train_epoches,
                             pretrain_lr=training_args.pretrain_lr,
                             reinforce_lr=training_args.reinforce_lr,
+                            reconstructor_lr=training_args.reconstruct_lr,
                             adam_epsilon=training_args.adam_epsilon,
                             weight_decay=training_args.weight_decay,
                             warmup=training_args.warmup_ratio,

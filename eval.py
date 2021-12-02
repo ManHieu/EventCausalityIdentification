@@ -50,7 +50,7 @@ def eval_corpus():
     golds = []
     predicts = []
 
-    with open('./predictions.json','r') as f:
+    with open('./reinforce_model_predictions.json','r') as f:
         lines = json.load(f)
         for result in lines:
             predict = result['predicted']

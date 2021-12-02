@@ -83,6 +83,10 @@ class TrainingArguments(transformers.TrainingArguments):
         default=5e-5,
         metadata={"help": "Learning rate of selector"}
     )
+    reconstruct_lr: float = field(
+        default=5e-5,
+        metadata={"help": "Learning rate of reconstruct loss"}
+    )
     gradient_clip_val: float = field(
         default=0.0,
         metadata={"help":"Gradient clipping value"}
@@ -106,10 +110,6 @@ class TrainingArguments(transformers.TrainingArguments):
     f1_weight: float = field(
         default=1.0,
         metadata={"help": "Weight of f1 reward"}
-    )
-    margin: float = field(
-        default=1.0,
-        metadata={"help": "margin for Hinge loss"}
     )
 
 @dataclass

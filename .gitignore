@@ -4,3 +4,5 @@ experiments/*
 lightning_logs/*
 cache/*
 predictions.json
+reinforce_model_predictions_dev.json
+reinforce_model_predictions.json
