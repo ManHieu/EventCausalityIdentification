@@ -1,5 +1,10 @@
 from typing import Dict, List, Tuple
 import random
+import numpy as np
+from sentence_transformers import SentenceTransformer, util
+import torch
+
+sim_evaluator = SentenceTransformer('../all-MiniLM-L12-v1')
 
 
 def get_span(l: List[str], span: List[int]):
@@ -142,4 +147,22 @@ def create_distractor(items: List[str]):
             distracted_items.append(distracted_item)
         return distracted_items
 
+@torch.no_grad()
+def compute_sentences_similar(orgigin_inputs: List[str], reconstructed_inputs: List[str]):
+    assert len(orgigin_inputs) == len(reconstructed_inputs)
+    origins = []
+    reconstructs = []
+    for i in range(len(orgigin_inputs)):
+        ori_sent = ' '.join([word.strip() for word in orgigin_inputs[i].split()])
+        re_sent = ' '.join([word.strip() for word in reconstructed_inputs[i].split()])
+        origins.append(ori_sent)
+        reconstructs.append(re_sent)
+
+    embeddings1 = sim_evaluator.encode(origins, convert_to_tensor=True)
+    embeddings2 = sim_evaluator.encode(reconstructs, convert_to_tensor=True)
+    cosine_scores = util.pytorch_cos_sim(embeddings1, embeddings2)
+    scores = []
+    for i in range(len(orgigin_inputs)):
+        scores.append(abs(float(cosine_scores[i][i])))
+    return float(np.mean(scores))
 

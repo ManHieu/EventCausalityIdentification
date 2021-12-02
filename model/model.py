@@ -15,7 +15,7 @@ from transformers import AdamW, get_linear_schedule_with_warmup
 from data_modules.input_example import InputExample, Relation, RelationType
 from data_modules.input_formats import INPUT_FORMATS
 from data_modules.output_formats import OUTPUT_FORMATS
-from utils.utils import compute_f1, create_distractor
+from utils.utils import compute_f1, compute_sentences_similar, create_distractor
 import numpy as np
 
 
@@ -65,12 +65,26 @@ class GenEERModel(pl.LightningModule):
 
         #---------------------RECONSTRUCT REWARD-----------------------
         with torch.no_grad():
-            reconstruct_loss = self.compute_reconstruct_loss(inputs_sentences, generated_output)[0]
+            task_prefix = 'Generate question and context'
+            reconstruct_inputs_emcoding = self.tokenizer_for_generating([f"{task_prefix}:\n{sent}" for sent in generated_output],
+                                                                            padding='longest',
+                                                                            max_length=self.hparams.max_oupt_len,
+                                                                            truncation=True,
+                                                                            return_tensors="pt")
+            reconstructed_inputs = self.t5.generate(input_ids=reconstruct_inputs_emcoding.input_ids.cuda(), 
+                                            do_sample=False, 
+                                            top_k=20, 
+                                            top_p=0.95, 
+                                            max_length=self.hparams.max_oupt_len, 
+                                            num_return_sequences=1, 
+                                            num_beams=1,)
+            reconstructed_inputs = self.tokenizer_for_generating.batch_decode(reconstructed_inputs, skip_special_tokens=True)
+            avg_sim = compute_sentences_similar(inputs_sentences, reconstructed_inputs)
         # inputs_sentences = create_distractor(inputs_sentences)
         # distractor_score, _ = self.scoring_in_out(inputs_sentences, generated_output)
         
         # reconstruct_reward = - max(0, self.hparams.margin + float(distractor_score) - float(score))
-        reconstruct_reward = -reconstruct_loss
+        reconstruct_reward = avg_sim
         self.log_dict({'f1_reward': f1_reward, 'reconstruct_reward': reconstruct_reward}, prog_bar=True)
         return float(self.hparams.f1_weight * f1_reward + (1 - self.hparams.f1_weight) * reconstruct_reward) 
 
@@ -114,9 +128,9 @@ class GenEERModel(pl.LightningModule):
                                                     max_length=self.hparams.max_input_len,
                                                     truncation=True,
                                                     return_tensors="pt")
-        
         reconstruct_labels = reconstruct_outputs_embedding.input_ids
         reconstruct_labels[reconstruct_labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
+        
         _reconstruct_output = self.t5(
                                 input_ids=reconstruct_inputs_embedding.input_ids.cuda(), 
                                 attention_mask=reconstruct_inputs_embedding.attention_mask.cuda(), 
@@ -222,12 +236,12 @@ class GenEERModel(pl.LightningModule):
             
             # generate output 
             sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids.cuda(), 
-                                            do_sample=True, 
+                                            do_sample=False, 
                                             top_k=20, 
                                             top_p=0.95, 
                                             max_length=self.hparams.max_oupt_len, 
                                             num_return_sequences=1, 
-                                            num_beams=8,)
+                                            num_beams=1,)
             sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
 
             # gold output
