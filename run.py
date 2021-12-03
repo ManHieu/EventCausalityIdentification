@@ -26,17 +26,21 @@ def objective(trial: optuna.Trial):
     assert job in config
 
     defaults = {
-        'pretrain_lr': trial.suggest_categorical('pretrain_lr', [1e-4, 5e-4, 1e-3, 5e-3]),
-        'reinforce_lr': trial.suggest_categorical('reinforce_lr', [1e-5, 1e-4, 1e-3]),
-        'reconstruct_lr': trial.suggest_categorical('reconstruct_lr', [1e-5]),
-        'batch_size': trial.suggest_categorical('batch_size', [16]),
+        'pretrain_lr': trial.suggest_categorical('pretrain_lr', [1e-3]),
+        'reinforce_lr': trial.suggest_categorical('reinforce_lr', [1e-3]),
+        'reconstruct_lr': trial.suggest_categorical('reconstruct_lr', [1e-3]),
+        'batch_size': trial.suggest_categorical('batch_size', [32]),
         'warmup_ratio': 0.1,
-        'pretrain_epoches': trial.suggest_categorical('pretrain_epoches', [1]),
+        'pretrain_epoches': trial.suggest_categorical('pretrain_epoches', [3]),
         'reinforce_train_epoches': trial.suggest_categorical('reinforce_train_epoches', [3, 5, 7]),
-        'generate_weight': trial.suggest_categorical('generate_weight', [0.5]),
-        'f1_weight': trial.suggest_categorical('f1_weight', [0.5, 0.7, 0.9, 0.95]),
+        'generate_weight': trial.suggest_categorical('generate_weight', [0.5, 0.7]),
+        'f1_weight': trial.suggest_categorical('f1_weight', [0.5, 0.7, 0.9]),
     }
+    
     print("Hyperparams: {}".format(defaults))
+    with open('./results.txt', 'a', encoding='utf-8') as f:
+        f.write(f"{'--'*10} \n")
+        f.write(f"Hyperparams: \n {defaults}\n")
     defaults.update(dict(config.items(job)))
     for key in defaults:
         if defaults[key] in ['True', 'False']:
@@ -169,8 +173,6 @@ def objective(trial: optuna.Trial):
             f.write(f"F1: {f1} \n")
             f.write(f"P: {p} \n")
             f.write(f"R: {r} \n")
-            f.write(f"Hyperparams: \n {defaults}\n")
-            f.write(f"{'--'*10} \n")
 
     return f1
 

@@ -72,3 +72,12 @@ R: 0.5953462898349448
 Hyperparams: 
  {'p_learning_rate': 0.005, 's_learning_rate': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_train_epochs': 7, 'kl_weight': 1.0, 'f1_weight': 1.0, 'predict_weight': 1.0, 'reconstruct_weight': 0.1, 'datasets': 'ESL', 'model_name_or_path': '/vinai/hieumdt/pretrained_models/models/t5-base-for-conditional-generation', 'tokenizer_name': '/vinai/hieumdt/pretrained_models/tokenizers/t5-base-for-conditional-generation', 'seed': '1741', 'max_seq_length': '256', 'max_output_seq_length': '64'}
 -------------------- 
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 7, 'generate_weight': 0.5, 'f1_weight': 0.7}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.7, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 7, 'generate_weight': 0.5, 'f1_weight': 0.9}

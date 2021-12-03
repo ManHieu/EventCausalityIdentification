@@ -54,8 +54,8 @@ class GenEERModel(pl.LightningModule):
         #                                     ('fc2', nn.Linear(2, 1)),]))
         # self.fn_actiavte = nn.Sigmoid()
         
-        self.rewards = []
-        self.val_rewards = []
+        # self.rewards = []
+        # self.val_rewards = []
         
         self.automatic_optimization = False
     
@@ -64,23 +64,23 @@ class GenEERModel(pl.LightningModule):
         f1_reward = compute_f1(generated_output, golds)[0]
 
         #---------------------RECONSTRUCT REWARD-----------------------
-        with torch.no_grad():
-            task_prefix = 'Generate question and context'
-            reconstruct_inputs_emcoding = self.tokenizer_for_generating([f"{task_prefix}:\n{sent}" for sent in generated_output],
-                                                                            padding='longest',
-                                                                            max_length=self.hparams.max_oupt_len,
-                                                                            truncation=True,
-                                                                            return_tensors="pt")
-            reconstructed_inputs = self.t5.generate(input_ids=reconstruct_inputs_emcoding.input_ids.cuda(), 
-                                            do_sample=False, 
-                                            top_k=20, 
-                                            top_p=0.95, 
-                                            max_length=self.hparams.max_oupt_len, 
-                                            num_return_sequences=1, 
-                                            num_beams=1,)
-            reconstructed_inputs = self.tokenizer_for_generating.batch_decode(reconstructed_inputs, skip_special_tokens=True)
-            avg_sim = compute_sentences_similar(inputs_sentences, reconstructed_inputs)
-        reconstruct_reward = avg_sim
+        # with torch.no_grad():
+        #     task_prefix = 'Generate question and context'
+        #     reconstruct_inputs_emcoding = self.tokenizer_for_generating([f"{task_prefix}:\n{sent}" for sent in generated_output],
+        #                                                                     padding='longest',
+        #                                                                     max_length=self.hparams.max_oupt_len,
+        #                                                                     truncation=True,
+        #                                                                     return_tensors="pt")
+        #     reconstructed_inputs = self.t5.generate(input_ids=reconstruct_inputs_emcoding.input_ids.cuda(), 
+        #                                     do_sample=False, 
+        #                                     top_k=20, 
+        #                                     top_p=0.95, 
+        #                                     max_length=self.hparams.max_oupt_len, 
+        #                                     num_return_sequences=1, 
+        #                                     num_beams=1,)
+        #     reconstructed_inputs = self.tokenizer_for_generating.batch_decode(reconstructed_inputs, skip_special_tokens=True)
+        #     avg_sim = compute_sentences_similar(inputs_sentences, reconstructed_inputs)
+        reconstruct_reward = 0
         self.log_dict({'f1_reward': f1_reward, 'reconstruct_reward': reconstruct_reward}, prog_bar=True)
         return float(self.hparams.f1_weight * f1_reward + (1 - self.hparams.f1_weight) * reconstruct_reward) 
 
@@ -109,7 +109,7 @@ class GenEERModel(pl.LightningModule):
         generate_loss = _generate_output.loss
         # last_generate_hidden_state = _generate_output.decoder_hidden_states[-1] # (batch_size, sequence_length, hidden_size)
 
-        return generate_loss, _generate_output
+        return generate_loss, _generate_output, labels
 
     def compute_reconstruct_loss(self, inputs, outputs):
         # reconstruct loss (out->in)
@@ -157,19 +157,31 @@ class GenEERModel(pl.LightningModule):
                                 for temp_id, example in zip(template, batch)]
         output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
                             for temp_id, example in zip(template, batch)]
-        generate_output = self.compute_generate_loss(inputs=inputs_sentences, outputs=output_sentences)[1]
+        _, generate_output, labels = self.compute_generate_loss(inputs=inputs_sentences, outputs=output_sentences)
         
         logits = generate_output.logits
+        # print(f"logit: {logits}")
         probs = torch.softmax(logits, dim=-1)
+        # print(f"prob: {probs}")
         distribution = torch.distributions.Categorical(probs=probs)
         output_seqs = distribution.sample() # (batch_size, seq_len)
         # print(f"output_seqs: {output_seqs}")
         log_probs = distribution.log_prob(output_seqs) # (batch_size, seq_len)
+        # print(log_probs)
+        mask = torch.ones(labels.size()).cuda()
+        mask[labels[:, :] == -100] = 0
+        # print(mask)
+        log_probs = log_probs.view(-1)*mask.view(-1)
+        # print(mask.view(-1))
+        # log_probs = probs.max(dim=-1)[1] # (batch_size, seq_len)
         
         outputs = self.tokenizer.batch_decode(output_seqs, skip_special_tokens=True)
         # print(f"outputs: {outputs}")
         reward = self.compute_reward(inputs_sentences, generated_output=outputs, golds=output_sentences)
-        return outputs, reward, log_probs
+        # print(log_probs)
+        policy_loss = - torch.sum(log_probs*reward)/torch.sum(mask)
+        # print(policy_loss)
+        return outputs, reward, log_probs, policy_loss
 
     def on_train_epoch_start(self) -> None:
         self.rewards = []
@@ -188,27 +200,24 @@ class GenEERModel(pl.LightningModule):
             pretrain_scheduler.step()
             self.log_dict({'pretrain_loss': pretrain_loss}, prog_bar=True)
         else:
-            outputs, reward, log_probs = self.reinforce_training_step(batch)
+            outputs, reward, log_probs, reinforce_loss = self.reinforce_training_step(batch)
             self.rewards.append(reward)
-            normalized_reward = reward - mean(self.rewards)
-            # print(f"Reward: {normalized_reward} - log_prob: {log_probs}")
-            reinforce_loss = []
-            for i in range(log_probs.size(0)):
-                log_prob = torch.sum(log_probs[i]).unsqueeze(0) # normalize (avoid the case of different sentence lenth)
-                reinforce_loss.append(-log_prob * normalized_reward)
-            reinforce_loss = torch.cat(reinforce_loss).sum()
+            # normalized_reward = (reward - mean(self.rewards))
+            # print(f"Reward: {reward} - log_prob: {log_probs.view(-1).size()}")
+            # reinforce_loss = torch.sum(log_probs.view(-1) * reward)
 
             # template = [5]*len(batch)
             # inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
             #                         for temp_id, example in zip(template, batch)]
             # reconstruct_loss = self.compute_reconstruct_loss(inputs=inputs_sentences, outputs=outputs)[0]
 
+            # reinforce_loss = 0.1 * reconstruct_loss
             # reconstructor_optimizer.zero_grad()
             # self.manual_backward(reconstruct_loss)
             # reconstructor_optimizer.step()
             # reconstructor_scheduler.step()
             # self.log_dict({'reconstruct_loss': reconstruct_loss})
-
+            
             reinforce_optimizer.zero_grad()
             self.manual_backward(reinforce_loss)
             reinforce_optimizer.step()
