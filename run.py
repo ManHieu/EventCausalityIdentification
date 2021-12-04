@@ -29,7 +29,7 @@ def objective(trial: optuna.Trial):
         'lr': trial.suggest_categorical('pretrain_lr', [5e-5, 1e-4, 5e-4, 1e-3, 5e-3]),
         'batch_size': trial.suggest_categorical('batch_size', [32]),
         'warmup_ratio': 0.1,
-        'num_epoches': trial.suggest_categorical('num_epoches', [3, 5, 7]),
+        'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10]),
     }
     if args.mle == True:
         defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.25, 0.5, 0.75])
@@ -177,7 +177,7 @@ def objective(trial: optuna.Trial):
         print(f"F1: {f1}")
         print(f"P: {p}")
         print(f"R: {r}")
-        with open(output_dir+f'{f1}', 'w', encoding='utf-8'):
+        with open(output_dir+f'{f1}', 'w', encoding='utf-8') as f:
             f.write(f"F1: {f1} \n")
             f.write(f"P: {p} \n")
             f.write(f"R: {r} \n")
