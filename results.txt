@@ -74,3 +74,9 @@ Hyperparams:
 -------------------- 
 Hyperparams: 
  {'lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 7, 'generate_weight': 0.5, 'mle_weight': 1.0}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 5, 'generate_weight': 0.75, 'mle_weight': 1.0}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.05, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 5, 'generate_weight': 0.75, 'mle_weight': 1.0}

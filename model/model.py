@@ -53,7 +53,7 @@ class GenEC(pl.LightningModule):
     def _forward(self, inputs: List[str], outputs: List[str], task_prefix: str):
         """
         """
-        inputs_encoding = self.tokenizer([f"{task_prefix}:\n{sent}" for sent in inputs],
+        inputs_encoding = self.tokenizer([f"{task_prefix}\n{sent}" for sent in inputs],
                                         padding='longest',
                                         max_length=self.hparams.max_input_len,
                                         truncation=True,
@@ -79,7 +79,7 @@ class GenEC(pl.LightningModule):
     def _generate(self, inputs: List[str], task_prefix: str, num_beams: int=1):
         """
         """
-        inputs_encoding_for_generate = self.tokenizer_for_generate([f"{task_prefix}:\n{sent}" for sent in inputs],
+        inputs_encoding_for_generate = self.tokenizer_for_generate([f"{task_prefix}\n{sent}" for sent in inputs],
                                                                     padding='longest',
                                                                     max_length=self.hparams.max_input_len,
                                                                     truncation=True,
@@ -103,7 +103,7 @@ class GenEC(pl.LightningModule):
                                 for temp_id, example in zip(template, batch)]
 
         # generate answer
-        task_prefix = 'Identify causality relation'
+        task_prefix = 'causality identification'
         output_of_generating, _ = self._forward(inputs=gold_inputs_sentences, outputs=gold_output_sentences, task_prefix=task_prefix)
         generated_seqs = self._generate(gold_inputs_sentences, task_prefix)
         generate_loss = output_of_generating.loss
@@ -125,8 +125,8 @@ class GenEC(pl.LightningModule):
                                 for temp_id, example in zip(template, batch)]
 
         # compute log_probs, get sample ouputs
-        task_prefix = 'Identify causality relation'
-        inputs_encoding_for_generate = self.tokenizer_for_generate([f"{task_prefix}:\n{sent}" for sent in gold_inputs_sentences],
+        task_prefix = 'causality identification'
+        inputs_encoding_for_generate = self.tokenizer_for_generate([f"{task_prefix}\n{sent}" for sent in gold_inputs_sentences],
                                                                     padding='longest',
                                                                     max_length=self.hparams.max_input_len,
                                                                     truncation=True,
@@ -230,14 +230,14 @@ class GenEC(pl.LightningModule):
         template = [5]*len(batch)
         inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
                             for temp_id, example in zip(template, batch)]
-        task_prefix = 'Identify causality relation'
+        task_prefix = 'causality identification'
 
         generated_outputs = self._generate(inputs=inputs_sentences, task_prefix=task_prefix, num_beams=8)
         
         gold_output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
                                 for temp_id, example in zip(template, batch)]
 
-        return generated_outputs, gold_output_sentences, [f"{task_prefix}:\n{sent}" for sent in inputs_sentences]
+        return generated_outputs, gold_output_sentences, [f"{task_prefix}\n{sent}" for sent in inputs_sentences]
     
     def validation_epoch_end(self, outputs: EPOCH_OUTPUT) -> None:
         golds = []
@@ -264,14 +264,14 @@ class GenEC(pl.LightningModule):
         template = [5]*len(batch)
         inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
                             for temp_id, example in zip(template, batch)]
-        task_prefix = 'Identify causality relation'
+        task_prefix = 'causality identification'
 
         generated_outputs = self._generate(inputs=inputs_sentences, task_prefix=task_prefix, num_beams=8)
         
         gold_output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
                                 for temp_id, example in zip(template, batch)]
 
-        return generated_outputs, gold_output_sentences, [f"{task_prefix}:\n{sent}" for sent in inputs_sentences]
+        return generated_outputs, gold_output_sentences, [f"{task_prefix}\n{sent}" for sent in inputs_sentences]
 
     def test_epoch_end(self, outputs: EPOCH_OUTPUT) -> None:
         preds = []

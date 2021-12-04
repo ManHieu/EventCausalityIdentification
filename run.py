@@ -26,17 +26,17 @@ def objective(trial: optuna.Trial):
     assert job in config
 
     defaults = {
-        'lr': trial.suggest_categorical('pretrain_lr', [5e-5, 1e-4, 5e-4, 1e-3, 5e-3]),
+        'lr': trial.suggest_categorical('pretrain_lr', [5e-5, 5e-3, 1e-2, 5e-2]),
         'batch_size': trial.suggest_categorical('batch_size', [32]),
         'warmup_ratio': 0.1,
         'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10]),
     }
     if args.mle == True:
-        defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.25, 0.5, 0.75])
+        defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.5, 0.75])
         defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.25, 0.5, 0.75])
     if args.rl==True:
-        defaults['f1_reward_weight'] = trial.suggest_categorical('f1_reward_weight', [0.25, 0.5])
-        defaults['reconstruct_reward_weight'] = trial.suggest_categorical('reconstruct_reward_weight', [0.25, 0.5])
+        defaults['f1_reward_weight'] = trial.suggest_categorical('f1_reward_weight', [0.25, 0.5, 0.75])
+        defaults['reconstruct_reward_weight'] = trial.suggest_categorical('reconstruct_reward_weight', [0.1, 0.25])
     
     if args.mle==True and args.rl==False:
         defaults['mle_weight'] = 1.0
@@ -206,7 +206,6 @@ if __name__ == '__main__':
     parser.add_argument('-l', '--trained_model', type=str, default=None, help='load trained model')
 
     args, remaining_args = parser.parse_known_args()
-    print(args.rl)
     if args.rl:
         assert args.trained_model != None
 
