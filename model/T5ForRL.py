@@ -13,7 +13,7 @@ class T5ForRL(T5ForConditionalGeneration):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
     
-    def _prepare_attention_mask_for_generation(
+    def __prepare_attention_mask_for_generation(
         self,
         input_ids: torch.Tensor,
         pad_token_id: int,
@@ -35,7 +35,7 @@ class T5ForRL(T5ForConditionalGeneration):
         else:
             return input_ids.new_ones(input_ids.shape, dtype=torch.long)
     
-    def _prepare_decoder_input_ids_for_generation(
+    def __prepare_decoder_input_ids_for_generation(
         self, batch_size: int, decoder_start_token_id: int = None, bos_token_id: int = None
     ) -> torch.LongTensor:
         decoder_start_token_id = self._get_decoder_start_token_id(decoder_start_token_id, bos_token_id)
@@ -296,7 +296,7 @@ class T5ForRL(T5ForConditionalGeneration):
         if model_kwargs.get("attention_mask", None) is None:
             # init `attention_mask` depending on `pad_token_id`
             inputs_embeds = model_kwargs.get("inputs_embeds", None)
-            model_kwargs["attention_mask"] = self._prepare_attention_mask_for_generation(
+            model_kwargs["attention_mask"] = self.__prepare_attention_mask_for_generation(
                 input_ids, pad_token_id, eos_token_id, inputs_embeds
             )
 
@@ -318,7 +318,7 @@ class T5ForRL(T5ForConditionalGeneration):
             else:
                 # if word embeddings are provided directly, infere the batch size from it
                 batch_size = input_ids.shape[0] if input_ids is not None else model_kwargs["inputs_embeds"].shape[0]
-                input_ids = self._prepare_decoder_input_ids_for_generation(
+                input_ids = self.__prepare_decoder_input_ids_for_generation(
                     batch_size, decoder_start_token_id=decoder_start_token_id, bos_token_id=bos_token_id
                 )
 

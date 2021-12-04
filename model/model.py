@@ -1,339 +1,279 @@
-from collections import OrderedDict
-import copy
-from typing import Dict, List
-from statistics import mean
-import torch
-import random
+import json
+from typing import List, Optional, Sequence
+import torch 
 import torch.nn as nn
-import torch.nn.functional as F
-import logging 
-import json 
-import pytorch_lightning as pl
 import torch.optim as optim
-from transformers import T5ForConditionalGeneration, T5Tokenizer
+import torch.nn.functional as F
+import pytorch_lightning as pl
+from pytorch_lightning.utilities.types import EPOCH_OUTPUT, STEP_OUTPUT
+from transformers import T5Tokenizer
+from model.T5ForRL import T5ForRL
 from transformers import AdamW, get_linear_schedule_with_warmup
-from data_modules.input_example import InputExample, Relation, RelationType
+import copy
+
 from data_modules.input_formats import INPUT_FORMATS
 from data_modules.output_formats import OUTPUT_FORMATS
-from utils.utils import compute_f1, compute_sentences_similar, create_distractor
-import numpy as np
+from utils.utils import compute_f1, compute_sentences_similar
 
 
-logger = logging.getLogger(__name__)
-logger.addHandler(logging.StreamHandler())
-
-
-class GenEERModel(pl.LightningModule):
-    def __init__(self, tokenizer_name: str, model_name_or_path: str,
-                input_format: str, oupt_format: str, max_input_len: int, max_oupt_len: int,
-                generate_weight: float, f1_weight: float,
-                pretrain_step: int, reinforce_step: int, 
-                pretrain_lr: float, reinforce_lr: float, reconstructor_lr: float,
-                adam_epsilon: float, weight_decay: float=0, warmup: float=0, gamma: float=0.9) -> None:
+class GenEC(pl.LightningModule):
+    def __init__(self,
+                tokenizer_name: str,
+                model_name_or_path: str,
+                input_type: str,
+                output_type: str,
+                max_input_len: int,
+                max_oupt_len: int,
+                mle_train: bool,
+                rl_train: bool,
+                num_training_step: int,
+                lr: float,
+                warmup: float,
+                adam_epsilon: float,
+                weight_decay: float,
+                generate_weight: float,
+                f1_reward_weight: float,
+                reconstruct_reward_weight: float,
+                mle_weight: float
+                ) -> None:
         super().__init__()
         self.save_hyperparameters()
 
-        self.tokenizer = T5Tokenizer.from_pretrained(tokenizer_name)
-        self.tokenizer_for_generating = copy.deepcopy(self.tokenizer)
-        # when generating, we will use the logits of right-most token to predict the next token
-        # so the padding should be on the left
-        self.tokenizer_for_generating.padding_side = 'left'
-        self.tokenizer_for_generating.pad_token = self.tokenizer_for_generating.eos_token # to avoid an error
-        
-        self.input_formater = INPUT_FORMATS[input_format]()
-        self.oupt_formater = OUTPUT_FORMATS[oupt_format]()
-        self.number_templates = len(self.input_formater.templates) - 1
+        self.t5: T5ForRL = T5ForRL.from_pretrained(model_name_or_path)
 
-        self.t5 = T5ForConditionalGeneration.from_pretrained(model_name_or_path)
-        # self.drop_out = nn.Dropout(0.9)
-        # self.mlp = nn.Sequential(OrderedDict([
-        #                                     ('dropout1',self.drop_out), 
-        #                                     ('fc1', nn.Linear(2, 2)), 
-        #                                     ('dropout2', self.drop_out), 
-        #                                     ('relu', nn.ReLU()), 
-        #                                     ('fc2', nn.Linear(2, 1)),]))
-        # self.fn_actiavte = nn.Sigmoid()
+        self.tokenizer: T5Tokenizer = T5Tokenizer.from_pretrained(tokenizer_name)
         
-        # self.rewards = []
-        # self.val_rewards = []
-        
-        self.automatic_optimization = False
+        self.tokenizer_for_generate: T5Tokenizer = copy.deepcopy(self.tokenizer)
+        self.tokenizer_for_generate.padding_side = 'left'
+        self.tokenizer_for_generate.pad_token = self.tokenizer_for_generate.eos_token
+
+        self.input_formater = INPUT_FORMATS[input_type]()
+        self.oupt_formater = OUTPUT_FORMATS[output_type]()
     
-    def compute_reward(self, inputs_sentences, generated_output, golds):
-        #-------------------F1_REWARD-----------------------
-        f1_reward = compute_f1(generated_output, golds)[0]
-        f1_reward = f1_reward * torch.ones((len(inputs_sentences))) 
-
-        #---------------------RECONSTRUCT REWARD-----------------------
-        # with torch.no_grad():
-        #     task_prefix = 'Generate question and context'
-        #     reconstruct_inputs_emcoding = self.tokenizer_for_generating([f"{task_prefix}:\n{sent}" for sent in generated_output],
-        #                                                                     padding='longest',
-        #                                                                     max_length=self.hparams.max_oupt_len,
-        #                                                                     truncation=True,
-        #                                                                     return_tensors="pt")
-        #     reconstructed_inputs = self.t5.generate(input_ids=reconstruct_inputs_emcoding.input_ids.cuda(), 
-        #                                     do_sample=False, 
-        #                                     top_k=20, 
-        #                                     top_p=0.95, 
-        #                                     max_length=self.hparams.max_oupt_len, 
-        #                                     num_return_sequences=1, 
-        #                                     num_beams=1,)
-        #     reconstructed_inputs = self.tokenizer_for_generating.batch_decode(reconstructed_inputs, skip_special_tokens=True)
-        #     avg_sim = compute_sentences_similar(inputs_sentences, reconstructed_inputs)
-        # reconstruct_reward = 0
-        # print(f1_reward)
-        # self.log_dict({'f1_reward': f1_reward, 'reconstruct_reward': reconstruct_reward}, prog_bar=True)
-        return f1_reward
-
-    def compute_generate_loss(self, inputs, outputs):
-        # generate loss (in->out)
-        task_prefix = 'Causality identification'
-        inputs_encoding = self.tokenizer([f"{task_prefix}:\n{sent}" for sent in inputs], 
-                                                    padding='longest',
-                                                    max_length=self.hparams.max_input_len,
-                                                    truncation=True,
-                                                    return_tensors="pt")
+    def _forward(self, inputs: List[str], outputs: List[str], task_prefix: str):
+        """
+        """
+        inputs_encoding = self.tokenizer([f"{task_prefix}:\n{sent}" for sent in inputs],
+                                        padding='longest',
+                                        max_length=self.hparams.max_input_len,
+                                        truncation=True,
+                                        return_tensors="pt")
         
         outputs_encoding = self.tokenizer(outputs,
-                                                padding='longest',
-                                                max_length=self.hparams.max_oupt_len,
-                                                truncation=True,
-                                                return_tensors="pt")
+                                        padding='longest',
+                                        max_length=self.hparams.max_oupt_len,
+                                        truncation=True,
+                                        return_tensors="pt")
         labels = outputs_encoding.input_ids
         labels[labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
-        _generate_output = self.t5(
-                                input_ids=inputs_encoding.input_ids.cuda(), 
-                                attention_mask=inputs_encoding.attention_mask.cuda(), 
-                                labels=labels.cuda(),
-                                output_hidden_states=True
-                    )
-        generate_loss = _generate_output.loss
-        # last_generate_hidden_state = _generate_output.decoder_hidden_states[-1] # (batch_size, sequence_length, hidden_size)
-        # inputs_encoding_for_generating = self.tokenizer_for_generating([f"{task_prefix}:\n{sent}" for sent in inputs], 
-        #                                                                     padding='longest',
-        #                                                                     max_length=self.hparams.max_input_len,
-        #                                                                     truncation=True,
-        #                                                                     return_tensors="pt")
-        # sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids.cuda(), 
-        #                                     do_sample=True, 
-        #                                     top_k=20, 
-        #                                     top_p=0.95, 
-        #                                     max_length=self.hparams.max_oupt_len, 
-        #                                     num_return_sequences=1, 
-        #                                     num_beams=1,)
-        # sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
 
-        return generate_loss, _generate_output, labels, 'sample_outputs'
+        output = self.t5(
+                        input_ids=inputs_encoding.input_ids.cuda(), 
+                        attention_mask=inputs_encoding.attention_mask.cuda(), 
+                        labels=labels.cuda(),
+                        output_hidden_states=True)
+        
+        return output, labels
+    
+    @torch.no_grad()
+    def _generate(self, inputs: List[str], task_prefix: str, num_beams: int=1):
+        """
+        """
+        inputs_encoding_for_generate = self.tokenizer_for_generate([f"{task_prefix}:\n{sent}" for sent in inputs],
+                                                                    padding='longest',
+                                                                    max_length=self.hparams.max_input_len,
+                                                                    truncation=True,
+                                                                    return_tensors="pt")
+        generated_seqs = self.t5.generate(input_ids=inputs_encoding_for_generate.input_ids.cuda(), 
+                                        do_sample=True, 
+                                        top_k=20, 
+                                        top_p=0.95, 
+                                        max_length=self.hparams.max_oupt_len, 
+                                        num_return_sequences=1, 
+                                        num_beams=num_beams,)
+        generated_seqs = self.tokenizer_for_generate.batch_decode(generated_seqs, skip_special_tokens=True)
+            
+        return generated_seqs
 
-    def compute_reconstruct_loss(self, inputs, outputs):
-        # reconstruct loss (out->in)
+    def train_MLE(self, batch):
+        template = [5]*len(batch)
+        gold_inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
+                                for temp_id, example in zip(template, batch)]
+        gold_output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
+                                for temp_id, example in zip(template, batch)]
+
+        # generate answer
+        task_prefix = 'Identify causality relation'
+        output_of_generating, _ = self._forward(inputs=gold_inputs_sentences, outputs=gold_output_sentences, task_prefix=task_prefix)
+        generated_seqs = self._generate(gold_inputs_sentences, task_prefix)
+        generate_loss = output_of_generating.loss
+
+        # reconstruct question
         task_prefix = 'Generate question and context'
-        reconstruct_inputs_embedding = self.tokenizer([f"{task_prefix}:\n{sent}" for sent in outputs],
-                                                    padding='longest',
-                                                    max_length=self.hparams.max_oupt_len,
-                                                    truncation=True,
-                                                    return_tensors="pt")
-        reconstruct_outputs_embedding = self.tokenizer(inputs, 
-                                                    padding='longest',
-                                                    max_length=self.hparams.max_input_len,
-                                                    truncation=True,
-                                                    return_tensors="pt")
-        reconstruct_labels = reconstruct_outputs_embedding.input_ids
-        reconstruct_labels[reconstruct_labels[:, :] == self.tokenizer.pad_token_id] = -100 # replace padding token id's of the labels by -100
+        output_of_reconstructing, _ = self._forward(inputs=generated_seqs, outputs=gold_inputs_sentences, task_prefix=task_prefix)
+        reconstruct_loss = output_of_reconstructing.loss
+
+        mle_loss = self.hparams.generate_weight * generate_loss + (1.0 - self.hparams.generate_weight) * reconstruct_loss
         
-        _reconstruct_output = self.t5(
-                                input_ids=reconstruct_inputs_embedding.input_ids.cuda(), 
-                                attention_mask=reconstruct_inputs_embedding.attention_mask.cuda(), 
-                                labels=reconstruct_labels.cuda(),
-                                output_hidden_states=True
-                    )
-        reconstruct_loss = _reconstruct_output.loss
-        # last_reconstruct_hidden_state = _reconstruct_output.decoder_hidden_states[-1] # (batch_size, sequence_length, hidden_size)
+        return mle_loss
 
-        return reconstruct_loss, _reconstruct_output
-
-    def warmup_step(self, batch):
-        # generate score
+    def train_RL(self, batch):
         template = [5]*len(batch)
-        inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
+        gold_inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
                                 for temp_id, example in zip(template, batch)]
-        output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
-                            for temp_id, example in zip(template, batch)]
-        
-        generate_loss, _, _, generated_ouput = self.compute_generate_loss(inputs=inputs_sentences, outputs=output_sentences) # in -> out
-
-        reconstruct_loss = self.compute_reconstruct_loss(inputs=inputs_sentences, outputs=generated_ouput)[0] # out -> in 
-        # self.log_dict({'pretrain_gen_loss': generate_loss, 'pretrain_reconstruct_loss': reconstruct_loss}, prog_bar=True)
-        return self.hparams.generate_weight * generate_loss + (1.0 - self.hparams.generate_weight) * reconstruct_loss
-    
-    def reinforce_training_step(self, batch):
-        template = [5]*len(batch)
-        inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
+        gold_output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
                                 for temp_id, example in zip(template, batch)]
-        output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
-                            for temp_id, example in zip(template, batch)]
-        _, generate_output, labels, _ = self.compute_generate_loss(inputs=inputs_sentences, outputs=output_sentences)
+
+        # compute log_probs, get sample ouputs
+        task_prefix = 'Identify causality relation'
+        inputs_encoding_for_generate = self.tokenizer_for_generate([f"{task_prefix}:\n{sent}" for sent in gold_inputs_sentences],
+                                                                    padding='longest',
+                                                                    max_length=self.hparams.max_input_len,
+                                                                    truncation=True,
+                                                                    return_tensors="pt")
+        # generate seqence using beam search sample 
+        sampled_outputs = self.t5.generate_for_rl_training(input_ids=inputs_encoding_for_generate.input_ids.cuda(), 
+                                                        do_sample=True, 
+                                                        top_k=20, 
+                                                        top_p=0.95, 
+                                                        max_length=self.hparams.max_oupt_len, 
+                                                        num_return_sequences=1, 
+                                                        num_beams=1,
+                                                        output_scores=True,
+                                                        return_dict_in_generate=True)
+        # print(f"outputs: {sampled_outputs}")
+        sampled_seqs = sampled_outputs.sequences
+        # print(f"sample_seqs: {sampled_seqs}")
+        scores = sampled_outputs.scores
+        # print(f"scores: {scores}")
+
+        log_probs = []
+        for batch_id in range(sampled_seqs.size(0)):
+            seq = sampled_seqs[batch_id]
+            log_prob = []
+            for i, tok in enumerate(seq):
+                if tok not in [0, 1]:
+                    score_in_step = scores[i-1]
+                    probs = F.softmax(score_in_step, dim=1)
+                    # print(score_in_step[batch_id][tok])
+                    log_prob.append(probs[batch_id][tok])
+            log_prob = torch.stack(log_prob).sum() / len(log_prob)
+            log_probs.append(log_prob)
+        log_probs = torch.stack(log_probs)
+        # print(f"log_probs: {log_probs.size()}")
         
-        logits = generate_output.logits
-        # print(f"logit: {logits}")
-        probs = torch.softmax(logits, dim=-1)
-        # print(f"prob: {probs}")
-        distribution = torch.distributions.Categorical(probs=probs)
-        output_seqs = distribution.sample() # (batch_size, seq_len)
-        # print(f"output_seqs: {output_seqs}")
-        log_probs = distribution.log_prob(output_seqs) # (batch_size, seq_len)
-        # print(log_probs)
-        mask = torch.ones(labels.size()).cuda()
-        mask[labels[:, :] == -100] = 0
-        print(mask.size())
-        print(log_probs.size())
-        log_probs = log_probs * mask
+        sampled_seqs = self.tokenizer_for_generate.batch_decode(sampled_seqs, skip_special_tokens=True)
+        # print(f"sample_seq: {sampled_seqs}")
 
-        outputs = self.tokenizer.batch_decode(output_seqs, skip_special_tokens=True)
-        reward = self.compute_reward(inputs_sentences, generated_output=outputs, golds=output_sentences)
-
-        policy_gradients = 0
-        for seq_id in range(log_probs.size(0)):
-            seq_logprobs = log_probs[seq_id]
-            seq_rewards = [reward[seq_id]] * seq_logprobs.size(0) # all step has same reward which is all sentence reward.
-            discounted_rewards = []
-            for t in range(len(seq_rewards)):
-                Gt = 0
-                pw = 0
-                for r in seq_rewards[t:]:
-                    Gt = Gt + self.hparams.gamma**pw * r
-                    pw = pw + 1
-                discounted_rewards.append(Gt)
-            discounted_rewards = torch.tensor(discounted_rewards)
-            discounted_rewards = (discounted_rewards - discounted_rewards.mean()) / (discounted_rewards.std() + 1e-9) # normalize discounted rewards
-            policy_gradient = []
-            for log_prob, Gt in zip(seq_logprobs, discounted_rewards):
-                policy_gradient.append(- log_prob * Gt)
-            policy_gradient = torch.stack(policy_gradient).sum() 
-            policy_gradients = policy_gradients + policy_gradient # sum all gradient in batch 
-
-        return outputs, reward, log_probs, policy_gradients
-
-    def on_train_epoch_start(self) -> None:
-        self.rewards = []
-    
-    def training_step(self, batch, batch_idx):
-        pretrain_optimizer, reinforce_optimizer = self.optimizers()
-        pretrain_scheduler = self.lr_schedulers()
-        # print(self.trainer.global_step)
-
-        if self.trainer.global_step < self.hparams.pretrain_step:
-            
-            pretrain_loss = self.warmup_step(batch)
-            pretrain_optimizer.zero_grad()
-            self.manual_backward(pretrain_loss)
-            pretrain_optimizer.step()
-            pretrain_scheduler.step()
-            self.log_dict({'pretrain_loss': pretrain_loss}, prog_bar=True)
-        else:
-            outputs, reward, log_probs, reinforce_loss = self.reinforce_training_step(batch, )
-            self.rewards.append(reward)
-
-            # template = [5]*len(batch)
-            # inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
-            #                         for temp_id, example in zip(template, batch)]
-            # reconstruct_loss = self.compute_reconstruct_loss(inputs=inputs_sentences, outputs=outputs)[0]
-
-            # reinforce_loss = 0.1 * reconstruct_loss + reinforce_loss
-            # reconstructor_optimizer.zero_grad()
-            # self.manual_backward(reconstruct_loss)
-            # reconstructor_optimizer.step()
-            # reconstructor_scheduler.step()
-            # self.log_dict({'reconstruct_loss': reconstruct_loss})
-            
-            reinforce_optimizer.zero_grad()
-            self.manual_backward(reinforce_loss)
-            reinforce_optimizer.step()
-            # reinforce_scheduler.step()
-            self.log_dict({'reinforce_loss': reinforce_loss}, prog_bar=True)
-
-    def on_validation_epoch_start(self) -> None:
-        self.val_rewards = []
-    
-    def validation_step(self,batch, batch_idx):
-        if self.trainer.global_step > self.hparams.pretrain_step:
-            template = [5]*len(batch)
-            task_prefix = 'Causality identification'
-            inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
-                                    for temp_id, example in zip(template, batch)]
-            inputs_encoding_for_generating = self.tokenizer_for_generating([f"{task_prefix}:\n{sent}" for sent in inputs_sentences], 
-                                                                            padding='longest',
-                                                                            max_length=self.hparams.max_input_len,
-                                                                            truncation=True,
-                                                                            return_tensors="pt")
-            
-            # generate output 
-            sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids.cuda(), 
+        # generate sequence using greedy search
+        with torch.no_grad():
+            geedy_outputs = self.t5.generate(input_ids=inputs_encoding_for_generate.input_ids.cuda(), 
                                             do_sample=False, 
                                             top_k=20, 
                                             top_p=0.95, 
                                             max_length=self.hparams.max_oupt_len, 
                                             num_return_sequences=1, 
                                             num_beams=1,)
-            sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
+            greedy_seqs = self.tokenizer_for_generate.batch_decode(geedy_outputs, skip_special_tokens=True)
 
-            # gold output
-            output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
-                                for temp_id, example in zip(template, batch)]
-            return sample_outputs, output_sentences, [f"{task_prefix}:\n{sent}" for sent in inputs_sentences]
+        # reconstruct
+        task_prefix = 'Generate question and context'
+        reconstructed_seqs = self._generate(sampled_seqs, task_prefix)
+        baseline_reconstructed_seqs = self._generate(greedy_seqs, task_prefix)
+
+        # compute reward
+        sample_reward = self.compute_reward(sampled_seqs, gold_output_sentences, gold_inputs_sentences, reconstructed_seqs)
+        baseline_reward = self.compute_reward(greedy_seqs, gold_output_sentences, gold_inputs_sentences, baseline_reconstructed_seqs)
+
+        # compute policy loss 
+        rl_loss = -(sample_reward - baseline_reward) * log_probs
+        rl_loss = torch.mean(rl_loss)
+        batch_reward = torch.mean(sample_reward)
+        return rl_loss, batch_reward
     
-    def validation_epoch_end(self, outputs):
-        if self.trainer.global_step > self.hparams.pretrain_step:
-            # evaluate F1
-            golds = []
-            predicts = []
-            preds = []
-            for output in outputs:
-                for sample in zip(*output):
-                    predicts.append(sample[0])
-                    golds.append(sample[1])
-                    preds.append({
-                        'sentence': sample[2],
-                        'predicted': sample[0],
-                        'gold': sample[1]
-                    })
-            f1, p, r, tp, n_pred, n_gold = compute_f1(predicts, golds)
-            # print("DEV result:")
-            # print(f"f1: {f1}")
-            with open('./reinforce_model_predictions_dev.json','w') as writer:
-                writer.write(json.dumps(preds, indent=6)+'\n')
-            self.log_dict({'f1_dev': f1}, prog_bar=True)
-            return f1
-    
-    def test_step(self, batch, batch_idx):
-        template = [5]*len(batch)
-        task_prefix = 'Causality identification'
-        inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
-                                for temp_id, example in zip(template, batch)]
-        inputs_encoding_for_generating = self.tokenizer_for_generating([f"{task_prefix}:\n{sent}" for sent in inputs_sentences], 
-                                                                        padding='longest',
-                                                                        max_length=self.hparams.max_input_len,
-                                                                        truncation=True,
-                                                                        return_tensors="pt")
+    def compute_reward(self, generated_outputs, gold_outputs, origin_inputs, reconstruct_inputs):
+        f1_reward = 0
+        output_sim_reward = 0
+        reconstruct_reward = 0
+
+        #-------------------F1_REWARD-----------------------
+        f1_reward = compute_f1(generated_outputs, gold_outputs)[0]
+        f1_reward = [f1_reward]*len(generated_outputs)
+        f1_reward = torch.tensor(f1_reward, dtype=torch.float)
+        #---------------OUTPUT_SIMILAR_REWARD---------------
+        output_sim_reward = compute_sentences_similar(generated_outputs, gold_outputs)
+        output_sim_reward = torch.tensor(output_sim_reward, dtype=torch.float)
+        #----------------RECONSTRUCT_REWARD-----------------
+        reconstruct_reward = compute_sentences_similar(reconstruct_inputs, origin_inputs)
+        reconstruct_reward = torch.tensor(reconstruct_reward, dtype=torch.float)
         
-        # generate output 
-        sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids.cuda(), 
-                                        do_sample=True, 
-                                        top_k=20, 
-                                        top_p=0.95, 
-                                        max_length=self.hparams.max_oupt_len, 
-                                        num_return_sequences=1, 
-                                        num_beams=8,)
-        sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
+        reward = self.hparams.f1_reward_weight * f1_reward  \
+                + self.hparams.reconstruct_reward_weight * reconstruct_reward \
+                + (1.0 - self.hparams.f1_reward_weight - self.hparams.reconstruct_reward_weight) * output_sim_reward
+        return reward.cuda()
 
-        # gold output
-        output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
-                             for temp_id, example in zip(template, batch)]
-        return sample_outputs, output_sentences, [f"{task_prefix}:\n{sent}" for sent in inputs_sentences]
+    def training_step(self, batch, batch_idx) -> STEP_OUTPUT:
+        mle_loss = 0
+        rl_loss = 0
+        batch_reward = 0
 
-    def test_epoch_end(self, outputs):
-        # evaluate F1
+        if self.hparams.mle_train:
+            mle_loss = self.train_MLE(batch)
+        if self.hparams.rl_train:
+            rl_loss, batch_reward = self.train_RL(batch)
+        
+        loss = (1.0 - self.hparams.mle_weight) * rl_loss + self.hparams.mle_weight * mle_loss # need add weights
+        self.log_dict({'mle_loss': mle_loss, 'rl_loss': rl_loss, 'reward': batch_reward}, prog_bar=True)
+        return loss
+
+    def validation_step(self, batch, batch_idx) -> Optional[STEP_OUTPUT]:
+        template = [5]*len(batch)
+        inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
+                            for temp_id, example in zip(template, batch)]
+        task_prefix = 'Identify causality relation'
+
+        generated_outputs = self._generate(inputs=inputs_sentences, task_prefix=task_prefix, num_beams=8)
+        
+        gold_output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
+                                for temp_id, example in zip(template, batch)]
+
+        return generated_outputs, gold_output_sentences, [f"{task_prefix}:\n{sent}" for sent in inputs_sentences]
+    
+    def validation_epoch_end(self, outputs: EPOCH_OUTPUT) -> None:
+        golds = []
+        predicts = []
+        preds = []
+        for output in outputs:
+            for sample in zip(*output):
+                predicts.append(sample[0])
+                golds.append(sample[1])
+                preds.append({
+                    'sentence': sample[2],
+                    'predicted': sample[0],
+                    'gold': sample[1]
+                })
+        f1, p, r, tp, n_pred, n_gold = compute_f1(predicts, golds)
+        # print("DEV result:")
+        # print(f"f1: {f1}")
+        with open('./reinforce_model_predictions_dev.json','w') as writer:
+            writer.write(json.dumps(preds, indent=6)+'\n')
+        self.log_dict({'f1_dev': f1}, prog_bar=True)
+        return f1
+
+    def test_step(self, batch, batch_idx) -> Optional[STEP_OUTPUT]:
+        template = [5]*len(batch)
+        inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
+                            for temp_id, example in zip(template, batch)]
+        task_prefix = 'Identify causality relation'
+
+        generated_outputs = self._generate(inputs=inputs_sentences, task_prefix=task_prefix, num_beams=8)
+        
+        gold_output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
+                                for temp_id, example in zip(template, batch)]
+
+        return generated_outputs, gold_output_sentences, [f"{task_prefix}:\n{sent}" for sent in inputs_sentences]
+
+    def test_epoch_end(self, outputs: EPOCH_OUTPUT) -> None:
         preds = []
         for output in outputs:
             for sample in zip(*output):
@@ -348,7 +288,6 @@ class GenEERModel(pl.LightningModule):
 
     def configure_optimizers(self):
         "Prepare optimizer and schedule (linear warmup and decay)"
-        # config optimizer for pretrain steps
         no_decay = ["bias", "LayerNorm.weight"]
         optimizer_grouped_pretrain_parameters = [
             {
@@ -358,58 +297,17 @@ class GenEERModel(pl.LightningModule):
             {
                 "params": [p for n, p in self.t5.named_parameters() if  any(nd in n for nd in no_decay)],
                 "weight_decay": 0.0,
-            },
-        ]
-        pretrain_optimizer = AdamW(optimizer_grouped_pretrain_parameters, lr=self.hparams.pretrain_lr, eps=self.hparams.adam_epsilon)
-        num_warmup_steps = self.hparams.warmup * self.hparams.pretrain_step
-        pretrain_scheduler = get_linear_schedule_with_warmup(
-            pretrain_optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=self.hparams.pretrain_step
+            },]
+        optimizer = AdamW(optimizer_grouped_pretrain_parameters, lr=self.hparams.lr, eps=self.hparams.adam_epsilon)
+        num_warmup_steps = self.hparams.warmup * self.hparams.num_training_step
+        scheduler = get_linear_schedule_with_warmup(
+            optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=self.hparams.num_training_step
         )
+        return {
+            "optimizer": optimizer,
+            "lr_scheduler": {
+                "scheduler": scheduler,
+                'interval': 'step'
+            }
+        }
 
-        # config optimizer for reinforce step 
-        optimizer_grouped_reinforce_parameters = [
-            {
-                "params": [p for n, p in self.t5.named_parameters() if not any(nd in n for nd in no_decay)],
-                "weight_decay": self.hparams.weight_decay,
-            },
-            {
-                "params": [p for n, p in self.t5.named_parameters() if any(nd in n for nd in no_decay)],
-                "weight_decay": 0.0,
-            },
-        ]
-        reinforce_optimizer = AdamW(optimizer_grouped_reinforce_parameters, lr=self.hparams.reinforce_lr, eps=self.hparams.adam_epsilon)
-        num_warmup_steps = self.hparams.warmup * self.hparams.reinforce_step
-        # reinforce_scheduler = get_linear_schedule_with_warmup(
-        #     reinforce_optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=self.hparams.reinforce_step
-        # )
-
-        # # config optimizer for reconstructor 
-        # optimizer_grouped_recontructor_parameters = [
-        #     {
-        #         "params": [p for n, p in self.t5.named_parameters() if not any(nd in n for nd in no_decay)],
-        #         "weight_decay": self.hparams.weight_decay,
-        #     },
-        #     {
-        #         "params": [p for n, p in self.t5.named_parameters() if any(nd in n for nd in no_decay)],
-        #         "weight_decay": 0.0,
-        #     },
-        # ]
-        # reconstructor_optimizer = AdamW(optimizer_grouped_recontructor_parameters, lr=self.hparams.reconstructor_lr, eps=self.hparams.adam_epsilon)
-        # num_warmup_steps = self.hparams.warmup * self.hparams.reinforce_step
-        # reconstructor_scheduler = get_linear_schedule_with_warmup(
-        #     reconstructor_optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=self.hparams.reinforce_step
-        # )
-
-        return ({
-            "optimizer": pretrain_optimizer,
-            "lr_scheduler": pretrain_scheduler,
-        },
-            {
-            "optimizer": reinforce_optimizer,
-            # "lr_scheduler": reinforce_scheduler,
-        },
-        #     {
-        #     "optimizer": reconstructor_optimizer,
-        #     "lr_scheduler": reconstructor_scheduler,
-        # }
-        )

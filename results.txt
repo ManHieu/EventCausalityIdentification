@@ -177,3 +177,105 @@ Hyperparams:
 -------------------- 
 Hyperparams: 
  {'pretrain_lr': 0.001, 'reinforce_lr': 0.0001, 'reconstruct_lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'pretrain_epoches': 0, 'reinforce_train_epoches': 3, 'f1_weight': 1}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.0001, 'reconstruct_lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'pretrain_epoches': 0, 'reinforce_train_epoches': 5, 'f1_weight': 1}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.5, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 7, 'generate_weight': 0.7, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.5, 'f1_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.7, 'f1_weight': 0.7}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 7, 'generate_weight': 0.7, 'f1_weight': 0.7}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 16, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 7, 'generate_weight': 0.7, 'f1_weight': 0.7}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 16, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 3, 'generate_weight': 0.7, 'f1_weight': 0.7}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 16, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.7, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 16, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 7, 'generate_weight': 0.7, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.7, 'f1_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.5, 'f1_weight': 0.7}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 3, 'generate_weight': 0.7, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 3, 'generate_weight': 0.5, 'f1_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 7, 'generate_weight': 0.7, 'f1_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.7, 'f1_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.5, 'f1_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.7, 'f1_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 3, 'generate_weight': 0.7, 'f1_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 7, 'generate_weight': 0.5, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.7, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.5, 'f1_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 8, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 7, 'generate_weight': 0.5, 'f1_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 16, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 3, 'generate_weight': 0.7, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 16, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.7, 'f1_weight': 0.7}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 16, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 3, 'generate_weight': 0.7, 'f1_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 16, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 3, 'generate_weight': 0.7, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 16, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.5, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'pretrain_lr': 0.001, 'reinforce_lr': 0.001, 'reconstruct_lr': 0.001, 'batch_size': 16, 'warmup_ratio': 0.1, 'pretrain_epoches': 3, 'reinforce_train_epoches': 5, 'generate_weight': 0.7, 'f1_weight': 0.9}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.0001, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 5, 'generate_weight': 0.25, 'mle_weight': 1.0}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 7, 'generate_weight': 0.25, 'mle_weight': 1.0}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.0001, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 7, 'generate_weight': 0.25, 'mle_weight': 1.0}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 3, 'generate_weight': 0.25, 'mle_weight': 1.0}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.0001, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 5, 'generate_weight': 0.25, 'mle_weight': 1.0}

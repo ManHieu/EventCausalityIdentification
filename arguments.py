@@ -23,11 +23,6 @@ class DataTrainingArguments:
         metadata= {"help": "The tokenizer used to prepare data"}
     )
 
-    tokenizer_for_encode_input_sentence: str = field(
-        default = None,
-        metadata= {"help": "The tokenizer used to prepare data"}
-    )
-
     max_seq_length: int = field(
         default=512,
         metadata={
@@ -75,41 +70,45 @@ class TrainingArguments(transformers.TrainingArguments):
         default=8,
         metadata={"help": "Batch_size for training and evaluating"}
     )
-    pretrain_lr: float = field(
+
+    lr: float = field(
         default=5e-5,
         metadata={"help": "Learning rate of predictor"}
     )
-    reinforce_lr: float = field(
-        default=5e-5,
-        metadata={"help": "Learning rate of selector"}
-    )
-    reconstruct_lr: float = field(
-        default=5e-5,
-        metadata={"help": "Learning rate of reconstruct loss"}
-    )
+
     gradient_clip_val: float = field(
         default=0.0,
         metadata={"help":"Gradient clipping value"}
     )
-    pretrain_epoches : int = field(
+
+    num_epoches : int = field(
         default=5,
         metadata={"help": "number pretrain epoches"}
     )
-    reinforce_train_epoches : int = field(
-        default=5,
-        metadata={"help": "number reinforce training epoches"}
-    )
+
     seed: int = field(
         default=1741,
         metadata={"help": "seeding for reproductivity"}
     )
+
     generate_weight: float = field(
         default=1.0,
-        metadata={"help": "Weight of generate score"}
+        metadata={"help": "Weight of generate task in mle"}
     )
-    f1_weight: float = field(
+
+    f1_reward_weight: float = field(
         default=1.0,
         metadata={"help": "Weight of f1 reward"}
+    )
+
+    reconstruct_reward_weight: float = field(
+        default=0.0,
+        metadata={"help": "weight reward of reconstruct out -> in"}
+    )
+
+    mle_weight: float = field(
+        default=1.0,
+        metadata={"help": "weight of mle loss"}
     )
 
 @dataclass
@@ -121,6 +120,7 @@ class ModelArguments:
     model_name_or_path: Optional[str] = field(
         default=None, metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
     )
+    
     config_name: Optional[str] = field(
         default=None, metadata={"help": "Pretrained config name or path if not the same as model_name"}
     )

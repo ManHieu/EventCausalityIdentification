@@ -132,7 +132,6 @@ def compute_f1(predicts: List[str], golds: List[str]):
             wrong_struct = wrong_struct + 1
     
     if wrong_struct == len(predicts):
-        print('all wrong')
         return 0.01, 0.01, 0.01, 0, 0, 0
     elif n_predict==n_gold==0:
         return 0.1, 0.1, 0.1, 0, 0, 0
@@ -154,13 +153,13 @@ def create_distractor(items: List[str]):
         return distracted_items
 
 @torch.no_grad()
-def compute_sentences_similar(orgigin_inputs: List[str], reconstructed_inputs: List[str]):
-    assert len(orgigin_inputs) == len(reconstructed_inputs)
+def compute_sentences_similar(sents_A: List[str], sents_B: List[str]):
+    assert len(sents_A) == len(sents_B)
     origins = []
     reconstructs = []
-    for i in range(len(orgigin_inputs)):
-        ori_sent = ' '.join([word.strip() for word in orgigin_inputs[i].split()])
-        re_sent = ' '.join([word.strip() for word in reconstructed_inputs[i].split()])
+    for i in range(len(sents_A)):
+        ori_sent = ' '.join([word.strip() for word in sents_A[i].split()])
+        re_sent = ' '.join([word.strip() for word in sents_B[i].split()])
         origins.append(ori_sent)
         reconstructs.append(re_sent)
 
@@ -168,7 +167,6 @@ def compute_sentences_similar(orgigin_inputs: List[str], reconstructed_inputs: L
     embeddings2 = sim_evaluator.encode(reconstructs, convert_to_tensor=True)
     cosine_scores = util.pytorch_cos_sim(embeddings1, embeddings2)
     scores = []
-    for i in range(len(orgigin_inputs)):
+    for i in range(len(sents_B)):
         scores.append(abs(float(cosine_scores[i][i])))
-    return float(np.mean(scores))
-
+    return scores

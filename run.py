@@ -16,7 +16,7 @@ from pytorch_lightning.callbacks import LearningRateMonitor, ModelCheckpoint
 from pytorch_lightning.loggers import TensorBoardLogger
 from data_modules.data_modules import load_data_module
 from eval import eval_corpus
-from model.model import GenEERModel
+from model.model import GenEC
 
 
 def objective(trial: optuna.Trial):
@@ -26,16 +26,22 @@ def objective(trial: optuna.Trial):
     assert job in config
 
     defaults = {
-        'pretrain_lr': trial.suggest_categorical('pretrain_lr', [1e-3]),
-        'reinforce_lr': trial.suggest_categorical('reinforce_lr', [1e-3]),
-        'reconstruct_lr': trial.suggest_categorical('reconstruct_lr', [1e-3]),
+        'lr': trial.suggest_categorical('pretrain_lr', [5e-5, 1e-4, 5e-4, 1e-3, 5e-3]),
         'batch_size': trial.suggest_categorical('batch_size', [32]),
         'warmup_ratio': 0.1,
-        'pretrain_epoches': trial.suggest_categorical('pretrain_epoches', [3]),
-        'reinforce_train_epoches': trial.suggest_categorical('reinforce_train_epoches', [3, 5, 7]),
-        'generate_weight': trial.suggest_categorical('generate_weight', [0.5, 0.7]),
-        'f1_weight': trial.suggest_categorical('f1_weight', [0.5, 0.7, 0.9]),
+        'num_epoches': trial.suggest_categorical('num_epoches', [3, 5, 7]),
     }
+    if args.mle == True:
+        defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.25, 0.5, 0.75])
+        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.25, 0.5, 0.75])
+    if args.rl==True:
+        defaults['f1_reward_weight'] = trial.suggest_categorical('f1_reward_weight', [0.25, 0.5])
+        defaults['reconstruct_reward_weight'] = trial.suggest_categorical('reconstruct_reward_weight', [0.25, 0.5])
+    
+    if args.mle==True and args.rl==False:
+        defaults['mle_weight'] = 1.0
+    if args.mle==False and args.rl==True:
+        defaults['mle_weight'] = 0
     
     print("Hyperparams: {}".format(defaults))
     with open('./results.txt', 'a', encoding='utf-8') as f:
@@ -70,44 +76,19 @@ def objective(trial: optuna.Trial):
         os.mkdir(training_args.output_dir)
     except FileExistsError:
         pass
-    # construct name for the output directory
-    # for example: conll04-t5-base-ep200-len256-ratio0-b4-train
-    output_dir = os.path.join(
-        training_args.output_dir,
-        f'{args.job}'
-        f'-{model_args.model_name_or_path.split("/")[-1]}'
-        f'-ep{round(training_args.num_train_epochs)}'
-        f'-len{data_args.max_seq_length}'
-        f'-lr{training_args.learning_rate}'
-        f'-b{training_args.batch_size}')
-    if data_args.output_format is not None:
-        output_dir += f'-{data_args.output_format}'
-    if data_args.input_format is not None:
-        output_dir += f'-{data_args.input_format}'
-    try:
-        os.mkdir(output_dir)
-    except FileExistsError:
-        pass
     
     seed_everything(training_args.seed)
-    checkpoint_callback = ModelCheckpoint(
-        dirpath=output_dir,
-        save_top_k=1,
-        monitor='avg_val_loss',
-        mode='min',
-        save_weights_only=True,
-        filename='{epoch}-{avg_val_loss:.2f}', # this cannot contain slashes 
+    # tb_logger = TensorBoardLogger('logs/')
 
-    )
-    lr_logger = LearningRateMonitor(logging_interval='step') 
-    tb_logger = TensorBoardLogger('logs/')
-
+    if args.rl == True:
+        model_args.model_name_or_path = args.trained_model
     f1s = []
     ps = []
     rs = []
     for i in range(n_fold):
         print(f"TRAINING AND TESTING IN FOLD {i}: ")
         fold_dir = f'{data_dir}/{i}'
+
         dm = load_data_module(module_name = 'ECI',
                             data_args=data_args,
                             batch_size=training_args.batch_size,
@@ -116,35 +97,64 @@ def objective(trial: optuna.Trial):
         
         number_step_in_epoch = len(dm.train_dataloader())/training_args.gradient_accumulation_steps
 
-        model = GenEERModel(
-                            tokenizer_name=model_args.tokenizer_name,
-                            model_name_or_path=model_args.model_name_or_path,
-                            input_format=data_args.input_format,
-                            oupt_format=data_args.output_format,
-                            max_input_len=data_args.max_seq_length,
-                            max_oupt_len=data_args.max_output_seq_length,
-                            generate_weight=training_args.generate_weight,
-                            f1_weight=training_args.f1_weight,
-                            pretrain_step=int(number_step_in_epoch) * training_args.pretrain_epoches,
-                            reinforce_step=int(number_step_in_epoch) * training_args.reinforce_train_epoches,
-                            pretrain_lr=training_args.pretrain_lr,
-                            reinforce_lr=training_args.reinforce_lr,
-                            reconstructor_lr=training_args.reconstruct_lr,
-                            adam_epsilon=training_args.adam_epsilon,
-                            weight_decay=training_args.weight_decay,
-                            warmup=training_args.warmup_ratio,
-        )
+        # construct name for the output directory
+        output_dir = os.path.join(
+            training_args.output_dir,
+            f'{args.job}'
+            f'-lr{training_args.lr}'
+            f'-eps{training_args.num_epoches}')
+        if args.mle==True:
+            output_dir += f'-MLE{defaults["mle_weight"]}'
+        if args.rl==True:
+            output_dir += f'-RL-w_f1{defaults["f1_reward_weight"]}-w_re{defaults["reconstruct_reward_weight"]}'
+        try:
+            os.mkdir(output_dir)
+        except FileExistsError:
+            pass
+        output_dir = os.path.join(output_dir,f'fold{i}')
+        try:
+            os.mkdir(output_dir)
+        except FileExistsError:
+            pass
 
+        checkpoint_callback = ModelCheckpoint(
+                                    dirpath=output_dir,
+                                    save_top_k=1,
+                                    monitor='f1_dev',
+                                    mode='max',
+                                    save_weights_only=True,
+                                    filename='{epoch}-{f1_dev:.2f}', # this cannot contain slashes 
+                                    )
+        lr_logger = LearningRateMonitor(logging_interval='step') 
+        model = GenEC(
+                    tokenizer_name=model_args.tokenizer_name,
+                    model_name_or_path=model_args.model_name_or_path,
+                    input_type=data_args.input_format,
+                    output_type=data_args.output_format,
+                    max_input_len=data_args.max_seq_length,
+                    max_oupt_len=data_args.max_output_seq_length,
+                    mle_train=args.mle,
+                    rl_train=args.rl,
+                    num_training_step=int(number_step_in_epoch) * training_args.num_epoches,
+                    lr=training_args.lr,
+                    warmup=training_args.warmup_ratio,
+                    adam_epsilon=training_args.adam_epsilon,
+                    weight_decay=training_args.weight_decay,
+                    generate_weight=training_args.generate_weight,
+                    f1_reward_weight=training_args.f1_reward_weight,
+                    reconstruct_reward_weight=training_args.reconstruct_reward_weight,
+                    mle_weight=training_args.mle_weight,
+                )
         trainer = Trainer(
             # logger=tb_logger,
-            min_epochs=training_args.pretrain_epoches + training_args.reinforce_train_epoches,
-            max_epochs=training_args.pretrain_epoches + training_args.reinforce_train_epoches, 
+            min_epochs=training_args.num_epoches,
+            max_epochs=training_args.num_epoches, 
             gpus=[args.gpu], 
             accumulate_grad_batches=training_args.gradient_accumulation_steps,
             gradient_clip_val=training_args.gradient_clip_val, 
             num_sanity_val_steps=5, 
-            val_check_interval=0.5, # use float to check every n epochs 
-            callbacks = [lr_logger],
+            val_check_interval=0.9, # use float to check every n epochs 
+            callbacks = [lr_logger, checkpoint_callback],
         )
 
         print("Training....")
@@ -155,6 +165,10 @@ def objective(trial: optuna.Trial):
         dm.setup('test')
         trainer.test(model, dm)
 
+        if args.mle==True and args.rl==False:
+            best_PL = GenEC.load_from_checkpoint(checkpoint_callback.best_model_path)
+            best_PL.t5.save_pretrained(output_dir)
+
         f1, p, r = eval_corpus()
         f1s.append(f1)
         ps.append(p)
@@ -163,6 +177,10 @@ def objective(trial: optuna.Trial):
         print(f"F1: {f1}")
         print(f"P: {p}")
         print(f"R: {r}")
+        with open(output_dir+f'{f1}', 'w', encoding='utf-8'):
+            f.write(f"F1: {f1} \n")
+            f.write(f"P: {p} \n")
+            f.write(f"R: {r} \n")
     
     f1 = sum(f1s)/len(f1s)
     p = sum(ps)/len(ps)
@@ -182,15 +200,19 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('job')
     parser.add_argument('-c', '--config_file', type=str, default='config.ini', help='configuration file')
-    parser.add_argument('-e', '--eval', action='store_true', default=False, help='run evaluation only')
     parser.add_argument('-g', '--gpu', type=int, default=0, help='which GPU to use')
+    parser.add_argument('-mle', '--mle', action='store_true', default=True, help='training use mle loss')
+    parser.add_argument('-rl', '--rl', action='store_true', default=False, help='training use rl loss')
     parser.add_argument('-l', '--trained_model', type=str, default=None, help='load trained model')
 
     args, remaining_args = parser.parse_known_args()
+    print(args.rl)
+    if args.rl:
+        assert args.trained_model != None
 
     sampler = optuna.samplers.TPESampler(seed=1741)
     study = optuna.create_study(direction='maximize')
-    study.optimize(objective, n_trials=75)
+    study.optimize(objective, n_trials=25)
     trial = study.best_trial
 
     print('Accuracy: {}'.format(trial.value))
