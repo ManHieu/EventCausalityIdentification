@@ -120,16 +120,22 @@ def compute_f1(predicts: List[str], golds: List[str]):
     n_predict = 0
     n_gold = 0
     tp = 0
+    wrong_struct = 0
     for predict, gold in zip(predicts, golds):
-        if predict.startswith('No')==False and gold.startswith('No')==False:
+        if predict.startswith('Yes') and gold.startswith('Yes'):
             tp = tp + 1
-        if predict.startswith('No')==False:
+        if predict.startswith('Yes'):
             n_predict = n_predict + 1
-        if gold.startswith('No')==False:
+        if gold.startswith('Yes'):
             n_gold = n_gold + 1
+        if predict.startswith('Yes')==False and predict.startswith('No')==False:
+            wrong_struct = wrong_struct + 1
     
-    if n_predict==n_gold==0:
-        return 0.1, 0.1, 0.1, 0, 0
+    if wrong_struct == len(predicts):
+        print('all wrong')
+        return 0.01, 0.01, 0.01, 0, 0, 0
+    elif n_predict==n_gold==0:
+        return 0.1, 0.1, 0.1, 0, 0, 0
     else:
         p = tp/(n_predict + 1)
         r = tp/(n_gold + 1)

@@ -29,7 +29,7 @@ class GenEERModel(pl.LightningModule):
                 generate_weight: float, f1_weight: float,
                 pretrain_step: int, reinforce_step: int, 
                 pretrain_lr: float, reinforce_lr: float, reconstructor_lr: float,
-                adam_epsilon: float, weight_decay: float=0, warmup: float=0) -> None:
+                adam_epsilon: float, weight_decay: float=0, warmup: float=0, gamma: float=0.9) -> None:
         super().__init__()
         self.save_hyperparameters()
 
@@ -62,6 +62,7 @@ class GenEERModel(pl.LightningModule):
     def compute_reward(self, inputs_sentences, generated_output, golds):
         #-------------------F1_REWARD-----------------------
         f1_reward = compute_f1(generated_output, golds)[0]
+        f1_reward = f1_reward * torch.ones((len(inputs_sentences))) 
 
         #---------------------RECONSTRUCT REWARD-----------------------
         # with torch.no_grad():
@@ -80,9 +81,10 @@ class GenEERModel(pl.LightningModule):
         #                                     num_beams=1,)
         #     reconstructed_inputs = self.tokenizer_for_generating.batch_decode(reconstructed_inputs, skip_special_tokens=True)
         #     avg_sim = compute_sentences_similar(inputs_sentences, reconstructed_inputs)
-        reconstruct_reward = 0
-        self.log_dict({'f1_reward': f1_reward, 'reconstruct_reward': reconstruct_reward}, prog_bar=True)
-        return float(self.hparams.f1_weight * f1_reward + (1 - self.hparams.f1_weight) * reconstruct_reward) 
+        # reconstruct_reward = 0
+        # print(f1_reward)
+        # self.log_dict({'f1_reward': f1_reward, 'reconstruct_reward': reconstruct_reward}, prog_bar=True)
+        return f1_reward
 
     def compute_generate_loss(self, inputs, outputs):
         # generate loss (in->out)
@@ -108,8 +110,21 @@ class GenEERModel(pl.LightningModule):
                     )
         generate_loss = _generate_output.loss
         # last_generate_hidden_state = _generate_output.decoder_hidden_states[-1] # (batch_size, sequence_length, hidden_size)
+        # inputs_encoding_for_generating = self.tokenizer_for_generating([f"{task_prefix}:\n{sent}" for sent in inputs], 
+        #                                                                     padding='longest',
+        #                                                                     max_length=self.hparams.max_input_len,
+        #                                                                     truncation=True,
+        #                                                                     return_tensors="pt")
+        # sample_outputs = self.t5.generate(input_ids=inputs_encoding_for_generating.input_ids.cuda(), 
+        #                                     do_sample=True, 
+        #                                     top_k=20, 
+        #                                     top_p=0.95, 
+        #                                     max_length=self.hparams.max_oupt_len, 
+        #                                     num_return_sequences=1, 
+        #                                     num_beams=1,)
+        # sample_outputs = self.tokenizer_for_generating.batch_decode(sample_outputs, skip_special_tokens=True)
 
-        return generate_loss, _generate_output, labels
+        return generate_loss, _generate_output, labels, 'sample_outputs'
 
     def compute_reconstruct_loss(self, inputs, outputs):
         # reconstruct loss (out->in)
@@ -146,8 +161,9 @@ class GenEERModel(pl.LightningModule):
         output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
                             for temp_id, example in zip(template, batch)]
         
-        generate_loss = self.compute_generate_loss(inputs=inputs_sentences, outputs=output_sentences)[0] # in -> out
-        reconstruct_loss = self.compute_reconstruct_loss(inputs=inputs_sentences, outputs=output_sentences)[0] # out -> in 
+        generate_loss, _, _, generated_ouput = self.compute_generate_loss(inputs=inputs_sentences, outputs=output_sentences) # in -> out
+
+        reconstruct_loss = self.compute_reconstruct_loss(inputs=inputs_sentences, outputs=generated_ouput)[0] # out -> in 
         # self.log_dict({'pretrain_gen_loss': generate_loss, 'pretrain_reconstruct_loss': reconstruct_loss}, prog_bar=True)
         return self.hparams.generate_weight * generate_loss + (1.0 - self.hparams.generate_weight) * reconstruct_loss
     
@@ -157,7 +173,7 @@ class GenEERModel(pl.LightningModule):
                                 for temp_id, example in zip(template, batch)]
         output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
                             for temp_id, example in zip(template, batch)]
-        _, generate_output, labels = self.compute_generate_loss(inputs=inputs_sentences, outputs=output_sentences)
+        _, generate_output, labels, _ = self.compute_generate_loss(inputs=inputs_sentences, outputs=output_sentences)
         
         logits = generate_output.logits
         # print(f"logit: {logits}")
@@ -170,25 +186,41 @@ class GenEERModel(pl.LightningModule):
         # print(log_probs)
         mask = torch.ones(labels.size()).cuda()
         mask[labels[:, :] == -100] = 0
-        # print(mask)
-        log_probs = log_probs.view(-1)*mask.view(-1)
-        # print(mask.view(-1))
-        # log_probs = probs.max(dim=-1)[1] # (batch_size, seq_len)
-        
+        print(mask.size())
+        print(log_probs.size())
+        log_probs = log_probs * mask
+
         outputs = self.tokenizer.batch_decode(output_seqs, skip_special_tokens=True)
-        # print(f"outputs: {outputs}")
         reward = self.compute_reward(inputs_sentences, generated_output=outputs, golds=output_sentences)
-        # print(log_probs)
-        policy_loss = - torch.sum(log_probs*reward)/torch.sum(mask)
-        # print(policy_loss)
-        return outputs, reward, log_probs, policy_loss
+
+        policy_gradients = 0
+        for seq_id in range(log_probs.size(0)):
+            seq_logprobs = log_probs[seq_id]
+            seq_rewards = [reward[seq_id]] * seq_logprobs.size(0) # all step has same reward which is all sentence reward.
+            discounted_rewards = []
+            for t in range(len(seq_rewards)):
+                Gt = 0
+                pw = 0
+                for r in seq_rewards[t:]:
+                    Gt = Gt + self.hparams.gamma**pw * r
+                    pw = pw + 1
+                discounted_rewards.append(Gt)
+            discounted_rewards = torch.tensor(discounted_rewards)
+            discounted_rewards = (discounted_rewards - discounted_rewards.mean()) / (discounted_rewards.std() + 1e-9) # normalize discounted rewards
+            policy_gradient = []
+            for log_prob, Gt in zip(seq_logprobs, discounted_rewards):
+                policy_gradient.append(- log_prob * Gt)
+            policy_gradient = torch.stack(policy_gradient).sum() 
+            policy_gradients = policy_gradients + policy_gradient # sum all gradient in batch 
+
+        return outputs, reward, log_probs, policy_gradients
 
     def on_train_epoch_start(self) -> None:
         self.rewards = []
     
     def training_step(self, batch, batch_idx):
-        pretrain_optimizer, reinforce_optimizer, reconstructor_optimizer = self.optimizers()
-        pretrain_scheduler, reinforce_scheduler, reconstructor_scheduler = self.lr_schedulers()
+        pretrain_optimizer, reinforce_optimizer = self.optimizers()
+        pretrain_scheduler = self.lr_schedulers()
         # print(self.trainer.global_step)
 
         if self.trainer.global_step < self.hparams.pretrain_step:
@@ -200,18 +232,15 @@ class GenEERModel(pl.LightningModule):
             pretrain_scheduler.step()
             self.log_dict({'pretrain_loss': pretrain_loss}, prog_bar=True)
         else:
-            outputs, reward, log_probs, reinforce_loss = self.reinforce_training_step(batch)
+            outputs, reward, log_probs, reinforce_loss = self.reinforce_training_step(batch, )
             self.rewards.append(reward)
-            # normalized_reward = (reward - mean(self.rewards))
-            # print(f"Reward: {reward} - log_prob: {log_probs.view(-1).size()}")
-            # reinforce_loss = torch.sum(log_probs.view(-1) * reward)
 
             # template = [5]*len(batch)
             # inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
             #                         for temp_id, example in zip(template, batch)]
             # reconstruct_loss = self.compute_reconstruct_loss(inputs=inputs_sentences, outputs=outputs)[0]
 
-            # reinforce_loss = 0.1 * reconstruct_loss
+            # reinforce_loss = 0.1 * reconstruct_loss + reinforce_loss
             # reconstructor_optimizer.zero_grad()
             # self.manual_backward(reconstruct_loss)
             # reconstructor_optimizer.step()
@@ -221,7 +250,7 @@ class GenEERModel(pl.LightningModule):
             reinforce_optimizer.zero_grad()
             self.manual_backward(reinforce_loss)
             reinforce_optimizer.step()
-            reinforce_scheduler.step()
+            # reinforce_scheduler.step()
             self.log_dict({'reinforce_loss': reinforce_loss}, prog_bar=True)
 
     def on_validation_epoch_start(self) -> None:
@@ -233,7 +262,7 @@ class GenEERModel(pl.LightningModule):
             task_prefix = 'Causality identification'
             inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
                                     for temp_id, example in zip(template, batch)]
-            inputs_encoding_for_generating = self.tokenizer_for_generating([f"{task_prefix}\n\n{sent}" for sent in inputs_sentences], 
+            inputs_encoding_for_generating = self.tokenizer_for_generating([f"{task_prefix}:\n{sent}" for sent in inputs_sentences], 
                                                                             padding='longest',
                                                                             max_length=self.hparams.max_input_len,
                                                                             truncation=True,
@@ -252,7 +281,7 @@ class GenEERModel(pl.LightningModule):
             # gold output
             output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
                                 for temp_id, example in zip(template, batch)]
-            return sample_outputs, output_sentences, [f"{task_prefix}\n\n{sent}" for sent in inputs_sentences]
+            return sample_outputs, output_sentences, [f"{task_prefix}:\n{sent}" for sent in inputs_sentences]
     
     def validation_epoch_end(self, outputs):
         if self.trainer.global_step > self.hparams.pretrain_step:
@@ -282,7 +311,7 @@ class GenEERModel(pl.LightningModule):
         task_prefix = 'Causality identification'
         inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
                                 for temp_id, example in zip(template, batch)]
-        inputs_encoding_for_generating = self.tokenizer_for_generating([f"{task_prefix}\n\n{sent}" for sent in inputs_sentences], 
+        inputs_encoding_for_generating = self.tokenizer_for_generating([f"{task_prefix}:\n{sent}" for sent in inputs_sentences], 
                                                                         padding='longest',
                                                                         max_length=self.hparams.max_input_len,
                                                                         truncation=True,
@@ -301,7 +330,7 @@ class GenEERModel(pl.LightningModule):
         # gold output
         output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
                              for temp_id, example in zip(template, batch)]
-        return sample_outputs, output_sentences, [f"{task_prefix}\n\n{sent}" for sent in inputs_sentences]
+        return sample_outputs, output_sentences, [f"{task_prefix}:\n{sent}" for sent in inputs_sentences]
 
     def test_epoch_end(self, outputs):
         # evaluate F1
@@ -350,26 +379,26 @@ class GenEERModel(pl.LightningModule):
         ]
         reinforce_optimizer = AdamW(optimizer_grouped_reinforce_parameters, lr=self.hparams.reinforce_lr, eps=self.hparams.adam_epsilon)
         num_warmup_steps = self.hparams.warmup * self.hparams.reinforce_step
-        reinforce_scheduler = get_linear_schedule_with_warmup(
-            reinforce_optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=self.hparams.reinforce_step
-        )
+        # reinforce_scheduler = get_linear_schedule_with_warmup(
+        #     reinforce_optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=self.hparams.reinforce_step
+        # )
 
-        # config optimizer for reconstructor 
-        optimizer_grouped_recontructor_parameters = [
-            {
-                "params": [p for n, p in self.t5.named_parameters() if not any(nd in n for nd in no_decay)],
-                "weight_decay": self.hparams.weight_decay,
-            },
-            {
-                "params": [p for n, p in self.t5.named_parameters() if any(nd in n for nd in no_decay)],
-                "weight_decay": 0.0,
-            },
-        ]
-        reconstructor_optimizer = AdamW(optimizer_grouped_recontructor_parameters, lr=self.hparams.reconstructor_lr, eps=self.hparams.adam_epsilon)
-        num_warmup_steps = self.hparams.warmup * self.hparams.reinforce_step
-        reconstructor_scheduler = get_linear_schedule_with_warmup(
-            reconstructor_optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=self.hparams.reinforce_step
-        )
+        # # config optimizer for reconstructor 
+        # optimizer_grouped_recontructor_parameters = [
+        #     {
+        #         "params": [p for n, p in self.t5.named_parameters() if not any(nd in n for nd in no_decay)],
+        #         "weight_decay": self.hparams.weight_decay,
+        #     },
+        #     {
+        #         "params": [p for n, p in self.t5.named_parameters() if any(nd in n for nd in no_decay)],
+        #         "weight_decay": 0.0,
+        #     },
+        # ]
+        # reconstructor_optimizer = AdamW(optimizer_grouped_recontructor_parameters, lr=self.hparams.reconstructor_lr, eps=self.hparams.adam_epsilon)
+        # num_warmup_steps = self.hparams.warmup * self.hparams.reinforce_step
+        # reconstructor_scheduler = get_linear_schedule_with_warmup(
+        #     reconstructor_optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=self.hparams.reinforce_step
+        # )
 
         return ({
             "optimizer": pretrain_optimizer,
@@ -377,9 +406,10 @@ class GenEERModel(pl.LightningModule):
         },
             {
             "optimizer": reinforce_optimizer,
-            "lr_scheduler": reinforce_scheduler,
+            # "lr_scheduler": reinforce_scheduler,
         },
-            {
-            "optimizer": reconstructor_optimizer,
-            "lr_scheduler": reconstructor_scheduler,
-        })
+        #     {
+        #     "optimizer": reconstructor_optimizer,
+        #     "lr_scheduler": reconstructor_scheduler,
+        # }
+        )
