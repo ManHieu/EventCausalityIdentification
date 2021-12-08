@@ -39,8 +39,8 @@ class GenEC(pl.LightningModule):
         super().__init__()
         self.save_hyperparameters()
 
+        print(f"Loading pretrain model from: {model_name_or_path}")
         self.t5: T5ForRL = T5ForRL.from_pretrained(model_name_or_path)
-
         self.tokenizer: T5Tokenizer = T5Tokenizer.from_pretrained(tokenizer_name)
         
         self.tokenizer_for_generate: T5Tokenizer = copy.deepcopy(self.tokenizer)
@@ -76,7 +76,7 @@ class GenEC(pl.LightningModule):
         return output, labels
     
     @torch.no_grad()
-    def _generate(self, inputs: List[str], task_prefix: str, num_beams: int=1):
+    def _generate(self, inputs: List[str], task_prefix: str, num_beams: int=1, do_sample: bool=True):
         """
         """
         inputs_encoding_for_generate = self.tokenizer_for_generate([f"{task_prefix}\n{sent}" for sent in inputs],
@@ -85,7 +85,7 @@ class GenEC(pl.LightningModule):
                                                                     truncation=True,
                                                                     return_tensors="pt")
         generated_seqs = self.t5.generate(input_ids=inputs_encoding_for_generate.input_ids.cuda(), 
-                                        do_sample=True, 
+                                        do_sample=do_sample, 
                                         top_k=20, 
                                         top_p=0.95, 
                                         max_length=self.hparams.max_oupt_len, 
@@ -105,13 +105,15 @@ class GenEC(pl.LightningModule):
         # generate answer
         task_prefix = 'causality identification'
         output_of_generating, _ = self._forward(inputs=gold_inputs_sentences, outputs=gold_output_sentences, task_prefix=task_prefix)
-        generated_seqs = self._generate(gold_inputs_sentences, task_prefix)
         generate_loss = output_of_generating.loss
 
-        # reconstruct question
-        task_prefix = 'Generate question and context'
-        output_of_reconstructing, _ = self._forward(inputs=generated_seqs, outputs=gold_inputs_sentences, task_prefix=task_prefix)
-        reconstruct_loss = output_of_reconstructing.loss
+        reconstruct_loss = 0.0
+        if self.hparams.rl_train==False:
+            # reconstruct question
+            generated_seqs = self._generate(gold_inputs_sentences, task_prefix)
+            task_prefix = 'Generate question and context'
+            output_of_reconstructing, _ = self._forward(inputs=generated_seqs, outputs=gold_inputs_sentences, task_prefix=task_prefix)
+            reconstruct_loss = output_of_reconstructing.loss
 
         mle_loss = self.hparams.generate_weight * generate_loss + (1.0 - self.hparams.generate_weight) * reconstruct_loss
         
@@ -179,7 +181,7 @@ class GenEC(pl.LightningModule):
         # reconstruct
         task_prefix = 'Generate question and context'
         reconstructed_seqs = self._generate(sampled_seqs, task_prefix)
-        baseline_reconstructed_seqs = self._generate(greedy_seqs, task_prefix)
+        baseline_reconstructed_seqs = self._generate(greedy_seqs, task_prefix, do_sample=False)
 
         # compute reward
         sample_reward = self.compute_reward(sampled_seqs, gold_output_sentences, gold_inputs_sentences, reconstructed_seqs)

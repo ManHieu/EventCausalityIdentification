@@ -26,22 +26,23 @@ def objective(trial: optuna.Trial):
     assert job in config
 
     defaults = {
-        'lr': trial.suggest_categorical('pretrain_lr', [5e-5, 5e-3, 1e-2, 5e-2]),
-        'batch_size': trial.suggest_categorical('batch_size', [32]),
+        'lr': trial.suggest_categorical('pretrain_lr', [5e-5, 5e-4, 5e-3]),
+        'batch_size': trial.suggest_categorical('batch_size', [16]),
         'warmup_ratio': 0.1,
         'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10]),
-    }
-    if args.mle == True:
-        defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.5, 0.75])
-        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.25, 0.5, 0.75])
+    }   
     if args.rl==True:
         defaults['f1_reward_weight'] = trial.suggest_categorical('f1_reward_weight', [0.25, 0.5, 0.75])
         defaults['reconstruct_reward_weight'] = trial.suggest_categorical('reconstruct_reward_weight', [0.1, 0.25])
     
     if args.mle==True and args.rl==False:
         defaults['mle_weight'] = 1.0
+        defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.5, 0.75, 0.9])
     if args.mle==False and args.rl==True:
-        defaults['mle_weight'] = 0
+        defaults['mle_weight'] = 0.0
+    if args.mle==True and args.rl==True:
+        defaults['generate_weight'] = 1.0
+        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.25, 0.5, 0.75])
     
     print("Hyperparams: {}".format(defaults))
     with open('./results.txt', 'a', encoding='utf-8') as f:
@@ -153,7 +154,7 @@ def objective(trial: optuna.Trial):
             accumulate_grad_batches=training_args.gradient_accumulation_steps,
             gradient_clip_val=training_args.gradient_clip_val, 
             num_sanity_val_steps=5, 
-            val_check_interval=0.9, # use float to check every n epochs 
+            val_check_interval=1.0, # use float to check every n epochs 
             callbacks = [lr_logger, checkpoint_callback],
         )
 
