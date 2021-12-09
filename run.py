@@ -42,7 +42,7 @@ def objective(trial: optuna.Trial):
         defaults['mle_weight'] = 0.0
     if args.mle==True and args.rl==True:
         defaults['generate_weight'] = 1.0
-        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.5])
+        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.25, 0.5])
     
     print("Hyperparams: {}".format(defaults))
     with open('./results.txt', 'a', encoding='utf-8') as f:

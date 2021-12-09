@@ -200,3 +200,6 @@ Hyperparams:
 -------------------- 
 Hyperparams: 
  {'lr': 5e-06, 'batch_size': 16, 'warmup_ratio': 0.1, 'num_epoches': 7, 'f1_reward_weight': 0.25, 'reconstruct_reward_weight': 0.25, 'generate_weight': 1.0, 'mle_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'lr': 5e-06, 'batch_size': 16, 'warmup_ratio': 0.1, 'num_epoches': 7, 'f1_reward_weight': 0.25, 'reconstruct_reward_weight': 0.1, 'generate_weight': 1.0, 'mle_weight': 0.5}
