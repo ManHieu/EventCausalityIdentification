@@ -26,7 +26,7 @@ def objective(trial: optuna.Trial):
     assert job in config
 
     defaults = {
-        'lr': trial.suggest_categorical('pretrain_lr', [5e-5, 5e-4, 5e-3]),
+        'lr': trial.suggest_categorical('pretrain_lr', [5e-6, 5e-5, 5e-4, 5e-3]),
         'batch_size': trial.suggest_categorical('batch_size', [16]),
         'warmup_ratio': 0.1,
         'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10]),
@@ -42,7 +42,7 @@ def objective(trial: optuna.Trial):
         defaults['mle_weight'] = 0.0
     if args.mle==True and args.rl==True:
         defaults['generate_weight'] = 1.0
-        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.25, 0.5, 0.75])
+        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.5])
     
     print("Hyperparams: {}".format(defaults))
     with open('./results.txt', 'a', encoding='utf-8') as f:
@@ -162,13 +162,13 @@ def objective(trial: optuna.Trial):
         dm.setup('fit')
         trainer.fit(model, dm)
 
+        best_model = GenEC.load_from_checkpoint(checkpoint_callback.best_model_path)
         print("Testing .....")
         dm.setup('test')
-        trainer.test(model, dm)
+        trainer.test(best_model, dm)
 
         if args.mle==True and args.rl==False:
-            best_PL = GenEC.load_from_checkpoint(checkpoint_callback.best_model_path)
-            best_PL.t5.save_pretrained(output_dir)
+            best_model.t5.save_pretrained(output_dir)
 
         f1, p, r = eval_corpus()
         f1s.append(f1)
@@ -188,7 +188,7 @@ def objective(trial: optuna.Trial):
     r = sum(rs)/len(rs)
     print(f"F1: {f1} - P: {p} - R: {r}")
     if f1 > 0.4:
-        with open('./results.txt', 'a', encoding='utf-8') as f:
+        with open(f'./results.txt', 'a', encoding='utf-8') as f:
             f.write(f"F1: {f1} \n")
             f.write(f"P: {p} \n")
             f.write(f"R: {r} \n")
