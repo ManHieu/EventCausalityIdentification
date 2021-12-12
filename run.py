@@ -5,6 +5,7 @@ import json
 import logging
 import os
 from collections import defaultdict
+from typing import Dict
 import optuna
 from pytorch_lightning.trainer.trainer import Trainer
 import torch
@@ -18,31 +19,12 @@ from eval import eval_corpus
 from model.model import GenEC
 
 
-def objective(trial: optuna.Trial):
+def run(defaults: Dict):
     config = configparser.ConfigParser(allow_no_value=False)
     config.read(args.config_file)
     job = args.job
     assert job in config
 
-    defaults = {
-        'lr': trial.suggest_categorical('pretrain_lr', [5e-6, 5e-5, 5e-4, 5e-3]),
-        'batch_size': trial.suggest_categorical('batch_size', [16]),
-        'warmup_ratio': 0.1,
-        'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10]),
-    }   
-    if args.rl==True:
-        defaults['f1_reward_weight'] = trial.suggest_categorical('f1_reward_weight', [0.25, 0.5, 0.75])
-        defaults['reconstruct_reward_weight'] = trial.suggest_categorical('reconstruct_reward_weight', [0.1, 0.25])
-    
-    if args.mle==True and args.rl==False:
-        defaults['mle_weight'] = 1.0
-        defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.5, 0.75, 0.9])
-    if args.mle==False and args.rl==True:
-        defaults['mle_weight'] = 0.0
-    if args.mle==True and args.rl==True:
-        defaults['generate_weight'] = 1.0
-        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.25, 0.5])
-    
     print("Hyperparams: {}".format(defaults))
     with open('./results.txt', 'a', encoding='utf-8') as f:
         f.write(f"{'--'*10} \n")
@@ -66,7 +48,7 @@ def objective(trial: optuna.Trial):
     if job == 'ESL':
         data_args.input_format = 'ECI_input'
         data_args.output_format = 'ECI_ouput'
-        n_fold = 1
+        n_fold = 5
         data_dir = 'ESL'
 
     if data_args.tokenizer == None:
@@ -79,16 +61,14 @@ def objective(trial: optuna.Trial):
     
     seed_everything(training_args.seed)
     # tb_logger = TensorBoardLogger('logs/')
-
-    if args.rl == True:
-        model_args.model_name_or_path = args.trained_model
     f1s = []
     ps = []
     rs = []
     for i in range(n_fold):
         print(f"TRAINING AND TESTING IN FOLD {i}: ")
         fold_dir = f'{data_dir}/{i}'
-
+        if args.rl == True:
+            model_args.model_name_or_path = f"{args.trained_model}/fold{i}"
         dm = load_data_module(module_name = 'ECI',
                             data_args=data_args,
                             batch_size=training_args.batch_size,
@@ -191,6 +171,30 @@ def objective(trial: optuna.Trial):
             f.write(f"F1: {f1} \n")
             f.write(f"P: {p} \n")
             f.write(f"R: {r} \n")
+    
+    return f1
+
+def objective(trial: optuna.Trial):
+    defaults = {
+        'lr': trial.suggest_categorical('pretrain_lr', [5e-6, 5e-5, 5e-4, 5e-3]),
+        'batch_size': trial.suggest_categorical('batch_size', [16]),
+        'warmup_ratio': 0.1,
+        'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10]),
+    }   
+    if args.rl==True:
+        defaults['f1_reward_weight'] = trial.suggest_categorical('f1_reward_weight', [0.25, 0.5, 0.75])
+        defaults['reconstruct_reward_weight'] = trial.suggest_categorical('reconstruct_reward_weight', [0.1, 0.25])
+    
+    if args.mle==True and args.rl==False:
+        defaults['mle_weight'] = 1.0
+        defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.5, 0.75, 0.9])
+    if args.mle==False and args.rl==True:
+        defaults['mle_weight'] = 0.0
+    if args.mle==True and args.rl==True:
+        defaults['generate_weight'] = 1.0
+        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.25, 0.5])
+    
+    f1 = run(defaults=defaults)
 
     return f1
 
@@ -204,16 +208,50 @@ if __name__ == '__main__':
     parser.add_argument('-mle', '--mle', action='store_true', default=True, help='training use mle loss')
     parser.add_argument('-rl', '--rl', action='store_true', default=False, help='training use rl loss')
     parser.add_argument('-l', '--trained_model', type=str, default=None, help='load trained model')
+    parser.add_argument('-t', '--tuning', action='store_true', default=False, help='tune hyperparameters')
+    parser.add_argument('-lr', '--lr', type=float, default=0.006, help='learning rate')
+    parser.add_argument('-bs', '--bs', type=int, default=16, help='batch size')
+    parser.add_argument('-e', '--epoches', type=int, default=5, help='number epoches')
+    parser.add_argument('-w_gen', '--w_gen', type=float, default=0.5, help='weight of generate loss')
+    parser.add_argument('-w_mle', '--w_mle', type=float, default=1.0, help='weight of mle')
+    parser.add_argument('-w_f1', '--w_f1', type=float, default=0.5, help='weight of f1 reward')
+    parser.add_argument('-w_re', '--w_re', type=float, default=0.25, help='weight of reconstruct reward')
 
     args, remaining_args = parser.parse_known_args()
     if args.rl:
         assert args.trained_model != None
+    
+    if args.tuning:
+        print("tuning ......")
+        sampler = optuna.samplers.TPESampler(seed=1741)
+        study = optuna.create_study(direction='maximize')
+        study.optimize(objective, n_trials=25)
+        trial = study.best_trial
+        print('Accuracy: {}'.format(trial.value))
+        print("Best hyperparameters: {}".format(trial.params))
+    else:
+        defaults = {
+            'warmup_ratio': 0.1,
+        }
 
-    sampler = optuna.samplers.TPESampler(seed=1741)
-    study = optuna.create_study(direction='maximize')
-    study.optimize(objective, n_trials=25)
-    trial = study.best_trial
+        defaults['lr'] = args.lr
+        defaults['batch_size'] = args.bs
+        defaults['num_epoches'] = args.epoches
+        
+        if args.rl==True:
+            defaults['f1_reward_weight'] = args.w_f1
+            defaults['reconstruct_reward_weight'] = args.w_re
 
-    print('Accuracy: {}'.format(trial.value))
-    print("Best hyperparameters: {}".format(trial.params))
+        if args.mle==True and args.rl==False:
+            defaults['mle_weight'] = 1.0
+            defaults['generate_weight'] = args.w_gen
+        if args.mle==False and args.rl==True:
+            defaults['mle_weight'] = 0.0
+        if args.mle==True and args.rl==True:
+            defaults['generate_weight'] = 1.0
+            defaults['mle_weight'] = args.w_mle
+        
+        run(defaults=defaults)
+
+
     
