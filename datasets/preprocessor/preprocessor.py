@@ -67,12 +67,20 @@ class Proprocessor(object):
         return corpus
     
     def process_and_save(self, save_path, corpus):
-        processed_corpus = []
-        for my_dict in tqdm.tqdm(corpus):
-            processed_corpus.extend(get_datapoint(self.type_datapoint, my_dict))
-        with open(save_path, 'w', encoding='utf-8') as f:
-            json.dump(processed_corpus, f, indent=6)
-        
+        if type(corpus) == list:
+            processed_corpus = []
+            for my_dict in tqdm.tqdm(corpus):
+                processed_corpus.extend(get_datapoint(self.type_datapoint, my_dict))
+            with open(save_path, 'w', encoding='utf-8') as f:
+                json.dump(processed_corpus, f, indent=6)
+        else:
+            processed_corpus = defaultdict(list)
+            for key, topic in corpus.items():
+                for my_dict in tqdm.tqdm(topic):
+                    processed_corpus[key].extend(get_datapoint(self.type_datapoint, my_dict))
+            with open(save_path, 'w', encoding='utf-8') as f:
+                json.dump(processed_corpus, f, indent=6)
+
         return processed_corpus
 
 
@@ -89,11 +97,17 @@ if __name__ == '__main__':
         _train, test = [], []
         data = defaultdict(list)
         for my_dict in corpus:
+            topic = my_dict['doc_id'].split('/')[0]
+            data[topic].append(my_dict)
+
             if '37/' in my_dict['doc_id'] or '41/' in my_dict['doc_id']:
                 test.append(my_dict)
             else:
                 _train.append(my_dict)
-        
+
+        processed_path = f"./datasets/ESL/ESL_intra_data.json"
+        processed_data = processor.process_and_save(processed_path, data)
+
         random.shuffle(_train)
         for fold, (train_ids, valid_ids) in enumerate(kfold.split(_train)):
             try:

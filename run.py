@@ -176,8 +176,8 @@ def run(defaults: Dict):
 
 def objective(trial: optuna.Trial):
     defaults = {
-        'lr': trial.suggest_categorical('pretrain_lr', [5e-6, 5e-5, 5e-4, 5e-3]),
-        'batch_size': trial.suggest_categorical('batch_size', [16]),
+        'lr': trial.suggest_float('pretrain_lr', 2e-3, 1e-2, step=2e-3),
+        'batch_size': trial.suggest_categorical('batch_size', [32]),
         'warmup_ratio': 0.1,
         'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10]),
     }   
@@ -187,7 +187,7 @@ def objective(trial: optuna.Trial):
     
     if args.mle==True and args.rl==False:
         defaults['mle_weight'] = 1.0
-        defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.5, 0.75, 0.9])
+        defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.5, 0.75])
     if args.mle==False and args.rl==True:
         defaults['mle_weight'] = 0.0
     if args.mle==True and args.rl==True:
