@@ -259,7 +259,7 @@ class GenEC(pl.LightningModule):
         # print(f"f1: {f1}")
         with open('./reinforce_model_predictions_dev.json','w') as writer:
             writer.write(json.dumps(preds, indent=6)+'\n')
-        self.log_dict({'f1_dev': f1}, prog_bar=True)
+        self.log_dict({'f1_dev': f1, 'p_dev': p, 'r_dev': r}, prog_bar=True)
         return f1
 
     def test_step(self, batch, batch_idx) -> Optional[STEP_OUTPUT]:
