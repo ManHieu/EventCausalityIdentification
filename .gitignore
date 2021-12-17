@@ -1,6 +1,6 @@
 *__pycache__*
 *cached_*
-experiments/*
+experiments
 lightning_logs/*
 cache/*
 predictions.json
