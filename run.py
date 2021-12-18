@@ -80,6 +80,7 @@ def run(defaults: Dict):
         # construct name for the output directory
         output_dir = os.path.join(
             training_args.output_dir,
+            'ablation_study-'
             f'{args.job}'
             f'-lr{training_args.lr}'
             f'-eps{training_args.num_epoches}')
@@ -205,7 +206,7 @@ if __name__ == '__main__':
     parser.add_argument('job')
     parser.add_argument('-c', '--config_file', type=str, default='config.ini', help='configuration file')
     parser.add_argument('-g', '--gpu', type=int, default=0, help='which GPU to use')
-    parser.add_argument('-mle', '--mle', action='store_true', default=True, help='training use mle loss')
+    parser.add_argument('-mle', '--mle', action='store_true', default=False, help='training use mle loss')
     parser.add_argument('-rl', '--rl', action='store_true', default=False, help='training use rl loss')
     parser.add_argument('-l', '--trained_model', type=str, default=None, help='load trained model')
     parser.add_argument('-t', '--tuning', action='store_true', default=False, help='tune hyperparameters')
@@ -250,6 +251,8 @@ if __name__ == '__main__':
         if args.mle==True and args.rl==True:
             defaults['generate_weight'] = 1.0
             defaults['mle_weight'] = args.w_mle
+        
+        print(args)
         
         run(defaults=defaults)
 

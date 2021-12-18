@@ -110,10 +110,11 @@ class GenEC(pl.LightningModule):
         reconstruct_loss = 0.0
         if self.hparams.rl_train==False:
             # reconstruct question
-            generated_seqs = self._generate(gold_inputs_sentences, task_prefix)
-            task_prefix = 'Generate question and context'
-            output_of_reconstructing, _ = self._forward(inputs=generated_seqs, outputs=gold_inputs_sentences, task_prefix=task_prefix)
-            reconstruct_loss = output_of_reconstructing.loss
+            if self.hparams.generate_weight < 1: 
+                generated_seqs = self._generate(gold_inputs_sentences, task_prefix)
+                task_prefix = 'Generate question and context'
+                output_of_reconstructing, _ = self._forward(inputs=generated_seqs, outputs=gold_inputs_sentences, task_prefix=task_prefix)
+                reconstruct_loss = output_of_reconstructing.loss
 
         mle_loss = self.hparams.generate_weight * generate_loss + (1.0 - self.hparams.generate_weight) * reconstruct_loss
         
@@ -159,8 +160,9 @@ class GenEC(pl.LightningModule):
                     probs = F.softmax(score_in_step, dim=1)
                     # print(score_in_step[batch_id][tok])
                     log_prob.append(probs[batch_id][tok])
-            log_prob = torch.stack(log_prob).sum() / len(log_prob)
-            log_probs.append(log_prob)
+            if len(log_prob) != 0:
+                log_prob = torch.stack(log_prob).sum() / len(log_prob)
+                log_probs.append(log_prob)
         log_probs = torch.stack(log_probs)
         # print(f"log_probs: {log_probs.size()}")
         
@@ -177,11 +179,13 @@ class GenEC(pl.LightningModule):
                                             num_return_sequences=1, 
                                             num_beams=1,)
             greedy_seqs = self.tokenizer_for_generate.batch_decode(geedy_outputs, skip_special_tokens=True)
-
+        
         # reconstruct
-        task_prefix = 'Generate question and context'
-        reconstructed_seqs = self._generate(sampled_seqs, task_prefix)
-        baseline_reconstructed_seqs = self._generate(greedy_seqs, task_prefix, do_sample=False)
+        reconstructed_seqs = baseline_reconstructed_seqs = ''
+        if self.hparams.reconstruct_reward_weight > 0:
+            task_prefix = 'Generate question and context'
+            reconstructed_seqs = self._generate(sampled_seqs, task_prefix)
+            baseline_reconstructed_seqs = self._generate(greedy_seqs, task_prefix, do_sample=False)
 
         # compute reward
         sample_reward = self.compute_reward(sampled_seqs, gold_output_sentences, gold_inputs_sentences, reconstructed_seqs)
@@ -199,15 +203,20 @@ class GenEC(pl.LightningModule):
         reconstruct_reward = 0
 
         #-------------------F1_REWARD-----------------------
-        f1_reward = compute_f1(generated_outputs, gold_outputs)[0]
-        f1_reward = [f1_reward]*len(generated_outputs)
-        f1_reward = torch.tensor(f1_reward, dtype=torch.float)
+        if self.hparams.f1_reward_weight > 0:
+            f1_reward = compute_f1(generated_outputs, gold_outputs)[0]
+            f1_reward = [f1_reward]*len(generated_outputs)
+            f1_reward = torch.tensor(f1_reward, dtype=torch.float)
+
         #---------------OUTPUT_SIMILAR_REWARD---------------
-        output_sim_reward = compute_sentences_similar(generated_outputs, gold_outputs)
-        output_sim_reward = torch.tensor(output_sim_reward, dtype=torch.float)
+        if (1.0 - self.hparams.f1_reward_weight - self.hparams.reconstruct_reward_weight) > 0:
+            output_sim_reward = compute_sentences_similar(generated_outputs, gold_outputs)
+            output_sim_reward = torch.tensor(output_sim_reward, dtype=torch.float)
+
         #----------------RECONSTRUCT_REWARD-----------------
-        reconstruct_reward = compute_sentences_similar(reconstruct_inputs, origin_inputs)
-        reconstruct_reward = torch.tensor(reconstruct_reward, dtype=torch.float)
+        if self.hparams.reconstruct_reward_weight > 0: 
+            reconstruct_reward = compute_sentences_similar(reconstruct_inputs, origin_inputs)
+            reconstruct_reward = torch.tensor(reconstruct_reward, dtype=torch.float)
         
         reward = self.hparams.f1_reward_weight * f1_reward  \
                 + self.hparams.reconstruct_reward_weight * reconstruct_reward \
