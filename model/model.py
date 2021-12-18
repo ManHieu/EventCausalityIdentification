@@ -159,10 +159,12 @@ class GenEC(pl.LightningModule):
                     score_in_step = scores[i-1]
                     probs = F.softmax(score_in_step, dim=1)
                     # print(score_in_step[batch_id][tok])
-                    log_prob.append(probs[batch_id][tok])
+                    log_prob.append(torch.log(probs[batch_id][tok] + 1e-5))
             if len(log_prob) != 0:
                 log_prob = torch.stack(log_prob).sum() / len(log_prob)
                 log_probs.append(log_prob)
+            else:
+                log_prob.append(torch.tensor(-100).cuda())
         log_probs = torch.stack(log_probs)
         # print(f"log_probs: {log_probs.size()}")
         
