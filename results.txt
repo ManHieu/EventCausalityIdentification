@@ -431,3 +431,12 @@ R: 0.6203007518796992
 -------------------- 
 Hyperparams: 
  {'lr': 0.001, 'batch_size': 16, 'warmup_ratio': 0.1, 'num_epoches': 7, 'f1_reward_weight': 0.5, 'reconstruct_reward_weight': 0.1, 'generate_weight': 1.0, 'mle_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.0005, 'batch_size': 16, 'num_epoches': 5, 'f1_reward_weight': 0.5, 'reconstruct_reward_weight': 0.5, 'generate_weight': 1.0, 'mle_weight': 0.25}
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.0005, 'batch_size': 16, 'num_epoches': 5, 'f1_reward_weight': 0.5, 'reconstruct_reward_weight': 0.5, 'generate_weight': 1.0, 'mle_weight': 0.25}
+F1: 0.41176470539111165 
+P: 0.4745762711864407 
+R: 0.36363636363636365 
