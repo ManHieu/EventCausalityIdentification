@@ -2,7 +2,7 @@ from abc import ABC
 from collections import defaultdict
 import json
 import random
-from data_reader import cat_xml_reader, tbd_tml_reader, tdd_tml_reader, tml_reader, tsvx_reader
+from data_reader import cat_xml_reader, ctb_cat_reader, tbd_tml_reader, tdd_tml_reader, tml_reader, tsvx_reader
 from datapoint_formats import get_datapoint
 random.seed(1741)
 import tqdm
@@ -31,6 +31,8 @@ class Proprocessor(object):
             self.reader = tdd_tml_reader
         elif dataset == 'ESL':
             self.reader = cat_xml_reader
+        elif dataset == 'Causal-TB':
+            self.reader = ctb_cat_reader
         else:
             raise ValueError("We have not supported this dataset {} yet!".format(self.dataset))
     
@@ -133,8 +135,34 @@ if __name__ == '__main__':
             print("Number validate points: {}".format(len(processed_validate)))
             print("Number test points: {}".format(len(processed_test)))
     
-    if dataset == 'MATRES': 
-        pass
+    if dataset == 'Causal-TB':
+        processor = Proprocessor(dataset, 'intra_ir_datapoint')
+        corpus_dir = './datasets/Causal-TimeBank/Causal-TimeBank-CAT/'
+        corpus = processor.load_dataset(corpus_dir)
+        
+        random.shuffle(corpus)
+        kfold = KFold(n_splits=10)
+
+        for fold, (train_ids, valid_ids) in enumerate(kfold.split(corpus)):
+            try:
+                os.mkdir(f"./datasets/Causal-TimeBank/{fold}")
+            except FileExistsError:
+                pass
+
+            train = [corpus[id] for id in train_ids]
+            validate = [corpus[id] for id in valid_ids]
+        
+            processed_path = f"./datasets/Causal-TimeBank/{fold}/Causal-TB_intra_train.json"
+            processed_train = processor.process_and_save(processed_path, train)
+
+            processed_path = f"./datasets/Causal-TimeBank/{fold}/Causal-TB_intra_dev.json"
+            processed_validate = processor.process_and_save(processed_path, validate)
+            
+            print(f"Statistic in fold {fold}")
+            print("Number datapoints in dataset: {}".format(len(processed_train + processed_validate + processed_test)))
+            print("Number training points: {}".format(len(processed_train)))
+            print("Number validate points: {}".format(len(processed_validate)))
+            print("Number test points: {}".format(len(processed_test)))
     
     
 
