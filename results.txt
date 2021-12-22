@@ -440,3 +440,9 @@ Hyperparams:
 F1: 0.41176470539111165 
 P: 0.4745762711864407 
 R: 0.36363636363636365 
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.0005, 'batch_size': 16, 'num_epoches': 5, 'f1_reward_weight': 0.0, 'reconstruct_reward_weight': 0.1, 'generate_weight': 1.0, 'mle_weight': 0.25}
+F1: 0.495801856726828 
+P: 0.3796733129800362 
+R: 0.7754290033596213 
