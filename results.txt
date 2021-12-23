@@ -446,3 +446,24 @@ Hyperparams:
 F1: 0.495801856726828 
 P: 0.3796733129800362 
 R: 0.7754290033596213 
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.0005, 'batch_size': 16, 'num_epoches': 5, 'f1_reward_weight': 0.5, 'reconstruct_reward_weight': 0.1, 'generate_weight': 1.0, 'mle_weight': 0.25}
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.0005, 'batch_size': 16, 'num_epoches': 5, 'f1_reward_weight': 0.5, 'reconstruct_reward_weight': 0.1, 'generate_weight': 1.0, 'mle_weight': 0.25}
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.0005, 'batch_size': 16, 'num_epoches': 5, 'f1_reward_weight': 0.5, 'reconstruct_reward_weight': 0.1, 'generate_weight': 1.0, 'mle_weight': 0.25}
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.0005, 'batch_size': 16, 'num_epoches': 5, 'f1_reward_weight': 0.5, 'reconstruct_reward_weight': 0.1, 'generate_weight': 1.0, 'mle_weight': 0.25}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 40, 'mle_weight': 1.0, 'generate_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.008, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 30, 'mle_weight': 1.0, 'generate_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.008, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 20, 'mle_weight': 1.0, 'generate_weight': 0.5}
