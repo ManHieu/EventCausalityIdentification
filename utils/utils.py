@@ -4,6 +4,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer, util
 import torch
 from rouge import Rouge
+from nltk.translate.bleu_score import sentence_bleu
 
 sim_evaluator = SentenceTransformer('../all-MiniLM-L12-v1')
 rouge = Rouge()
@@ -173,8 +174,13 @@ def compute_sentences_similar(sents_A: List[str], sents_B: List[str]):
     #     scores.append(abs(float(cosine_scores[i][i])))
     scores = []
     for ori, rec in zip(origins, reconstructs):
-        score = rouge.get_scores(rec, ori)
+        # score = rouge.get_scores(rec, ori)
         # print(score[0]['rouge-2']['f'])
-        scores.append(score[0]['rouge-2']['f'])
+        # scores.append(score[0]['rouge-2']['f'])
+        reference = [ori.split()]
+        candidate = rec.split()
+        score = sentence_bleu(reference, candidate, weights=(0, 1, 0, 0))
+        print(score)
+        scores.append(score)
 
     return scores
