@@ -467,3 +467,36 @@ Hyperparams:
 -------------------- 
 Hyperparams: 
  {'lr': 0.008, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 20, 'mle_weight': 1.0, 'generate_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.008, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 40, 'mle_weight': 1.0, 'generate_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.008, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 30, 'mle_weight': 1.0, 'generate_weight': 0.75}
+F1: 0.4351145034475846 
+P: 0.2878787878787879 
+R: 0.890625 
+-------------------- 
+Hyperparams: 
+ {'lr': 0.003, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 30, 'mle_weight': 1.0, 'generate_weight': 0.75}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 30, 'mle_weight': 1.0, 'generate_weight': 0.75}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.005, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 30, 'mle_weight': 1.0, 'generate_weight': 0.75}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.003, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 30, 'mle_weight': 1.0, 'generate_weight': 0.75}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.008, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 20, 'mle_weight': 1.0, 'generate_weight': 0.75}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.008, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 20, 'mle_weight': 1.0, 'generate_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.008, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 20, 'mle_weight': 1.0, 'generate_weight': 0.5}
+-------------------- 
+Hyperparams: 
+ {'lr': 0.001, 'batch_size': 32, 'warmup_ratio': 0.1, 'num_epoches': 20, 'mle_weight': 1.0, 'generate_weight': 0.75}
