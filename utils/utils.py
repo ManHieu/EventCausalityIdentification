@@ -179,8 +179,8 @@ def compute_sentences_similar(sents_A: List[str], sents_B: List[str]):
         # scores.append(score[0]['rouge-2']['f'])
         reference = [ori.split()]
         candidate = rec.split()
-        score = sentence_bleu(reference, candidate, weights=(0, 1, 0, 0))
-        print(score)
+        score = sentence_bleu(reference, candidate)
+        # print(score)
         scores.append(score)
 
     return scores
