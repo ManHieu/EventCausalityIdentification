@@ -674,7 +674,7 @@ def cat_xml_reader(dir_name, file_name, intra=True, inter=False):
         token = tok.text
         t_id = int(tok.attrs['t_id'])
         sent_id = int(tok.attrs['sentence'])
-        tok_sent_id = int(tok.attrs['number'])
+        tok_sent_id = len(_sent_dict[sent_id])
 
         my_dict['doc_tokens'][t_id] = {
             'token': token,

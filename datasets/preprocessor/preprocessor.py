@@ -159,10 +159,9 @@ if __name__ == '__main__':
             processed_validate = processor.process_and_save(processed_path, validate)
             
             print(f"Statistic in fold {fold}")
-            print("Number datapoints in dataset: {}".format(len(processed_train + processed_validate + processed_test)))
+            print("Number datapoints in dataset: {}".format(len(processed_train + processed_validate)))
             print("Number training points: {}".format(len(processed_train)))
             print("Number validate points: {}".format(len(processed_validate)))
-            print("Number test points: {}".format(len(processed_test)))
     
     
 
