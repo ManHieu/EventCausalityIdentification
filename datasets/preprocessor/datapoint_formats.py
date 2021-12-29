@@ -32,6 +32,7 @@ def intra_ir_datapoint(my_dict):
     Read all sentence in the doc and relation of trigger pairs in each sentence ([] if no relation) 
     """
     data_points = []
+    events = []
 
     for sid, sentence in enumerate(my_dict['sentences']):
         _data_points = []
@@ -65,10 +66,13 @@ def intra_ir_datapoint(my_dict):
                     assert event['mention'] in trigger['mention'], "{} - {}".format(event['mention'], sentence['tokens'])
                 except:
                     print("{} - {}".format(event['mention'], sentence['tokens']))
+                events.append(trigger['mention'])
                 triggers.append(trigger)
         
         event_pairs = combinations(triggers, 2)
         for ev1, ev2 in event_pairs:
+            ori_triggers = [ev1['mention'], ev2['mention']]
+
             e1_ids, e2_ids = id_mapping(ev1['dspan'], doc_tokens_pasered, my_dict['doc_content']), id_mapping(ev2['dspan'], doc_tokens_pasered, my_dict['doc_content'])
             
             # get the anscestor of all token as as proxy
@@ -119,9 +123,10 @@ def intra_ir_datapoint(my_dict):
                     'tokens': sentence['tokens'],
                     'triggers': [ev1, ev2],
                     'relations': [relation] if relation != None else [], 
-                    'dep_path': dep_path
+                    'dep_path': dep_path,
+                    'ori_triggers': ori_triggers
                 })
 
         data_points.extend(_data_points)
     
-    return data_points
+    return data_points, events

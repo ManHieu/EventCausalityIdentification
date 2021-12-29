@@ -89,49 +89,81 @@ if __name__ == '__main__':
     dataset = 'ESL'
 
     if dataset == 'ESL':
-        kfold = KFold(n_splits=5)
+        # kfold = KFold(n_splits=5)
         processor = Proprocessor(dataset, 'intra_ir_datapoint', intra=True, inter=False)
         corpus_dir = './datasets/ESL/annotated_data/v0.9/'
         corpus = processor.load_dataset(corpus_dir)
         
-        _train, test = [], []
-        data = defaultdict(list)
-        for my_dict in corpus:
-            topic = my_dict['doc_id'].split('/')[0]
-            data[topic].append(my_dict)
+        train, test = train_test_split(corpus, test_size=2.0/3.0, train_size=1.0/3.0)
+        # data = defaultdict(list)
+        # for my_dict in corpus:
+        #     topic = my_dict['doc_id'].split('/')[0]
+        #     data[topic].append(my_dict)
 
-            if '37/' in my_dict['doc_id'] or '41/' in my_dict['doc_id']:
-                test.append(my_dict)
-            else:
-                _train.append(my_dict)
+        #     if '37/' in my_dict['doc_id'] or '41/' in my_dict['doc_id']:
+        #         test.append(my_dict)
+        #     else:
+        #         _train.append(my_dict)
 
-        processed_path = f"./datasets/ESL/ESL_intra_data.json"
-        processed_data = processor.process_and_save(processed_path, data)
+        # processed_path = f"./datasets/ESL/ESL_intra_data.json"
+        # processed_data = processor.process_and_save(processed_path, data)
 
-        random.shuffle(_train)
-        for fold, (train_ids, valid_ids) in enumerate(kfold.split(_train)):
-            try:
-                os.mkdir(f"./datasets/ESL/{fold}")
-            except FileExistsError:
-                pass
+        # random.shuffle(_train)
+        # for fold, (train_ids, valid_ids) in enumerate(kfold.split(_train)):
+        #     try:
+        #         os.mkdir(f"./datasets/ESL/{fold}")
+        #     except FileExistsError:
+        #         pass
 
-            train = [_train[id] for id in train_ids]
-            validate = [_train[id] for id in valid_ids]
+        #     train = [_train[id] for id in train_ids]
+        #     validate = [_train[id] for id in valid_ids]
         
-            processed_path = f"./datasets/ESL/{fold}/ESL_intra_train.json"
-            processed_train = processor.process_and_save(processed_path, train)
+        #     processed_path = f"./datasets/ESL/{fold}/ESL_intra_train.json"
+        #     processed_train = processor.process_and_save(processed_path, train)
 
-            processed_path = f"./datasets/ESL/{fold}/ESL_intra_dev.json"
-            processed_validate = processor.process_and_save(processed_path, validate)
+        #     processed_path = f"./datasets/ESL/{fold}/ESL_intra_dev.json"
+        #     processed_validate = processor.process_and_save(processed_path, validate)
             
-            processed_path = f"./datasets/ESL/{fold}/ESL_intra_test.json"
-            processed_test = processor.process_and_save(processed_path, test)
+        #     processed_path = f"./datasets/ESL/{fold}/ESL_intra_test.json"
+        #     processed_test = processor.process_and_save(processed_path, test)
 
-            print(f"Statistic in fold {fold}")
-            print("Number datapoints in dataset: {}".format(len(processed_train + processed_validate + processed_test)))
-            print("Number training points: {}".format(len(processed_train)))
-            print("Number validate points: {}".format(len(processed_validate)))
-            print("Number test points: {}".format(len(processed_test)))
+        #     print(f"Statistic in fold {fold}")
+        #     print("Number datapoints in dataset: {}".format(len(processed_train + processed_validate + processed_test)))
+        #     print("Number training points: {}".format(len(processed_train)))
+        #     print("Number validate points: {}".format(len(processed_validate)))
+        #     print("Number test points: {}".format(len(processed_test)))
+        processed_train = []
+        evs_in_train = []
+        for my_dict in tqdm.tqdm(train):
+            data_points, evs = get_datapoint(processor.type_datapoint, my_dict)
+            processed_train.extend(data_points)
+            evs_in_train.extend(evs)
+        evs_in_train = set(evs_in_train)
+        with open('./datasets/ESL/ESL_intra_train.json', 'w', encoding='utf-8') as f:
+            json.dump(processed_train, f, indent=6)
+
+        processed_both_unseen = []
+        processed_both_seen = []
+        processed_one_unseen = []
+        for my_dict in tqdm.tqdm(test):
+            data_points, evs = get_datapoint(processor.type_datapoint, my_dict)
+            for data_point in data_points:
+                triggers = data_point['ori_triggers']
+                print(f"triggers: {triggers}")
+                print(f"seen: {len(evs_in_train.intersection(set(triggers)))}")
+                if len(evs_in_train.intersection(set(triggers)))==0:
+                    processed_both_unseen.append(data_point)
+                elif len(evs_in_train.intersection(set(triggers)))==2:
+                    processed_both_seen.append(data_point)
+                else:
+                    processed_one_unseen.append(data_point)
+
+        with open('./datasets/ESL/ESL_intra_unseen.json', 'w', encoding='utf-8') as f:
+            json.dump(processed_both_unseen, f, indent=6)
+        with open('./datasets/ESL/ESL_intra_one_unseen.json', 'w', encoding='utf-8') as f:
+            json.dump(processed_one_unseen, f, indent=6)
+        with open('./datasets/ESL/ESL_intra_seen.json', 'w', encoding='utf-8') as f:
+            json.dump(processed_both_seen, f, indent=6)
     
     if dataset == 'MATRES': 
         pass
