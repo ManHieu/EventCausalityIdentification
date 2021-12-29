@@ -66,14 +66,15 @@ def run(defaults: Dict):
     rs = []
     for i in range(n_fold):
         print(f"TRAINING AND TESTING IN FOLD {i}: ")
-        fold_dir = f'{data_dir}/{i}'
+        fold_dir = f'{data_dir}'
         if args.rl == True:
             model_args.model_name_or_path = f"{args.trained_model}/fold{i}"
         dm = load_data_module(module_name = 'ECI',
                             data_args=data_args,
                             batch_size=training_args.batch_size,
                             data_name=args.job,
-                            fold_name=fold_dir)
+                            fold_name=fold_dir,
+                            test_corpus='unseen')
         
         number_step_in_epoch = len(dm.train_dataloader())/training_args.gradient_accumulation_steps
 

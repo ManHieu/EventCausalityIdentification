@@ -16,7 +16,7 @@ def register_data_module(data_module_class: pl.LightningDataModule):
     return data_module_class
 
 
-def load_data_module(module_name, data_name, data_args: DataTrainingArguments, batch_size: int = 8, fold_name=None) -> pl.LightningDataModule:
+def load_data_module(module_name, data_name, data_args: DataTrainingArguments, test_corpus: str, batch_size: int = 8, fold_name=None) -> pl.LightningDataModule:
     """
     Load a registered data module.
     """
@@ -25,6 +25,7 @@ def load_data_module(module_name, data_name, data_args: DataTrainingArguments, b
         batch_size=batch_size,
         data_name=data_name,
         fold_name=fold_name,
+        test_corpus=test_corpus,
     )
 
 
@@ -36,7 +37,7 @@ class EEREDataModule(pl.LightningDataModule):
     SPECIAL_TOKENS = []
     name = 'ECI'
 
-    def __init__(self, data_args: DataTrainingArguments, data_name, batch_size: int=8, fold_name=None):
+    def __init__(self, data_args: DataTrainingArguments, data_name, test_corpus, batch_size: int=8, fold_name=None):
         super().__init__()
         self.save_hyperparameters()
         self.data_name = data_name
@@ -80,7 +81,7 @@ class EEREDataModule(pl.LightningDataModule):
             tokenizer_for_generating=self.tokenizer_for_generating,
             max_input_length=self.max_input_len,
             max_output_length=self.max_ouput_len,
-            split='test',
+            split=self.hparams.test_corpus,
         )
         dataloader = DataLoader(
             dataset= dataset,
@@ -98,7 +99,7 @@ class EEREDataModule(pl.LightningDataModule):
             tokenizer_for_generating=self.tokenizer_for_generating,
             max_input_length=self.max_input_len,
             max_output_length=self.max_ouput_len,
-            split='dev',
+            split=self.hparams.test_corpus,
             data_name=self.fold_name
         )
         dataloader = DataLoader(
