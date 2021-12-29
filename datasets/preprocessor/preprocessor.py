@@ -138,7 +138,7 @@ if __name__ == '__main__':
             data_points, evs = get_datapoint(processor.type_datapoint, my_dict)
             processed_train.extend(data_points)
             evs_in_train.extend(evs)
-        evs_in_train = set(evs_in_train)
+        evs_in_train = set([trigger.lower() for trigger in evs_in_train])
         with open('./datasets/ESL/ESL_intra_train.json', 'w', encoding='utf-8') as f:
             json.dump(processed_train, f, indent=6)
 
@@ -148,7 +148,7 @@ if __name__ == '__main__':
         for my_dict in tqdm.tqdm(test):
             data_points, evs = get_datapoint(processor.type_datapoint, my_dict)
             for data_point in data_points:
-                triggers = data_point['ori_triggers']
+                triggers = [trigger.lower() for trigger in data_point['ori_triggers']]
                 print(f"triggers: {triggers}")
                 print(f"seen: {len(evs_in_train.intersection(set(triggers)))}")
                 if len(evs_in_train.intersection(set(triggers)))==0:
