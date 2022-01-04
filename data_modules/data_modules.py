@@ -80,7 +80,8 @@ class EEREDataModule(pl.LightningDataModule):
             tokenizer_for_generating=self.tokenizer_for_generating,
             max_input_length=self.max_input_len,
             max_output_length=self.max_ouput_len,
-            split='test',
+            split='dev',
+            data_name=self.fold_name
         )
         dataloader = DataLoader(
             dataset= dataset,

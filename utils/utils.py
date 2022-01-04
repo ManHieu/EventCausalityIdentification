@@ -3,8 +3,10 @@ import random
 import numpy as np
 from sentence_transformers import SentenceTransformer, util
 import torch
+from rouge import Rouge
 
-sim_evaluator = SentenceTransformer('../all-MiniLM-L12-v1')
+rouge = Rouge()
+sim_evaluator = SentenceTransformer('/vinai/hieumdt/all-MiniLM-L12-v1')
 
 
 def get_span(l: List[str], span: List[int]):
@@ -163,10 +165,9 @@ def compute_sentences_similar(sents_A: List[str], sents_B: List[str]):
         origins.append(ori_sent)
         reconstructs.append(re_sent)
 
-    embeddings1 = sim_evaluator.encode(origins, convert_to_tensor=True)
-    embeddings2 = sim_evaluator.encode(reconstructs, convert_to_tensor=True)
-    cosine_scores = util.pytorch_cos_sim(embeddings1, embeddings2)
     scores = []
-    for i in range(len(sents_B)):
-        scores.append(abs(float(cosine_scores[i][i])))
+    for ori, rec in zip(origins, reconstructs):
+        score = rouge.get_scores(rec, ori)
+        # print(score[0]['rouge-2']['f'])
+        scores.append(score[0]['rouge-2']['f'])
     return scores

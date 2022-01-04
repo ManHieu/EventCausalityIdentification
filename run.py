@@ -50,6 +50,11 @@ def run(defaults: Dict):
         data_args.output_format = 'ECI_ouput'
         n_fold = 5
         data_dir = 'ESL'
+    elif job == 'Causal-TB':
+        data_args.input_format = 'ECI_input'
+        data_args.output_format = 'ECI_ouput'
+        n_fold = 10
+        data_dir = 'Causal-TB'
 
     if data_args.tokenizer == None:
         data_args.tokenizer = model_args.tokenizer_name
@@ -176,7 +181,7 @@ def run(defaults: Dict):
 
 def objective(trial: optuna.Trial):
     defaults = {
-        'lr': trial.suggest_categorical('pretrain_lr', [1e-4, 5e-4, 1e-3]),
+        'lr': trial.suggest_categorical('pretrain_lr', [5e-5, 8e-5, 1e-4, 3e-4, 5e-4, 8e-4]),
         'batch_size': trial.suggest_categorical('batch_size', [16]),
         'warmup_ratio': 0.1,
         'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10]),

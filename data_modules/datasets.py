@@ -166,3 +166,20 @@ class ESLDataset(JointERDataset):
         'FALLING_ACTION': 'falling action', 
         'PRECONDITION': 'precondition', 
         }
+
+@register_dataset
+class CTBDataset(JointERDataset):
+
+    name = "Causal-TB"
+
+    default_input_format = 'ECI_input'
+    default_output_format = 'ECI_ouput'
+
+    natural_event_types = {
+        'event': 'event',
+        }
+    
+    natural_relation_types = {
+        'FALLING_ACTION': 'falling action', 
+        'PRECONDITION': 'precondition', 
+        }
