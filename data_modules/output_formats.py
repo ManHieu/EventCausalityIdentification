@@ -93,10 +93,10 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
         
         if len(sents) == 0:
             sent_out = "none"
-            oupt = template.format(answer=f"No. Because the dependency paths are {dep_path}", conclusion='None')
+            oupt = template.format(answer=f"No. Because {dep_path}", conclusion='None')
         else:
             sent_out = ' '.join(sents)
-            oupt = template.format(answer=f"Yes. Because {sent_out} and the dependency paths are {dep_path}", conclusion=sent_out)
+            oupt = template.format(answer=f"Yes. Because {sent_out} and {dep_path}", conclusion=sent_out)
         
         return oupt
         
