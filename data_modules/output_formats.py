@@ -82,21 +82,19 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
 
             sent = f'{head_mention} causes {" and ".join(tail_mentions)}'
             sents.append(sent)
-        
-        paths = []
-        for path in example.dep_path:
-            paths.append(', '.join(path))
-        dep_path = f"{'; '.join(paths)}."
-        
+        if len(example.dep_path) == 1:
+            dep_path = ', '.join(example.dep_path[0])
+        else:
+            dep_path = ', '.join(list(reversed(example.dep_path[0]))[:-1]) + ', ' + ', '.join(example.dep_path[1])        
         # print("Output: {}".format(sent_out))
         # print(f"{sent_out}. {dep_path}")
         
         if len(sents) == 0:
             sent_out = "none"
-            oupt = template.format(answer=f"No. Because {dep_path}", conclusion='None')
+            oupt = template.format(answer=f"No. {dep_path}", conclusion='None')
         else:
             sent_out = ' '.join(sents)
-            oupt = template.format(answer=f"Yes. Because {sent_out} and {dep_path}", conclusion=sent_out)
+            oupt = template.format(answer=f"Yes. {sent_out} and {dep_path}", conclusion=sent_out)
         
         return oupt
         

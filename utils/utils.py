@@ -3,6 +3,9 @@ import random
 import numpy as np
 from sentence_transformers import SentenceTransformer, util
 import torch
+from rouge import Rouge
+
+rouge = Rouge()
 
 sim_evaluator = SentenceTransformer('../all-MiniLM-L12-v1')
 
@@ -153,7 +156,7 @@ def create_distractor(items: List[str]):
         return distracted_items
 
 @torch.no_grad()
-def compute_sentences_similar(sents_A: List[str], sents_B: List[str]):
+def compute_sentences_similar(sents_A: List[str], sents_B: List[str], metric: str):
     assert len(sents_A) == len(sents_B)
     origins = []
     reconstructs = []
@@ -163,10 +166,21 @@ def compute_sentences_similar(sents_A: List[str], sents_B: List[str]):
         origins.append(ori_sent)
         reconstructs.append(re_sent)
 
-    embeddings1 = sim_evaluator.encode(origins, convert_to_tensor=True)
-    embeddings2 = sim_evaluator.encode(reconstructs, convert_to_tensor=True)
-    cosine_scores = util.pytorch_cos_sim(embeddings1, embeddings2)
-    scores = []
-    for i in range(len(sents_B)):
-        scores.append(abs(float(cosine_scores[i][i])))
+    if metric=='vector_sim':
+        embeddings1 = sim_evaluator.encode(origins, convert_to_tensor=True)
+        embeddings2 = sim_evaluator.encode(reconstructs, convert_to_tensor=True)
+        cosine_scores = util.pytorch_cos_sim(embeddings1, embeddings2)
+        scores = []
+        for i in range(len(sents_B)):
+            scores.append(abs(float(cosine_scores[i][i])))
+    elif metric == 'rouge':
+        scores = []
+        for ori, rec in zip(origins, reconstructs):
+            score = rouge.get_scores(rec, ori)
+            # print(score[0]['rouge-2']['f'])
+            scores.append(score[0]['rouge-2']['f'])
+    elif metric == 'bleu':
+        score = []
+    else:
+        raise ValueError("We haven't yet support this metric")
     return scores
