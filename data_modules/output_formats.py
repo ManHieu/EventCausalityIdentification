@@ -82,10 +82,12 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
 
             sent = f'{head_mention} causes {" and ".join(tail_mentions)}'
             sents.append(sent)
+            
+        dep_path = ''
         if len(example.dep_path) == 1:
             dep_path = ', '.join(example.dep_path[0])
-        else:
-            dep_path = ', '.join(list(reversed(example.dep_path[0]))[:-1]) + ', ' + ', '.join(example.dep_path[1])        
+        elif len(example.dep_path) > 1:
+            dep_path = ', '.join(list(reversed(example.dep_path[0]))[:-1]) + ', ' + ', '.join(example.dep_path[1])     
         # print("Output: {}".format(sent_out))
         # print(f"{sent_out}. {dep_path}")
         
