@@ -10,6 +10,7 @@ from transformers import T5Tokenizer
 from model.T5ForRL import T5ForRL
 from transformers import AdamW, get_linear_schedule_with_warmup
 import copy
+from sentence_transformers import SentenceTransformer, util
 
 from data_modules.input_formats import INPUT_FORMATS
 from data_modules.output_formats import OUTPUT_FORMATS
@@ -206,11 +207,30 @@ class GenEC(pl.LightningModule):
         f1_reward = [f1_reward]*len(generated_outputs)
         f1_reward = torch.tensor(f1_reward, dtype=torch.float)
         #---------------OUTPUT_SIMILAR_REWARD---------------
-        output_sim_reward = compute_sentences_similar(generated_outputs, gold_outputs)
+        output_sim_reward = compute_sentences_similar(generated_outputs, gold_outputs, metric='rouge')
         output_sim_reward = torch.tensor(output_sim_reward, dtype=torch.float)
         #----------------RECONSTRUCT_REWARD-----------------
-        reconstruct_reward = compute_sentences_similar(reconstruct_inputs, origin_inputs)
-        reconstruct_reward = torch.tensor(reconstruct_reward, dtype=torch.float)
+        with torch.no_grad():
+            origin_inputs = self.tokenizer([f"Generate question and context\n{sent}" for sent in origin_inputs],
+                                            padding='longest',
+                                            max_length=self.hparams.max_input_len,
+                                            truncation=True,
+                                            return_tensors="pt").input_ids
+            origin_inputs_presentation = self.t5.encoder(input_ids=origin_inputs.cuda()).last_hidden_state[:,0]
+
+            reconstruct_inputs = self.tokenizer(reconstruct_inputs,
+                                                padding='longest',
+                                                max_length=self.hparams.max_input_len,
+                                                truncation=True,
+                                                return_tensors="pt").input_ids
+            reconstruct_inputs_presentation = self.t5.encoder(input_ids=reconstruct_inputs.cuda()).last_hidden_state[:, 0]
+
+            cosine_scores = util.pytorch_cos_sim(origin_inputs_presentation, reconstruct_inputs_presentation)
+            reconstruct_reward = []
+            for i in range(len(gold_outputs)):
+                reconstruct_reward.append(abs(float(cosine_scores[i][i])))
+            
+            reconstruct_reward = torch.tensor(reconstruct_reward, dtype=torch.float)
         
         reward = self.hparams.f1_reward_weight * f1_reward  \
                 + self.hparams.reconstruct_reward_weight * reconstruct_reward \

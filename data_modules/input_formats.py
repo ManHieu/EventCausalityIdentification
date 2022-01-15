@@ -64,5 +64,5 @@ class IdentifyCausalRelationInputFormat(BaseInputFormat):
                                 context=context,
                                 head=triggers[0],
                                 tail=triggers[1])
-        
+        # print(template)
         return context, triggers, f"{template}"
