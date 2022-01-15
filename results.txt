@@ -473,3 +473,45 @@ Hyperparams:
 -------------------- 
 Hyperparams: 
  {'warmup_ratio': 0.1, 'lr': 0.006, 'batch_size': 32, 'num_epoches': 7, 'mle_weight': 1.0, 'generate_weight': 0.75}
+F1: 0.5267188306872912 
+P: 0.58128215901983 
+R: 0.4962751326596121 
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.0005, 'batch_size': 16, 'num_epoches': 5, 'f1_reward_weight': 0.5, 'reconstruct_reward_weight': 0.1, 'generate_weight': 1.0, 'mle_weight': 0.25}
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.0005, 'batch_size': 16, 'num_epoches': 5, 'f1_reward_weight': 0.8, 'reconstruct_reward_weight': 0.2, 'generate_weight': 1.0, 'mle_weight': 0.25}
+F1: 0.6014301163069432 
+P: 0.5413329473667204 
+R: 0.6851721791990076 
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.006, 'batch_size': 32, 'num_epoches': 10, 'mle_weight': 1.0, 'generate_weight': 0.75}
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.006, 'batch_size': 32, 'num_epoches': 10, 'mle_weight': 1.0, 'generate_weight': 0.75}
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.006, 'batch_size': 32, 'num_epoches': 10, 'mle_weight': 1.0, 'generate_weight': 0.75}
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.006, 'batch_size': 32, 'num_epoches': 10, 'mle_weight': 1.0, 'generate_weight': 0.75}
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.006, 'batch_size': 32, 'num_epoches': 10, 'mle_weight': 1.0, 'generate_weight': 0.75}
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.006, 'batch_size': 32, 'num_epoches': 10, 'mle_weight': 1.0, 'generate_weight': 0.75}
+F1: 0.5807285222202128 
+P: 0.6040085764859563 
+R: 0.5731903211737077 
+F1: 0.5807285222202128 
+P: 0.6040085764859563 
+R: 0.5731903211737077 
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.0005, 'batch_size': 16, 'num_epoches': 10, 'f1_reward_weight': 0.4, 'reconstruct_reward_weight': 0.1, 'generate_weight': 1.0, 'mle_weight': 0.25}
+F1: 0.614202215323322 
+P: 0.5455951835374726 
+R: 0.705881950644944 
