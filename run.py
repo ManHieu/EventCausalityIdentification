@@ -26,7 +26,7 @@ def run(defaults: Dict):
     assert job in config
 
     print("Hyperparams: {}".format(defaults))
-    with open('./results.txt', 'a', encoding='utf-8') as f:
+    with open('./tunning_results.txt', 'a', encoding='utf-8') as f:
         f.write(f"{'--'*10} \n")
         f.write(f"Hyperparams: \n {defaults}\n")
     defaults.update(dict(config.items(job)))
@@ -64,7 +64,7 @@ def run(defaults: Dict):
     f1s = []
     ps = []
     rs = []
-    for i in range(n_fold):
+    for i in [2]:
         print(f"TRAINING AND TESTING IN FOLD {i}: ")
         fold_dir = f'{data_dir}/{i}'
         if args.rl == True:
@@ -80,7 +80,7 @@ def run(defaults: Dict):
         # construct name for the output directory
         output_dir = os.path.join(
             training_args.output_dir,
-            f'last_verson-{args.job}'
+            f'tuning-{args.job}'
             f'-lr{training_args.lr}'
             f'-eps{training_args.num_epoches}')
         if args.mle==True:
@@ -167,7 +167,7 @@ def run(defaults: Dict):
     r = sum(rs)/len(rs)
     print(f"F1: {f1} - P: {p} - R: {r}")
     if f1 > 0.4:
-        with open(f'./results.txt', 'a', encoding='utf-8') as f:
+        with open(f'./tunning_results.txt', 'a', encoding='utf-8') as f:
             f.write(f"F1: {f1} \n")
             f.write(f"P: {p} \n")
             f.write(f"R: {r} \n")
@@ -176,10 +176,10 @@ def run(defaults: Dict):
 
 def objective(trial: optuna.Trial):
     defaults = {
-        'lr': trial.suggest_categorical('pretrain_lr', [1e-4, 5e-4, 1e-3]),
+        'lr': trial.suggest_categorical('pretrain_lr', [4e-4, 5e-4, 6e-4, 7e-4, 8e-4]),
         'batch_size': trial.suggest_categorical('batch_size', [16]),
         'warmup_ratio': 0.1,
-        'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10]),
+        'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10, 12, 15]),
     }   
     if args.rl==True:
         defaults['f1_reward_weight'] = trial.suggest_categorical('f1_reward_weight', [0.25, 0.5, 0.75])
@@ -192,7 +192,7 @@ def objective(trial: optuna.Trial):
         defaults['mle_weight'] = 0.0
     if args.mle==True and args.rl==True:
         defaults['generate_weight'] = 1.0
-        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.25, 0.5])
+        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.1, 0.25, 0.5])
     
     f1 = run(defaults=defaults)
 

@@ -183,13 +183,13 @@ class GenEC(pl.LightningModule):
             greedy_seqs = self.tokenizer_for_generate.batch_decode(geedy_outputs, skip_special_tokens=True)
 
         # reconstruct
-        task_prefix = 'Generate question and context'
-        reconstructed_seqs = self._generate(sampled_seqs, task_prefix)
-        baseline_reconstructed_seqs = self._generate(greedy_seqs, task_prefix, do_sample=False)
+        # task_prefix = 'Generate question and context'
+        # reconstructed_seqs = self._generate(sampled_seqs, task_prefix)
+        # baseline_reconstructed_seqs = self._generate(greedy_seqs, task_prefix, do_sample=False)
 
         # compute reward
-        sample_reward = self.compute_reward(sampled_seqs, gold_output_sentences, gold_inputs_sentences, reconstructed_seqs)
-        baseline_reward = self.compute_reward(greedy_seqs, gold_output_sentences, gold_inputs_sentences, baseline_reconstructed_seqs)
+        sample_reward = self.compute_reward(sampled_seqs, gold_output_sentences, gold_inputs_sentences)
+        baseline_reward = self.compute_reward(greedy_seqs, gold_output_sentences, gold_inputs_sentences)
 
         # compute policy loss 
         rl_loss = -(sample_reward - baseline_reward) * log_probs
@@ -197,7 +197,7 @@ class GenEC(pl.LightningModule):
         batch_reward = torch.mean(sample_reward)
         return rl_loss, batch_reward
     
-    def compute_reward(self, generated_outputs, gold_outputs, origin_inputs, reconstruct_inputs):
+    def compute_reward(self, generated_outputs, gold_outputs, origin_inputs):
         f1_reward = 0
         output_sim_reward = 0
         reconstruct_reward = 0
@@ -211,21 +211,21 @@ class GenEC(pl.LightningModule):
         output_sim_reward = torch.tensor(output_sim_reward, dtype=torch.float)
         #----------------RECONSTRUCT_REWARD-----------------
         with torch.no_grad():
-            origin_inputs = self.tokenizer([f"Generate question and context\n{sent}" for sent in origin_inputs],
+            origin_inputs = self.tokenizer([f"{sent}" for sent in origin_inputs],
                                             padding='longest',
                                             max_length=self.hparams.max_input_len,
                                             truncation=True,
                                             return_tensors="pt").input_ids
             origin_inputs_presentation = self.t5.encoder(input_ids=origin_inputs.cuda()).last_hidden_state[:,0]
 
-            reconstruct_inputs = self.tokenizer(reconstruct_inputs,
+            generated_outputs = self.tokenizer(generated_outputs,
                                                 padding='longest',
                                                 max_length=self.hparams.max_input_len,
                                                 truncation=True,
                                                 return_tensors="pt").input_ids
-            reconstruct_inputs_presentation = self.t5.encoder(input_ids=reconstruct_inputs.cuda()).last_hidden_state[:, 0]
+            generated_outputs_presentation = self.t5.encoder(input_ids=generated_outputs.cuda()).last_hidden_state[:, 0]
 
-            cosine_scores = util.pytorch_cos_sim(origin_inputs_presentation, reconstruct_inputs_presentation)
+            cosine_scores = util.pytorch_cos_sim(origin_inputs_presentation, generated_outputs_presentation)
             reconstruct_reward = []
             for i in range(len(gold_outputs)):
                 reconstruct_reward.append(abs(float(cosine_scores[i][i])))
