@@ -64,7 +64,7 @@ def run(defaults: Dict):
     f1s = []
     ps = []
     rs = []
-    for i in [2]:
+    for i in range(n_fold):
         print(f"TRAINING AND TESTING IN FOLD {i}: ")
         fold_dir = f'{data_dir}/{i}'
         if args.rl == True:
@@ -80,7 +80,7 @@ def run(defaults: Dict):
         # construct name for the output directory
         output_dir = os.path.join(
             training_args.output_dir,
-            f'tuning-{args.job}'
+            f'lastest_version-{args.job}'
             f'-lr{training_args.lr}'
             f'-eps{training_args.num_epoches}')
         if args.mle==True:
