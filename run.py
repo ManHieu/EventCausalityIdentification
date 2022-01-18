@@ -26,7 +26,7 @@ def run(defaults: Dict):
     assert job in config
 
     print("Hyperparams: {}".format(defaults))
-    with open('./tunning_results.txt', 'a', encoding='utf-8') as f:
+    with open('./results.txt', 'a', encoding='utf-8') as f:
         f.write(f"{'--'*10} \n")
         f.write(f"Hyperparams: \n {defaults}\n")
     defaults.update(dict(config.items(job)))
@@ -167,7 +167,7 @@ def run(defaults: Dict):
     r = sum(rs)/len(rs)
     print(f"F1: {f1} - P: {p} - R: {r}")
     if f1 > 0.4:
-        with open(f'./tunning_results.txt', 'a', encoding='utf-8') as f:
+        with open(f'./results.txt', 'a', encoding='utf-8') as f:
             f.write(f"F1: {f1} \n")
             f.write(f"P: {p} \n")
             f.write(f"R: {r} \n")
