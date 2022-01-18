@@ -85,7 +85,7 @@ def run(defaults: Dict):
         # construct name for the output directory
         output_dir = os.path.join(
             training_args.output_dir,
-            f'{args.job}'
+            f'lastest_version-{args.job}'
             f'-lr{training_args.lr}'
             f'-eps{training_args.num_epoches}')
         if args.mle==True:
