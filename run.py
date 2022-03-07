@@ -53,6 +53,7 @@ def run(defaults: Dict):
     
     if args.tuning:
         training_args.output_dir = './tuning_experiments'
+        record_file_name = './tuning_result.txt'
     try:
         os.mkdir(training_args.output_dir)
     except FileExistsError:
@@ -166,7 +167,7 @@ def run(defaults: Dict):
     r = sum(rs)/len(rs)
     print(f"F1: {f1} - P: {p} - R: {r}")
     if f1 > 0.55:
-        with open(f'./results.txt', 'a', encoding='utf-8') as f:
+        with open(record_file_name, 'a', encoding='utf-8') as f:
             f.write(f"{'--'*10} \n")
             f.write(f"Hyperparams: \n {defaults}\n")
             f.write(f"F1: {f1} \n")
