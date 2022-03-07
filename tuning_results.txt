@@ -1,0 +1,7 @@
+-------------------- 
+Hyperparams: 
+ {'lr': 0.0004, 'batch_size': 16, 'warmup_ratio': 0.1, 'num_epoches': 15, 'mle_weight': 1.0, 'generate_weight': 0.9}
+ 0.60
+-------------------- 
+Hyperparams: 
+ {'warmup_ratio': 0.1, 'lr': 0.0005, 'batch_size': 16, 'num_epoches': 10, 'f1_reward_weight': 0.5, 'reconstruct_reward_weight': 0.25, 'generate_weight': 1.0, 'mle_weight': 0.1}

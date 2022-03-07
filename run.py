@@ -26,9 +26,6 @@ def run(defaults: Dict):
     assert job in config
 
     print("Hyperparams: {}".format(defaults))
-    with open('./results.txt', 'a', encoding='utf-8') as f:
-        f.write(f"{'--'*10} \n")
-        f.write(f"Hyperparams: \n {defaults}\n")
     defaults.update(dict(config.items(job)))
     for key in defaults:
         if defaults[key] in ['True', 'False']:
@@ -54,6 +51,8 @@ def run(defaults: Dict):
     if data_args.tokenizer == None:
         data_args.tokenizer = model_args.tokenizer_name
     
+    if args.tuning:
+        training_args.output_dir = './tuning_experiments'
     try:
         os.mkdir(training_args.output_dir)
     except FileExistsError:
@@ -80,7 +79,7 @@ def run(defaults: Dict):
         # construct name for the output directory
         output_dir = os.path.join(
             training_args.output_dir,
-            f'lastest_version-{args.job}'
+            f'{args.job}'
             f'-lr{training_args.lr}'
             f'-eps{training_args.num_epoches}')
         if args.mle==True:
@@ -166,8 +165,10 @@ def run(defaults: Dict):
     p = sum(ps)/len(ps)
     r = sum(rs)/len(rs)
     print(f"F1: {f1} - P: {p} - R: {r}")
-    if f1 > 0.4:
+    if f1 > 0.55:
         with open(f'./results.txt', 'a', encoding='utf-8') as f:
+            f.write(f"{'--'*10} \n")
+            f.write(f"Hyperparams: \n {defaults}\n")
             f.write(f"F1: {f1} \n")
             f.write(f"P: {p} \n")
             f.write(f"R: {r} \n")
@@ -176,8 +177,8 @@ def run(defaults: Dict):
 
 def objective(trial: optuna.Trial):
     defaults = {
-        'lr': trial.suggest_categorical('pretrain_lr', [4e-4, 5e-4, 6e-4, 7e-4, 8e-4]),
-        'batch_size': trial.suggest_categorical('batch_size', [16]),
+        'lr': trial.suggest_categorical('pretrain_lr', [4e-4, 6e-4, 8e-4]),
+        'batch_size': trial.suggest_categorical('batch_size', [16, 32]),
         'warmup_ratio': 0.1,
         'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10, 12, 15]),
     }   
@@ -187,7 +188,7 @@ def objective(trial: optuna.Trial):
     
     if args.mle==True and args.rl==False:
         defaults['mle_weight'] = 1.0
-        defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.5, 0.75])
+        defaults['generate_weight'] = trial.suggest_categorical('generate_weight', [0.5, 0.75, 0.9])
     if args.mle==False and args.rl==True:
         defaults['mle_weight'] = 0.0
     if args.mle==True and args.rl==True:

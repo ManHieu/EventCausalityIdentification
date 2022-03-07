@@ -1,0 +1,402 @@
+[
+      {
+            "sentence": "causality identification\nFive dead , dozens injured in Indonesia quake\n\nIs there a causal relation between injured and Indonesia quake?",
+            "predicted": "in Indonesia. Is there a causal relationship between the injured and the quake?",
+            "gold": "Yes. Indonesia quake causes injured and injured, dozens, dead, quake"
+      },
+      {
+            "sentence": "causality identification\n\"I see many houses were damaged and their roofs fell onto some people , \" Bensu Elianita , a 22 - year - old resident of Bukit Sama village in Central Aceh district , said shortly after the quake hit .\n\nIs there a causal relation between fell onto and quake?",
+            "predicted": "\"I see many houses were damaged and their roofs fell onto some people, \" Bensu Elianita, a 22 - year - old resident of Bukit Sama village in Central Aceh district, said shortly after the quake hit.",
+            "gold": "Yes. quake causes fell onto and fell, hit, quake"
+      },
+      {
+            "sentence": "causality identification\nA powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday , killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004 .\n\nIs there a causal relation between earthquake and devastated?",
+            "predicted": "Identification A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. Is there a causal relation between",
+            "gold": "No. earthquake, flattened, sparked, killing, injuring, region, devastated"
+      },
+      {
+            "sentence": "causality identification\nA Reuters correspondent reported hearing a large explosion , then saw \"a crater about two metres ( 6 . 6 feet ) wide , an unexploded bomb wedged in the side of a school building and a white aircraft flying north .\n\nIs there a causal relation between reported and unexploded?",
+            "predicted": ". a crater about two metres ( 6 feet ) wide, an unexploded bomb wedged in the side of a school building and a white aircraft flying north. Is there a causal relation between reported and unexploded bombs?",
+            "gold": "No. reported, saw, crater, bomb, unexploded"
+      },
+      {
+            "sentence": "causality identification\nPeople ran out of their homes when the quake hit , AP reported , citing residents of Bukit Sama village in Central Aceh district , where the quake has led to a power outage .\n\nIs there a causal relation between led to and ran?",
+            "predicted": "of the quake. people ran out of their homes when the quake hit, AP reported. Is there a causal relation between led to and ran?",
+            "gold": "No. led, village, residents, citing, reported, ran"
+      },
+      {
+            "sentence": "causality identification\nIt destroyed houses in the district , some 320 kilometers from the provincial capital Banda Aceh , and triggered several landslides .\n\nIs there a causal relation between triggered and destroyed?",
+            "predicted": ". in Banda Aceh, and triggered several landslides. Is there a causal relationship between triggered and destroyed?",
+            "gold": "No. destroyed, triggered"
+      },
+      {
+            "sentence": "causality identification\nRescuers were struggling to find the children still trapped after the mosque collapse in Blang Mancung village , Central Aceh district .\n\nIs there a causal relation between struggling and find?",
+            "predicted": ". Rescuers were struggling to find the children trapped after the collapse of the mosque in Blang Mancung, Central Aceh district. Is there a causal relation between struggling and finding?",
+            "gold": "No. struggling, find"
+      },
+      {
+            "sentence": "causality identification\nAN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province , bringing the confirmed death toll from the disaster to 11 .\n\nIs there a causal relation between EARTHQUAKE and collapsed?",
+            "predicted": "...............................",
+            "gold": "No. AN EARTHQUAKE, killed, left, collapsed"
+      },
+      {
+            "sentence": "causality identification\nAN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province , bringing the confirmed death toll from the disaster to 11 .\n\nIs there a causal relation between death toll and killed?",
+            "predicted": "identification AN EARTHQUAKE killed six children and left 14 others trapped during a reading session in Indonesia's Aceh province. Is there a causal relation between death toll and killed?",
+            "gold": "No. killed, bringing, toll"
+      },
+      {
+            "sentence": "causality identification\nAt least 50 reported injured and buildings destroyed after a 6 . 1 magnitude earthquake strikes Sumatra's Aceh province .\n\nIs there a causal relation between 6 . 1 magnitude earthquake and strikes?",
+            "predicted": "magnitude earthquake in Sumatra's Aceh province. Is there a causal relationship between a 6. 1 magnitude earthquake and strikes?",
+            "gold": "No. strikes, earthquake"
+      },
+      {
+            "sentence": "causality identification\nA government official initially reported deaths , but an American activist who spoke to aid workers at the camp later said there were no casualties .\n\nIs there a causal relation between reported and spoke?",
+            "predicted": "...............................",
+            "gold": "No. reported, said, activist, spoke"
+      },
+      {
+            "sentence": "causality identification\n\"Many people were injured but it is difficult to evacuate them due to traffic jams . \"\n\nIs there a causal relation between injured and evacuate?",
+            "predicted": ", but it is difficult to evacuate them due to traffic jams. \"Is there a causal relationship between injured and evacuated?\"",
+            "gold": "No. injured, difficult, evacuate"
+      },
+      {
+            "sentence": "causality identification\nThe strong 6 . 1 - magnitude quake left hundreds more injured as it rocked a region that was devastated by the quake - triggered tsunami of 2004 .\n\nIs there a causal relation between quake and injured?",
+            "predicted": "- triggered tsunami of 2004. - triggered tsunami of 2004. Is there a causal relationship between quake and injured?",
+            "gold": "No. quake, triggered, tsunami, devastated, region, rocked, left, injured"
+      },
+      {
+            "sentence": "causality identification\n\"I see many houses were damaged and their roofs fell onto some people , \" central Aceh district resident Bensu Elianita told the Associated Press .\n\nIs there a causal relation between see and told?",
+            "predicted": ". \"I see many houses were damaged and their roofs fell onto some people,\" Bensu Elianita told the Associated Press. \"I see many houses were damaged and their roofs fell onto some people, \" Bensu Elianita said.",
+            "gold": "No. told, see"
+      },
+      {
+            "sentence": "causality identification\nMilitary aircraft from Sudan crossed the new international border with South Sudan and dropped bombs Thursday in and around a camp filled with refugees , officials said .\n\nIs there a causal relation between crossed and filled?",
+            "predicted": ". a camp filled with refugees, officials said. Is there a causality between crossed and filled?",
+            "gold": "No. crossed, dropped, camp, filled"
+      },
+      {
+            "sentence": "causality identification\nA 6 . 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person , injured dozens and destroyed buildings , sparking panic in a region devastated by the quake - triggered tsunami of 2004 .\n\nIs there a causal relation between which and devastated?",
+            "predicted": "identification - magnitude quake which hit the Indonesian province of Aceh on Tuesday killed at least one person and destroyed dozens of buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. Is there a causal relation between",
+            "gold": "No. which, hit, earthquake, killed, sparking, region, devastated"
+      },
+      {
+            "sentence": "causality identification\nA government official initially reported deaths , but an American activist who spoke to aid workers at the camp later said there were no casualties .\n\nIs there a causal relation between deaths and casualties?",
+            "predicted": ". said there were no casualties. An activist at the camp said there was a causal relationship between deaths and casualties.",
+            "gold": "No. deaths, reported, said, were, casualties"
+      },
+      {
+            "sentence": "causality identification\nTwelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district , said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency .\n\nIs there a causal relation between landslide and collapsing?",
+            "predicted": "identification Twelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district. Is there a causal relation between landslide and collapsing buildings?",
+            "gold": "No. landslide, collapsing"
+      },
+      {
+            "sentence": "causality identification\nAt least 50 reported injured and buildings destroyed after a 6 . 1 magnitude earthquake strikes Sumatra's Aceh province .\n\nIs there a causal relation between destroyed and reported?",
+            "predicted": ". At least 50 people were injured and buildings destroyed in Sumatra's Aceh province. Is there a causal relationship between destroyed and reported?",
+            "gold": "No. reported, injured, buildings, destroyed"
+      },
+      {
+            "sentence": "causality identification\nNo tsunami warnings were issued following the quake , which injured dozens and damaged several houses in Takengon , the capital of Central Aceh district , AP reported .\n\nIs there a causal relation between which and quake?",
+            "predicted": "of the quake. No tsunami warnings were issued in Takengon, the capital of the Central Aceh district.",
+            "gold": "No. quake, injured, which"
+      },
+      {
+            "sentence": "causality identification\nFive people died and seven were injured in Aceh in the quake and following aftershocks .\n\nIs there a causal relation between injured and quake?",
+            "predicted": ". Five people were killed and seven were injured in the quake in Aceh. Is there a causal relationship between the quake and the aftershocks?",
+            "gold": "Yes. quake causes injured and injured, quake"
+      },
+      {
+            "sentence": "causality identification\nRyan Boyette , a former aid worker who lives in Sudan who is now leading a team of 15 citizen journalists , said he talked to five aid workers in the Yida camp , all of whom said that four bombs were dropped but that they caused no casualties .\n\nIs there a causal relation between lives and leading?",
+            "predicted": "a former aid worker who lives in Sudan who is now leading a team of 15 citizen journalists, said he talked to five aid workers in the Yida camp. all of whom said that four bombs were dropped but that they caused no casualties. Is there a causal",
+            "gold": "No. lives, worker, leading"
+      },
+      {
+            "sentence": "causality identification\nThe violence in and near the Yida refugee camp , located 10 miles south of the border , came one day after bombings were reported in another region of South Sudan , an attack that provoked strong condemnation from the U . S . State Department .\n\nIs there a causal relation between violence and came?",
+            "predicted": "Identification of causality The violence in and near the Yida refugee camp, located 10 miles south of the border, came one day after bombings were reported in another region of South Sudan.",
+            "gold": "No. came, violence"
+      },
+      {
+            "sentence": "causality identification\nIndonesia earthquake : 24 dead and over 200 injured as 6 . 1 magnitude quake hits Aceh province\n\nIs there a causal relation between 6 . 1 magnitude quake and hits?",
+            "predicted": "...............................",
+            "gold": "No. hits, quake"
+      },
+      {
+            "sentence": "causality identification\nIn 2004 , a huge earthquake off Aceh triggered a tsunami that killed 230 , 000 people across Asia .\n\nIs there a causal relation between earthquake and killed?",
+            "predicted": ". In 2004, a massive earthquake off the coast of Aceh triggered a tsunami that killed 230 000 people across Asia. Is there a causal relationship between a quake and a tsunami?",
+            "gold": "No. earthquake, triggered, tsunami, killed"
+      },
+      {
+            "sentence": "causality identification\nIndonesia earthquake : 24 dead and over 200 injured as 6 . 1 magnitude quake hits Aceh province\n\nIs there a causal relation between hits and dead?",
+            "predicted": "in Indonesia.............................",
+            "gold": "No. dead, hits"
+      },
+      {
+            "sentence": "causality identification\nA powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday , killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004 .\n\nIs there a causal relation between earthquake and injuring?",
+            "predicted": "Identification A powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday, killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004. Is there a causal relation",
+            "gold": "Yes. earthquake causes injuring and earthquake, flattened, sparked, killing, injuring"
+      },
+      {
+            "sentence": "causality identification\nThe refugee agency is concerned by the escalating tensions in the border areas between Sudan and South Sudan , where hundreds of thousands of civilians have been uprooted since June as a result of fighting .\n\nIs there a causal relation between escalating and fighting?",
+            "predicted": "of the conflict. The agency is concerned by the escalating tensions in the border areas between Sudan and South Sudan, where hundreds of thousands of civilians have been uprooted as a result of fighting. Is there a causal relationship between escalating and fighting?",
+            "gold": "No. escalating, tensions, areas, uprooted, result, fighting"
+      },
+      {
+            "sentence": "causality identification\nA SAF spokesman denied the attack occurred .\n\nIs there a causal relation between denied and occurred?",
+            "predicted": ". Is there a causality relationship between the attack and the SAF spokesman?",
+            "gold": "No. denied, occurred"
+      },
+      {
+            "sentence": "causality identification\nA reporter heard a large explosion in the Yida refugee camp , then saw a crater about two metres wide , an unexploded bomb wedged in the side of a school building and a white aircraft flying north .\n\nIs there a causal relation between wedged and unexploded?",
+            "predicted": "identification A reporter in Yida saw a crater about two metres wide, an unexploded bomb wedged in a school building and a white aircraft flying north. Is there a causal relation between wedged and unexploded bombs?",
+            "gold": "No. wedged, bomb, unexploded"
+      },
+      {
+            "sentence": "causality identification\nOfficials say at least 24 people were killed and more than 200 injured by the quake , which struck the western tip of Sumatra island on Tuesday .\n\nIs there a causal relation between killed and quake?",
+            "predicted": ". Officials say at least 24 people were killed and more than 200 injured by the quake on Tuesday. Is there a causal relationship between quake and quake?",
+            "gold": "Yes. quake causes killed and killed, quake"
+      },
+      {
+            "sentence": "causality identification\nFive people died and seven were injured in Aceh in the quake and following aftershocks .\n\nIs there a causal relation between quake and aftershocks?",
+            "predicted": ". Seven people were injured in the quake and following aftershocks in Aceh. Is there a causal relationship between quake and aftershocks?",
+            "gold": "No. quake, aftershocks"
+      },
+      {
+            "sentence": "causality identification\n\"I see many houses were damaged and their roofs fell onto some people , \" Bensu Elianita , a 22 - year - old resident of Bukit Sama village in Central Aceh district , said shortly after the quake hit .\n\nIs there a causal relation between damaged and quake?",
+            "predicted": "\"I see many houses were damaged and their roofs fell onto some people, \" Bensu Elianita, a 22 - year - old resident of Bukit Sama village in Central Aceh district, said shortly after the quake hit.",
+            "gold": "Yes. quake causes damaged and damaged, see, fell, hit, quake"
+      },
+      {
+            "sentence": "causality identification\nA powerful 6 . 1 - magnitude earthquake strikes the northern Indonesian province of Aceh , killing at least three people and injuring dozens more across the affected region .\n\nIs there a causal relation between 6 . 1 - magnitude earthquake and strikes?",
+            "predicted": ". in the northern Indonesian province of Aceh killing at least three people and injuring dozens more across the region. Is there a causal relationship between 6. 1 - magnitude earthquake and strikes?",
+            "gold": "No. strikes, earthquake"
+      },
+      {
+            "sentence": "causality identification\nEyewitnesses and local residents say many homes and properties have collapsed or been damaged .\n\nIs there a causal relation between damaged and collapsed?",
+            "predicted": "es say many homes and properties have collapsed or been damaged. Is there a causal relationship between damaged and collapsed?",
+            "gold": "No. collapsed, damaged"
+      },
+      {
+            "sentence": "causality identification\nIn April last year an 8 . 6 - magnitude quake struck 431 kilometres off Banda Aceh , prompting an Indian Ocean - wide tsunami alert .\n\nIs there a causal relation between 8 . 6 - magnitude quake and Indian Ocean - wide?",
+            "predicted": ". magnitude quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Is there a causal relation between 8. 6 - magnitude quake and Indian Ocean - wide tsunami?",
+            "gold": "No. quake, struck, prompting, alert, wide"
+      },
+      {
+            "sentence": "causality identification\nAN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province , bringing the confirmed death toll from the disaster to 11 .\n\nIs there a causal relation between Koran reading session and bringing?",
+            "predicted": "identification AN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province. Is there a causal relation between the Koran reading session and bringing?",
+            "gold": "No. session, collapsed, left, killed, bringing"
+      },
+      {
+            "sentence": "causality identification\nA 6 . 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person , injured dozens and destroyed buildings , sparking panic in a region devastated by the quake - triggered tsunami of 2004 .\n\nIs there a causal relation between hit and injured?",
+            "predicted": ". in the Indonesian province of Aceh on Tuesday killed at least one person, injured dozens and destroyed buildings. A 6. 1 - magnitude earthquake hit the Indonesian province of Aceh on Tuesday, sparking panic in a region devastated by the quake -",
+            "gold": "No. hit, earthquake, killed, injured"
+      },
+      {
+            "sentence": "causality identification\nRyan Boyette , a former aid worker who lives in Sudan who is now leading a team of 15 citizen journalists , said he talked to five aid workers in the Yida camp , all of whom said that four bombs were dropped but that they caused no casualties .\n\nIs there a causal relation between lives and talked?",
+            "predicted": "causality identification Ryan Boyette, a former aid worker who lives in Sudan, said he talked to five aid workers in the camp. All of whom said that four bombs were dropped but that they caused no casualties.",
+            "gold": "No. lives, worker, Ryan, said, talked"
+      },
+      {
+            "sentence": "causality identification\nNo tsunami warnings were issued following the quake , which injured dozens and damaged several houses in Takengon , the capital of Central Aceh district , AP reported .\n\nIs there a causal relation between tsunami warnings and injured?",
+            "predicted": "of the quake, which injured dozens and damaged several houses in Takengon, the capital of Central Aceh, AP reported. Is there a causal relationship between tsunami warnings and injured people?",
+            "gold": "No. warnings, issued, quake, injured"
+      },
+      {
+            "sentence": "causality identification\nThe quake appears to have shaken the provincial capital of Banda Aceh , which is located at the northern tip of the Sumatran land mass .\n\nIs there a causal relation between quake and shaken?",
+            "predicted": "of the quake the capital of Banda Aceh. Is there a causal relationship between quake and quake?",
+            "gold": "Yes. quake causes shaken and quake, appears, shaken"
+      },
+      {
+            "sentence": "causality identification\nAt least 50 reported injured and buildings destroyed after a 6 . 1 magnitude earthquake strikes Sumatra's Aceh province .\n\nIs there a causal relation between 6 . 1 magnitude earthquake and reported?",
+            "predicted": "magnitude earthquake in Sumatra's Aceh province? Is there a causal relationship between a 6. 1 magnitude earthquake and reported damage?",
+            "gold": "No. reported, strikes, earthquake"
+      },
+      {
+            "sentence": "causality identification\nThe earthquake reduced houses in parts of Aceh to rubble , set off several landslides and badly damaged roads .\n\nIs there a causal relation between earthquake and landslides?",
+            "predicted": ". and. Is there a causal relationship between a landslide and a landslide?",
+            "gold": "Yes. earthquake causes landslides and earthquake, reduced, set, landslides"
+      },
+      {
+            "sentence": "causality identification\nRescue operations are under way after a 6 . 1 magnitude earthquake hit Indonesia's Aceh province , flattening houses and causing landslides .\n\nIs there a causal relation between hit and flattening?",
+            "predicted": "in in Indonesia's Aceh province, causing landslides. Is there a causal relationship between hit and landslide?",
+            "gold": "No. hit, flattening"
+      },
+      {
+            "sentence": "causality identification\nIn April last year an 8 . 6 - magnitude quake struck 431 kilometres off Banda Aceh , prompting an Indian Ocean - wide tsunami alert .\n\nIs there a causal relation between tsunami alert and Indian Ocean - wide?",
+            "predicted": ". a magnitude 6 quake struck 431 kilometres off Banda Aceh, prompting an Indian Ocean - wide tsunami alert. Is there a causal relation between tsunami alert and Indian Ocean - wide tsunami?",
+            "gold": "No. alert, wide"
+      },
+      {
+            "sentence": "causality identification\nHowever , there have been no casualties or fatalities confirmed as a result of this bombing .\n\nIs there a causal relation between bombing and casualties?",
+            "predicted": ", there have been no casualties or deaths as a result of this bombing.",
+            "gold": "Yes. bombing causes casualties and casualties, confirmed, result, bombing"
+      },
+      {
+            "sentence": "causality identification\nThe magnitude - 6 . 1 quake struck at a depth of just 10 kilometers ( six miles ) and its epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island , the US Geological Survey said .\n\nIs there a causal relation between located and struck?",
+            "predicted": "identification epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island. Epicenter was located 55 kilometers ( 34 miles ) west of the town of Bireun on the western tip of Sumatra island.",
+            "gold": "No. struck, located"
+      },
+      {
+            "sentence": "causality identification\nOne report said six children were killed and 14 trapped under debris when a mosque collapsed in Central Aceh .\n\nIs there a causal relation between One report and under debris?",
+            "predicted": ". Two children were killed when a mosque collapsed in Central Aceh.",
+            "gold": "No. report, said, killed, trapped, debris"
+      },
+      {
+            "sentence": "causality identification\nAN EARTHQUAKE killed six children and left 14 others trapped when a mosque collapsed during a Koran reading session in Indonesia's Aceh province , bringing the confirmed death toll from the disaster to 11 .\n\nIs there a causal relation between trapped and disaster?",
+            "predicted": ". 11 people were killed when a mosque in Indonesia's Aceh province collapsed, bringing the death toll from the disaster to 11. Is there a causal relationship between trapped and disaster?",
+            "gold": "No. trapped, left, killed, bringing, toll, disaster"
+      },
+      {
+            "sentence": "causality identification\nThe quake struck inland at 0737 GMT at a depth of just 10 kilometres ( 6 . 2 miles ) in the mountainous Bener Meriah district in the heart of Aceh , the US Geological Survey said .\n\nIs there a causal relation between said and depth of just 10 kilometres ( 6 . 2 miles?",
+            "predicted": "of the quake at a depth of just 10 kilometres ( 6. 2 miles ) in the mountainous Bener Meriah district in the heart of Aceh. Is there a causal relation between said and depth of just 10 kilometres ( 6",
+            "gold": "No. said, struck, depth"
+      },
+      {
+            "sentence": "causality identification\nDozens injured as 6 . 1 - magnitude quake hits Indonesia's Aceh\n\nIs there a causal relation between injured and hits?",
+            "predicted": "...............................",
+            "gold": "No. hits, Dozens, injured"
+      },
+      {
+            "sentence": "causality identification\nIn April last year an 8 . 6 - magnitude quake struck 431 kilometres off Banda Aceh , prompting an Indian Ocean - wide tsunami alert .\n\nIs there a causal relation between struck and tsunami alert?",
+            "predicted": ". a magnitude 6 quake struck 431 kilometres off the coast of Banda Aceh. Is there a causal relationship between a magnitude 6 quake and a tsunami alert?",
+            "gold": "No. struck, prompting, alert"
+      },
+      {
+            "sentence": "causality identification\nIn neighbouring Central Aceh district , 10 people were killed , 140 were injured and about 1 , 500 houses and buildings were damaged , Nugroho said .\n\nIs there a causal relation between injured and said?",
+            "predicted": ". in the, 140 people were killed and about 500 houses and buildings were damaged, Nugroho said. Is there a causal relationship between injured and said?",
+            "gold": "No. said, killed, injured"
+      },
+      {
+            "sentence": "causality identification\nA magnitude - 6 . 1 earthquake struck Indonesia's Aceh province on Tuesday at 07 : 37 a . m . UTC ( 3 : 37 a . m . EDT ) , killing at least one and leaving two others missing , the Associated Press reported .\n\nIs there a causal relation between magnitude - 6 . 1 earthquake and killing?",
+            "predicted": "magnitude - 6. 1 earthquake struck Indonesia's Aceh province on Tuesday at 07 : 37 a. m. UTC ( 3 : 37 a. m. EDT ), killing at least one and leaving two others missing. I",
+            "gold": "Yes. magnitude - 6 . 1 earthquake causes killing and earthquake, struck, killing"
+      },
+      {
+            "sentence": "causality identification\nA massive quake struck off Aceh in 2004 , sparking a tsunami that killed 170 , 000 people in the province on Sumatra and tens of thousands more in countries around the Indian Ocean .\n\nIs there a causal relation between sparking and quake?",
+            "predicted": "in Indonesia in 2004. killed 170 000 people in the province of Sumatra and tens of thousands more in countries around the Indian Ocean. Is there a causal relationship between quake and quake?",
+            "gold": "No. sparking, struck, quake"
+      },
+      {
+            "sentence": "causality identification\nThe refugee agency is concerned by the escalating tensions in the border areas between Sudan and South Sudan , where hundreds of thousands of civilians have been uprooted since June as a result of fighting .\n\nIs there a causal relation between tensions and escalating?",
+            "predicted": "of the conflict. escalating tensions between Sudan and South Sudan. Is there a causality between escalating tensions and escalating conflict?",
+            "gold": "No. tensions, escalating"
+      },
+      {
+            "sentence": "causality identification\nNevertheless , on Thursday afternoon an Antonov bomber dropped four bombs on the South Sudanese area of Yida , hitting a refugee camp of roughly 21 , 000 people , some of them northern Sudanese who had crossed the border since the rebellion in Sudan began .\n\nIs there a causal relation between crossed and rebellion?",
+            "predicted": "identification.. on Thursday afternoon an Antonov bomber dropped four bombs on the south Sudanese area of Yida...............",
+            "gold": "No. crossed, began, rebellion"
+      },
+      {
+            "sentence": "causality identification\nAt least 50 reported injured and buildings destroyed after a 6 . 1 magnitude earthquake strikes Sumatra's Aceh province .\n\nIs there a causal relation between destroyed and 6 . 1 magnitude earthquake?",
+            "predicted": "earthquake in Sumatra's. Is there a causal relationship between a 6. 1 magnitude earthquake and a 6. 1 magnitude earthquake in Sumatra?",
+            "gold": "Yes. 6 . 1 magnitude earthquake causes destroyed and destroyed, buildings, injured, reported, strikes, earthquake"
+      },
+      {
+            "sentence": "causality identification\nA refugee camp in South Sudan's Unity state was bombed on Thursday , South Sudan officials and witnesses said , threatening to raise tensions with Sudan .\n\nIs there a causal relation between threatening and said?",
+            "predicted": ". a refugee camp in South Sudan was bombed on Thursday, officials and witnesses said. Is there a causal relationship between threatening and saying?",
+            "gold": "No. said, threatening"
+      },
+      {
+            "sentence": "causality identification\nA powerful earthquake in Indonesia's Aceh province flattened buildings and sparked landslides Tuesday , killing at least five people and injuring dozens in a region devastated by the quake - triggered tsunami of 2004 .\n\nIs there a causal relation between flattened and killing?",
+            "predicted": "in Indonesia's Aceh province on Tuesday, killing at least five people and injuring dozens in a region devastated by the quake. Is there a causal relationship between flattened and killing?",
+            "gold": "No. flattened, sparked, killing"
+      },
+      {
+            "sentence": "causality identification\nOne of the bombs landed in a school yard where about 300 students were attending class , but the bomb did not explode , Boyette said , citing aid workers at the camp .\n\nIs there a causal relation between attending and landed?",
+            "predicted": ". One of the bombs landed in a school yard where about 300 students were attending class, Boyette said. Is there a causal relationship between attending and landed?",
+            "gold": "No. landed, yard, attending"
+      },
+      {
+            "sentence": "causality identification\nNevertheless , on Thursday afternoon an Antonov bomber dropped four bombs on the South Sudanese area of Yida , hitting a refugee camp of roughly 21 , 000 people , some of them northern Sudanese who had crossed the border since the rebellion in Sudan began .\n\nIs there a causal relation between began and crossed?",
+            "predicted": ".. On Thursday afternoon an Antonov bomber dropped four bombs on the south Sudanese area of Yida.... On Thursday afternoon an Antonov bomber dropped four bombs on a refugee camp of around 21, 000",
+            "gold": "No. crossed, began"
+      },
+      {
+            "sentence": "causality identification\nA 6 . 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child , injured dozens and destroyed buildings , sparking panic in a region devastated by the quake - triggered tsunami of 2004 .\n\nIs there a causal relation between sparking and destroyed?",
+            "predicted": ". in the Indonesian province of Aceh on Tuesday killed one child, injured dozens and destroyed buildings. Is there a causal relation between sparking and destroyed buildings?",
+            "gold": "No. sparking, killed, injured, buildings, destroyed"
+      },
+      {
+            "sentence": "causality identification\n\"Many people were injured but it is difficult to evacuate them due to traffic jams . \"\n\nIs there a causal relation between traffic jams and difficult?",
+            "predicted": ". \"Many people were injured, but it is difficult to evacuate them due to traffic jams. \"Is there a causal relationship between traffic jams and difficult to evacuate them due to traffic jams. \"",
+            "gold": "Yes. traffic jams causes difficult and difficult, evacuate, jams"
+      },
+      {
+            "sentence": "causality identification\nThe Reuters correspondent heard a large explosion , then saw a crater about two metres ( 6 . 6 feet ) wide , an unexploded bomb wedged in the side of a school building and a white aircraft flying north from the Yida refugee camp .\n\nIs there a causal relation between explosion and wedged?",
+            "predicted": "., then saw a crater about two metres ( 6 feet ) wide, an unexploded bomb wedged in a school building and a white aircraft flying north from the Yida refugee camp. Is there a causal relation between explosion and wedged in",
+            "gold": "No. explosion, heard, saw, crater, bomb, wedged"
+      },
+      {
+            "sentence": "causality identification\nIn September 2009 a major earthquake near Padang city on Sumatra killed more than 1 , 000 people .\n\nIs there a causal relation between earthquake and killed?",
+            "predicted": "million people. more than 1, 000 people. Is there a causality between a major earthquake in Sumatra and more than 1, 000 people?",
+            "gold": "Yes. earthquake causes killed and killed, earthquake"
+      },
+      {
+            "sentence": "causality identification\nSoldiers and police are leading rescue operations in Indonesia after a 6 . 1 magnitude earthquake hit Aceh province leaving 24 dead and over 200 injured .\n\nIs there a causal relation between 6 . 1 magnitude earthquake and injured?",
+            "predicted": ". Indonesian police a 6. 1 magnitude earthquake that left 24 dead and over 200 injured. Is there a causal relationship between a 6. 1 magnitude earthquake and injuries?",
+            "gold": "Yes. 6 . 1 magnitude earthquake causes injured and earthquake, hit, leaving, dead, injured"
+      },
+      {
+            "sentence": "causality identification\nPeople also ran out of buildings in panic in the provincial capital Banda Aceh as the quake shook houses for around one minute , an AFP journalist at the scene said .\n\nIs there a causal relation between shook and said?",
+            "predicted": "in the in the provincial capital Banda Aceh, an AFP journalist said. \"Is there a causal relationship between shook and said?\"",
+            "gold": "No. said, ran, shook"
+      },
+      {
+            "sentence": "causality identification\n\"I see many houses were damaged and their roofs fell onto some people , \" Bensu Elianita , a 22 - year - old resident of Bukit Sama village in Central Aceh district , said shortly after the quake hit .\n\nIs there a causal relation between hit and see?",
+            "predicted": ". \"I. \", said Bensu Elianita, a 22 - year - old resident of Bukit Sama village in Central Aceh district. \"I see many houses were damaged and their roofs fell onto some people, \" Bensu Elianit",
+            "gold": "No. see, fell, hit"
+      },
+      {
+            "sentence": "causality identification\nOne of the bombs landed in a school yard where about 300 students were attending class , but the bomb did not explode , Boyette said , citing aid workers at the camp .\n\nIs there a causal relation between attending and citing?",
+            "predicted": ". The bombs landed in a school yard where about 300 students were attending class, Boyette said.",
+            "gold": "No. attending, yard, landed, said, citing"
+      },
+      {
+            "sentence": "causality identification\n\"I see many houses were damaged and their roofs fell onto some people , \" said Bensu Elianita , a 22 year - old resident in Bukit Sama village in Central Aceh district , adding , \"Many people were injured but it is difficult to evacuate them due to traffic jams . \"\n\nIs there a causal relation between fell onto and difficult?",
+            "predicted": ", \" said Bensu Elianita, a 22 year - old resident in Bukit Sama village in Central Aceh district. \"Many people were damaged and their roofs fell onto some people, \" said Bensu Elianita.",
+            "gold": "No. fell, see, said, adding, difficult"
+      },
+      {
+            "sentence": "causality identification\nA 6 . 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person , injured dozens and destroyed buildings , sparking panic in a region devastated by the quake - triggered tsunami of 2004 .\n\nIs there a causal relation between 6 . 1 - magnitude earthquake and which?",
+            "predicted": "of the. 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed at least one person and destroyed dozens of buildings. Is there a causal relation between 6. 1 - magnitude earthquake and which?",
+            "gold": "No. earthquake, hit, which"
+      },
+      {
+            "sentence": "causality identification\nIn 2004 a massive tremor sparked a tsunami that killed 170 , 000 people in the province and tens of thousands more in countries around the Indian Ocean .\n\nIs there a causal relation between sparked and killed?",
+            "predicted": "in 2004 that sparked a tsunami that killed 170 000 people in the province and tens of thousands more in countries around the Indian Ocean. Is there a causal relationship between sparked and killed?",
+            "gold": "No. sparked, tsunami, killed"
+      },
+      {
+            "sentence": "causality identification\nRyan Boyette , a former aid worker who lives in Sudan who is now leading a team of 15 citizen journalists , said he talked to five aid workers in the Yida camp , all of whom said that four bombs were dropped but that they caused no casualties .\n\nIs there a causal relation between lives and dropped?",
+            "predicted": ". Ryan Boyette, a former aid worker in Sudan who lives in a team of 15 citizen journalists, said he talked to five aid workers in the camp who said that four bombs were dropped but that they caused no casualties. Is there a causal relation between lives",
+            "gold": "No. lives, worker, Ryan, said, talked, workers, said, dropped"
+      },
+      {
+            "sentence": "causality identification\nThe quake also triggered landslides and caused hundreds of people to be evacuated to 10 temporary shelters .\n\nIs there a causal relation between caused and landslides?",
+            "predicted": ". and caused hundreds of people to be evacuated. Is there a causal relationship between landslides and landslides?",
+            "gold": "No. caused, triggered, landslides"
+      },
+      {
+            "sentence": "causality identification\nTwelve people were killed and 70 others were injured by a landslide or collapsing buildings in Bener Meriah district , said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency .\n\nIs there a causal relation between killed and landslide?",
+            "predicted": ". and 70 others were injured by a landslide or collapsing buildings, said Sutopo Purwo Nugroho of the National Disaster Mitigation Agency.",
+            "gold": "No. killed, injured, landslide"
+      },
+      {
+            "sentence": "causality identification\nA 6 . 1 - magnitude earthquake which hit the Indonesian province of Aceh on Tuesday killed a child , injured dozens and destroyed buildings , sparking panic in a region devastated by the quake - triggered tsunami of 2004 .\n\nIs there a causal relation between sparking and devastated?",
+            "predicted": ". in the Indonesian province of Aceh on Tuesday killed one child, injured dozens and destroyed buildings, sparking panic in a region devastated by the quake - triggered tsunami of 2004. Is there a causal relation between sparking and devastation?",
+            "gold": "No. sparking, region, devastated"
+      },
+      {
+            "sentence": "causality identification\nNevertheless , on Thursday afternoon an Antonov bomber dropped four bombs on the South Sudanese area of Yida , hitting a refugee camp of roughly 21 , 000 people , some of them northern Sudanese who had crossed the border since the rebellion in Sudan began .\n\nIs there a causal relation between hitting and rebellion?",
+            "predicted": "of the attack.............................",
+            "gold": "No. hitting, camp, people, crossed, began, rebellion"
+      },
+      {
+            "sentence": "causality identification\nOne of the bombs landed in a school yard where about 300 students were attending class , but the bomb did not explode , Boyette said , citing aid workers at the camp .\n\nIs there a causal relation between landed and said?",
+            "predicted": ". in a school yard where about 300 students were attending class, Boyette said. Is there a causal relationship between landed and said?",
+            "gold": "No. said, landed"
+      },
+      {
+            "sentence": "causality identification\nA powerful 6 . 1 - magnitude earthquake strikes the northern Indonesian province of Aceh , killing at least three people and injuring dozens more across the affected region .\n\nIs there a causal relation between strikes and injuring?",
+            "predicted": ". in the northern Indonesian province of Aceh, killing at least three people and injuring dozens more?",
+            "gold": "No. strikes, killing, injuring"
+      }
+]

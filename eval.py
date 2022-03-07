@@ -46,11 +46,11 @@ def inference(sentence: str):
     else:
         return []
         
-def eval_corpus():        
+def eval_corpus(resutl_file: str='./test.json'):        
     golds = []
     predicts = []
 
-    with open('./reinforce_model_predictions.json','r') as f:
+    with open(resutl_file,'r') as f:
         lines = json.load(f)
         for result in lines:
             predict = result['predicted']

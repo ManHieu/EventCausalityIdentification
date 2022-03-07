@@ -11,7 +11,6 @@ from model.T5ForRL import T5ForRL
 from transformers import AdamW, get_linear_schedule_with_warmup
 import copy
 from sentence_transformers import SentenceTransformer, util
-
 from data_modules.input_formats import INPUT_FORMATS
 from data_modules.output_formats import OUTPUT_FORMATS
 from utils.utils import compute_f1, compute_sentences_similar
@@ -97,11 +96,8 @@ class GenEC(pl.LightningModule):
         return generated_seqs
 
     def train_MLE(self, batch):
-        template = [5]*len(batch)
-        gold_inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
-                                for temp_id, example in zip(template, batch)]
-        gold_output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
-                                for temp_id, example in zip(template, batch)]
+        gold_inputs_sentences = [self.input_formater.format_input(example=example)[-1] for example in batch]
+        gold_output_sentences = [self.oupt_formater.format_output(example=example) for example in batch]
 
         # generate answer
         task_prefix = 'causality identification'
@@ -121,11 +117,8 @@ class GenEC(pl.LightningModule):
         return mle_loss
 
     def train_RL(self, batch):
-        template = [5]*len(batch)
-        gold_inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
-                                for temp_id, example in zip(template, batch)]
-        gold_output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
-                                for temp_id, example in zip(template, batch)]
+        gold_inputs_sentences = [self.input_formater.format_input(example=example)[-1] for example in batch]
+        gold_output_sentences = [self.oupt_formater.format_output(example=example) for example in batch]
 
         # compute log_probs, get sample ouputs
         task_prefix = 'causality identification'
@@ -144,11 +137,8 @@ class GenEC(pl.LightningModule):
                                                         num_beams=1,
                                                         output_scores=True,
                                                         return_dict_in_generate=True)
-        # print(f"outputs: {sampled_outputs}")
         sampled_seqs = sampled_outputs.sequences
-        # print(f"sample_seqs: {sampled_seqs}")
         scores = sampled_outputs.scores
-        # print(f"scores: {scores}")
 
         log_probs = []
         for batch_id in range(sampled_seqs.size(0)):
@@ -158,7 +148,6 @@ class GenEC(pl.LightningModule):
                 if tok not in [0, 1]:
                     score_in_step = scores[i-1]
                     probs = F.softmax(score_in_step, dim=1)
-                    # print(score_in_step[batch_id][tok])
                     log_prob.append(torch.log(probs[batch_id][tok] + 1e-5))
             if len(log_prob) != 0:
                 log_prob = torch.stack(log_prob).sum() / len(log_prob)
@@ -166,10 +155,8 @@ class GenEC(pl.LightningModule):
             else:
                 log_prob.append(torch.tensor(-100).cuda())
         log_probs = torch.stack(log_probs)
-        # print(f"log_probs: {log_probs.size()}")
         
         sampled_seqs = self.tokenizer_for_generate.batch_decode(sampled_seqs, skip_special_tokens=True)
-        # print(f"sample_seq: {sampled_seqs}")
 
         # generate sequence using greedy search
         with torch.no_grad():
@@ -252,15 +239,12 @@ class GenEC(pl.LightningModule):
         return loss
 
     def validation_step(self, batch, batch_idx) -> Optional[STEP_OUTPUT]:
-        template = [5]*len(batch)
-        inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
-                            for temp_id, example in zip(template, batch)]
+        inputs_sentences = [self.input_formater.format_input(example=example)[-1] for example in batch]
         task_prefix = 'causality identification'
 
         generated_outputs = self._generate(inputs=inputs_sentences, task_prefix=task_prefix, num_beams=8)
         
-        gold_output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
-                                for temp_id, example in zip(template, batch)]
+        gold_output_sentences = [self.oupt_formater.format_output(example=example) for example in batch]
 
         return generated_outputs, gold_output_sentences, [f"{task_prefix}\n{sent}" for sent in inputs_sentences]
     
@@ -278,23 +262,18 @@ class GenEC(pl.LightningModule):
                     'gold': sample[1]
                 })
         f1, p, r, tp, n_pred, n_gold = compute_f1(predicts, golds)
-        # print("DEV result:")
-        # print(f"f1: {f1}")
-        with open('./reinforce_model_predictions_dev.json','w') as writer:
+        with open('./dev.json','w') as writer:
             writer.write(json.dumps(preds, indent=6)+'\n')
         self.log_dict({'f1_dev': f1, 'p_dev': p, 'r_dev': r}, prog_bar=True)
         return f1
 
     def test_step(self, batch, batch_idx) -> Optional[STEP_OUTPUT]:
-        template = [5]*len(batch)
-        inputs_sentences = [self.input_formater.format_input(example=example, template_type=temp_id)[-1]
-                            for temp_id, example in zip(template, batch)]
+        inputs_sentences = [self.input_formater.format_input(example=example)[-1] for example in batch]
         task_prefix = 'causality identification'
 
         generated_outputs = self._generate(inputs=inputs_sentences, task_prefix=task_prefix, num_beams=8)
         
-        gold_output_sentences = [self.oupt_formater.format_output(example=example, template_type=temp_id)
-                                for temp_id, example in zip(template, batch)]
+        gold_output_sentences = [self.oupt_formater.format_output(example=example) for example in batch]
 
         return generated_outputs, gold_output_sentences, [f"{task_prefix}\n{sent}" for sent in inputs_sentences]
 
@@ -308,7 +287,7 @@ class GenEC(pl.LightningModule):
                     'gold': sample[1]
                 })
 
-        with open('./reinforce_model_predictions.json','w') as writer:
+        with open('./test.json','w') as writer:
             writer.write(json.dumps(preds, indent=6)+'\n')
 
     def configure_optimizers(self):
