@@ -180,7 +180,7 @@ def run(defaults: Dict):
 def objective(trial: optuna.Trial):
     defaults = {
         'lr': trial.suggest_categorical('pretrain_lr', [4e-4, 6e-4, 8e-4]),
-        'batch_size': trial.suggest_categorical('batch_size', [16, 32]),
+        'batch_size': trial.suggest_categorical('batch_size', [32]),
         'warmup_ratio': 0.1,
         'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10, 12, 15]),
     }   
