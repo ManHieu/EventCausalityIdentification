@@ -1,0 +1,325 @@
+<?xml version='1.0' encoding='us-ascii'?>
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+<DOCID>CNN19980227.2130.0067</DOCID>
+<DCT><TIMEX3 functionInDocument="CREATION_TIME" temporalFunction="false" tid="t0" type="DATE" value="1998-02-27">19980227</TIMEX3></DCT>
+<TEXT>
+Live from Atalanta, good evening Lynne Russell, CNN headline news. New evidence is <EVENT class="I_STATE" eid="e4">suggesting</EVENT> that a series of <EVENT class="OCCURRENCE" eid="e91">bombings</EVENT> in Atalanta and <TIMEX3 tid="t93" type="DATE" value="1998-01">last month</TIMEX3>'s <EVENT class="OCCURRENCE" eid="e6">explosion</EVENT> at an Alabama women's clinic might be <EVENT class="STATE" eid="e8">related</EVENT>. Pierre Thomas has the latest.
+
+Atlanta <TIMEX3 tid="t95" type="DATE" value="1996">nineteen ninety-six</TIMEX3>. A bomb blast <EVENT class="OCCURRENCE" eid="e11">shocks</EVENT> the Olympic games. One person is <EVENT class="OCCURRENCE" eid="e12">killed</EVENT>.
+
+<TIMEX3 tid="t96" type="DATE" value="1997-01">January nineteen ninety-seven</TIMEX3>. Atlanta again. This time a <EVENT class="OCCURRENCE" eid="e149">bomb</EVENT> at an abortion clinic. More people are <EVENT class="OCCURRENCE" eid="e16">hurt</EVENT>. And just <TIMEX3 tid="t97" type="DATE" value="1998-01">last month</TIMEX3>, an off duty policeman is <EVENT class="OCCURRENCE" eid="e17">killed</EVENT> when a bomb <EVENT class="OCCURRENCE" eid="e98">explodes</EVENT> at another abortion clinic. Location, Birmingham, Alabama.
+
+This man, Eric Rudolph has already been <EVENT class="OCCURRENCE" eid="e22">charged</EVENT> in the Birmingham <EVENT class="OCCURRENCE" eid="e23">bombing</EVENT>. <TIMEX3 tid="t178" type="DATE" value="PRESENT_REF">Now</TIMEX3> officials are <EVENT class="I_ACTION" eid="e25">investigating</EVENT> whether, Rudolph, who remains at large, is <EVENT class="STATE" eid="e27">linked</EVENT> to all three <EVENT class="OCCURRENCE" eid="e28">attacks</EVENT>. The reason, authorities have <EVENT class="OCCURRENCE" eid="e30">discovered</EVENT> tantalizing new evidence.
+
+Steel plates <EVENT class="OCCURRENCE" eid="e33">recovered</EVENT> at the Olympic park bombing <EVENT class="I_STATE" eid="e34">appear</EVENT> to <EVENT class="OCCURRENCE" eid="e36">match</EVENT> those <EVENT class="OCCURRENCE" eid="e37">found</EVENT> at the abortion clinic <EVENT class="OCCURRENCE" eid="e38">bombing</EVENT> in Atlanta. Those plates may have <EVENT class="OCCURRENCE" eid="e42">come</EVENT> from a machine shop in north Carolina, where a friend of Rudolph <EVENT class="OCCURRENCE" eid="e44">worked</EVENT>.
+
+And nails <EVENT class="OCCURRENCE" eid="e45">found</EVENT> in the Atlanta abortion clinic <EVENT class="OCCURRENCE" eid="e101">bombing</EVENT> are identical to those <EVENT class="OCCURRENCE" eid="e46">discovered</EVENT> at Rudolph's storage shed in north Carolina. A senior law enforcement source <EVENT class="REPORTING" eid="e49">tells</EVENT> CNN, there is a lot of circumstantial evidence and it would be extraordinary to <EVENT class="STATE" eid="e53">have</EVENT> all these bits and pieces and there not be a connection.
+
+And law enforcement sources <EVENT class="REPORTING" eid="e54">say</EVENT> they can't <EVENT class="OCCURRENCE" eid="e55">ignore</EVENT> letters penned under the name army of god. Army of god is a secret organization that hates abortion providers, homosexuals and the US government.
+
+Army of god letters <EVENT class="I_ACTION" eid="e105">claim</EVENT> responsibility for the Atlanta abortion clinic <EVENT class="OCCURRENCE" eid="e106">bombing</EVENT>, a <TIMEX3 tid="t107" type="DATE" value="1997">nineteen ninety-seven</TIMEX3> <EVENT class="OCCURRENCE" eid="e61">attack</EVENT> on a gay lounge and the Birmingham <EVENT class="OCCURRENCE" eid="e63">assault</EVENT>.
+
+An intense <EVENT class="OCCURRENCE" eid="e64">manhunt</EVENT> conducted by the FBI and the bureau of alcohol, tobacco and firearms <EVENT class="ASPECTUAL" eid="e66">continues</EVENT> for Rudolph in the wilderness of western north Carolina. And <TIMEX3 tid="t108" type="DATE" value="1998-WXX">this week</TIMEX3>, FBI director Louie Freeh <EVENT class="OCCURRENCE" eid="e109">assigned</EVENT> more agents to the <EVENT class="OCCURRENCE" eid="e67">search</EVENT>.
+
+Freeh also <EVENT class="I_ACTION" eid="e68">ordered</EVENT> the <EVENT class="OCCURRENCE" eid="e69">investigation</EVENT> consolidate information under the Atlanta task force, another indication officials <EVENT class="I_STATE" eid="e72">suspect</EVENT> a link between all the <EVENT class="OCCURRENCE" eid="e73">bombings</EVENT>. Privately, authorities <EVENT class="REPORTING" eid="e74">say</EVENT> Rudolph has <EVENT class="OCCURRENCE" eid="e76">become</EVENT> a focus of their <EVENT class="OCCURRENCE" eid="e77">investigation</EVENT>. Publicly, they are <EVENT class="I_STATE" eid="e111">unwilling</EVENT> to <EVENT class="OCCURRENCE" eid="e79">make</EVENT> any sweeping <EVENT class="OCCURRENCE" eid="e80">assertion</EVENT>. The reason, they <EVENT class="OCCURRENCE" eid="e82">remember</EVENT> Richard Jewell. pierre thomas, CNN, Washington.
+</TEXT>
+<MAKEINSTANCE aspect="PROGRESSIVE" eiid="ei1998" eventID="e4" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei1999" eventID="e91" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2000" eventID="e6" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2001" eventID="e8" polarity="POS" pos="ADJECTIVE" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2003" eventID="e11" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2004" eventID="e12" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2005" eventID="e149" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2006" eventID="e16" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2007" eventID="e17" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2008" eventID="e98" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="PERFECTIVE" eiid="ei2009" eventID="e22" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2010" eventID="e23" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="PROGRESSIVE" eiid="ei2011" eventID="e25" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2012" eventID="e27" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2013" eventID="e28" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="PERFECTIVE" eiid="ei2014" eventID="e30" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2015" eventID="e33" polarity="POS" pos="VERB" tense="PASTPART" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2016" eventID="e34" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2017" eventID="e36" polarity="POS" pos="VERB" tense="INFINITIVE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2018" eventID="e37" polarity="POS" pos="VERB" tense="PASTPART" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2019" eventID="e38" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="PERFECTIVE" eiid="ei2020" eventID="e42" polarity="POS" pos="ADJECTIVE" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2021" eventID="e44" polarity="POS" pos="VERB" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2022" eventID="e45" polarity="POS" pos="VERB" tense="PASTPART" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2023" eventID="e101" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2024" eventID="e46" polarity="POS" pos="VERB" tense="PASTPART" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2025" eventID="e49" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2028" eventID="e53" polarity="POS" pos="VERB" tense="INFINITIVE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2030" eventID="e54" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2031" eventID="e55" polarity="NEG" pos="VERB" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2032" eventID="e105" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2034" eventID="e106" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2035" eventID="e61" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2036" eventID="e63" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2037" eventID="e64" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2038" eventID="e66" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2039" eventID="e109" polarity="POS" pos="VERB" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2040" eventID="e67" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2041" eventID="e68" polarity="POS" pos="VERB" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2042" eventID="e69" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2043" eventID="e72" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2045" eventID="e73" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2046" eventID="e74" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="PERFECTIVE" eiid="ei2047" eventID="e76" polarity="POS" pos="VERB" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2048" eventID="e77" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2049" eventID="e111" polarity="POS" pos="ADJECTIVE" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2050" eventID="e79" polarity="POS" pos="VERB" tense="INFINITIVE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2051" eventID="e80" polarity="POS" pos="NOUN" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2052" eventID="e82" polarity="POS" pos="VERB" tense="PRESENT" />
+<TLINK eventInstanceID="ei2032" lid="l0" relType="IS_INCLUDED" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2016" lid="l1" relType="IS_INCLUDED" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2052" lid="l2" relType="BEFORE" relatedToEventInstance="ei2049" />
+<TLINK eventInstanceID="ei1999" lid="l3" relType="BEFORE" relatedToEventInstance="ei2000" />
+<TLINK lid="l4" relType="INCLUDES" relatedToEventInstance="ei2000" timeID="t93" />
+<TLINK eventInstanceID="ei1998" lid="l5" relType="INCLUDES" relatedToTime="t0" />
+<TLINK lid="l6" relType="INCLUDES" relatedToEventInstance="ei2005" timeID="t96" />
+<TLINK eventInstanceID="ei2005" lid="l7" relType="BEFORE" relatedToEventInstance="ei2006" />
+<TLINK lid="l8" relType="INCLUDES" relatedToEventInstance="ei2008" timeID="t97" />
+<TLINK eventInstanceID="ei2007" lid="l9" relType="AFTER" relatedToEventInstance="ei2008" />
+<TLINK eventInstanceID="ei2009" lid="l10" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2009" lid="l11" relType="AFTER" relatedToEventInstance="ei2010" />
+<TLINK eventInstanceID="ei2010" lid="l12" relType="SIMULTANEOUS" relatedToEventInstance="ei2008" />
+<TLINK lid="l13" relType="INCLUDES" relatedToEventInstance="ei2011" timeID="t178" />
+<TLINK eventInstanceID="ei2013" lid="l14" relType="SIMULTANEOUS" relatedToEventInstance="ei1999" />
+<TLINK eventInstanceID="ei2013" lid="l15" relType="INCLUDES" relatedToEventInstance="ei2005" />
+<TLINK eventInstanceID="ei2013" lid="l16" relType="INCLUDES" relatedToEventInstance="ei2008" />
+<TLINK eventInstanceID="ei2000" lid="l17" relType="SIMULTANEOUS" relatedToEventInstance="ei2008" />
+<TLINK eventInstanceID="ei2011" lid="l18" relType="AFTER" relatedToEventInstance="ei2014" />
+<TLINK eventInstanceID="ei2015" lid="l19" relType="BEFORE" relatedToEventInstance="ei2005" />
+<TLINK eventInstanceID="ei2018" lid="l20" relType="AFTER" relatedToEventInstance="ei2005" />
+<TLINK eventInstanceID="ei2018" lid="l21" relType="BEFORE" relatedToEventInstance="ei2010" />
+<TLINK eventInstanceID="ei2018" lid="l22" relType="AFTER" relatedToEventInstance="ei2015" />
+<TLINK eventInstanceID="ei2018" lid="l23" relType="AFTER" relatedToEventInstance="ei2019" />
+<TLINK eventInstanceID="ei2019" lid="l24" relType="SIMULTANEOUS" relatedToEventInstance="ei2005" />
+<TLINK eventInstanceID="ei2021" lid="l25" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2021" lid="l26" relType="INCLUDES" relatedToEventInstance="ei2020" />
+<TLINK eventInstanceID="ei2022" lid="l27" relType="AFTER" relatedToEventInstance="ei2023" />
+<TLINK eventInstanceID="ei2023" lid="l28" relType="SIMULTANEOUS" relatedToEventInstance="ei2019" />
+<TLINK eventInstanceID="ei2024" lid="l29" relType="AFTER" relatedToEventInstance="ei2022" />
+<TLINK eventInstanceID="ei2025" lid="l30" relType="IS_INCLUDED" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2030" lid="l31" relType="SIMULTANEOUS" relatedToEventInstance="ei2025" />
+<TLINK lid="l32" relType="INCLUDES" relatedToEventInstance="ei2035" timeID="t107" />
+<TLINK eventInstanceID="ei2038" lid="l33" relType="INCLUDES" relatedToTime="t0" />
+<TLINK lid="l34" relType="INCLUDES" relatedToEventInstance="ei2039" timeID="t108" />
+<TLINK eventInstanceID="ei2039" lid="l35" relType="BEFORE" relatedToEventInstance="ei2040" />
+<TLINK eventInstanceID="ei2040" lid="l36" relType="SIMULTANEOUS" relatedToEventInstance="ei2037" />
+<TLINK lid="l37" relType="INCLUDES" relatedToEventInstance="ei2041" timeID="t108" />
+<TLINK eventInstanceID="ei2041" lid="l38" relType="BEFORE" relatedToEventInstance="ei2043" />
+<TLINK eventInstanceID="ei2045" lid="l39" relType="SIMULTANEOUS" relatedToEventInstance="ei1999" />
+<TLINK eventInstanceID="ei2046" lid="l40" relType="INCLUDES" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2048" lid="l41" relType="INCLUDES" relatedToEventInstance="ei2047" />
+<TLINK eventInstanceID="ei2049" lid="l42" relType="SIMULTANEOUS" relatedToEventInstance="ei2046" />
+<TLINK eventInstanceID="ei2050" lid="l43" relType="SIMULTANEOUS" relatedToEventInstance="ei2051" />
+<TLINK eventInstanceID="ei1998" lid="l44" relType="AFTER" relatedToEventInstance="ei1999" />
+<TLINK eventInstanceID="ei1998" lid="l45" relType="AFTER" relatedToTime="t93" />
+<TLINK eventInstanceID="ei1998" lid="l46" relType="AFTER" relatedToEventInstance="ei2000" />
+<TLINK eventInstanceID="ei1999" lid="l47" relType="BEFORE" relatedToTime="t0" />
+<TLINK lid="l48" relType="BEFORE" relatedToTime="t0" timeID="t93" />
+<TLINK eventInstanceID="ei2000" lid="l49" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2001" lid="l50" relType="INCLUDES" relatedToTime="t0" />
+<TLINK lid="l51" relType="BEFORE" relatedToTime="t0" timeID="t95" />
+<TLINK lid="l52" relType="INCLUDES" relatedToEventInstance="ei2003" timeID="t95" />
+<TLINK eventInstanceID="ei2003" lid="l53" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2004" lid="l54" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2004" lid="l55" relType="BEFORE" relatedToTime="t96" />
+<TLINK lid="l56" relType="BEFORE" relatedToTime="t0" timeID="t96" />
+<TLINK eventInstanceID="ei2005" lid="l57" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2006" lid="l58" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2006" lid="l59" relType="BEFORE" relatedToTime="t97" />
+<TLINK eventInstanceID="ei2006" lid="l60" relType="BEFORE" relatedToEventInstance="ei2007" />
+<TLINK eventInstanceID="ei2006" lid="l61" relType="BEFORE" relatedToEventInstance="ei2008" />
+<TLINK lid="l62" relType="BEFORE" relatedToTime="t0" timeID="t97" />
+<TLINK lid="l63" relType="INCLUDES" relatedToEventInstance="ei2007" timeID="t97" />
+<TLINK eventInstanceID="ei2007" lid="l64" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2008" lid="l65" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2009" lid="l66" relType="BEFORE" relatedToTime="t178" />
+<TLINK eventInstanceID="ei2009" lid="l67" relType="AFTER" relatedToEventInstance="ei2013" />
+<TLINK eventInstanceID="ei2010" lid="l68" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2010" lid="l69" relType="BEFORE" relatedToTime="t178" />
+<TLINK eventInstanceID="ei2010" lid="l70" relType="BEFORE" relatedToEventInstance="ei2011" />
+<TLINK eventInstanceID="ei2010" lid="l71" relType="BEFORE" relatedToEventInstance="ei2012" />
+<TLINK eventInstanceID="ei2010" lid="l72" relType="IS_INCLUDED" relatedToEventInstance="ei2013" />
+<TLINK lid="l73" relType="INCLUDES" relatedToTime="t0" timeID="t178" />
+<TLINK lid="l74" relType="IS_INCLUDED" relatedToEventInstance="ei2012" timeID="t178" />
+<TLINK lid="l75" relType="AFTER" relatedToEventInstance="ei2013" timeID="t178" />
+<TLINK lid="l76" relType="AFTER" relatedToEventInstance="ei2014" timeID="t178" />
+<TLINK eventInstanceID="ei2011" lid="l77" relType="INCLUDES" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2011" lid="l78" relType="IS_INCLUDED" relatedToEventInstance="ei2012" />
+<TLINK eventInstanceID="ei2011" lid="l79" relType="AFTER" relatedToEventInstance="ei2013" />
+<TLINK eventInstanceID="ei2012" lid="l80" relType="INCLUDES" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2012" lid="l81" relType="INCLUDES" relatedToEventInstance="ei2014" />
+<TLINK eventInstanceID="ei2013" lid="l82" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2013" lid="l83" relType="BEFORE" relatedToEventInstance="ei2014" />
+<TLINK eventInstanceID="ei2014" lid="l84" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2014" lid="l85" relType="AFTER" relatedToEventInstance="ei2015" />
+<TLINK eventInstanceID="ei2014" lid="l86" relType="IS_INCLUDED" relatedToEventInstance="ei2017" />
+<TLINK eventInstanceID="ei2014" lid="l87" relType="AFTER" relatedToEventInstance="ei2018" />
+<TLINK eventInstanceID="ei2014" lid="l88" relType="AFTER" relatedToEventInstance="ei2019" />
+<TLINK eventInstanceID="ei2015" lid="l89" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2015" lid="l90" relType="BEFORE" relatedToEventInstance="ei2016" />
+<TLINK eventInstanceID="ei2015" lid="l91" relType="BEFORE" relatedToEventInstance="ei2018" />
+<TLINK eventInstanceID="ei2016" lid="l92" relType="IS_INCLUDED" relatedToEventInstance="ei2017" />
+<TLINK eventInstanceID="ei2016" lid="l93" relType="AFTER" relatedToEventInstance="ei2018" />
+<TLINK eventInstanceID="ei2016" lid="l94" relType="AFTER" relatedToEventInstance="ei2019" />
+<TLINK eventInstanceID="ei2018" lid="l95" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2018" lid="l96" relType="AFTER" relatedToEventInstance="ei2020" />
+<TLINK eventInstanceID="ei2019" lid="l97" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2020" lid="l98" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2020" lid="l99" relType="BEFORE" relatedToEventInstance="ei2022" />
+<TLINK eventInstanceID="ei2020" lid="l100" relType="BEFORE" relatedToEventInstance="ei2023" />
+<TLINK eventInstanceID="ei2022" lid="l101" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2022" lid="l102" relType="BEFORE" relatedToEventInstance="ei2025" />
+<TLINK eventInstanceID="ei2023" lid="l103" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2023" lid="l104" relType="BEFORE" relatedToEventInstance="ei2025" />
+<TLINK eventInstanceID="ei2024" lid="l105" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2024" lid="l106" relType="BEFORE" relatedToEventInstance="ei2025" />
+<TLINK eventInstanceID="ei2025" lid="l107" relType="IS_INCLUDED" relatedToEventInstance="ei2028" />
+<TLINK eventInstanceID="ei2028" lid="l108" relType="INCLUDES" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2028" lid="l109" relType="INCLUDES" relatedToEventInstance="ei2030" />
+<TLINK eventInstanceID="ei2034" lid="l110" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2034" lid="l111" relType="BEFORE" relatedToEventInstance="ei2037" />
+<TLINK eventInstanceID="ei2034" lid="l112" relType="BEFORE" relatedToEventInstance="ei2038" />
+<TLINK lid="l113" relType="BEFORE" relatedToTime="t0" timeID="t107" />
+<TLINK lid="l114" relType="BEFORE" relatedToEventInstance="ei2037" timeID="t107" />
+<TLINK lid="l115" relType="BEFORE" relatedToEventInstance="ei2038" timeID="t107" />
+<TLINK eventInstanceID="ei2035" lid="l116" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2035" lid="l117" relType="BEFORE" relatedToEventInstance="ei2037" />
+<TLINK eventInstanceID="ei2035" lid="l118" relType="BEFORE" relatedToEventInstance="ei2038" />
+<TLINK eventInstanceID="ei2036" lid="l119" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2036" lid="l120" relType="BEFORE" relatedToEventInstance="ei2037" />
+<TLINK eventInstanceID="ei2036" lid="l121" relType="BEFORE" relatedToEventInstance="ei2038" />
+<TLINK eventInstanceID="ei2037" lid="l122" relType="INCLUDES" relatedToEventInstance="ei2038" />
+<TLINK eventInstanceID="ei2037" lid="l123" relType="INCLUDES" relatedToEventInstance="ei2039" />
+<TLINK eventInstanceID="ei2037" lid="l124" relType="SIMULTANEOUS" relatedToEventInstance="ei2040" />
+<TLINK eventInstanceID="ei2038" lid="l125" relType="IS_INCLUDED" relatedToEventInstance="ei2040" />
+<TLINK lid="l126" relType="INCLUDES" relatedToTime="t0" timeID="t108" />
+<TLINK lid="l127" relType="AFTER" relatedToEventInstance="ei2045" timeID="t108" />
+<TLINK eventInstanceID="ei2039" lid="l128" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2039" lid="l129" relType="IS_INCLUDED" relatedToEventInstance="ei2042" />
+<TLINK eventInstanceID="ei2039" lid="l130" relType="IS_INCLUDED" relatedToEventInstance="ei2043" />
+<TLINK eventInstanceID="ei2039" lid="l131" relType="AFTER" relatedToEventInstance="ei2045" />
+<TLINK eventInstanceID="ei2040" lid="l132" relType="INCLUDES" relatedToEventInstance="ei2041" />
+<TLINK eventInstanceID="ei2040" lid="l133" relType="IS_INCLUDED" relatedToEventInstance="ei2042" />
+<TLINK eventInstanceID="ei2040" lid="l134" relType="AFTER" relatedToEventInstance="ei2045" />
+<TLINK eventInstanceID="ei2041" lid="l135" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2041" lid="l136" relType="IS_INCLUDED" relatedToEventInstance="ei2042" />
+<TLINK eventInstanceID="ei2041" lid="l137" relType="AFTER" relatedToEventInstance="ei2045" />
+<TLINK eventInstanceID="ei2041" lid="l138" relType="IS_INCLUDED" relatedToEventInstance="ei2048" />
+<TLINK eventInstanceID="ei2042" lid="l139" relType="INCLUDES" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2042" lid="l140" relType="INCLUDES" relatedToEventInstance="ei2046" />
+<TLINK eventInstanceID="ei2042" lid="l141" relType="INCLUDES" relatedToEventInstance="ei2047" />
+<TLINK eventInstanceID="ei2042" lid="l142" relType="SIMULTANEOUS" relatedToEventInstance="ei2048" />
+<TLINK eventInstanceID="ei2043" lid="l143" relType="INCLUDES" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2043" lid="l144" relType="AFTER" relatedToEventInstance="ei2045" />
+<TLINK eventInstanceID="ei2045" lid="l145" relType="BEFORE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2045" lid="l146" relType="BEFORE" relatedToEventInstance="ei2046" />
+<TLINK eventInstanceID="ei2045" lid="l147" relType="BEFORE" relatedToEventInstance="ei2047" />
+<TLINK eventInstanceID="ei2045" lid="l148" relType="BEFORE" relatedToEventInstance="ei2048" />
+<TLINK eventInstanceID="ei2046" lid="l149" relType="AFTER" relatedToEventInstance="ei2047" />
+<TLINK eventInstanceID="ei2046" lid="l150" relType="IS_INCLUDED" relatedToEventInstance="ei2048" />
+<TLINK eventInstanceID="ei2047" lid="l151" relType="IS_INCLUDED" relatedToEventInstance="ei2048" />
+<TLINK eventInstanceID="ei2048" lid="l152" relType="INCLUDES" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2049" lid="l153" relType="INCLUDES" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2049" lid="l154" relType="INCLUDES" relatedToEventInstance="ei2050" />
+<TLINK eventInstanceID="ei2049" lid="l155" relType="INCLUDES" relatedToEventInstance="ei2051" />
+<TLINK eventInstanceID="ei2050" lid="l156" relType="IS_INCLUDED" relatedToEventInstance="ei2052" />
+<TLINK eventInstanceID="ei2051" lid="l157" relType="IS_INCLUDED" relatedToEventInstance="ei2052" />
+<TLINK eventInstanceID="ei2052" lid="l158" relType="INCLUDES" relatedToTime="t0" />
+
+<TLINK eventInstanceID="ei1998" lid="l159" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei1998" lid="l160" relType="NONE" relatedToEventInstance="ei2001" />
+<TLINK eventInstanceID="ei1999" lid="l161" relType="NONE" relatedToTime="t93" />
+<TLINK eventInstanceID="ei1999" lid="l162" relType="NONE" relatedToEventInstance="ei2000" />
+<TLINK eventInstanceID="ei1999" lid="l163" relType="NONE" relatedToEventInstance="ei2001" />
+<TLINK lid="l164" relType="NONE" relatedToEventInstance="ei2001" timeID="t93" />
+<TLINK eventInstanceID="ei2000" lid="l165" relType="NONE" relatedToEventInstance="ei2001" />
+<TLINK eventInstanceID="ei2003" lid="l166" relType="NONE" relatedToEventInstance="ei2004" />
+<TLINK eventInstanceID="ei2007" lid="l167" relType="NONE" relatedToEventInstance="ei2008" />
+<TLINK eventInstanceID="ei2009" lid="l168" relType="NONE" relatedToEventInstance="ei2011" />
+<TLINK eventInstanceID="ei2009" lid="l169" relType="NONE" relatedToEventInstance="ei2012" />
+<TLINK eventInstanceID="ei2012" lid="l170" relType="NONE" relatedToEventInstance="ei2013" />
+<TLINK eventInstanceID="ei2014" lid="l171" relType="NONE" relatedToEventInstance="ei2016" />
+<TLINK eventInstanceID="ei2015" lid="l172" relType="NONE" relatedToEventInstance="ei2017" />
+<TLINK eventInstanceID="ei2015" lid="l173" relType="NONE" relatedToEventInstance="ei2019" />
+<TLINK eventInstanceID="ei2015" lid="l174" relType="NONE" relatedToEventInstance="ei2020" />
+<TLINK eventInstanceID="ei2015" lid="l175" relType="NONE" relatedToEventInstance="ei2021" />
+<TLINK eventInstanceID="ei2016" lid="l176" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2016" lid="l177" relType="NONE" relatedToEventInstance="ei2020" />
+<TLINK eventInstanceID="ei2016" lid="l178" relType="NONE" relatedToEventInstance="ei2021" />
+<TLINK eventInstanceID="ei2017" lid="l179" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2017" lid="l180" relType="NONE" relatedToEventInstance="ei2018" />
+<TLINK eventInstanceID="ei2017" lid="l181" relType="NONE" relatedToEventInstance="ei2019" />
+<TLINK eventInstanceID="ei2017" lid="l182" relType="NONE" relatedToEventInstance="ei2020" />
+<TLINK eventInstanceID="ei2017" lid="l183" relType="NONE" relatedToEventInstance="ei2021" />
+<TLINK eventInstanceID="ei2018" lid="l184" relType="NONE" relatedToEventInstance="ei2021" />
+<TLINK eventInstanceID="ei2019" lid="l185" relType="NONE" relatedToEventInstance="ei2020" />
+<TLINK eventInstanceID="ei2019" lid="l186" relType="NONE" relatedToEventInstance="ei2021" />
+<TLINK eventInstanceID="ei2020" lid="l187" relType="NONE" relatedToEventInstance="ei2021" />
+<TLINK eventInstanceID="ei2020" lid="l188" relType="NONE" relatedToEventInstance="ei2024" />
+<TLINK eventInstanceID="ei2021" lid="l189" relType="NONE" relatedToEventInstance="ei2022" />
+<TLINK eventInstanceID="ei2021" lid="l190" relType="NONE" relatedToEventInstance="ei2023" />
+<TLINK eventInstanceID="ei2021" lid="l191" relType="NONE" relatedToEventInstance="ei2024" />
+<TLINK eventInstanceID="ei2022" lid="l192" relType="NONE" relatedToEventInstance="ei2024" />
+<TLINK eventInstanceID="ei2022" lid="l193" relType="NONE" relatedToEventInstance="ei2028" />
+<TLINK eventInstanceID="ei2023" lid="l194" relType="NONE" relatedToEventInstance="ei2024" />
+<TLINK eventInstanceID="ei2023" lid="l195" relType="NONE" relatedToEventInstance="ei2028" />
+<TLINK eventInstanceID="ei2024" lid="l196" relType="NONE" relatedToEventInstance="ei2028" />
+<TLINK eventInstanceID="ei2025" lid="l197" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2025" lid="l198" relType="NONE" relatedToEventInstance="ei2030" />
+<TLINK eventInstanceID="ei2025" lid="l199" relType="NONE" relatedToEventInstance="ei2031" />
+<TLINK eventInstanceID="ei2028" lid="l200" relType="NONE" relatedToEventInstance="ei2031" />
+<TLINK eventInstanceID="ei2030" lid="l201" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2030" lid="l202" relType="NONE" relatedToEventInstance="ei2031" />
+<TLINK eventInstanceID="ei2031" lid="l203" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2032" lid="l204" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2032" lid="l205" relType="NONE" relatedToEventInstance="ei2034" />
+<TLINK eventInstanceID="ei2032" lid="l206" relType="NONE" relatedToTime="t107" />
+<TLINK eventInstanceID="ei2032" lid="l207" relType="NONE" relatedToEventInstance="ei2035" />
+<TLINK eventInstanceID="ei2032" lid="l208" relType="NONE" relatedToEventInstance="ei2036" />
+<TLINK eventInstanceID="ei2032" lid="l209" relType="NONE" relatedToEventInstance="ei2037" />
+<TLINK eventInstanceID="ei2032" lid="l210" relType="NONE" relatedToEventInstance="ei2038" />
+<TLINK eventInstanceID="ei2034" lid="l211" relType="NONE" relatedToTime="t107" />
+<TLINK eventInstanceID="ei2034" lid="l212" relType="NONE" relatedToEventInstance="ei2035" />
+<TLINK eventInstanceID="ei2034" lid="l213" relType="NONE" relatedToEventInstance="ei2036" />
+<TLINK lid="l214" relType="NONE" relatedToEventInstance="ei2036" timeID="t107" />
+<TLINK eventInstanceID="ei2035" lid="l215" relType="NONE" relatedToEventInstance="ei2036" />
+<TLINK eventInstanceID="ei2037" lid="l216" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2037" lid="l217" relType="NONE" relatedToTime="t108" />
+<TLINK eventInstanceID="ei2038" lid="l218" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2038" lid="l219" relType="NONE" relatedToTime="t108" />
+<TLINK eventInstanceID="ei2038" lid="l220" relType="NONE" relatedToEventInstance="ei2039" />
+<TLINK lid="l221" relType="NONE" relatedToEventInstance="ei2040" timeID="t108" />
+<TLINK lid="l222" relType="NONE" relatedToEventInstance="ei2042" timeID="t108" />
+<TLINK lid="l223" relType="NONE" relatedToEventInstance="ei2043" timeID="t108" />
+<TLINK eventInstanceID="ei2039" lid="l224" relType="NONE" relatedToEventInstance="ei2041" />
+<TLINK eventInstanceID="ei2040" lid="l225" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2040" lid="l226" relType="NONE" relatedToEventInstance="ei2043" />
+<TLINK eventInstanceID="ei2041" lid="l227" relType="NONE" relatedToEventInstance="ei2046" />
+<TLINK eventInstanceID="ei2041" lid="l228" relType="NONE" relatedToEventInstance="ei2047" />
+<TLINK eventInstanceID="ei2042" lid="l229" relType="NONE" relatedToEventInstance="ei2043" />
+<TLINK eventInstanceID="ei2042" lid="l230" relType="NONE" relatedToEventInstance="ei2045" />
+<TLINK eventInstanceID="ei2043" lid="l231" relType="NONE" relatedToEventInstance="ei2046" />
+<TLINK eventInstanceID="ei2043" lid="l232" relType="NONE" relatedToEventInstance="ei2047" />
+<TLINK eventInstanceID="ei2043" lid="l233" relType="NONE" relatedToEventInstance="ei2048" />
+<TLINK eventInstanceID="ei2046" lid="l234" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2046" lid="l235" relType="NONE" relatedToEventInstance="ei2049" />
+<TLINK eventInstanceID="ei2046" lid="l236" relType="NONE" relatedToEventInstance="ei2050" />
+<TLINK eventInstanceID="ei2046" lid="l237" relType="NONE" relatedToEventInstance="ei2051" />
+<TLINK eventInstanceID="ei2047" lid="l238" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2047" lid="l239" relType="NONE" relatedToEventInstance="ei2049" />
+<TLINK eventInstanceID="ei2047" lid="l240" relType="NONE" relatedToEventInstance="ei2050" />
+<TLINK eventInstanceID="ei2047" lid="l241" relType="NONE" relatedToEventInstance="ei2051" />
+<TLINK eventInstanceID="ei2048" lid="l242" relType="NONE" relatedToEventInstance="ei2049" />
+<TLINK eventInstanceID="ei2048" lid="l243" relType="NONE" relatedToEventInstance="ei2050" />
+<TLINK eventInstanceID="ei2048" lid="l244" relType="NONE" relatedToEventInstance="ei2051" />
+<TLINK eventInstanceID="ei2049" lid="l245" relType="NONE" relatedToEventInstance="ei2052" />
+<TLINK eventInstanceID="ei2050" lid="l246" relType="NONE" relatedToTime="t0" />
+<TLINK eventInstanceID="ei2050" lid="l247" relType="NONE" relatedToEventInstance="ei2051" />
+<TLINK eventInstanceID="ei2051" lid="l248" relType="NONE" relatedToTime="t0" />
+</TimeML>
