@@ -54,6 +54,7 @@ def run(defaults: Dict):
     if args.tuning:
         training_args.output_dir = './tuning_experiments'
         record_file_name = './tuning_result.txt'
+        n_fold = 1
     try:
         os.mkdir(training_args.output_dir)
     except FileExistsError:
