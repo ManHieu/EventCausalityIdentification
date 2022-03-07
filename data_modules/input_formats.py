@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from collections import defaultdict
-
-from data_modules.templates import TEMPLATES
+# from data_modules.templates import TEMPLATES
 from .input_example import InputExample
 from typing import Dict, List, Tuple
 from utils.utils import get_span
@@ -12,12 +11,12 @@ class BaseInputFormat(ABC):
 
     QUERY_SEPARATOR_TOKEN = ':'
 
-    def format_input(self, example: InputExample, template_type: int=0, task_descriptor: str=''):
-        res = self._format_input(example=example, template_type=template_type)
+    def format_input(self, example: InputExample, task_descriptor: str=''):
+        res = self._format_input(example=example)
         return res
     
     @abstractmethod
-    def _format_input(self, example: InputExample, template_type: int=0, task_prefix: str='') -> str:
+    def _format_input(self, example: InputExample, task_prefix: str='') -> str:
         raise NotImplementedError
 
 
@@ -47,19 +46,13 @@ class IdentifyCausalRelationInputFormat(BaseInputFormat):
     """
     name = 'ECI_input'
     
-    templates: List[Tuple[str, str]] = TEMPLATES['eci']
+    # templates: List[Tuple[str, str]] = TEMPLATES['eci']
     
-    def _format_input(self, example: InputExample, template_type:int):
+    def _format_input(self, example: InputExample):
         context = ' '.join(example.tokens)
-        # if context.endswith('.'):
-        #     context = f"{context} {additional_info}"
-        # else:
-        #     context = f"{context}. {additional_info}"
-        # ED_template = "\n Event triggers are "
         triggers = [trigger.mention for trigger in example.triggers]
-        # ED_template = ED_template + ', '.join(triggers)
 
-        template = self.templates[template_type][0]
+        template = "{context}\n\nIs there a causal relation between {head} and {tail}?"
         template = template.format(
                                 context=context,
                                 head=triggers[0],

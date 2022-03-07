@@ -1,16 +1,16 @@
 from arguments import DataTrainingArguments
 from .input_formats import INPUT_FORMATS, BaseInputFormat
 from .output_formats import OUTPUT_FORMATS, BaseOutputFormat
-from typing import Dict, Generator, List, Tuple
+from typing import List, Tuple
 from .input_example import InputExample, ProcessedInputExample
 import os 
 import logging
 import random
 from abc import ABC, abstractmethod
 import torch
-from torch.utils.data.dataset import Dataset, T_co
+from torch.utils.data.dataset import Dataset
 from tqdm import tqdm
-from transformers import PreTrainedTokenizer, PreTrainedModel
+from transformers import PreTrainedTokenizer
 
 
 class BaseDataset(Dataset, ABC):

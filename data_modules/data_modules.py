@@ -81,6 +81,7 @@ class EEREDataModule(pl.LightningDataModule):
             max_input_length=self.max_input_len,
             max_output_length=self.max_ouput_len,
             split='test',
+            data_name=self.fold_name
         )
         dataloader = DataLoader(
             dataset= dataset,

@@ -2,7 +2,7 @@ import itertools
 from abc import ABC, abstractmethod
 from collections import defaultdict
 from typing import Tuple, List, Dict
-from data_modules.templates import TEMPLATES
+# from data_modules.templates import TEMPLATES
 from utils.utils import get_span
 import numpy as np 
 
@@ -13,7 +13,7 @@ class BaseOutputFormat(ABC):
     name = None
     
     @abstractmethod
-    def format_output(self, example: InputExample, template_type: int=0) -> str:
+    def format_output(self, example: InputExample) -> str:
         """
         Format output for feeding into the model.
         """
@@ -62,15 +62,14 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
     Output format uses in ECI task
     """
     name = 'ECI_ouput'
-    templates: List[Tuple[str, str]] = TEMPLATES['eci']
+    # templates: List[Tuple[str, str]] = TEMPLATES['eci']
 
-    def format_output(self, example: InputExample, template_type: int) -> str:
-        template = self.templates[template_type][1]
+    def format_output(self, example: InputExample) -> str:
+        template = "{answer}"
         
         rels = defaultdict(list)
         for relation in example.relations:
             if relation.type.natural == 'falling action':
-                # ev A falling action ev B = ev B causes ev A
                 rels[relation.tail].append(relation.head)
             else:
                 rels[relation.head].append(relation.tail)
@@ -88,8 +87,6 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
             dep_path = ', '.join(example.dep_path[0])
         elif len(example.dep_path) > 1:
             dep_path = ', '.join(list(reversed(example.dep_path[0]))[:-1]) + ', ' + ', '.join(example.dep_path[1])     
-        # print("Output: {}".format(sent_out))
-        # print(f"{sent_out}. {dep_path}")
         
         if len(sents) == 0:
             sent_out = "none"
@@ -98,6 +95,6 @@ class IdentifyCausalRelationOutputFormat(BaseOutputFormat):
             sent_out = ' '.join(sents)
             oupt = template.format(answer=f"Yes. {sent_out} and {dep_path}", conclusion=sent_out)
         
-        return oupt
+        # print(oupt)
         
-        # return f"{sent_out}. {dep_path}"
+        return oupt
