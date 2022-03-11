@@ -51,6 +51,7 @@ def run(defaults: Dict):
     if data_args.tokenizer == None:
         data_args.tokenizer = model_args.tokenizer_name
     
+    record_file_name = './result.txt'
     if args.tuning:
         training_args.output_dir = './tuning_experiments'
         record_file_name = './tuning_result.txt'
@@ -60,7 +61,7 @@ def run(defaults: Dict):
     except FileExistsError:
         pass
     
-    seed_everything(training_args.seed)
+    seed_everything(training_args.seed, workers=True)
     # tb_logger = TensorBoardLogger('logs/')
     f1s = []
     ps = []
@@ -179,13 +180,13 @@ def run(defaults: Dict):
 
 def objective(trial: optuna.Trial):
     defaults = {
-        'lr': trial.suggest_categorical('pretrain_lr', [4e-4, 6e-4, 8e-4]),
+        'lr': trial.suggest_categorical('pretrain_lr', [1e-4, 4e-4, 6e-4, 1e-3]),
         'batch_size': trial.suggest_categorical('batch_size', [32]),
         'warmup_ratio': 0.1,
-        'num_epoches': trial.suggest_categorical('num_epoches', [5, 7, 10, 12, 15]),
+        'num_epoches': trial.suggest_categorical('num_epoches', [5,  10, 15, 20]),
     }   
     if args.rl==True:
-        defaults['f1_reward_weight'] = trial.suggest_categorical('f1_reward_weight', [0.25, 0.5, 0.75])
+        defaults['f1_reward_weight'] = trial.suggest_categorical('f1_reward_weight', [0.5, 0.75])
         defaults['reconstruct_reward_weight'] = trial.suggest_categorical('reconstruct_reward_weight', [0.1, 0.25])
     
     if args.mle==True and args.rl==False:
@@ -195,7 +196,7 @@ def objective(trial: optuna.Trial):
         defaults['mle_weight'] = 0.0
     if args.mle==True and args.rl==True:
         defaults['generate_weight'] = 1.0
-        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.1, 0.25, 0.5])
+        defaults['mle_weight'] = trial.suggest_categorical('mle_weight', [0.1, 0.25, 0.5, 0.75])
     
     f1 = run(defaults=defaults)
 

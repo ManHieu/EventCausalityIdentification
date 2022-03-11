@@ -7,4 +7,6 @@ predictions.json
 dev.json
 test.json
 # datasets
-*results*.txt
+*result*.txt
+tuning_result.txt
+result.txt
