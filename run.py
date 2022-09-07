@@ -47,6 +47,11 @@ def run(defaults: Dict):
         data_args.output_format = 'ECI_ouput'
         n_fold = 5
         data_dir = 'ESL'
+    elif job == 'Causal-TB':
+        data_args.input_format = 'ECI_input'
+        data_args.output_format = 'ECI_ouput'
+        n_fold = 10
+        data_dir = 'Causal-TB'
 
     if data_args.tokenizer == None:
         data_args.tokenizer = model_args.tokenizer_name
